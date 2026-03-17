@@ -613,11 +613,13 @@
       }
 
       .modal {
-        padding: 1rem 1.5rem calc(env(safe-area-inset-bottom, 0px) + 1rem);
+        padding: 1rem 1rem calc(env(safe-area-inset-bottom, 0px) + 1rem);
         border-radius: 20px 20px 0 0;
         max-height: 92dvh;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
+        margin: 0 6px;
+        width: calc(100% - 12px);
       }
 
       .modal__close {
