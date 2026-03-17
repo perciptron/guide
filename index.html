@@ -515,20 +515,19 @@
       }
 
       .modal {
-        padding: 1.25rem 1.25rem calc(env(safe-area-inset-bottom, 0px) + 1rem);
+        padding: 1rem 1.25rem calc(env(safe-area-inset-bottom, 0px) + 0.75rem);
         border-radius: 20px 20px 0 0;
         max-height: 85dvh;
-        overflow-y: auto;
       }
 
       .modal__title {
-        font-size: 1.1rem;
-        margin-bottom: 0.125rem;
+        font-size: 1.05rem;
+        margin-bottom: 0;
       }
 
       .modal__subtitle {
-        font-size: 0.78rem;
-        margin-bottom: 0.375rem;
+        font-size: 0.75rem;
+        margin-bottom: 0.25rem;
       }
 
       .modal__close {
@@ -539,45 +538,54 @@
         font-size: 0.9rem;
       }
 
-      /* Compact form spacing */
+      /* Kill all internal margins in salebot form */
+      .modal .form_integration_block div,
+      .modal .form_integration_block p {
+        margin-top: 0 !important;
+        margin-bottom: 0.35rem !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+      }
+
       .modal .form_integration_block input[type="text"],
       .modal .form_integration_block input[type="email"],
       .modal .form_integration_block input[type="tel"],
       .modal .form_integration_block input[type="number"],
       .modal .form_integration_block textarea,
       .modal .form_integration_block select {
-        padding: 0.5rem 0.75rem !important;
+        padding: 0.45rem 0.75rem !important;
         font-size: 0.85rem !important;
         border-radius: 8px !important;
-        margin-bottom: 0.125rem !important;
+        margin-bottom: 0 !important;
       }
 
       .modal .form_integration_block label {
-        font-size: 0.75rem !important;
-        margin-bottom: 0.125rem !important;
+        font-size: 0.72rem !important;
+        margin-bottom: 0.1rem !important;
       }
 
       .modal .form_integration_block button[type="submit"],
       .modal .form_integration_block input[type="submit"],
       .modal .form_integration_block .btn,
       .modal .form_integration_block .submit-btn {
-        padding: 0.65rem 1rem !important;
-        font-size: 0.9rem !important;
+        padding: 0.6rem 1rem !important;
+        font-size: 0.85rem !important;
         border-radius: 10px !important;
-        margin-top: 0.25rem !important;
+        margin-top: 0.125rem !important;
+        margin-bottom: 0 !important;
       }
 
       /* Checkbox as smaller toggle */
       .modal .form_integration_block input[type="checkbox"] {
-        width: 36px !important;
-        height: 20px !important;
-        min-width: 36px !important;
-        border-radius: 10px !important;
+        width: 34px !important;
+        height: 18px !important;
+        min-width: 34px !important;
+        border-radius: 9px !important;
       }
 
       .modal .form_integration_block input[type="checkbox"]::after {
-        width: 16px;
-        height: 16px;
+        width: 14px;
+        height: 14px;
       }
 
       .modal .form_integration_block input[type="checkbox"]:checked::after {
