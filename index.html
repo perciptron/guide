@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>FIN-RA — Бесплатный гайд</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
@@ -510,12 +510,15 @@
 
       .modal-overlay {
         align-items: flex-end;
-        padding: 0;
+        padding: 0.75rem;
+        padding-bottom: 0;
       }
 
       .modal {
         padding: 1.25rem 1.25rem calc(env(safe-area-inset-bottom, 0px) + 1rem);
         border-radius: 20px 20px 0 0;
+        max-height: 85dvh;
+        overflow-y: auto;
       }
 
       .modal__title {
