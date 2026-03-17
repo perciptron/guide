@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIN-RA — Бесплатный гайд</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f7f7f8;
+      color: #1a1a1a;
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow-x: hidden;
+    }
+
+    /* ===== LAYOUT ===== */
+    .page {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      min-height: 100dvh;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 10;
+    }
+
+    .header__logo {
+      height: 28px;
+    }
+
+    .header__label {
+      font-size: 0.75rem;
+      color: rgba(0,0,0,0.4);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 2rem 2rem;
+    }
+
+    .hero__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    /* — Left column — */
+    .hero__content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      background: rgba(0,0,0,0.04);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 100px;
+      padding: 0.375rem 0.875rem;
+      font-size: 0.8rem;
+      color: rgba(0,0,0,0.55);
+      width: fit-content;
+      backdrop-filter: blur(8px);
+    }
+
+    .badge__dot {
+      width: 6px;
+      height: 6px;
+      background: #34d399;
+      border-radius: 50%;
+    }
+
+    .hero__title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+
+    .hero__title span {
+      color: #16a34a;
+    }
+
+    .hero__desc {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: rgba(0,0,0,0.5);
+      max-width: 460px;
+    }
+
+    .hero__bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+      list-style: none;
+    }
+
+    .hero__bullets li {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      font-size: 0.95rem;
+      color: rgba(0,0,0,0.65);
+    }
+
+    .hero__bullets li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      background: rgba(22, 163, 74, 0.12);
+      border-radius: 50%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M8.5 13.5L5.5 10.5L6.5 9.5L8.5 11.5L13.5 6.5L14.5 7.5L8.5 13.5Z' fill='%2316a34a'/%3E%3C/svg%3E");
+      background-size: cover;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      background: #16a34a;
+      color: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      width: fit-content;
+      letter-spacing: -0.01em;
+    }
+
+    .cta-btn:hover {
+      background: #15803d;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 30px rgba(22, 163, 74, 0.3);
+    }
+
+    .cta-btn:active {
+      transform: translateY(0);
+    }
+
+    .cta-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .cta-hint {
+      font-size: 0.75rem;
+      color: rgba(0,0,0,0.35);
+    }
+
+    /* — Right column — */
+    .hero__cover {
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .cover-wrapper {
+      position: relative;
+      max-width: 340px;
+      width: 100%;
+    }
+
+    .cover-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -20%;
+      background: radial-gradient(ellipse at center, rgba(22,163,74,0.08) 0%, transparent 70%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .cover-img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.04);
+      position: relative;
+      z-index: 1;
+      transition: transform 0.3s ease;
+    }
+
+    .cover-wrapper:hover .cover-img {
+      transform: translateY(-4px) rotate(-1deg);
+    }
+
+    .cover-float-tag {
+      position: absolute;
+      z-index: 2;
+      background: rgba(255,255,255,0.65);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 10px;
+      padding: 0.5rem 0.875rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+
+    .cover-float-tag--top {
+      top: -12px;
+      right: -24px;
+      background: #16a34a;
+      border-color: #16a34a;
+      color: #fff;
+    }
+
+    .cover-float-tag--bottom {
+      bottom: -12px;
+      left: -20px;
+    }
+
+    /* ===== MODAL ===== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 20px;
+      padding: 2.5rem;
+      max-width: 480px;
+      width: 100%;
+      position: relative;
+      transform: translateY(20px) scale(0.97);
+      transition: transform 0.3s ease;
+    }
+
+    .modal-overlay.active .modal {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal__close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.04);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 10px;
+      color: rgba(0,0,0,0.4);
+      cursor: pointer;
+      font-size: 1.125rem;
+      transition: all 0.2s;
+    }
+
+    .modal__close:hover {
+      background: rgba(0,0,0,0.08);
+      color: #1a1a1a;
+    }
+
+    .modal__title {
+      font-size: 1.375rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 0.375rem;
+      letter-spacing: -0.02em;
+    }
+
+    .modal__subtitle {
+      font-size: 0.9rem;
+      color: rgba(0,0,0,0.45);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Salebot form overrides */
+    .modal .form_integration_block {
+      width: 100%;
+    }
+
+    .modal .form_integration_block input[type="text"],
+    .modal .form_integration_block input[type="email"],
+    .modal .form_integration_block input[type="tel"],
+    .modal .form_integration_block input[type="number"],
+    .modal .form_integration_block textarea,
+    .modal .form_integration_block select {
+      width: 100% !important;
+      background: #f7f7f8 !important;
+      border: 1px solid rgba(0,0,0,0.08) !important;
+      border-radius: 10px !important;
+      padding: 0.75rem 1rem !important;
+      color: #1a1a1a !important;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 0.95rem !important;
+      outline: none !important;
+      transition: border-color 0.2s !important;
+    }
+
+    .modal .form_integration_block input:focus,
+    .modal .form_integration_block textarea:focus,
+    .modal .form_integration_block select:focus {
+      border-color: #16a34a !important;
+      background: #fff !important;
+    }
+
+    .modal .form_integration_block input::placeholder,
+    .modal .form_integration_block textarea::placeholder {
+      color: rgba(0,0,0,0.3) !important;
+    }
+
+    .modal .form_integration_block label {
+      color: rgba(0,0,0,0.6) !important;
+      font-size: 0.85rem !important;
+      margin-bottom: 0.375rem !important;
+      display: block !important;
+    }
+
+    .modal .form_integration_block button[type="submit"],
+    .modal .form_integration_block input[type="submit"],
+    .modal .form_integration_block .btn,
+    .modal .form_integration_block .submit-btn {
+      width: 100% !important;
+      padding: 0.875rem 1.5rem !important;
+      background: #16a34a !important;
+      color: #fff !important;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 1rem !important;
+      font-weight: 700 !important;
+      border: none !important;
+      border-radius: 12px !important;
+      cursor: pointer !important;
+      transition: background 0.2s !important;
+    }
+
+    .modal .form_integration_block button[type="submit"]:hover,
+    .modal .form_integration_block input[type="submit"]:hover,
+    .modal .form_integration_block .btn:hover,
+    .modal .form_integration_block .submit-btn:hover {
+      background: #15803d !important;
+    }
+
+    /* Checkbox as toggle switch */
+    .modal .form_integration_block input[type="checkbox"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 44px !important;
+      height: 24px !important;
+      min-width: 44px;
+      background: #d1d5db !important;
+      border-radius: 12px !important;
+      border: none !important;
+      position: relative;
+      cursor: pointer;
+      transition: background 0.2s !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      vertical-align: middle;
+    }
+
+    .modal .form_integration_block input[type="checkbox"]::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.2s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    }
+
+    .modal .form_integration_block input[type="checkbox"]:checked {
+      background: #3b5fea !important;
+      background-image: none !important;
+    }
+
+    .modal .form_integration_block input[type="checkbox"]::before {
+      display: none !important;
+    }
+
+    .modal .form_integration_block input[type="checkbox"]:checked::after {
+      transform: translateX(20px);
+    }
+
+    /* Checkbox + label row alignment */
+    .modal .form_integration_block div:has(> input[type="checkbox"]),
+    .modal .form_integration_block label:has(> input[type="checkbox"]),
+    .modal .form_integration_block p:has(> input[type="checkbox"]) {
+      display: flex !important;
+      align-items: center !important;
+      gap: 0.625rem !important;
+    }
+
+    .modal .form_integration_block div:has(> input[type="checkbox"]) a,
+    .modal .form_integration_block div:has(> input[type="checkbox"]) label,
+    .modal .form_integration_block div:has(> input[type="checkbox"]) span,
+    .modal .form_integration_block label:has(> input[type="checkbox"]) span,
+    .modal .form_integration_block label:has(> input[type="checkbox"]) a {
+      flex: 1 !important;
+      font-size: 0.8rem !important;
+      line-height: 1.35 !important;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: 1rem 2rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: rgba(0,0,0,0.3);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .hero__inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        text-align: center;
+      }
+
+      .hero__content {
+        align-items: center;
+      }
+
+      .hero__desc {
+        max-width: 100%;
+      }
+
+      .hero__bullets {
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      .cta-btn {
+        width: 100%;
+      }
+
+      .hero__cover {
+        order: -1;
+      }
+
+      .cover-wrapper {
+        max-width: 260px;
+      }
+
+      .cover-float-tag--top {
+        right: -10px;
+      }
+
+      .cover-float-tag--bottom {
+        left: -10px;
+      }
+
+      .hero {
+        padding: 1rem 1.25rem 2rem;
+      }
+
+      .header {
+        padding: 1rem 1.25rem;
+      }
+
+      .modal-overlay {
+        align-items: flex-end;
+        padding: 0;
+      }
+
+      .modal {
+        padding: 1.25rem 1.25rem calc(env(safe-area-inset-bottom, 0px) + 1rem);
+        border-radius: 20px 20px 0 0;
+      }
+
+      .modal__title {
+        font-size: 1.1rem;
+        margin-bottom: 0.125rem;
+      }
+
+      .modal__subtitle {
+        font-size: 0.78rem;
+        margin-bottom: 0.375rem;
+      }
+
+      .modal__close {
+        width: 28px;
+        height: 28px;
+        top: 0.75rem;
+        right: 0.75rem;
+        font-size: 0.9rem;
+      }
+
+      /* Compact form spacing */
+      .modal .form_integration_block input[type="text"],
+      .modal .form_integration_block input[type="email"],
+      .modal .form_integration_block input[type="tel"],
+      .modal .form_integration_block input[type="number"],
+      .modal .form_integration_block textarea,
+      .modal .form_integration_block select {
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.85rem !important;
+        border-radius: 8px !important;
+        margin-bottom: 0.125rem !important;
+      }
+
+      .modal .form_integration_block label {
+        font-size: 0.75rem !important;
+        margin-bottom: 0.125rem !important;
+      }
+
+      .modal .form_integration_block button[type="submit"],
+      .modal .form_integration_block input[type="submit"],
+      .modal .form_integration_block .btn,
+      .modal .form_integration_block .submit-btn {
+        padding: 0.65rem 1rem !important;
+        font-size: 0.9rem !important;
+        border-radius: 10px !important;
+        margin-top: 0.25rem !important;
+      }
+
+      /* Checkbox as smaller toggle */
+      .modal .form_integration_block input[type="checkbox"] {
+        width: 36px !important;
+        height: 20px !important;
+        min-width: 36px !important;
+        border-radius: 10px !important;
+      }
+
+      .modal .form_integration_block input[type="checkbox"]::after {
+        width: 16px;
+        height: 16px;
+      }
+
+      .modal .form_integration_block input[type="checkbox"]:checked::after {
+        transform: translateX(16px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- Header -->
+    <header class="header">
+      <img src="logo.png" alt="FIN-RA" class="header__logo">
+      <span class="header__label">Бесплатный гайд</span>
+    </header>
+
+    <!-- Hero -->
+    <main class="hero">
+      <div class="hero__inner">
+
+        <!-- Left -->
+        <div class="hero__content">
+          <div class="badge">
+            <span class="badge__dot"></span>
+            PDF-гайд — скачайте бесплатно
+          </div>
+
+          <h1 class="hero__title">
+            Облигации<br>с ежемесячным<br>купоном <span>2026</span>
+          </h1>
+
+          <p class="hero__desc">
+            Разбираем лучшие облигации с ежемесячными выплатами. Готовый список для формирования стабильного денежного потока.
+          </p>
+
+          <ul class="hero__bullets">
+            <li>Подборка актуальных выпусков</li>
+            <li>Сравнение доходности и рисков</li>
+            <li>Рекомендации по составлению портфеля</li>
+          </ul>
+
+          <button class="cta-btn" onclick="openModal()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Забрать гайд бесплатно
+          </button>
+          <span class="cta-hint">Гайд придёт в Telegram-бот</span>
+        </div>
+
+        <!-- Right -->
+        <div class="hero__cover">
+          <div class="cover-wrapper" onclick="openModal()" style="cursor:pointer">
+            <span class="cover-float-tag cover-float-tag--top">Бесплатно</span>
+            <img src="обложка.jpeg" alt="Обложка гайда" class="cover-img">
+            <span class="cover-float-tag cover-float-tag--bottom">PDF, 36 страниц</span>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      &copy; FIN-RA — Школа безопасных инвестиций
+    </footer>
+
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+    <div class="modal">
+      <button class="modal__close" onclick="closeModal()">&times;</button>
+      <div class="modal__title">Заберите гайд</div>
+      <div class="modal__subtitle">Заполните форму — гайд придёт в Telegram</div>
+
+      <!-- Salebot Form -->
+      <script src='https://salebot.pro/js/form_scripts.js'></script>
+      <div class='form_integration_block'></div>
+      <script>
+        FormIntegration.init({
+          project_id: 354621,
+          guid: 'a6134ca4f0615213d6fdda04ddde267f'
+        })
+      </script>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById('modalOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function closeModalOutside(e) {
+      if (e.target === e.currentTarget) closeModal();
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+
+</body>
+</html>
