@@ -316,41 +316,41 @@
 
     /* Card 1 — behind speaker, top-right */
     .float-card--1 {
-      height: 180px;
-      top: 5%;
-      right: 5%;
+      height: 160px;
+      top: 2%;
+      right: -2%;
       z-index: 2;
-      transform: rotate(8deg);
+      transform: rotate(10deg);
       animation: floatCard1 0.8s ease 0.6s both, floatHover1 5s ease-in-out 1.4s infinite;
     }
 
-    /* Card 2 — front, bottom-right */
+    /* Card 2 — front, right-mid */
     .float-card--2 {
-      height: 170px;
-      bottom: 10%;
-      right: -5%;
+      height: 150px;
+      top: 40%;
+      right: -8%;
       z-index: 5;
-      transform: rotate(-5deg);
+      transform: rotate(-6deg);
       animation: floatCard2 0.8s ease 0.75s both, floatHover2 6s ease-in-out 1.55s infinite;
     }
 
-    /* Card 3 — behind speaker, left */
+    /* Card 3 — behind speaker, bottom-right */
     .float-card--3 {
-      height: 165px;
-      top: 30%;
-      left: -10%;
+      height: 145px;
+      bottom: 8%;
+      right: 2%;
       z-index: 2;
-      transform: rotate(-8deg);
+      transform: rotate(5deg);
       animation: floatCard3 0.8s ease 0.9s both, floatHover3 5.5s ease-in-out 1.7s infinite;
     }
 
-    /* Card 4 — front, top-left */
+    /* Card 4 — front, left side */
     .float-card--4 {
-      height: 160px;
-      bottom: 25%;
-      left: -5%;
+      height: 140px;
+      top: 15%;
+      left: -8%;
       z-index: 5;
-      transform: rotate(6deg);
+      transform: rotate(-8deg);
       animation: floatCard4 0.8s ease 1s both, floatHover4 5s ease-in-out 1.8s infinite;
     }
 
@@ -590,13 +590,25 @@
       .hero__title { font-size: 1.6rem; }
       .hero__sub { font-size: 0.85rem; }
 
-      .dates-bar { padding: 0.5rem 1.25rem; flex-wrap: wrap; gap: 0.25rem; }
-      .date-block { padding: 0.35rem 0.6rem; }
+      .dates-bar { padding: 0.75rem 1.25rem; flex-wrap: nowrap; gap: 0.25rem; justify-content: center; }
+      .date-block { padding: 0.35rem 0.5rem; flex: 1; }
       .date-block__text { font-size: 0.65rem; }
+      .date-block__icon { display: none; }
 
       .promo-row { flex-direction: column; gap: 0.5rem; }
-      .timer-box { min-width: unset; flex-direction: row; gap: 0.5rem; padding: 0.5rem 1rem; }
-      .timer-box__label { margin-bottom: 0; }
+
+      .timer-box {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.6rem 1rem;
+        min-width: unset;
+      }
+
+      .timer-box__label { margin-bottom: 0; font-size: 0.6rem; white-space: nowrap; }
+      .timer__number { font-size: 1.8rem; }
+      .timer__sep { font-size: 1.4rem; }
+      .timer__labels { display: none; }
 
       .cta-btn { width: 100%; justify-content: center; font-size: 0.95rem; padding: 0.85rem 1.5rem; }
 
