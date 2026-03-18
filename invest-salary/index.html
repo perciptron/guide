@@ -629,10 +629,10 @@
 
       .float-card { display: block !important; }
 
-      .float-card--1 { height: 70px; top: 5%; right: 5%; }
-      .float-card--2 { height: 65px; top: 50%; right: 0%; }
-      .float-card--3 { height: 68px; bottom: 15%; right: 8%; }
-      .float-card--4 { height: 65px; top: 10%; left: 2%; }
+      .float-card--1 { height: 70px; top: 5%; right: 8%; }
+      .float-card--2 { height: 65px; bottom: 20%; right: 3%; }
+      .float-card--3 { height: 68px; top: 5%; left: 3%; }
+      .float-card--4 { height: 65px; bottom: 20%; left: 5%; }
 
       .speaker-name { display: none; }
       .hero__dots { display: none; }
@@ -797,6 +797,15 @@
       }
       tick();
     })();
+
+    // Mobile: tap anywhere opens modal
+    if (window.innerWidth <= 768) {
+      document.querySelector('.hero').addEventListener('click', function(e) {
+        if (!e.target.closest('.modal-overlay') && !e.target.closest('.modal')) {
+          openModal();
+        }
+      });
+    }
 
     // Dates
     (function() {
