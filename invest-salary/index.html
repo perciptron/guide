@@ -251,6 +251,12 @@
       align-items: center;
     }
 
+    .timer__unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
     .timer__number {
       font-family: var(--font-display);
       font-size: 1.6rem;
@@ -261,6 +267,15 @@
       text-align: center;
     }
 
+    .timer__lbl {
+      font-family: var(--font-body);
+      font-size: 0.5rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 0.15rem;
+    }
+
     .timer__sep {
       font-family: var(--font-display);
       font-size: 1.3rem;
@@ -269,13 +284,7 @@
       animation: blink 1s ease-in-out infinite;
     }
 
-    .timer__sub {
-      font-family: var(--font-body);
-      font-size: 0.55rem;
-      color: var(--muted);
-      display: flex;
-      gap: 1.1rem;
-    }
+    .timer__sub { display: none; }
 
     /* CTA */
     .cta-btn {
@@ -695,14 +704,16 @@
           <div class="timer-box">
             <span class="timer-box__label">Сгорит через</span>
             <div class="timer__digits">
-              <span class="timer__number" id="timerM">05</span>
+              <div class="timer__unit">
+                <span class="timer__number" id="timerM">05</span>
+                <span class="timer__lbl">мин</span>
+              </div>
               <span class="timer__sep">:</span>
-              <span class="timer__number" id="timerS">00</span>
+              <div class="timer__unit">
+                <span class="timer__number" id="timerS">00</span>
+                <span class="timer__lbl">сек</span>
+              </div>
             </div>
-          </div>
-          <div class="timer__sub">
-            <span>мин</span>
-            <span>сек</span>
           </div>
         </div>
 
