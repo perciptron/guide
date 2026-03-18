@@ -103,10 +103,10 @@
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
       align-items: center;
-      max-width: 1200px;
+      max-width: 1400px;
       width: 100%;
       margin: 0 auto;
-      padding: 1.5rem 2.5rem 0;
+      padding: 1.5rem 3rem 0;
       z-index: 2;
     }
 
@@ -606,6 +606,56 @@
     @keyframes floatHover4 {
       0%, 100% { transform: rotate(-8deg) translateY(0); }
       50% { transform: rotate(-8deg) translateY(-7px); }
+    }
+
+    /* === LARGE SCREENS === */
+    @media (min-width: 1600px) {
+      .hero__body {
+        max-width: 1600px;
+        padding: 2rem 4rem 0;
+      }
+
+      .hero__title { font-size: 3.8rem; }
+      .hero__sub { font-size: 1.25rem; max-width: 560px; }
+
+      .date-chip { font-size: 0.9rem; padding: 0.5rem 1rem; }
+      .date-chip__time { font-size: 0.8rem; }
+
+      .gift { padding: 1rem 1.25rem; }
+      .gift__text { font-size: 0.95rem; }
+      .gift__text strong { font-size: 1.05rem; }
+
+      .timer__number { font-size: 2rem; }
+      .timer-box__label { font-size: 0.7rem; }
+
+      .cta-btn { font-size: 1.2rem; padding: 1.1rem 3rem; }
+
+      .speaker-img { max-height: 80vh; }
+
+      .float-card--1 { height: 200px; }
+      .float-card--2 { height: 190px; }
+      .float-card--3 { height: 185px; }
+      .float-card--4 { height: 180px; }
+
+      .speaker-name__title { font-size: 1rem; }
+      .speaker-name__role { font-size: 0.7rem; }
+
+      .hero__dots { width: 400px; height: 400px; }
+    }
+
+    @media (min-width: 2000px) {
+      .hero__body {
+        max-width: 1800px;
+        padding: 2rem 5rem 0;
+      }
+
+      .hero__title { font-size: 4.2rem; }
+      .hero__sub { font-size: 1.35rem; }
+
+      .float-card--1 { height: 220px; }
+      .float-card--2 { height: 210px; }
+      .float-card--3 { height: 200px; }
+      .float-card--4 { height: 195px; }
     }
 
     /* === RESPONSIVE === */
