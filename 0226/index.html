@@ -29,13 +29,16 @@
 
     body {
       font-family: 'DM Sans', sans-serif;
-      background: var(--surface);
+      background: linear-gradient(180deg, #fafaf9 0%, #f3f3f0 100%);
       color: var(--text);
       min-height: 100vh;
       min-height: 100dvh;
       overflow-x: hidden;
       position: relative;
     }
+
+    /* Sticky CTA hidden on desktop */
+    .sticky-cta { display: none; }
 
     /* === GRAIN OVERLAY === */
     body::after {
@@ -594,17 +597,43 @@
         text-align: left;
       }
 
-      .cta-btn { width: 100%; }
+      .hero__content .cta-btn { display: none; }
+      .hero__content .cta-hint { display: none; }
 
       .hero__cover { order: -1; }
 
-      .cover-wrapper { max-width: 240px; }
+      .cover-wrapper { width: 160px; max-width: 160px; }
+      .cover-img { width: 160px !important; }
 
-      .cover-float-tag--top { right: -10px; }
-      .cover-float-tag--bottom { left: -10px; }
+      .cover-float-tag--top { right: -10px; font-size: 0.65rem; padding: 0.35rem 0.7rem; }
+      .cover-float-tag--bottom { left: -10px; font-size: 0.65rem; padding: 0.35rem 0.7rem; }
 
-      .hero { padding: 0.5rem 1.25rem 2rem; }
+      .hero { padding: 0.5rem 1.25rem 5rem; }
       .header { padding: 1rem 1.25rem; }
+
+      .hero__inner { gap: 1.25rem; }
+
+      .badge { display: none; }
+
+      /* Sticky CTA on mobile */
+      .sticky-cta {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        padding: 0.75rem 1.25rem calc(env(safe-area-inset-bottom, 0px) + 0.75rem);
+        background: rgba(255,255,255,0.85);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-top: 1px solid rgba(0,0,0,0.06);
+      }
+
+      .sticky-cta .cta-btn {
+        width: 100%;
+        padding: 0.875rem 1.5rem;
+      }
 
       .modal-overlay {
         align-items: flex-end;
@@ -683,7 +712,7 @@
           <div class="cover-wrapper" onclick="openModal()">
             <span class="cover-float-tag cover-float-tag--top">Бесплатно</span>
             <img src="обложка.jpeg" alt="Обложка гайда" class="cover-img">
-            <span class="cover-float-tag cover-float-tag--bottom">PDF, 36 страниц</span>
+            <span class="cover-float-tag cover-float-tag--bottom">36 страниц</span>
           </div>
         </div>
 
@@ -692,9 +721,17 @@
 
     <!-- Footer -->
     <footer class="footer">
-      &copy; FIN-RA — Школа безопасных инвестиций
+      &copy; <a href="https://fin-ra.ru/" style="color: var(--text-muted); text-decoration: none;">FIN-RA</a> — Школа безопасных инвестиций
     </footer>
 
+  </div>
+
+  <!-- Sticky CTA (mobile only) -->
+  <div class="sticky-cta">
+    <button class="cta-btn" onclick="openModal()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Забрать гайд бесплатно
+    </button>
   </div>
 
   <!-- Modal -->
