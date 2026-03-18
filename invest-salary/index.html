@@ -631,20 +631,31 @@
       /* Cards: larger, readable, overlapping speaker edges */
       .float-card { display: block !important; }
 
-      .float-card--1 { height: 85px; top: 0; right: 5%; z-index: 5; }
-      .float-card--2 { height: 80px; bottom: 25%; right: 0; z-index: 2; }
-      .float-card--3 { height: 82px; top: 0; left: 0; z-index: 5; }
-      .float-card--4 { height: 78px; bottom: 25%; left: 3%; z-index: 2; }
+      .float-card--1 { height: 75px; top: 0; right: 3%; z-index: 5; }
+      .float-card--2 { height: 70px; bottom: 30%; right: 0; z-index: 2; }
+      .float-card--3 { height: 72px; top: 0; left: 0; z-index: 5; }
+      .float-card--4 { height: 68px; bottom: 35%; left: 0; z-index: 2; }
+
+      /* Simplify cards on mobile — no entrance animation, clean shadows */
+      .float-card {
+        box-shadow: 0 6px 15px rgba(0,0,0,0.08) !important;
+        animation: none !important;
+        opacity: 1 !important;
+      }
 
       /* Speaker name tag — show on mobile */
       .speaker-name {
         display: block;
         bottom: 0.5rem;
-        padding: 0.35rem 0.8rem;
-        font-size: 0.75rem;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0.3rem 0.7rem;
+        white-space: normal;
+        text-align: center;
+        max-width: 90%;
       }
-      .speaker-name__title { font-size: 0.75rem; }
-      .speaker-name__role { font-size: 0.55rem; }
+      .speaker-name__title { font-size: 0.7rem; }
+      .speaker-name__role { font-size: 0.5rem; white-space: normal; }
 
       /* Decorative: keep dot pattern, smaller */
       .hero__dots {
