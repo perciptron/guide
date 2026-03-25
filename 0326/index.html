@@ -393,10 +393,12 @@
     .modal .form_integration_block button[type="submit"],
     .modal .form_integration_block input[type="submit"],
     .modal .form_integration_block .btn,
-    .modal .form_integration_block .submit-btn {
+    .modal .form_integration_block .submit-btn,
+    .modal .form_integration_block .salebot_button,
+    .modal .form_integration_block .sb_button_save_phone {
       width: 100% !important;
-      padding: 0.875rem 1.5rem !important;
-      background: var(--green) !important;
+      padding: 0.6rem 1.5rem !important;
+      background: #2AABEE !important;
       color: #fff !important;
       font-family: 'Outfit', sans-serif !important;
       font-size: 1rem !important;
@@ -410,8 +412,16 @@
     .modal .form_integration_block button[type="submit"]:hover,
     .modal .form_integration_block input[type="submit"]:hover,
     .modal .form_integration_block .btn:hover,
-    .modal .form_integration_block .submit-btn:hover {
-      background: var(--green-dark) !important;
+    .modal .form_integration_block .submit-btn:hover,
+    .modal .form_integration_block .salebot_button:hover,
+    .modal .form_integration_block .sb_button_save_phone:hover {
+      background: #229ED9 !important;
+    }
+
+    /* Hide Salebot messenger icon on button */
+    .modal .form_integration_block button img,
+    .modal .form_integration_block .salebot_button img {
+      display: none !important;
     }
 
     /* Toggle switch */

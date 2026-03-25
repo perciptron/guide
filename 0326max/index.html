@@ -395,7 +395,7 @@
     .modal .form_integration_block .btn,
     .modal .form_integration_block .submit-btn {
       width: 100% !important;
-      padding: 0.875rem 1.5rem !important;
+      padding: 0.6rem 1.5rem !important;
       background: #0077FF !important;
       color: #fff !important;
       font-family: 'Outfit', sans-serif !important;
@@ -414,31 +414,48 @@
       background: #0066DD !important;
     }
 
-    /* Hide Salebot messenger icon on button */
-    .modal .form_integration_block button img,
-    .modal .form_integration_block .salebot_button img {
+    /* Hide Salebot icons, keep text */
+    .modal .form_integration_block .salebot_button img,
+    .modal .form_integration_block .salebot_button svg,
+    .modal .form_integration_block .salebot_button .mes_ident {
       display: none !important;
     }
 
-    /* Salebot-specific button classes */
-    .modal .form_integration_block .salebot_button,
-    .modal .form_integration_block .sb_button_save_phone,
-    .modal .form_integration_block .max_link {
+    /* Base button style */
+    .modal .form_integration_block .salebot_button {
       width: 100% !important;
-      padding: 0.875rem 1.5rem !important;
-      background: #0077FF !important;
+      padding: 0.6rem 1.5rem !important;
       color: #fff !important;
       font-family: 'Outfit', sans-serif !important;
-      font-size: 1rem !important;
+      font-size: 0.95rem !important;
       font-weight: 600 !important;
       border: none !important;
       border-radius: var(--radius) !important;
       cursor: pointer !important;
       transition: all 0.2s !important;
+      margin-bottom: 0.5rem !important;
     }
 
-    .modal .form_integration_block .salebot_button:hover,
-    .modal .form_integration_block .sb_button_save_phone:hover,
+    /* Telegram */
+    .modal .form_integration_block .tg_link {
+      background: #2AABEE !important;
+    }
+    .modal .form_integration_block .tg_link:hover {
+      background: #229ED9 !important;
+    }
+
+    /* VK */
+    .modal .form_integration_block .vk_link {
+      background: #0077FF !important;
+    }
+    .modal .form_integration_block .vk_link:hover {
+      background: #0066DD !important;
+    }
+
+    /* MAX */
+    .modal .form_integration_block .max_link {
+      background: #0077FF !important;
+    }
     .modal .form_integration_block .max_link:hover {
       background: #0066DD !important;
     }
