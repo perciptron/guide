@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="ТОП-30 облигаций федерального займа (ОФЗ) — бесплатный PDF-гайд с подборкой по 6 категориям: от краткосрочных до валютных.">
-  <meta name="theme-color" content="#0f9d58">
+  <meta name="theme-color" content="#fbfbfb">
   <meta property="og:title" content="ТОП-30 ОФЗ — Бесплатный PDF-гайд">
   <meta property="og:description" content="Готовая подборка лучших ОФЗ по шести категориям с доходностями, ценами и ссылками на каждый выпуск.">
   <meta property="og:type" content="website">
@@ -25,56 +25,28 @@
     :root {
       --green: #0f9d58;
       --green-dark: #0b7a43;
-      --green-light: #34d399;
-      --green-glow: rgba(15, 157, 88, 0.25);
-      --surface: #fafaf9;
-      --text: #1b1b18;
-      --text-muted: #78776e;
-      --radius: 16px;
-      --glass: rgba(255,255,255,0.55);
-      --glass-border: rgba(255,255,255,0.7);
-      --glass-shadow: 0 8px 32px rgba(0,0,0,0.06);
+      --green-glow: rgba(15,157,88,0.15);
+      --bg: #fbfbfb;
+      --text: #1d1d1f;
+      --text-secondary: #86868b;
+      --separator: rgba(0,0,0,0.06);
+      --radius: 14px;
     }
 
     html { font-size: 16px; }
 
     body {
       font-family: 'DM Sans', sans-serif;
-      background:
-        radial-gradient(ellipse 80% 50% at 65% 15%, rgba(15,157,88,0.07) 0%, transparent 50%),
-        radial-gradient(ellipse 50% 50% at 10% 85%, rgba(245,190,80,0.05) 0%, transparent 50%),
-        radial-gradient(ellipse 40% 35% at 85% 75%, rgba(15,157,88,0.04) 0%, transparent 40%),
-        linear-gradient(175deg, #f0f4ed 0%, #f6f6f3 30%, #fafaf9 55%, #f7f5f0 80%, #f2f0eb 100%);
+      background: var(--bg);
       color: var(--text);
       min-height: 100vh;
       min-height: 100dvh;
       overflow-x: hidden;
-      position: relative;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Sticky CTA hidden on desktop */
     .sticky-cta { display: none; }
-
-    /* === DOT GRID PATTERN === */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: radial-gradient(circle, rgba(15,157,88,0.06) 1px, transparent 1px);
-      background-size: 32px 32px;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* === GRAIN OVERLAY === */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 9999;
-    }
 
     /* === LAYOUT === */
     .page {
@@ -82,48 +54,15 @@
       flex-direction: column;
       min-height: 100vh;
       min-height: 100dvh;
-      position: relative;
     }
 
-    /* === AMBIENT BLOBS === */
-    .page::before,
-    .page::after {
-      content: '';
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(100px);
-      opacity: 0.7;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .page::before {
-      width: 650px;
-      height: 650px;
-      background: radial-gradient(circle, rgba(15,157,88,0.12) 0%, rgba(52,211,153,0.05) 40%, transparent 70%);
-      top: -18%;
-      right: -10%;
-      animation: blobDrift1 20s ease-in-out infinite;
-    }
-
-    .page::after {
-      width: 550px;
-      height: 550px;
-      background: radial-gradient(circle, rgba(245,190,80,0.08) 0%, rgba(15,157,88,0.04) 50%, transparent 70%);
-      bottom: -10%;
-      left: -10%;
-      animation: blobDrift2 25s ease-in-out infinite;
-    }
-
-    /* === HEADER — glass === */
+    /* === HEADER === */
     .header {
-      padding: 1.25rem 2.5rem;
+      padding: 1.5rem 2.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      position: relative;
-      z-index: 10;
-      animation: fadeDown 0.6s ease both;
+      animation: fadeDown 0.8s ease both;
     }
 
     .header__logo { height: 28px; }
@@ -132,16 +71,12 @@
       font-family: 'Outfit', sans-serif;
       font-size: 0.7rem;
       font-weight: 600;
-      color: var(--text-muted);
-      letter-spacing: 0.14em;
+      color: var(--text-secondary);
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      background: var(--glass);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      padding: 0.4rem 0.85rem;
+      background: rgba(0,0,0,0.04);
+      padding: 0.35rem 0.8rem;
       border-radius: 100px;
-      border: 1px solid var(--glass-border);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     }
 
     /* === HERO === */
@@ -150,15 +85,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0 2.5rem 2rem;
-      position: relative;
-      z-index: 1;
+      padding: 0 2.5rem 3rem;
     }
 
     .hero__inner {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
-      gap: 3rem;
+      gap: 4rem;
       align-items: center;
       max-width: 1100px;
       width: 100%;
@@ -168,151 +101,109 @@
     .hero__content {
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
-      animation: fadeUp 0.7s ease 0.1s both;
+      gap: 1.5rem;
+      animation: fadeUp 0.8s ease 0.1s both;
     }
 
-    /* Badge — glass pill */
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: var(--glass);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(15,157,88,0.18);
-      border-radius: 100px;
-      padding: 0.45rem 1.1rem;
-      font-size: 0.78rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.8rem;
       font-weight: 500;
       color: var(--green);
       width: fit-content;
-      box-shadow: 0 2px 12px rgba(15,157,88,0.06);
     }
 
     .badge__dot {
-      width: 7px;
-      height: 7px;
+      width: 6px;
+      height: 6px;
       background: var(--green);
       border-radius: 50%;
-      box-shadow: 0 0 6px var(--green-glow);
-      animation: pulse 2s ease-in-out infinite;
     }
 
     .hero__title {
       font-family: 'Outfit', sans-serif;
-      font-size: clamp(2.2rem, 4.2vw, 3.2rem);
+      font-size: clamp(2.4rem, 4.5vw, 3.4rem);
       font-weight: 800;
-      line-height: 1.05;
-      letter-spacing: -0.04em;
+      line-height: 1.04;
+      letter-spacing: -0.05em;
       color: var(--text);
     }
 
     .hero__title span {
-      background: linear-gradient(135deg, var(--green), var(--green-light));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--green);
     }
 
     .hero__desc {
-      font-size: 1rem;
-      line-height: 1.65;
-      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
       max-width: 440px;
     }
 
-    /* Bullets — glass card */
     .hero__bullets {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.6rem;
       list-style: none;
-      background: var(--glass);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius);
-      padding: 1rem 1.25rem;
-      box-shadow: var(--glass-shadow);
     }
 
     .hero__bullets li {
       display: flex;
       align-items: center;
-      gap: 0.625rem;
-      font-size: 0.9rem;
-      color: rgba(0,0,0,0.65);
+      gap: 0.7rem;
+      font-size: 0.95rem;
+      color: var(--text);
     }
 
     .hero__bullets li::before {
       content: '';
       flex-shrink: 0;
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
       background: var(--green);
-      border-radius: 6px;
+      border-radius: 50%;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M8.5 13.5L5.5 10.5L6.5 9.5L8.5 11.5L13.5 6.5L14.5 7.5L8.5 13.5Z' fill='white'/%3E%3C/svg%3E");
       background-size: cover;
-      box-shadow: 0 2px 8px rgba(15,157,88,0.2);
     }
 
-    /* CTA button — premium glass gradient */
     .cta-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.625rem;
-      padding: 1rem 2.25rem;
-      background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+      gap: 0.6rem;
+      padding: 1rem 2rem;
+      background: var(--green);
       color: #fff;
       font-family: 'Outfit', sans-serif;
       font-size: 1rem;
-      font-weight: 700;
+      font-weight: 600;
       border: none;
       border-radius: var(--radius);
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.3s ease;
       width: fit-content;
       letter-spacing: -0.01em;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 4px 20px var(--green-glow), inset 0 1px 0 rgba(255,255,255,0.15);
-    }
-
-    .cta-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 50%;
-      background: linear-gradient(180deg, rgba(255,255,255,0.18), transparent);
-      border-radius: var(--radius) var(--radius) 0 0;
-      pointer-events: none;
-    }
-
-    .cta-btn::after {
-      content: '';
-      position: absolute;
-      top: -50%; left: -50%;
-      width: 200%; height: 200%;
-      background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%);
-      animation: shimmer 5s ease-in-out infinite;
     }
 
     .cta-btn:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 16px 45px var(--green-glow), 0 4px 12px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.2);
+      background: var(--green-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--green-glow);
     }
 
-    .cta-btn:active { transform: translateY(0) scale(1); }
+    .cta-btn:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
 
-    .cta-btn svg { width: 18px; height: 18px; position: relative; z-index: 1; }
+    .cta-btn svg { width: 18px; height: 18px; }
 
     .cta-hint {
-      font-size: 0.72rem;
-      color: var(--text-muted);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
       display: flex;
       align-items: center;
       gap: 0.375rem;
@@ -331,8 +222,7 @@
     .hero__cover {
       display: flex;
       justify-content: center;
-      position: relative;
-      animation: fadeUp 0.7s ease 0.25s both;
+      animation: fadeUp 0.8s ease 0.25s both;
     }
 
     .cover-wrapper {
@@ -342,104 +232,68 @@
       cursor: pointer;
     }
 
-    .cover-wrapper::before {
-      content: '';
-      position: absolute;
-      inset: -25%;
-      background: radial-gradient(ellipse at center, var(--green-glow) 0%, transparent 70%);
-      z-index: 0;
-      pointer-events: none;
-      animation: breathe 4s ease-in-out infinite;
-    }
-
-    /* Glass card around cover */
-    .cover-glass {
-      position: relative;
-      z-index: 1;
-      background: var(--glass);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--glass-border);
-      border-radius: calc(var(--radius) + 6px);
-      padding: 10px;
-      box-shadow:
-        0 30px 60px rgba(0,0,0,0.07),
-        0 10px 20px rgba(0,0,0,0.04),
-        inset 0 1px 0 rgba(255,255,255,0.8);
-      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s;
-    }
-
-    .cover-wrapper:hover .cover-glass {
-      transform: translateY(-8px) rotate(-1deg);
-      box-shadow:
-        0 40px 80px rgba(0,0,0,0.1),
-        0 16px 30px rgba(0,0,0,0.06),
-        inset 0 1px 0 rgba(255,255,255,0.9);
-    }
-
     .cover-img {
       width: 100%;
       height: auto;
       border-radius: var(--radius);
-      display: block;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
-    /* Float tags — glass */
+    .cover-wrapper:hover .cover-img {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+    }
+
     .cover-float-tag {
       position: absolute;
       z-index: 2;
-      background: var(--glass);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--glass-border);
+      background: #fff;
       border-radius: 10px;
-      padding: 0.5rem 0.875rem;
+      padding: 0.45rem 0.85rem;
       font-family: 'Outfit', sans-serif;
       font-size: 0.75rem;
       font-weight: 600;
       color: var(--text);
       white-space: nowrap;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.6);
-      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      transition: transform 0.4s ease;
     }
 
     .cover-wrapper:hover .cover-float-tag--top {
-      transform: translate(6px, -6px);
+      transform: translate(4px, -4px);
     }
 
     .cover-wrapper:hover .cover-float-tag--bottom {
-      transform: translate(-6px, 6px);
+      transform: translate(-4px, 4px);
     }
 
     .cover-float-tag--top {
-      top: -14px;
-      right: -28px;
-      background: linear-gradient(135deg, var(--green), var(--green-dark));
-      border-color: rgba(255,255,255,0.2);
+      top: -12px;
+      right: -24px;
+      background: var(--green);
       color: #fff;
-      box-shadow: 0 8px 24px var(--green-glow), inset 0 1px 0 rgba(255,255,255,0.2);
+      box-shadow: 0 4px 16px var(--green-glow);
     }
 
     .cover-float-tag--bottom {
-      bottom: -14px;
-      left: -24px;
+      bottom: -12px;
+      left: -20px;
     }
 
-    /* === MODAL — glass === */
+    /* === MODAL === */
     .modal-overlay {
       position: fixed;
       inset: 0;
       z-index: 1000;
-      background: rgba(0, 0, 0, 0.2);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(0,0,0,0.4);
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 1rem;
       opacity: 0;
       visibility: hidden;
-      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.3s ease;
     }
 
     .modal-overlay.active {
@@ -448,21 +302,15 @@
     }
 
     .modal {
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(255,255,255,0.8);
-      border-radius: 24px;
+      background: #fff;
+      border-radius: 20px;
       padding: 2.5rem;
       max-width: 460px;
       width: 100%;
       position: relative;
-      transform: translateY(24px) scale(0.96);
-      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow:
-        0 30px 70px rgba(0,0,0,0.1),
-        0 0 0 1px rgba(0,0,0,0.02),
-        inset 0 1px 0 rgba(255,255,255,0.9);
+      transform: translateY(20px) scale(0.97);
+      transition: transform 0.3s ease;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.12);
     }
 
     .modal-overlay.active .modal {
@@ -473,19 +321,18 @@
       position: absolute;
       top: 1rem;
       right: 1rem;
-      width: 34px;
-      height: 34px;
+      width: 32px;
+      height: 32px;
       display: flex;
       align-items: center;
       justify-content: center;
       background: rgba(0,0,0,0.04);
-      border: 1px solid rgba(0,0,0,0.06);
-      border-radius: 10px;
-      color: var(--text-muted);
+      border: none;
+      border-radius: 50%;
+      color: var(--text-secondary);
       cursor: pointer;
-      font-size: 1.125rem;
+      font-size: 1.1rem;
       transition: all 0.2s;
-      backdrop-filter: blur(8px);
     }
 
     .modal__close:hover {
@@ -506,9 +353,8 @@
     .modal .form_integration_block textarea,
     .modal .form_integration_block select {
       width: 100% !important;
-      background: rgba(255,255,255,0.7) !important;
-      backdrop-filter: blur(8px) !important;
-      border: 1.5px solid rgba(0,0,0,0.06) !important;
+      background: #f5f5f7 !important;
+      border: 1.5px solid transparent !important;
       border-radius: 12px !important;
       padding: 0.75rem 1rem !important;
       color: var(--text) !important;
@@ -522,13 +368,13 @@
     .modal .form_integration_block textarea:focus,
     .modal .form_integration_block select:focus {
       border-color: var(--green) !important;
-      background: rgba(255,255,255,0.9) !important;
+      background: #fff !important;
       box-shadow: 0 0 0 3px var(--green-glow) !important;
     }
 
     .modal .form_integration_block input::placeholder,
     .modal .form_integration_block textarea::placeholder {
-      color: rgba(0,0,0,0.28) !important;
+      color: #c7c7cc !important;
     }
 
     .modal .form_integration_block label {
@@ -546,24 +392,22 @@
     .modal .form_integration_block .submit-btn {
       width: 100% !important;
       padding: 0.875rem 1.5rem !important;
-      background: linear-gradient(135deg, var(--green), var(--green-dark)) !important;
+      background: var(--green) !important;
       color: #fff !important;
       font-family: 'Outfit', sans-serif !important;
       font-size: 1rem !important;
-      font-weight: 700 !important;
+      font-weight: 600 !important;
       border: none !important;
       border-radius: var(--radius) !important;
       cursor: pointer !important;
-      transition: all 0.25s !important;
-      box-shadow: 0 4px 16px var(--green-glow), inset 0 1px 0 rgba(255,255,255,0.15) !important;
+      transition: all 0.2s !important;
     }
 
     .modal .form_integration_block button[type="submit"]:hover,
     .modal .form_integration_block input[type="submit"]:hover,
     .modal .form_integration_block .btn:hover,
     .modal .form_integration_block .submit-btn:hover {
-      box-shadow: 0 8px 24px var(--green-glow), inset 0 1px 0 rgba(255,255,255,0.2) !important;
-      transform: translateY(-1px) !important;
+      background: var(--green-dark) !important;
     }
 
     /* Toggle switch */
@@ -573,7 +417,7 @@
       width: 44px !important;
       height: 24px !important;
       min-width: 44px;
-      background: #d4d4d0 !important;
+      background: #e5e5ea !important;
       border-radius: 12px !important;
       border: none !important;
       position: relative;
@@ -593,8 +437,8 @@
       height: 20px;
       background: #fff;
       border-radius: 50%;
-      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+      transition: transform 0.2s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
     }
 
     .modal .form_integration_block input[type="checkbox"]:checked {
@@ -610,7 +454,6 @@
       transform: translateX(20px);
     }
 
-    /* Checkbox row alignment */
     .modal .form_integration_block div:has(> input[type="checkbox"]),
     .modal .form_integration_block label:has(> input[type="checkbox"]),
     .modal .form_integration_block p:has(> input[type="checkbox"]) {
@@ -627,149 +470,86 @@
       flex: 1 !important;
       font-size: 0.75rem !important;
       line-height: 1.3 !important;
-      color: var(--text-muted) !important;
+      color: var(--text-secondary) !important;
     }
 
     /* === FOOTER === */
     .footer {
-      padding: 1rem 2.5rem;
+      padding: 1.5rem 2.5rem;
       text-align: center;
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      position: relative;
-      z-index: 1;
-      animation: fadeUp 0.7s ease 0.4s both;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      animation: fadeUp 0.8s ease 0.4s both;
     }
 
     /* === ANIMATIONS === */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(16px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-12px); }
+      from { opacity: 0; transform: translateY(-10px); }
       to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.85); }
-    }
-
-    @keyframes breathe {
-      0%, 100% { opacity: 0.5; transform: scale(1); }
-      50% { opacity: 0.8; transform: scale(1.05); }
-    }
-
-    @keyframes shimmer {
-      0% { transform: translateX(-100%) rotate(45deg); }
-      30%, 100% { transform: translateX(100%) rotate(45deg); }
-    }
-
-    @keyframes blobDrift1 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      33% { transform: translate(-30px, 20px) scale(1.08); }
-      66% { transform: translate(15px, -15px) scale(0.95); }
-    }
-
-    @keyframes blobDrift2 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      40% { transform: translate(25px, -20px) scale(1.1); }
-      70% { transform: translate(-15px, 10px) scale(0.93); }
     }
 
     /* === LARGE SCREENS === */
     @media (min-width: 1400px) {
-      .hero__inner {
-        max-width: 1300px;
-        gap: 4rem;
-      }
-
-      .hero__title { font-size: 3.6rem; }
-      .hero__desc { font-size: 1.1rem; max-width: 500px; }
-      .hero__bullets li { font-size: 1rem; }
-      .cta-btn { font-size: 1.1rem; padding: 1.1rem 2.75rem; }
+      .hero__inner { max-width: 1300px; gap: 5rem; }
+      .hero__title { font-size: 3.8rem; }
+      .hero__desc { font-size: 1.15rem; max-width: 500px; }
+      .hero__bullets li { font-size: 1.05rem; }
+      .cta-btn { font-size: 1.1rem; padding: 1.1rem 2.5rem; }
       .cover-wrapper { max-width: 380px; }
       .header { padding: 2rem 3.5rem; }
       .header__logo { height: 34px; }
-      .header__label { font-size: 0.75rem; }
-      .footer { font-size: 0.78rem; }
     }
 
     @media (min-width: 1800px) {
-      .hero__inner {
-        max-width: 1500px;
-        gap: 5rem;
-      }
-
-      .hero__title { font-size: 4rem; }
-      .hero__desc { font-size: 1.2rem; max-width: 540px; }
+      .hero__inner { max-width: 1500px; gap: 6rem; }
+      .hero__title { font-size: 4.2rem; }
+      .hero__desc { font-size: 1.25rem; max-width: 540px; }
       .hero__bullets li { font-size: 1.1rem; }
-      .hero__bullets li::before { width: 26px; height: 26px; }
-      .cta-btn { font-size: 1.15rem; padding: 1.15rem 3rem; }
+      .cta-btn { font-size: 1.15rem; padding: 1.15rem 2.75rem; }
       .cover-wrapper { max-width: 420px; }
       .header { padding: 2.5rem 4.5rem; }
       .header__logo { height: 38px; }
-      .badge { font-size: 0.85rem; padding: 0.5rem 1.15rem; }
-      .cover-float-tag { font-size: 0.85rem; padding: 0.6rem 1rem; }
     }
 
     @media (min-width: 2200px) {
-      .hero__inner {
-        max-width: 1700px;
-        gap: 6rem;
-      }
-
-      .hero__title { font-size: 4.5rem; }
-      .hero__desc { font-size: 1.3rem; max-width: 580px; line-height: 1.7; }
-      .hero__bullets li { font-size: 1.15rem; }
-      .cta-btn { font-size: 1.2rem; padding: 1.25rem 3.25rem; }
+      .hero__inner { max-width: 1700px; gap: 7rem; }
+      .hero__title { font-size: 4.6rem; }
+      .hero__desc { font-size: 1.35rem; max-width: 580px; }
+      .hero__bullets li { font-size: 1.2rem; }
+      .cta-btn { font-size: 1.2rem; padding: 1.2rem 3rem; }
       .cover-wrapper { max-width: 460px; }
     }
 
-    /* === RESPONSIVE === */
+    /* === MOBILE === */
     @media (max-width: 768px) {
-      body::before { background-size: 24px 24px; }
-
       .hero__inner {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
         text-align: center;
       }
 
-      .hero__content { align-items: center; }
+      .hero__content { align-items: center; gap: 1rem; }
       .hero__desc { max-width: 100%; }
-
-      .hero__bullets {
-        align-items: flex-start;
-        text-align: left;
-      }
+      .hero__bullets { align-items: flex-start; text-align: left; }
 
       .hero__content .cta-btn { display: none; }
       .hero__content .cta-hint { display: none; }
-
       .hero__cover { order: -1; }
 
       .cover-wrapper { width: 160px; max-width: 160px; }
-      .cover-glass { padding: 6px; }
       .cover-img { width: 100% !important; }
-
-      .cover-float-tag--top { right: -10px; font-size: 0.65rem; padding: 0.35rem 0.7rem; }
-      .cover-float-tag--bottom { left: -10px; font-size: 0.65rem; padding: 0.35rem 0.7rem; }
+      .cover-float-tag--top { right: -8px; font-size: 0.65rem; padding: 0.3rem 0.6rem; }
+      .cover-float-tag--bottom { left: -8px; font-size: 0.65rem; padding: 0.3rem 0.6rem; }
 
       .hero { padding: 0.5rem 1.25rem 5rem; }
       .header { padding: 1rem 1.25rem; }
-
-      .hero__inner { gap: 1.25rem; }
-
       .badge { display: none; }
 
-      .hero__bullets {
-        padding: 0.75rem 1rem;
-      }
-
-      /* Sticky CTA on mobile — glass */
       .sticky-cta {
         display: flex;
         position: fixed;
@@ -778,10 +558,8 @@
         right: 0;
         z-index: 100;
         padding: 0.75rem 1.25rem calc(env(safe-area-inset-bottom, 0px) + 0.75rem);
-        background: rgba(255,255,255,0.75);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border-top: 1px solid rgba(255,255,255,0.5);
+        background: rgba(251,251,251,0.92);
+        border-top: 1px solid var(--separator);
       }
 
       .sticky-cta .cta-btn {
@@ -806,16 +584,12 @@
       }
 
       .modal__close {
-        width: 28px;
-        height: 28px;
-        top: 0.75rem;
-        right: 0.75rem;
+        width: 28px; height: 28px;
+        top: 0.75rem; right: 0.75rem;
         font-size: 0.9rem;
       }
 
-      .modal .form_integration_block {
-        width: 100% !important;
-      }
+      .modal .form_integration_block { width: 100% !important; }
     }
   </style>
 </head>
@@ -823,17 +597,14 @@
 
   <div class="page">
 
-    <!-- Header -->
     <header class="header">
       <img src="logo.png" alt="FIN-RA" class="header__logo">
       <span class="header__label">Подборка ОФЗ</span>
     </header>
 
-    <!-- Hero -->
     <main class="hero">
       <div class="hero__inner">
 
-        <!-- Left -->
         <div class="hero__content">
           <div class="badge">
             <span class="badge__dot"></span>
@@ -861,13 +632,10 @@
           <span class="cta-hint">Гайд придёт в Telegram-бот</span>
         </div>
 
-        <!-- Right -->
         <div class="hero__cover">
           <div class="cover-wrapper" onclick="openModal()">
             <span class="cover-float-tag cover-float-tag--top">Бесплатно</span>
-            <div class="cover-glass">
-              <img src="обложка.png" alt="Обложка гайда ТОП-30 ОФЗ" class="cover-img" width="893" height="1263">
-            </div>
+            <img src="обложка.png" alt="Обложка гайда ТОП-30 ОФЗ" class="cover-img" width="893" height="1263">
             <span class="cover-float-tag cover-float-tag--bottom">PDF, 19 страниц</span>
           </div>
         </div>
@@ -875,14 +643,12 @@
       </div>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
-      &copy; <a href="https://fin-ra.ru/" style="color: var(--text-muted); text-decoration: none;">FIN-RA</a> — Школа безопасных инвестиций
+      &copy; <a href="https://fin-ra.ru/" style="color: var(--text-secondary); text-decoration: none;">FIN-RA</a> — Школа безопасных инвестиций
     </footer>
 
   </div>
 
-  <!-- Sticky CTA (mobile only) -->
   <div class="sticky-cta">
     <button class="cta-btn" onclick="openModal()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -890,12 +656,9 @@
     </button>
   </div>
 
-  <!-- Modal -->
   <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
     <div class="modal">
       <button class="modal__close" onclick="closeModal()">&times;</button>
-
-      <!-- Salebot Form -->
       <script src='https://salebot.pro/js/form_scripts.js'></script>
       <div class='form_integration_block'></div>
       <script>
@@ -912,16 +675,13 @@
       document.getElementById('modalOverlay').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
-
     function closeModal() {
       document.getElementById('modalOverlay').classList.remove('active');
       document.body.style.overflow = '';
     }
-
     function closeModalOutside(e) {
       if (e.target === e.currentTarget) closeModal();
     }
-
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeModal();
     });
