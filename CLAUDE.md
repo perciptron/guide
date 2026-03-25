@@ -16,26 +16,63 @@
 /0326/                → [активен] Гайд "ТОП-30 ОФЗ" (19 стр., 6 категорий)
 /0326max/             → дубль 0326 (для A/B или отдельного трафика)
 /invest-salary/       → [активен] Запись на бесплатное предобучение "Инвест-зарплата"
-/popcorn.html         → портфолио/демо (не FIN-RA, бренд попкорна)
 /thoughts/            → спеки и планирование (Salebot, n8n, агенты)
 ```
 
 ## Стек
 
 - **HTML/CSS/JS** — всё inline, без фреймворков и сборщиков
-- **Google Fonts** — Outfit (заголовки), DM Sans (текст), Bricolage Grotesque (invest-salary), Dela Gothic One (popcorn)
+- **Google Fonts** — Outfit (заголовки), DM Sans (текст), Bricolage Grotesque (invest-salary)
 - **Salebot.pro** — формы сбора лидов (FormIntegration API, project ID: 354621)
 - **GitHub Pages** — хостинг через CNAME
 
-## Дизайн-система
+## Эталонный шаблон для гайдов — Apple-минимализм (0326)
 
-- Основной цвет: `#0f9d58` (зелёный FIN-RA)
-- Тёмный текст: `#1b1b18`, приглушённый: `#78776e`
-- Поверхности: `#fafaf9` (светлый), `#141413` (тёмный, invest-salary)
-- border-radius: `14px`
-- Шрифты: display — Outfit (weight 300–800), body — DM Sans
-- Анимации: fadeUp, pulse, breathe, floatCard, shimmer — всё на CSS keyframes
-- Адаптив: mobile-first, брейкпоинт 768px, поддержка 1600px+ и 2000px+
+Все новые лендинги гайдов создавать на основе `/0326/index.html`.
+
+### Визуальный стиль
+- **Философия:** Apple-минимализм — чистота, типография, воздух
+- **Фон:** чистый `#fbfbfb`, без паттернов, grain, blur, glassmorphism
+- **Никаких:** dot grid, grain overlay, ambient blobs, backdrop-filter, стеклянных эффектов
+
+### Палитра
+| Переменная | Значение | Назначение |
+|-----------|----------|------------|
+| `--green` | `#0f9d58` | Акцентный (CTA, чекмарки, badge) |
+| `--green-dark` | `#0b7a43` | Hover-состояния |
+| `--green-glow` | `rgba(15,157,88,0.15)` | Тень CTA при пульсации |
+| `--bg` | `#fbfbfb` | Фон страницы |
+| `--text` | `#1d1d1f` | Основной текст (Apple black) |
+| `--text-secondary` | `#86868b` | Вторичный текст (Apple grey) |
+| `--separator` | `rgba(0,0,0,0.06)` | Разделители |
+
+### Типография
+- **Display:** Outfit, weight 800, `letter-spacing: -0.05em`, `line-height: 1.04`
+- **Body:** DM Sans, `line-height: 1.6`, цвет `--text-secondary`
+- **`(ОФЗ)`** или акцентные слова — просто `color: var(--green)`, без gradient clip
+- `-webkit-font-smoothing: antialiased` на body
+
+### Анимации (только две + входные)
+- **fadeUp** — вход элементов, 0.8s ease, stagger через animation-delay
+- **fadeDown** — вход хедера
+- **ctaGlow** — тень CTA плавно нарастает/гаснет каждые 4 сек, `animation: ctaGlow 4s ease-in-out 2s infinite`. Останавливается при hover (`animation: none`)
+- **coverFloat** — обложка парит ±5px каждые 5 сек, `animation: coverFloat 5s ease-in-out infinite`. Останавливается при hover
+
+### Элементы
+- **Badge** — просто текст + точка, без фона и border
+- **Буллеты** — чистый список, круглые зелёные чекмарки (`border-radius: 50%`)
+- **CTA** — плоский `var(--green)`, hover = `var(--green-dark)` + лёгкая тень. `font-weight: 600`
+- **Обложка** — чистая тень `0 20px 50px rgba(0,0,0,0.08)`, hover = lift + усиление тени
+- **Float-теги** — белый фон `#fff`, лёгкая тень, без blur
+- **Модалка** — чистый белый `#fff`, overlay `rgba(0,0,0,0.4)` без blur, `border-radius: 20px`
+- **Кнопка закрытия** — круглая (`border-radius: 50%`), без border
+- **Инпуты формы** — фон `#f5f5f7`, border transparent, focus = зелёный border + glow
+
+### Адаптив
+- **768px** — мобилка: одна колонка, обложка сверху (маленькая 160px), sticky CTA внизу, модалка = bottom-sheet
+- **1400px+** — увеличение шрифтов, gap, обложки до 380px
+- **1800px+** — дальнейшее масштабирование до 420px обложка
+- **2200px+** — максимум: 4.6rem заголовок, 460px обложка
 
 ## Лид-воронка
 
@@ -55,18 +92,16 @@
 
 ## Модалка (общий паттерн)
 
-- `.modal-overlay` — фиксированный оверлей с blur
-- `.modal` — белая карточка, max 460px
-- Закрытие: клик вне, ESC, кнопка-крестик
+- `.modal-overlay` — `rgba(0,0,0,0.4)`, без blur
+- `.modal` — белый `#fff`, `border-radius: 20px`, max 460px
+- Закрытие: клик вне, ESC, кнопка-крестик (круглая)
 - На мобиле: bottom-sheet стиль (закруглён сверху, прижат к низу)
 
 ## Локальная разработка
 
 ```bash
-# Python сервер
 python3 -m http.server 8000
-
-# или Node
+# или
 npx serve -l 3000
 ```
 
@@ -76,39 +111,30 @@ npx serve -l 3000
 
 - Каждый лендинг — самостоятельный HTML-файл со встроенными стилями
 - Не использовать внешние CSS/JS файлы (всё inline для скорости)
-- Новые лендинги создавать копированием ближайшего по формату
+- **Новые гайды создавать копированием `/0326/index.html`** — это эталон
 - Salebot GUID уникален для каждой кампании — менять при создании нового лендинга
 - Изображения хранить в папке лендинга (logo.png, обложка.png и т.д.)
 - Коммиты на русском или английском, пушить в main — деплой автоматический
 
 ## Чеклист при создании/редактировании лендинга
 
-Аудит проведён 2026-03-25 по скиллам frontend-design-305 и fullstack-developer:
-
 ### SEO и шеринг
-- `<meta name="description">` — обязательно на каждой странице
+- `<meta name="description">` — обязательно
 - `<meta property="og:title/description/image/url">` — для шеринга в мессенджерах
-- `<title>` должен совпадать с контентом страницы (был баг: title "ТОП-50", контент "ТОП-30")
+- `<title>` должен совпадать с контентом страницы
 
 ### Доступность
-- НЕ использовать `user-scalable=no` — блокирует зум на мобилках
+- НЕ использовать `user-scalable=no`
 - Все `<img>` должны иметь осмысленный `alt`
-- Клавиша ESC закрывает модалку
+- ESC закрывает модалку
 
 ### Производительность
-- Все `<img>` должны иметь `width` и `height` (предотвращает layout shift)
-- Карточки и вторичные изображения — `loading="lazy"`
+- Все `<img>` должны иметь `width` и `height`
+- Вторичные изображения — `loading="lazy"`
 - `<meta name="theme-color">` для мобильных браузеров
-- Favicon подключён на всех страницах (`<link rel="icon" href="/favicon.ico">`)
+- Favicon: `<link rel="icon" href="/favicon.ico">`
 
-### Дизайн (frontend-design-305)
-- Шрифты: только Outfit, DM Sans, Bricolage Grotesque, Dela Gothic One — НЕ использовать Inter, Roboto, Arial
-- Цветовая палитра: доминантный `#0f9d58` с акцентами, не размазывать равномерно
-- Анимации: CSS keyframes > JS (GPU-ускорение), осмысленные — fadeUp для входа, pulse для внимания
-- Grain overlay (SVG turbulence) — фирменная текстура, применять на всех лендингах
-- Модалка: blur-backdrop обязателен, transition на transform + opacity
-
-### Fullstack (fullstack-developer)
-- Salebot-скрипт загружается внутри модалки — не блокирует основной контент
-- Все формы стилизованы через CSS `!important` (переопределение Salebot-стилей)
-- При дублировании лендинга — обязательно сменить Salebot GUID
+### Fullstack
+- Salebot-скрипт загружается внутри модалки — не блокирует контент
+- Формы стилизованы через CSS `!important` (переопределение Salebot-стилей)
+- При дублировании — обязательно сменить Salebot GUID
