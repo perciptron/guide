@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ПОПКОРН — крафтовый попкорн с безумными вкусами. Ручная работа, натуральные ингредиенты.">
+<meta name="theme-color" content="#140606">
+<link rel="icon" href="/favicon.ico">
+<title>ПОПКОРН — Взрывной вкус</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg-dark: #140606;
+  --bg-cream: #FFF5E1;
+  --gold: #FFD233;
+  --gold-deep: #E8A800;
+  --red: #D42B2B;
+  --red-dark: #8B1A1A;
+  --burgundy: #2A0A0A;
+  --text-light: #FFF0D4;
+  --text-dark: #1A0808;
+  --stripe: #1E0808;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── GRAIN OVERLAY ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px;
+}
+
+/* ── MARQUEE ── */
+.marquee-bar {
+  background: var(--red);
+  padding: 10px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-bottom: 3px solid var(--gold);
+  position: relative;
+  z-index: 10;
+}
+
+.marquee-track {
+  display: flex;
+  animation: marquee 20s linear infinite;
+  width: max-content;
+}
+
+.marquee-track span {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 0 40px;
+}
+
+.marquee-track span::after {
+  content: '🍿';
+  margin-left: 40px;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.4s, backdrop-filter 0.4s;
+}
+
+nav.scrolled {
+  background: rgba(20, 6, 6, 0.85);
+  backdrop-filter: blur(20px);
+}
+
+.nav-logo {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: 28px;
+  color: var(--gold);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.03em;
+  opacity: 0.8;
+  transition: opacity 0.3s, color 0.3s;
+}
+.nav-links a:hover { opacity: 1; color: var(--gold); }
+
+.btn-order {
+  background: var(--gold);
+  color: var(--text-dark);
+  border: none;
+  padding: 12px 28px;
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn-order:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 30px rgba(255, 210, 51, 0.35);
+  background: #ffe066;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 140px 24px 80px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(212, 43, 43, 0.15), transparent),
+    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(255, 210, 51, 0.08), transparent),
+    var(--bg-dark);
+}
+
+/* Animated concentric circles behind hero */
+.hero-circles {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.hero-circles .circle {
+  position: absolute;
+  border: 1px solid rgba(255, 210, 51, 0.06);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse-ring 4s ease-in-out infinite;
+}
+
+.hero-circles .circle:nth-child(1) { width: 300px; height: 300px; animation-delay: 0s; }
+.hero-circles .circle:nth-child(2) { width: 500px; height: 500px; animation-delay: 0.5s; }
+.hero-circles .circle:nth-child(3) { width: 700px; height: 700px; animation-delay: 1s; }
+.hero-circles .circle:nth-child(4) { width: 900px; height: 900px; animation-delay: 1.5s; }
+.hero-circles .circle:nth-child(5) { width: 1100px; height: 1100px; animation-delay: 2s; }
+
+@keyframes pulse-ring {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 210, 51, 0.1);
+  border: 1px solid rgba(255, 210, 51, 0.25);
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.3s;
+}
+
+.hero h1 {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: clamp(42px, 10vw, 140px);
+  line-height: 0.95;
+  color: var(--gold);
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  animation: fadeUp 1s ease forwards 0.5s;
+  text-shadow:
+    0 0 80px rgba(255, 210, 51, 0.2),
+    4px 4px 0 var(--red-dark);
+}
+
+.hero h1 .outline-text {
+  -webkit-text-stroke: 2px var(--gold);
+  color: transparent;
+  text-shadow: none;
+}
+
+.hero-sub {
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 300;
+  max-width: 520px;
+  margin: 32px auto 48px;
+  line-height: 1.6;
+  color: rgba(255, 240, 212, 0.7);
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.8s;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 1s;
+  position: relative;
+  z-index: 2;
+}
+
+.btn-hero {
+  background: var(--gold);
+  color: var(--text-dark);
+  border: none;
+  padding: 18px 44px;
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.btn-hero:hover::before { transform: translateX(100%); }
+.btn-hero:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 40px rgba(255, 210, 51, 0.4);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-light);
+  border: 1px solid rgba(255, 240, 212, 0.3);
+  padding: 17px 36px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.btn-ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(255, 210, 51, 0.05);
+}
+
+/* ── FLOATING POPCORN ── */
+.popcorn-float {
+  position: absolute;
+  font-size: 40px;
+  pointer-events: none;
+  z-index: 1;
+  animation: float-up linear infinite;
+  opacity: 0;
+}
+
+@keyframes float-up {
+  0% { transform: translateY(100vh) rotate(0deg) scale(0.5); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% { transform: translateY(-100px) rotate(360deg) scale(1); opacity: 0; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── STATS BAR ── */
+.stats-bar {
+  background: var(--burgundy);
+  border-top: 1px solid rgba(255, 210, 51, 0.1);
+  border-bottom: 1px solid rgba(255, 210, 51, 0.1);
+  padding: 48px 24px;
+  display: flex;
+  justify-content: center;
+  gap: clamp(40px, 8vw, 120px);
+  flex-wrap: wrap;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-num {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: clamp(36px, 5vw, 56px);
+  color: var(--gold);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 240, 212, 0.5);
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ── SECTION TITLES ── */
+.section-tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 16px;
+  position: relative;
+  padding-left: 32px;
+}
+
+.section-tag::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 20px;
+  height: 2px;
+  background: var(--red);
+}
+
+.section-title {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.1;
+  color: var(--text-light);
+}
+
+.section-title em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+/* ── PRODUCTS / FLAVORS ── */
+.flavors {
+  padding: 120px 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.flavors-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.flavors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.flavor-card {
+  background: linear-gradient(145deg, rgba(42, 10, 10, 0.8), rgba(20, 6, 6, 0.9));
+  border: 1px solid rgba(255, 210, 51, 0.08);
+  padding: 48px 36px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
+  group: true;
+}
+
+.flavor-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s;
+}
+
+.flavor-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 210, 51, 0.2);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.flavor-card:hover::before { transform: scaleX(1); }
+
+.flavor-emoji {
+  font-size: 56px;
+  margin-bottom: 24px;
+  display: block;
+  transition: transform 0.4s;
+}
+
+.flavor-card:hover .flavor-emoji {
+  transform: scale(1.2) rotate(-8deg);
+}
+
+.flavor-name {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: 22px;
+  color: var(--text-light);
+  margin-bottom: 12px;
+}
+
+.flavor-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 240, 212, 0.5);
+  margin-bottom: 24px;
+}
+
+.flavor-price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.flavor-price .amount {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: 28px;
+  color: var(--gold);
+}
+
+.flavor-price .currency {
+  font-size: 14px;
+  color: rgba(255, 240, 212, 0.4);
+}
+
+.flavor-size {
+  font-size: 13px;
+  color: rgba(255, 240, 212, 0.3);
+  margin-top: 4px;
+}
+
+/* ── ABOUT / PROCESS ── */
+.process {
+  padding: 120px 48px;
+  background: var(--bg-cream);
+  color: var(--text-dark);
+  position: relative;
+}
+
+.process .section-title { color: var(--text-dark); }
+.process .section-tag { color: var(--red); }
+.process .section-tag::before { background: var(--red); }
+
+.process-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: rgba(26, 8, 8, 0.08);
+}
+
+.process-step {
+  background: var(--bg-cream);
+  padding: 48px 32px;
+  text-align: center;
+  position: relative;
+  transition: background 0.3s;
+}
+
+.process-step:hover { background: #FFF0CC; }
+
+.step-num {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: 72px;
+  color: rgba(212, 43, 43, 0.08);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.step-icon {
+  font-size: 40px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.step-title {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: 18px;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+
+.step-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(26, 8, 8, 0.55);
+}
+
+/* ── BIG CTA SECTION ── */
+.big-cta {
+  padding: 160px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 50%, rgba(212, 43, 43, 0.12), transparent),
+    var(--bg-dark);
+}
+
+.big-cta-title {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: clamp(40px, 7vw, 96px);
+  line-height: 1;
+  margin-bottom: 24px;
+  color: var(--text-light);
+}
+
+.big-cta-title em {
+  font-style: normal;
+  color: var(--gold);
+  position: relative;
+}
+
+.big-cta-sub {
+  font-size: 18px;
+  color: rgba(255, 240, 212, 0.5);
+  max-width: 500px;
+  margin: 0 auto 48px;
+  line-height: 1.6;
+}
+
+/* ── REVIEWS ── */
+.reviews {
+  padding: 120px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.reviews-header { text-align: center; margin-bottom: 64px; }
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.review-card {
+  border: 1px solid rgba(255, 210, 51, 0.08);
+  padding: 36px;
+  background: rgba(42, 10, 10, 0.4);
+  position: relative;
+}
+
+.review-stars {
+  color: var(--gold);
+  font-size: 16px;
+  letter-spacing: 4px;
+  margin-bottom: 16px;
+}
+
+.review-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255, 240, 212, 0.65);
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.review-author {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+.review-role {
+  font-size: 12px;
+  color: rgba(255, 240, 212, 0.35);
+  margin-top: 4px;
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 64px 48px 32px;
+  border-top: 1px solid rgba(255, 210, 51, 0.08);
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.footer-brand .nav-logo { margin-bottom: 12px; display: block; }
+.footer-tagline {
+  font-size: 14px;
+  color: rgba(255, 240, 212, 0.4);
+  max-width: 280px;
+}
+
+.footer-cols { display: flex; gap: 80px; }
+.footer-col h4 {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.footer-col a {
+  display: block;
+  color: rgba(255, 240, 212, 0.5);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 10px;
+  transition: color 0.3s;
+}
+
+.footer-col a:hover { color: var(--gold); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 210, 51, 0.06);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: rgba(255, 240, 212, 0.25);
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .hero { padding: 120px 20px 60px; }
+  .flavors { padding: 80px 20px; }
+  .process { padding: 80px 20px; }
+  .process-grid { grid-template-columns: repeat(2, 1fr); }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .big-cta { padding: 100px 20px; }
+  .footer-cols { gap: 40px; }
+  footer { padding: 48px 20px 24px; }
+  .stats-bar { gap: 32px; padding: 32px 20px; }
+}
+
+@media (max-width: 600px) {
+  .process-grid { grid-template-columns: 1fr; }
+  .hero-cta { flex-direction: column; }
+  .footer-top { flex-direction: column; }
+  .footer-cols { flex-direction: column; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 8px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">ПОПКОРН</a>
+  <div class="nav-links">
+    <a href="#flavors">Вкусы</a>
+    <a href="#process">Как мы делаем</a>
+    <a href="#reviews">Отзывы</a>
+    <a href="#order" class="btn-order">ЗАКАЗАТЬ</a>
+  </div>
+</nav>
+
+<!-- MARQUEE -->
+<div class="marquee-bar" style="margin-top: 68px;">
+  <div class="marquee-track">
+    <span>Бесплатная доставка от 1500₽</span>
+    <span>Натуральные ингредиенты</span>
+    <span>Ручная работа</span>
+    <span>Более 50 000 довольных клиентов</span>
+    <span>Свежий каждый день</span>
+    <span>Бесплатная доставка от 1500₽</span>
+    <span>Натуральные ингредиенты</span>
+    <span>Ручная работа</span>
+    <span>Более 50 000 довольных клиентов</span>
+    <span>Свежий каждый день</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-circles">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+
+  <div class="hero-badge">✦ Крафтовый попкорн №1 в Москве</div>
+
+  <h1>
+    ВЗРЫВНОЙ<br>
+    <span class="outline-text">ВКУС</span>
+  </h1>
+
+  <p class="hero-sub">
+    Крафтовый попкорн из лучших зёрен, приготовленный
+    вручную с&nbsp;безумными вкусами, которых вы ещё не&nbsp;пробовали.
+  </p>
+
+  <div class="hero-cta">
+    <a href="#order" class="btn-hero">ПОПРОБОВАТЬ</a>
+    <a href="#flavors" class="btn-ghost">Смотреть вкусы ↓</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num" data-target="12">0</div>
+    <div class="stat-label">Вкусов</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num" data-target="50000">0</div>
+    <div class="stat-label">Клиентов</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num" data-target="98">0</div>
+    <div class="stat-label">% Повторных заказов</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num" data-target="24">0</div>
+    <div class="stat-label">Часа свежести</div>
+  </div>
+</div>
+
+<!-- FLAVORS -->
+<section class="flavors" id="flavors">
+  <div class="flavors-header reveal">
+    <div class="section-tag">Коллекция</div>
+    <h2 class="section-title">Наши <em>вкусы</em></h2>
+  </div>
+
+  <div class="flavors-grid">
+    <div class="flavor-card reveal" style="animation-delay: 0.1s">
+      <span class="flavor-emoji">🧈</span>
+      <h3 class="flavor-name">Классика с маслом</h3>
+      <p class="flavor-desc">Нежное сливочное масло и морская соль — тот самый вкус кинотеатра вашего детства.</p>
+      <div class="flavor-price">
+        <span class="amount">290</span>
+        <span class="currency">₽</span>
+      </div>
+      <div class="flavor-size">/ большой стакан</div>
+    </div>
+
+    <div class="flavor-card reveal" style="animation-delay: 0.2s">
+      <span class="flavor-emoji">🍫</span>
+      <h3 class="flavor-name">Тёмный шоколад</h3>
+      <p class="flavor-desc">Бельгийский шоколад 72% какао с щепоткой флёр-де-сель. Горько-сладкое безумие.</p>
+      <div class="flavor-price">
+        <span class="amount">390</span>
+        <span class="currency">₽</span>
+      </div>
+      <div class="flavor-size">/ большой стакан</div>
+    </div>
+
+    <div class="flavor-card reveal" style="animation-delay: 0.3s">
+      <span class="flavor-emoji">🌶️</span>
+      <h3 class="flavor-name">Чили & Лайм</h3>
+      <p class="flavor-desc">Обжигающий кайенский перец, свежий лайм и копчёная паприка. Для тех, кто не боится.</p>
+      <div class="flavor-price">
+        <span class="amount">350</span>
+        <span class="currency">₽</span>
+      </div>
+      <div class="flavor-size">/ большой стакан</div>
+    </div>
+
+    <div class="flavor-card reveal" style="animation-delay: 0.4s">
+      <span class="flavor-emoji">🧀</span>
+      <h3 class="flavor-name">Трюфельный сыр</h3>
+      <p class="flavor-desc">Выдержанный пармезан с чёрным трюфелем. Роскошь в каждом зёрнышке.</p>
+      <div class="flavor-price">
+        <span class="amount">450</span>
+        <span class="currency">₽</span>
+      </div>
+      <div class="flavor-size">/ большой стакан</div>
+    </div>
+
+    <div class="flavor-card reveal" style="animation-delay: 0.5s">
+      <span class="flavor-emoji">🍯</span>
+      <h3 class="flavor-name">Карамель & Соль</h3>
+      <p class="flavor-desc">Тягучая домашняя карамель с кристаллами розовой гималайской соли. Идеальный баланс.</p>
+      <div class="flavor-price">
+        <span class="amount">370</span>
+        <span class="currency">₽</span>
+      </div>
+      <div class="flavor-size">/ большой стакан</div>
+    </div>
+
+    <div class="flavor-card reveal" style="animation-delay: 0.6s">
+      <span class="flavor-emoji">🍵</span>
+      <h3 class="flavor-name">Матча & Белый шоколад</h3>
+      <p class="flavor-desc">Японский матча церемониального класса и нежный белый шоколад. Zen в каждом кусочке.</p>
+      <div class="flavor-price">
+        <span class="amount">420</span>
+        <span class="currency">₽</span>
+      </div>
+      <div class="flavor-size">/ большой стакан</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="process-header reveal">
+    <div class="section-tag">Производство</div>
+    <h2 class="section-title">Как мы <em>готовим</em></h2>
+  </div>
+
+  <div class="process-grid">
+    <div class="process-step reveal">
+      <div class="step-num">01</div>
+      <span class="step-icon">🌽</span>
+      <h3 class="step-title">Отбираем зёрна</h3>
+      <p class="step-desc">Только сорт Mushroom — идеально круглые зёрна из фермерских хозяйств Аргентины.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-num">02</div>
+      <span class="step-icon">🔥</span>
+      <h3 class="step-title">Готовим в котле</h3>
+      <p class="step-desc">Медный котёл, кокосовое масло, ручной контроль температуры. Никаких конвейеров.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-num">03</div>
+      <span class="step-icon">✨</span>
+      <h3 class="step-title">Добавляем магию</h3>
+      <p class="step-desc">Авторские смеси специй и топпингов — каждый вкус разрабатывался месяцами.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-num">04</div>
+      <span class="step-icon">📦</span>
+      <h3 class="step-title">Упаковываем свежим</h3>
+      <p class="step-desc">Крафтовая упаковка с газовой средой. До вас — максимум 24 часа с момента приготовления.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="reviews-header reveal">
+    <div class="section-tag">Отзывы</div>
+    <h2 class="section-title">Что <em>говорят</em></h2>
+  </div>
+
+  <div class="reviews-grid">
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">«Заказали на вечеринку трюфельный сыр и карамель — гости были в шоке. Теперь заказываем каждые выходные.»</p>
+      <div class="review-author">Анна К.</div>
+      <div class="review-role">Постоянный клиент</div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">«Чили & Лайм — это бомба. Я перепробовал весь попкорн в городе, и ничего даже близко нет. Это другой уровень.»</p>
+      <div class="review-author">Дмитрий В.</div>
+      <div class="review-role">Фуд-блогер</div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">«Матча с белым шоколадом — мой новый comfort food. Упаковка красивая, доставка быстрая. 10 из 10.»</p>
+      <div class="review-author">Мария Л.</div>
+      <div class="review-role">Дизайнер</div>
+    </div>
+  </div>
+</section>
+
+<!-- BIG CTA -->
+<section class="big-cta" id="order">
+  <h2 class="big-cta-title reveal">
+    ГОТОВЫ<br><em>ПОПРОБОВАТЬ?</em>
+  </h2>
+  <p class="big-cta-sub reveal">
+    Закажите набор из 3 вкусов со скидкой 20%. Доставка по Москве — бесплатно от&nbsp;1500₽.
+  </p>
+  <div class="reveal">
+    <a href="#" class="btn-hero">ЗАКАЗАТЬ НАБОР — 850₽</a>
+  </div>
+</section>
+
+<!-- MARQUEE BOTTOM -->
+<div class="marquee-bar">
+  <div class="marquee-track" style="animation-direction: reverse;">
+    <span>Попкорн — это любовь</span>
+    <span>Ручная работа</span>
+    <span>Натурально</span>
+    <span>Доставка за 60 минут</span>
+    <span>Крафт и качество</span>
+    <span>Попкорн — это любовь</span>
+    <span>Ручная работа</span>
+    <span>Натурально</span>
+    <span>Доставка за 60 минут</span>
+    <span>Крафт и качество</span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">ПОПКОРН</a>
+      <p class="footer-tagline">Крафтовый попкорн ручной работы. Взрывной вкус с доставкой по Москве.</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>МЕНЮ</h4>
+        <a href="#flavors">Вкусы</a>
+        <a href="#process">Производство</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#">Доставка</a>
+      </div>
+      <div class="footer-col">
+        <h4>КОНТАКТЫ</h4>
+        <a href="#">+7 (999) 123-45-67</a>
+        <a href="#">hello@popcorn.ru</a>
+        <a href="#">Telegram</a>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 ПОПКОРН. Все права защищены.</span>
+    <span>Сделано с 🍿 в Москве</span>
+  </div>
+</footer>
+
+<script>
+// ── NAV SCROLL ──
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ── FLOATING POPCORN ──
+function createPopcorn() {
+  const hero = document.querySelector('.hero');
+  const emojis = ['🍿', '🌽', '✦', '⭐'];
+
+  for (let i = 0; i < 15; i++) {
+    const el = document.createElement('div');
+    el.className = 'popcorn-float';
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    el.style.left = Math.random() * 100 + '%';
+    el.style.fontSize = (20 + Math.random() * 30) + 'px';
+    el.style.animationDuration = (6 + Math.random() * 8) + 's';
+    el.style.animationDelay = Math.random() * 10 + 's';
+    hero.appendChild(el);
+  }
+}
+createPopcorn();
+
+// ── COUNTER ANIMATION ──
+function animateCounters() {
+  const counters = document.querySelectorAll('.stat-num');
+  counters.forEach(counter => {
+    const target = parseInt(counter.dataset.target);
+    const duration = 2000;
+    const start = performance.now();
+
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.floor(eased * target);
+
+      counter.textContent = target >= 1000
+        ? current.toLocaleString('ru-RU')
+        : current + (counter.closest('.stat').querySelector('.stat-label').textContent.includes('%') ? '%' : '');
+
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  });
+}
+
+// ── SCROLL REVEAL ──
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// Counter trigger
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounters();
+      statsObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+statsObserver.observe(document.querySelector('.stats-bar'));
+
+// ── SMOOTH SCROLL ──
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+
+</body>
+</html>
