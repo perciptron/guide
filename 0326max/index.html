@@ -36,7 +36,11 @@
 
     body {
       font-family: 'DM Sans', sans-serif;
-      background: linear-gradient(180deg, #fafaf9 0%, #f3f3f0 100%);
+      background:
+        radial-gradient(ellipse 80% 50% at 70% 20%, rgba(15,157,88,0.05) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 60% at 10% 80%, rgba(245,190,80,0.04) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 40% at 90% 70%, rgba(15,157,88,0.03) 0%, transparent 40%),
+        linear-gradient(175deg, #f5f7f2 0%, #fafaf9 35%, #f7f5f0 65%, #f3f1ec 100%);
       color: var(--text);
       min-height: 100vh;
       min-height: 100dvh;
@@ -72,26 +76,28 @@
       content: '';
       position: fixed;
       border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.5;
+      filter: blur(100px);
+      opacity: 0.6;
       pointer-events: none;
       z-index: 0;
     }
 
     .page::before {
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(15,157,88,0.12) 0%, transparent 70%);
-      top: -10%;
-      right: -5%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(15,157,88,0.1) 0%, rgba(52,211,153,0.04) 40%, transparent 70%);
+      top: -15%;
+      right: -8%;
+      animation: blobDrift1 20s ease-in-out infinite;
     }
 
     .page::after {
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(245,190,80,0.08) 0%, transparent 70%);
-      bottom: -5%;
-      left: -5%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(245,190,80,0.07) 0%, rgba(15,157,88,0.03) 50%, transparent 70%);
+      bottom: -8%;
+      left: -8%;
+      animation: blobDrift2 25s ease-in-out infinite;
     }
 
     /* === HEADER === */
@@ -586,6 +592,18 @@
     @keyframes breathe {
       0%, 100% { opacity: 0.5; transform: scale(1); }
       50% { opacity: 0.8; transform: scale(1.05); }
+    }
+
+    @keyframes blobDrift1 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(-30px, 20px) scale(1.08); }
+      66% { transform: translate(15px, -15px) scale(0.95); }
+    }
+
+    @keyframes blobDrift2 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      40% { transform: translate(25px, -20px) scale(1.1); }
+      70% { transform: translate(-15px, 10px) scale(0.93); }
     }
 
     /* === LARGE SCREENS === */
