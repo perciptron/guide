@@ -67,6 +67,25 @@
 - **Модалка** — чистый белый `#fff`, overlay `rgba(0,0,0,0.4)` без blur, `border-radius: 20px`
 - **Кнопка закрытия** — круглая (`border-radius: 50%`), без border
 - **Инпуты формы** — фон `#f5f5f7`, border transparent, focus = зелёный border + glow
+- **Кнопки мессенджеров** — каждая в фирменном цвете (см. ниже), padding как у CTA (`1rem 2rem`)
+
+### Кнопки мессенджеров в форме Salebot
+
+Эталон: `/0326max/index.html` — форма с тремя кнопками (VK, TG, MAX).
+
+| Мессенджер | CSS-класс Salebot | Цвет | Hover |
+|-----------|-------------------|------|-------|
+| VK | `.vk_link` | `#0077FF` | `#0066DD` |
+| Telegram | `.tg_link` | `#2AABEE` | `#229ED9` |
+| MAX | `.max_link` | `#0077FF` | `#0066DD` |
+
+**CSS-правила для стилизации кнопок Salebot:**
+- Скрывать SVG-иконки: `.salebot_button svg, .salebot_button img, .salebot_button .mes_ident { display: none }`
+- Сбросить высоту контейнера: `.custom_social_btn_container { height: auto; min-height: 0 }`
+- Padding кнопок = padding CTA (`1rem 2rem`)
+- `font-family: 'Outfit'`, `font-weight: 600`, `font-size: 0.95rem`
+- `border-radius: var(--radius)` (14px)
+- `margin-bottom: 0.5rem` между кнопками
 
 ### Адаптив
 - **768px** — мобилка: одна колонка, обложка сверху (маленькая 160px), sticky CTA внизу, модалка = bottom-sheet
@@ -87,7 +106,8 @@
 | Страница | GUID |
 |----------|------|
 | 0226 | `a6134ca4f0615213d6fdda04ddde267f` |
-| 0326 / 0326max | `1e9886f20d10b883eff2aed092135525` |
+| 0326 (TG) | `1e9886f20d10b883eff2aed092135525` (project 354621) |
+| 0326max (VK+TG+MAX) | `7c19e73c50d1e17cfd8f88da284fefb9` (project 317313) |
 | invest-salary | (свой GUID в index.html) |
 
 ## Модалка (общий паттерн)
@@ -111,7 +131,7 @@ npx serve -l 3000
 
 - Каждый лендинг — самостоятельный HTML-файл со встроенными стилями
 - Не использовать внешние CSS/JS файлы (всё inline для скорости)
-- **Новые гайды создавать копированием `/0326/index.html`** — это эталон
+- **Новые гайды создавать копированием `/0326max/index.html`** — это эталон (3 кнопки мессенджеров)
 - Salebot GUID уникален для каждой кампании — менять при создании нового лендинга
 - Изображения хранить в папке лендинга (logo.png, обложка.png и т.д.)
 - Коммиты на русском или английском, пушить в main — деплой автоматический
