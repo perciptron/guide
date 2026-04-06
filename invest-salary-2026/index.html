@@ -26,7 +26,7 @@
       --bg: #fbfbfb;
       --bg-alt: #f5f5f7;
       --text: #1d1d1f;
-      --text-secondary: #86868b;
+      --text-secondary: #6e6e73;
       --text-muted: #aeaeb2;
       --separator: rgba(0,0,0,0.06);
       --radius: 14px;
@@ -126,7 +126,10 @@
       animation: fadeUp 0.5s ease both;
     }
 
-    .hero__logo { height: 24px; }
+    .hero__logo-text {
+      font-family: var(--font-display); font-size: 1.4rem;
+      font-weight: 800; color: var(--text); letter-spacing: -0.03em;
+    }
 
     .hero__nav-right {
       display: flex; align-items: center; gap: 0.75rem;
@@ -428,13 +431,16 @@
     .bonus-cta {
       display: inline-flex; align-items: center; justify-content: center;
       gap: 0.5rem; padding: 1rem 3rem;
-      background: transparent; color: #fff;
+      background: var(--green); color: #fff;
       font-family: var(--font-display); font-size: 1rem; font-weight: 700;
-      border: 2px solid rgba(255,255,255,0.4); border-radius: 12px;
+      border: none; border-radius: 12px;
       cursor: pointer; transition: all 0.25s;
+      box-shadow: 0 4px 16px rgba(15,157,88,0.3);
     }
     .bonus-cta:hover {
-      background: #fff; color: #252323; border-color: #fff;
+      background: var(--green-dark);
+      box-shadow: 0 8px 24px rgba(15,157,88,0.4);
+      transform: translateY(-2px);
     }
 
     @media (max-width: 768px) {
@@ -504,7 +510,7 @@
     }
     @media (max-width: 768px) {
       .footer__inner { grid-template-columns: 1fr; gap: 1.25rem; }
-      .footer { padding: 2rem 1.25rem 1rem; padding-bottom: 5rem; }
+      .footer { padding: 2rem 1.25rem 6rem; }
     }
 
     /* ================================
@@ -541,6 +547,10 @@
     .modal__sub {
       font-size: 0.8rem; color: var(--text-secondary);
       text-align: center; margin-bottom: 1.25rem; line-height: 1.4;
+    }
+    @media (max-width: 768px) {
+      .modal__title { font-size: 1.1rem; margin-bottom: 0.15rem; }
+      .modal__sub { font-size: 0.72rem; margin-bottom: 0.75rem; }
     }
 
     /* Salebot form */
@@ -672,8 +682,10 @@
       .date-chip svg { display: none; }
 
       .hero__title { font-size: 1.7rem; }
-      .hero__sub { font-size: 0.88rem; }
-      .gift-text { font-size: 0.85rem; }
+      .hero__sub { font-size: 0.9rem; }
+      .gift-text { font-size: 0.9rem; }
+      .pain-card__text { font-size: 0.88rem; }
+      .program-card__list li { font-size: 0.88rem; }
 
       .cta-btn { width: 100%; justify-content: center; font-size: 0.95rem; padding: 0.85rem 1.5rem; }
 
@@ -711,7 +723,7 @@
   <!-- ===== 1. HERO ===== -->
   <section class="hero">
     <nav class="hero__nav">
-      <svg class="hero__logo" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="120" height="24"><text x="0" y="20" font-family="'Outfit', sans-serif" font-weight="800" font-size="22" fill="#1d1d1f" letter-spacing="-0.5">FIN-RA</text></svg>
+      <span class="hero__logo-text">FIN-RA</span>
       <div class="hero__nav-right">
         <div class="live-dot"></div>
         <span class="hero__nav-label">Набор открыт</span>
@@ -804,7 +816,7 @@
   </section>
 
   <!-- ===== 3. PROGRAM ===== -->
-  <section class="section">
+  <section class="section section--alt">
     <div class="container">
       <div class="section-label reveal">Программа</div>
       <h2 class="section-title reveal">3 эфира, которые <em>изменят</em><br>ваш подход к деньгам</h2>
@@ -887,7 +899,7 @@
   </section>
 
   <!-- ===== 5. FINAL CTA ===== -->
-  <section class="section section--alt final-cta">
+  <section class="section final-cta">
     <div class="container">
       <h2 class="section-title reveal">Отправьте деньги на&nbsp;работу <em>вместо&nbsp;себя</em></h2>
       <p class="final-cta__sub reveal">3 бесплатных эфира. Конкретные инструменты. Первый пассивный доход уже через месяц.</p>
