@@ -3,14 +3,15 @@
   "configurations": [
     {
       "name": "Python HTTP Server",
-      "runtimeExecutable": "python3",
+      "runtimeExecutable": "/opt/homebrew/bin/python3",
       "runtimeArgs": ["-m", "http.server", "8000"],
-      "port": 8000
+      "port": 8000,
+      "autoPort": false
     },
     {
       "name": "npx serve",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "-l", "3000"],
+      "runtimeExecutable": "/opt/homebrew/bin/python3",
+      "runtimeArgs": ["-m", "http.server", "3000"],
       "port": 3000
     }
   ]
