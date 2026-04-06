@@ -102,7 +102,7 @@
       30%, 100% { transform: translateX(100%) rotate(15deg); }
     }
     @keyframes blink {
-      0%, 100% { opacity: 1; } 50% { opacity: 0.2; }
+      0%, 100% { opacity: 1; } 50% { opacity: 0.4; }
     }
     @keyframes coverFloat {
       0%, 100% { transform: translateY(0); }
@@ -114,7 +114,7 @@
       100% { transform: scale(1); opacity: 1; }
     }
     @keyframes slideDown {
-      0% { transform: translateY(-100%); opacity: 0; }
+      0% { transform: translateY(-30%); opacity: 0; }
       100% { transform: translateY(0); opacity: 1; }
     }
     @keyframes avatarIn {
@@ -134,11 +134,10 @@
     .pain-card:nth-child(2).visible .pain-card__icon { animation-delay: 0.08s; }
     .pain-card:nth-child(3).visible .pain-card__icon { animation-delay: 0.16s; }
 
-    /* Timer digit flip */
+    /* Timer digits — no animation, just update */
     .timer-num, .timer-inline__num {
-      display: inline-block; transition: transform 0.2s ease;
+      display: inline-block;
     }
-    .timer-flip { animation: slideDown 0.25s ease both; }
 
     /* Avatar entrance */
     .speaker-mobile__avatar { animation: avatarIn 0.5s ease 0.3s both; }
@@ -912,7 +911,7 @@
         <div class="bonus-item reveal">
           <div class="bonus-item__text">
             <div class="bonus-item__num">Урок 1</div>
-            <div class="bonus-item__title">Как получать от 10 000 рублей к зарплате каждый месяц?</div>
+            <div class="bonus-item__title">Как одно решение может приносить 150 000 ₽/мес пассивного дохода.</div>
           </div>
           <img src="lesson1.jpg" alt="Урок 1" class="bonus-item__img" width="640" height="360" loading="lazy">
         </div>
@@ -920,7 +919,7 @@
         <div class="bonus-item reveal reveal-delay-1">
           <div class="bonus-item__text">
             <div class="bonus-item__num">Урок 2</div>
-            <div class="bonus-item__title">Как превратить 100 000 рублей в 300 миллионов.</div>
+            <div class="bonus-item__title">Правило 10% и почему ваша зарплата стоит 300 миллионов.</div>
           </div>
           <img src="lesson2.jpg" alt="Урок 2" class="bonus-item__img" width="640" height="360" loading="lazy">
         </div>
@@ -928,7 +927,7 @@
         <div class="bonus-item reveal reveal-delay-2">
           <div class="bonus-item__text">
             <div class="bonus-item__num">Урок 3</div>
-            <div class="bonus-item__title">Какие инструменты принесут пассивный доход через месяц</div>
+            <div class="bonus-item__title">6 инструментов пассивного дохода с первых вложений.</div>
           </div>
           <img src="lesson3.jpg" alt="Урок 3" class="bonus-item__img" width="640" height="360" loading="lazy">
         </div>
@@ -1000,8 +999,8 @@
         var s = String(left % 60).padStart(2, '0');
         [['heroM','heroS'],['timerM','timerS']].forEach(function(p) {
           var em = document.getElementById(p[0]), es = document.getElementById(p[1]);
-          if (em && em.textContent !== m) { em.textContent = m; em.classList.remove('timer-flip'); void em.offsetWidth; em.classList.add('timer-flip'); }
-          if (es && es.textContent !== s) { es.textContent = s; es.classList.remove('timer-flip'); void es.offsetWidth; es.classList.add('timer-flip'); }
+          if (em) em.textContent = m;
+          if (es) es.textContent = s;
         });
         requestAnimationFrame(function() { setTimeout(tick, 250); });
       }
