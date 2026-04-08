@@ -1,86 +1,88 @@
 /**
- * TG Link Interceptor v2
- * Перехватывает ВСЕ способы перехода на t.me:
- * 1. <a href="t.me/..."> — подмена href
- * 2. window.open("t.me/...") — перехват
- * 3. window.location = "t.me/..." — перехват
- * 4. Клики по элементам с onclick содержащим t.me — перехват
+ * TG Link Interceptor v3
+ * Перехватывает Salebot-редиректы на t.me через обёртку formCreateHref
+ * + подмена <a> href + window.open + navigation events
  *
- * Подключить: <script src="/tg-intercept.js" defer></script>
+ * Подключить: <script src="/tg-intercept.js"></script> (до salebot скрипта или defer)
  */
 (function() {
-  var BASE = 'https://guides.fin-ra.pro/tg/';
+  var PROXY = 'https://guides.fin-ra.pro/tg/';
 
-  function rewriteUrl(url) {
+  function rewrite(url) {
     if (!url || typeof url !== 'string') return null;
-    var match = url.match(/^https?:\/\/t\.me\/([^\s]+)/);
-    if (match) return BASE + match[1];
-    return null;
+    var m = url.match(/https?:\/\/t\.me\/(.+)/);
+    return m ? PROXY + m[1] : null;
   }
 
-  // 1. Rewrite <a> href attributes
-  function processLinks() {
+  // 1. Подмена <a href="t.me/...">
+  function fixLinks() {
     document.querySelectorAll('a[href*="t.me/"]').forEach(function(a) {
-      var newHref = rewriteUrl(a.href);
-      if (newHref) a.href = newHref;
+      var r = rewrite(a.href);
+      if (r) a.href = r;
     });
   }
 
-  processLinks();
+  if (document.body) {
+    fixLinks();
+    new MutationObserver(fixLinks).observe(document.body, {
+      childList: true, subtree: true, attributes: true, attributeFilter: ['href']
+    });
+  } else {
+    document.addEventListener('DOMContentLoaded', function() {
+      fixLinks();
+      new MutationObserver(fixLinks).observe(document.body, {
+        childList: true, subtree: true, attributes: true, attributeFilter: ['href']
+      });
+    });
+  }
 
-  new MutationObserver(processLinks).observe(document.body, {
-    childList: true, subtree: true, attributes: true, attributeFilter: ['href']
-  });
-
-  // 2. Intercept window.open
-  var origOpen = window.open;
-  window.open = function(url, target, features) {
-    var rewritten = rewriteUrl(url);
-    return origOpen.call(window, rewritten || url, target, features);
+  // 2. Перехват window.open
+  var _open = window.open;
+  window.open = function(url) {
+    return _open.apply(window, [rewrite(url) || url].concat([].slice.call(arguments, 1)));
   };
 
-  // 3. Intercept clicks that navigate to t.me
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('a, button, [onclick]');
-    if (!el) return;
+  // 3. Обёртка formCreateHref (Salebot) — ждём пока функция появится
+  function wrapSalebot() {
+    if (typeof window.formCreateHref !== 'function') return;
+    if (window._tgWrapped) return;
+    window._tgWrapped = true;
 
-    // Check href
-    if (el.href) {
-      var newHref = rewriteUrl(el.href);
-      if (newHref) {
-        e.preventDefault();
-        e.stopPropagation();
-        window.location.href = newHref;
-        return;
+    var orig = window.formCreateHref;
+    window.formCreateHref = function() {
+      // Перед вызовом оригинала — подменяем data-url на всех кнопках
+      document.querySelectorAll('.salebot_button[data-url*="t.me"]').forEach(function(btn) {
+        var r = rewrite(btn.getAttribute('data-url'));
+        if (r) btn.setAttribute('data-url', r);
+      });
+      return orig.apply(this, arguments);
+    };
+  }
+
+  // Проверяем каждые 200ms пока formCreateHref не появится
+  var checkInterval = setInterval(function() {
+    wrapSalebot();
+    if (window._tgWrapped) clearInterval(checkInterval);
+  }, 200);
+  setTimeout(function() { clearInterval(checkInterval); }, 30000); // стоп через 30 сек
+
+  // 4. Перехват navigation events
+  window.addEventListener('beforeunload', function() {}, false);
+
+  // Навигация через location — перехватываем через defineProperty на document
+  var desc = Object.getOwnPropertyDescriptor(window, 'location');
+  // Не можем переопределить location напрямую — используем polling
+  var lastUrl = '';
+  setInterval(function() {
+    var current = window.location.href;
+    if (current !== lastUrl) {
+      lastUrl = current;
+      var r = rewrite(current);
+      if (r) {
+        lastUrl = r;
+        window.location.replace(r);
       }
     }
-  }, true);
-
-  // 4. Intercept form submissions / redirects via location
-  var locationProxy = new Proxy(window.location, {});
-  // Can't proxy location directly, so poll for changes
-  var lastHref = window.location.href;
-  setInterval(function() {
-    if (window.location.href !== lastHref) {
-      lastHref = window.location.href;
-      var rewritten = rewriteUrl(lastHref);
-      if (rewritten) window.location.replace(rewritten);
-    }
-  }, 100);
-
-  // 5. Intercept location.assign and location.replace
-  var origAssign = window.location.assign.bind(window.location);
-  var origReplace = window.location.replace.bind(window.location);
-
-  try {
-    Object.defineProperty(window.location, 'assign', {
-      value: function(url) { origAssign(rewriteUrl(url) || url); }
-    });
-    Object.defineProperty(window.location, 'replace', {
-      value: function(url) { origReplace(rewriteUrl(url) || url); }
-    });
-  } catch(e) {
-    // Some browsers don't allow overriding location methods
-  }
+  }, 50);
 })();
 
