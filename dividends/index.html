@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ТОП дивидендных акций на 2026 год — бесплатный PDF-гайд с подборкой лучших бумаг для пассивного дохода.">
+  <meta name="theme-color" content="#fbfbfb">
+  <meta property="og:title" content="ТОП дивидендных акций на 2026 год — Бесплатный PDF-гайд">
+  <meta property="og:description" content="17 страниц: подборка дивидендных акций с доходностями, датами выплат и рекомендациями.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://guides.fin-ra.pro/dividends/">
+  <meta property="og:image" content="https://guides.fin-ra.pro/dividends/cover.png">
+  <link rel="icon" href="/favicon.ico">
+  <title>FIN-RA — ТОП дивидендных акций 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green: #0f9d58;
+      --green-dark: #0b7a43;
+      --green-glow: rgba(15,157,88,0.15);
+      --bg: #fbfbfb;
+      --text: #1d1d1f;
+      --text-secondary: #6e6e73;
+      --separator: rgba(0,0,0,0.06);
+      --radius: 14px;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh; min-height: 100dvh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .sticky-cta { display: none; }
+
+    .page { display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh; }
+
+    /* HEADER */
+    .header {
+      padding: 1.5rem 2.5rem; display: flex; align-items: center; justify-content: space-between;
+      animation: fadeDown 0.8s ease both;
+    }
+    .header__logo { font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--text); letter-spacing: -0.03em; text-decoration: none; }
+    .header__label {
+      font-family: 'Outfit', sans-serif; font-size: 0.7rem; font-weight: 600;
+      color: var(--text-secondary); letter-spacing: 0.12em; text-transform: uppercase;
+      background: rgba(0,0,0,0.04); padding: 0.35rem 0.8rem; border-radius: 100px;
+    }
+
+    /* HERO */
+    .hero { flex: 1; display: flex; align-items: center; justify-content: center; padding: 0 2.5rem 3rem; }
+
+    .hero__inner {
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem;
+      align-items: center; max-width: 1100px; width: 100%;
+    }
+
+    .hero__content { display: flex; flex-direction: column; gap: 1.5rem; animation: fadeUp 0.8s ease 0.1s both; }
+
+    .badge { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Outfit', sans-serif; font-size: 0.8rem; font-weight: 500; color: var(--green); width: fit-content; }
+    .badge__dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
+
+    .hero__title {
+      font-family: 'Outfit', sans-serif; font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+      font-weight: 800; line-height: 1.04; letter-spacing: -0.05em;
+    }
+    .hero__title span { color: var(--green); }
+
+    .hero__desc { font-size: 1.05rem; line-height: 1.6; color: var(--text-secondary); max-width: 440px; }
+
+    .hero__bullets { display: flex; flex-direction: column; gap: 0.6rem; list-style: none; }
+    .hero__bullets li { display: flex; align-items: center; gap: 0.7rem; font-size: 0.95rem; }
+    .hero__bullets li::before {
+      content: ''; flex-shrink: 0; width: 20px; height: 20px; background: var(--green); border-radius: 50%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M8.5 13.5L5.5 10.5L6.5 9.5L8.5 11.5L13.5 6.5L14.5 7.5L8.5 13.5Z' fill='white'/%3E%3C/svg%3E");
+      background-size: cover;
+    }
+
+    .cta-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+      padding: 1rem 2rem; background: var(--green); color: #fff;
+      font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 600;
+      border: none; border-radius: var(--radius); cursor: pointer;
+      transition: all 0.3s ease; width: fit-content;
+      animation: fadeUp 0.8s ease 0.3s both, ctaGlow 4s ease-in-out 2s infinite;
+    }
+    .cta-btn:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: 0 8px 24px var(--green-glow); animation-play-state: paused; }
+    .cta-btn:active { transform: translateY(0); }
+    .cta-btn svg { width: 18px; height: 18px; }
+
+    .cta-hint { font-size: 0.75rem; color: var(--text-secondary); display: flex; align-items: center; gap: 0.375rem; }
+    .cta-hint::before {
+      content: ''; width: 14px; height: 14px; flex-shrink: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z' fill='%230f9d58'/%3E%3C/svg%3E");
+      background-size: contain;
+    }
+
+    /* COVER */
+    .hero__cover { display: flex; justify-content: center; animation: fadeUp 0.8s ease 0.25s both; }
+    .cover-wrapper { position: relative; max-width: 320px; width: 100%; cursor: pointer; }
+    .cover-img {
+      width: 100%; height: auto; border-radius: var(--radius);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.08); transition: transform 0.4s ease, box-shadow 0.4s ease;
+      animation: coverFloat 5s ease-in-out infinite;
+    }
+    .cover-wrapper:hover .cover-img { transform: translateY(-6px); box-shadow: 0 30px 60px rgba(0,0,0,0.12); animation-play-state: paused; }
+
+    .cover-float-tag {
+      position: absolute; z-index: 2; background: #fff; border-radius: 10px;
+      padding: 0.45rem 0.85rem; font-family: 'Outfit', sans-serif; font-size: 0.75rem;
+      font-weight: 600; color: var(--text); white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06); transition: transform 0.4s ease;
+    }
+    .cover-wrapper:hover .cover-float-tag--top { transform: translate(4px, -4px); }
+    .cover-wrapper:hover .cover-float-tag--bottom { transform: translate(-4px, 4px); }
+    .cover-float-tag--top { top: -12px; right: -24px; background: var(--green); color: #fff; box-shadow: 0 4px 16px var(--green-glow); }
+    .cover-float-tag--bottom { bottom: -12px; left: -20px; }
+
+    /* MODAL */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.4);
+      display: flex; align-items: center; justify-content: center; padding: 1rem;
+      opacity: 0; visibility: hidden; transition: all 0.3s ease;
+    }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+    .modal {
+      background: #fff; border-radius: 20px; padding: 2.5rem; max-width: 460px; width: 100%;
+      position: relative; transform: translateY(20px) scale(0.97); transition: transform 0.3s ease;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+    }
+    .modal-overlay.active .modal { transform: translateY(0) scale(1); }
+    .modal__close {
+      position: absolute; top: 1rem; right: 1rem; width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.04); border: none; border-radius: 50%;
+      color: var(--text-secondary); cursor: pointer; font-size: 1.1rem; transition: all 0.2s;
+    }
+    .modal__close:hover { background: rgba(0,0,0,0.08); color: var(--text); }
+
+    /* SALEBOT */
+    .modal .form_integration_block { width: 90%; margin: 0 auto; }
+    .modal .form_integration_block input[type="text"],
+    .modal .form_integration_block input[type="email"],
+    .modal .form_integration_block input[type="tel"],
+    .modal .form_integration_block input[type="number"],
+    .modal .form_integration_block textarea,
+    .modal .form_integration_block select {
+      width: 100% !important; background: #f5f5f7 !important;
+      border: 1.5px solid transparent !important; border-radius: 12px !important;
+      padding: 0.75rem 1rem !important; color: var(--text) !important;
+      font-family: 'DM Sans', sans-serif !important; font-size: 16px !important;
+      outline: none !important; transition: all 0.2s !important;
+    }
+    .modal .form_integration_block input:focus,
+    .modal .form_integration_block textarea:focus {
+      border-color: var(--green) !important; background: #fff !important;
+      box-shadow: 0 0 0 3px var(--green-glow) !important;
+    }
+    .modal .form_integration_block input::placeholder,
+    .modal .form_integration_block textarea::placeholder { color: #c7c7cc !important; }
+    .modal .form_integration_block label {
+      color: var(--text) !important; font-family: 'Outfit', sans-serif !important;
+      font-size: 0.8rem !important; font-weight: 600 !important;
+      margin-bottom: 0.35rem !important; display: block !important;
+    }
+    .modal .form_integration_block button[type="submit"],
+    .modal .form_integration_block input[type="submit"] {
+      width: 100% !important; padding: 0.875rem 1.5rem !important;
+      background: var(--green) !important; color: #fff !important;
+      font-family: 'Outfit', sans-serif !important; font-size: 1rem !important;
+      font-weight: 600 !important; border: none !important; border-radius: var(--radius) !important;
+      cursor: pointer !important; transition: all 0.2s !important;
+      box-shadow: 0 4px 16px var(--green-glow) !important;
+    }
+    .modal .form_integration_block button[type="submit"]:hover { background: var(--green-dark) !important; }
+
+    .modal .salebot_button svg, .modal .salebot_button img,
+    .modal .salebot_button .mes_ident { display: none !important; }
+    .modal .custom_social_btn_container { height: auto !important; min-height: 0 !important; }
+    .modal .salebot_button {
+      width: 100% !important; padding: 1rem 2rem !important; color: #fff !important;
+      font-family: 'Outfit', sans-serif !important; font-size: 0.95rem !important;
+      font-weight: 600 !important; border: none !important; border-radius: var(--radius) !important;
+      cursor: pointer !important; transition: all 0.2s !important; margin-bottom: 0.5rem !important;
+    }
+    .modal .tg_link { background: #2AABEE !important; }
+    .modal .tg_link:hover { background: #229ED9 !important; }
+
+    .modal .form_integration_block input[type="checkbox"] {
+      -webkit-appearance: none; appearance: none; width: 44px !important; height: 24px !important;
+      min-width: 44px; background: #e5e5ea !important; border-radius: 12px !important;
+      border: none !important; position: relative; cursor: pointer; transition: background 0.2s !important;
+      padding: 0 !important; margin: 0 !important;
+    }
+    .modal .form_integration_block input[type="checkbox"]::after {
+      content: ''; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px;
+      background: #fff; border-radius: 50%; transition: transform 0.2s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    }
+    .modal .form_integration_block input[type="checkbox"]:checked { background: var(--green) !important; }
+    .modal .form_integration_block input[type="checkbox"]::before { display: none !important; }
+    .modal .form_integration_block input[type="checkbox"]:checked::after { transform: translateX(20px); }
+    .modal .form_integration_block div:has(> input[type="checkbox"]),
+    .modal .form_integration_block label:has(> input[type="checkbox"]) {
+      display: flex !important; align-items: center !important; gap: 0.625rem !important;
+    }
+    .modal .form_integration_block div:has(> input[type="checkbox"]) a,
+    .modal .form_integration_block div:has(> input[type="checkbox"]) label,
+    .modal .form_integration_block div:has(> input[type="checkbox"]) span,
+    .modal .form_integration_block label:has(> input[type="checkbox"]) span,
+    .modal .form_integration_block label:has(> input[type="checkbox"]) a {
+      flex: 1 !important; font-size: 0.75rem !important; line-height: 1.3 !important; color: var(--text-secondary) !important;
+    }
+
+    /* PROXY HINT */
+    .proxy-hint {
+      text-align: center; padding: 0.75rem 1.5rem;
+      font-size: 0.8rem; color: var(--text-secondary);
+      background: rgba(15,157,88,0.04); border-top: 1px solid var(--separator);
+    }
+    .proxy-hint a { color: var(--green); font-weight: 600; text-decoration: none; }
+    .proxy-hint a:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    .footer { padding: 1.5rem 2.5rem; text-align: center; font-size: 0.75rem; color: var(--text-secondary); animation: fadeUp 0.8s ease 0.4s both; }
+    .footer a { color: var(--text-secondary); text-decoration: none; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes ctaGlow { 0%, 100% { box-shadow: 0 2px 8px transparent; } 50% { box-shadow: 0 6px 28px var(--green-glow); } }
+    @keyframes coverFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+
+    /* LARGE SCREENS */
+    @media (min-width: 1400px) { .hero__inner { max-width: 1300px; gap: 5rem; } .hero__title { font-size: 3.8rem; } .cover-wrapper { max-width: 380px; } }
+    @media (min-width: 1800px) { .hero__inner { max-width: 1500px; gap: 6rem; } .hero__title { font-size: 4.2rem; } .cover-wrapper { max-width: 420px; } }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .hero__inner { grid-template-columns: 1fr; gap: 1.5rem; text-align: center; }
+      .hero__content { align-items: center; gap: 1rem; }
+      .hero__desc { max-width: 100%; }
+      .hero__bullets { align-items: flex-start; text-align: left; }
+      .hero__content .cta-btn { display: none; }
+      .hero__content .cta-hint { display: none; }
+      .hero__cover { order: -1; }
+      .cover-wrapper { width: 160px; max-width: 160px; }
+      .cover-float-tag--top { right: -8px; font-size: 0.65rem; padding: 0.3rem 0.6rem; }
+      .cover-float-tag--bottom { left: -8px; font-size: 0.65rem; padding: 0.3rem 0.6rem; }
+      .hero { padding: 0.5rem 1.25rem 5rem; }
+      .header { padding: 1rem 1.25rem; }
+      .badge { display: none; }
+      .sticky-cta {
+        display: flex; position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+        padding: 0.75rem 1.25rem calc(env(safe-area-inset-bottom, 0px) + 0.75rem);
+        background: rgba(251,251,251,0.92); border-top: 1px solid var(--separator);
+      }
+      .sticky-cta .cta-btn { width: 100%; padding: 0.875rem 1.5rem; animation: none; }
+      .modal-overlay { align-items: flex-end; padding: 0; }
+      .modal {
+        padding: 1rem 1rem calc(env(safe-area-inset-bottom, 0px) + 1rem);
+        border-radius: 20px 20px 0 0; max-height: 92dvh; overflow-y: auto;
+        margin: 0 6px; width: calc(100% - 12px);
+      }
+      .modal__close { width: 28px; height: 28px; top: 0.75rem; right: 0.75rem; }
+      .modal .form_integration_block { width: 100% !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+    <header class="header">
+      <span class="header__logo">FIN-RA</span>
+      <span class="header__label">Дивиденды 2026</span>
+    </header>
+
+    <main class="hero">
+      <div class="hero__inner">
+        <div class="hero__content">
+          <div class="badge">
+            <span class="badge__dot"></span>
+            PDF-гайд — 17 страниц
+          </div>
+
+          <h1 class="hero__title">
+            ТОП <span>дивидендных</span><br>акций на 2026 год
+          </h1>
+
+          <p class="hero__desc">
+            Подборка лучших дивидендных акций российского рынка с доходностями, датами выплат и рекомендациями от школы FIN-RA.
+          </p>
+
+          <ul class="hero__bullets">
+            <li>Акции с дивидендной доходностью от 10% годовых</li>
+            <li>Даты ближайших выплат и размеры дивидендов</li>
+            <li>Рекомендации для составления дивидендного портфеля</li>
+          </ul>
+
+          <div class="proxy-hint" style="text-align:left;background:none;border:none;padding:0;margin-top:-0.5rem">
+            Проблемы с Telegram? <a href="tg://proxy?server=proxy.fin-ra.pro&port=8443&secret=ee24e07bbc4b4290c4251d17c437b13e8670726f78792e66696e2d72612e70726f">Подключите бесплатный прокси</a>
+          </div>
+
+          <button class="cta-btn" onclick="openModal()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Забрать гайд бесплатно
+          </button>
+          <span class="cta-hint">Гайд придёт в Telegram</span>
+        </div>
+
+        <div class="hero__cover">
+          <div class="cover-wrapper" onclick="openModal()">
+            <span class="cover-float-tag cover-float-tag--top">Бесплатно</span>
+            <img src="cover.png" alt="Обложка гайда ТОП дивидендных акций 2026" class="cover-img" width="565" height="800">
+            <span class="cover-float-tag cover-float-tag--bottom">PDF, 17 страниц</span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      &copy; <a href="https://fin-ra.ru/">FIN-RA</a> — Школа безопасных инвестиций
+    </footer>
+  </div>
+
+  <div class="sticky-cta">
+    <button class="cta-btn" onclick="openModal()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Забрать гайд бесплатно
+    </button>
+  </div>
+
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+    <div class="modal">
+      <button class="modal__close" onclick="closeModal()">&times;</button>
+      <script src='https://salebot.pro/js/form_scripts.js'></script>
+      <div class='form_integration_block'></div>
+      <script>
+        FormIntegration.init({
+          project_id: 317313,
+          guid: '75382c3836819abab95a19511bf78fc1'
+        })
+      </script>
+    </div>
+  </div>
+
+  <script>
+    function openModal() { document.getElementById('modalOverlay').classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeModal() { document.getElementById('modalOverlay').classList.remove('active'); document.body.style.overflow = ''; }
+    function closeModalOutside(e) { if (e.target === e.currentTarget) closeModal(); }
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+  </script>
+</body>
+</html>
