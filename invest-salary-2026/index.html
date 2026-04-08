@@ -442,14 +442,18 @@
     .program-card__accent {
       position: absolute; top: 0; left: 0; right: 0;
       height: 3px; background: linear-gradient(90deg, var(--green), transparent);
-      opacity: 0; transition: opacity 0.25s;
     }
-    .program-card:hover .program-card__accent { opacity: 1; }
 
     .program-card__day {
       font-family: var(--font-display); font-size: 0.6rem;
       font-weight: 700; text-transform: uppercase;
       letter-spacing: 0.1em; color: var(--green); margin-bottom: 0.6rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .program-card__date {
+      font-size: 0.58rem; font-weight: 700; color: #fff;
+      background: var(--green); border-radius: 100px;
+      padding: 0.2rem 0.55rem; text-transform: none; letter-spacing: 0;
     }
     .program-card__title {
       font-family: var(--font-display); font-size: 1.05rem;
@@ -794,11 +798,11 @@
 
       .hero__title { font-size: clamp(2.4rem, 11vw, 3.2rem); line-height: 1.05; }
       .hero__sub {
-        font-size: 0.92rem; max-width: 100%; text-align: left;
+        font-size: 0.92rem; max-width: 100%; text-align: center;
         color: var(--text); font-weight: 500; line-height: 1.45;
       }
-      .gift-block { justify-content: center; }
-      .gift-book { width: 60px; }
+      .gift-block { flex-direction: row; align-items: center; }
+      .gift-book { width: 65px; flex-shrink: 0; }
       .gift-text { font-size: 0.82rem; text-align: left; }
       .gift-info { align-items: flex-start; }
       .timer-box { margin: 0; }
@@ -942,7 +946,7 @@
       <div class="program-grid">
         <div class="program-card reveal">
           <div class="program-card__accent"></div>
-          <div class="program-card__day">Эфир 1 — Фондовый рынок</div>
+          <div class="program-card__day"><span>Эфир 1 — Фондовый рынок</span><span class="program-card__date" id="pday1"></span></div>
           <div class="program-card__title">Дивиденды как вторая зарплата</div>
           <ul class="program-card__list">
             <li>Как получать 100 000 ₽/мес на дивидендах</li>
@@ -953,7 +957,7 @@
         </div>
         <div class="program-card reveal reveal-delay-1">
           <div class="program-card__accent"></div>
-          <div class="program-card__day">Эфир 2 — Криптовалюта</div>
+          <div class="program-card__day"><span>Эфир 2 — Криптовалюта</span><span class="program-card__date" id="pday2"></span></div>
           <div class="program-card__title">Финансовый прорыв на крипте</div>
           <ul class="program-card__list">
             <li>Почему крипторынок — трамплин для новичков</li>
@@ -964,7 +968,7 @@
         </div>
         <div class="program-card reveal reveal-delay-2">
           <div class="program-card__accent"></div>
-          <div class="program-card__day">Эфир 3 — Недвижимость</div>
+          <div class="program-card__day"><span>Эфир 3 — Недвижимость</span><span class="program-card__date" id="pday3"></span></div>
           <div class="program-card__title">Недвижимость без стартового капитала</div>
           <ul class="program-card__list">
             <li>Кладовки с доходностью 15-20% годовых</li>
@@ -1096,6 +1100,8 @@
         var d = new Date(d1.getTime() + i * 86400000);
         var el = document.getElementById('day' + (i + 1));
         if (el) el.textContent = d.getDate() + ' ' + months[d.getMonth()];
+        var pd = document.getElementById('pday' + (i + 1));
+        if (pd) pd.textContent = d.getDate() + ' ' + months[d.getMonth()] + ', 19:00';
       }
     })();
 
