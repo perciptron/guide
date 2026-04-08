@@ -143,8 +143,8 @@
     .speaker-mobile__avatar { animation: avatarIn 0.5s ease 0.3s both; }
 
     /* Bonus card hover lift (desktop) */
-    .bonus-item { transition: transform 0.25s ease, box-shadow 0.25s ease; }
-    .bonus-item:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
+    .bonus-item { transition: transform 0.25s ease, box-shadow 0.25s ease; will-change: transform; }
+    .bonus-item:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.18); }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
@@ -246,7 +246,7 @@
       animation: fadeUp 0.6s ease 0.32s both;
     }
     .gift-text {
-      font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary);
+      font-size: 0.92rem; line-height: 1.5; color: var(--text-secondary);
     }
     .gift-text strong { color: var(--text); }
 
@@ -293,7 +293,7 @@
       border-radius: var(--radius-sm); padding: 0.35rem 0.85rem;
     }
     .timer-box__label {
-      font-family: var(--font-display); font-size: 0.55rem; font-weight: 700;
+      font-family: var(--font-display); font-size: 0.65rem; font-weight: 700;
       color: #dc2626; text-transform: uppercase; letter-spacing: 0.05em;
     }
     .timer-digits { display: flex; align-items: center; gap: 0.1rem; }
@@ -476,8 +476,8 @@
        4. BONUSES — dark block like old site
        ================================ */
     .bonus-section {
-      background: #252323; color: #fff;
-      padding: 3.5rem 0;
+      background: #1a1a1a; color: #fff;
+      padding: 3.5rem 0; overflow: hidden;
     }
     .bonus-container {
       max-width: 1100px; margin: 0 auto;
@@ -489,25 +489,57 @@
       margin-bottom: 2rem;
     }
     .bonus-list {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem; margin-bottom: 2rem;
+      display: flex; gap: 1.25rem;
+      overflow-x: auto; overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      padding: 0.5rem 0 1.5rem;
+      margin: 0 -2rem 2rem;
+      padding-left: 2rem; padding-right: 2rem;
+      scrollbar-width: none;
     }
+    .bonus-list::-webkit-scrollbar { display: none; }
     .bonus-item {
-      background: #fff; border-radius: 16px; overflow: hidden;
+      flex: 0 0 min(85%, 320px);
+      scroll-snap-align: start;
+      border-radius: 20px; overflow: hidden;
       color: var(--text); text-align: left;
+      position: relative;
+      background: #fff;
     }
-    .bonus-item__text { padding: 1.25rem 1.5rem; }
-    .bonus-item__num {
-      font-family: var(--font-display); font-size: 1.1rem;
-      font-weight: 800; margin-bottom: 0.25rem;
-    }
-    .bonus-item__title {
-      font-family: var(--font-body); font-size: 0.95rem;
-      line-height: 1.4; color: var(--text-secondary);
+    .bonus-item__img-wrap {
+      position: relative; overflow: hidden;
+      aspect-ratio: 16/10;
     }
     .bonus-item__img {
-      width: 100%; height: auto;
-      display: block;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: left center; display: block;
+    }
+    .bonus-item__num {
+      position: absolute; top: 0.75rem; left: 0.75rem;
+      background: var(--green); color: #fff;
+      font-family: var(--font-display); font-size: 0.7rem; font-weight: 800;
+      padding: 0.3rem 0.75rem; border-radius: 50px;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      z-index: 1;
+    }
+    .bonus-item__text { padding: 1.15rem 1.25rem 1.25rem; }
+    .bonus-item__title {
+      font-family: var(--font-display); font-size: 0.95rem; font-weight: 700;
+      line-height: 1.35; color: var(--text);
+    }
+    /* Scroll dots */
+    .bonus-dots {
+      display: flex; justify-content: center; gap: 6px;
+      margin-bottom: 1.5rem;
+    }
+    .bonus-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(255,255,255,0.25); transition: all 0.3s;
+    }
+    .bonus-dot.active {
+      background: var(--green); width: 20px; border-radius: 3px;
     }
     .bonus-cta {
       display: inline-flex; align-items: center; justify-content: center;
@@ -523,16 +555,27 @@
       box-shadow: 0 8px 24px rgba(15,157,88,0.4);
       transform: translateY(-2px);
     }
+    /* Scroll hint animation */
+    @keyframes scrollHint {
+      0%, 100% { transform: translateX(0); }
+      40% { transform: translateX(-30px); }
+      60% { transform: translateX(0); }
+    }
+    .bonus-list--hint { animation: scrollHint 1.2s ease 1.5s 1; }
 
     @media (max-width: 768px) {
       .bonus-section { padding: 2.5rem 0; }
       .bonus-container { padding: 0 1.25rem; }
       .bonus-heading { font-size: 1.3rem; margin-bottom: 1.5rem; }
-      .bonus-list { grid-template-columns: 1fr; gap: 1rem; }
+      .bonus-list { margin: 0 -1.25rem 1.5rem; padding-left: 1.25rem; padding-right: 1.25rem; gap: 0.85rem; }
+      .bonus-item { flex: 0 0 78%; }
       .bonus-item__text { padding: 1rem 1.15rem; }
-      .bonus-item__num { font-size: 1rem; }
       .bonus-item__title { font-size: 0.88rem; }
       .bonus-cta { width: 100%; padding: 0.9rem; }
+    }
+    @media (min-width: 769px) {
+      .bonus-item { flex: 0 0 calc(33.333% - 0.85rem); }
+      .bonus-list { overflow: visible; flex-wrap: nowrap; }
     }
 
     /* ================================
@@ -801,11 +844,12 @@
         font-size: 0.92rem; max-width: 100%; text-align: center;
         color: var(--text); font-weight: 500; line-height: 1.45;
       }
-      .gift-block { flex-direction: row; align-items: center; }
-      .gift-book { width: 65px; flex-shrink: 0; }
-      .gift-text { font-size: 0.82rem; text-align: left; }
-      .gift-info { align-items: flex-start; }
+      .gift-block { flex-direction: row; align-items: center; width: 100%; padding: 1rem; background: var(--bg-alt); border-radius: 14px; gap: 0.85rem; }
+      .gift-book { width: 85px; flex-shrink: 0; }
+      .gift-text { font-size: 0.85rem; text-align: left; }
+      .gift-info { align-items: flex-start; flex: 1; min-width: 0; }
       .timer-box { margin: 0; }
+      .gift-row { width: 100%; }
       .pain-card__text { font-size: 0.88rem; }
       .program-card__list li { font-size: 0.88rem; }
 
@@ -990,30 +1034,42 @@
     <div class="bonus-container">
       <h2 class="bonus-heading reveal">Пройдите регистрацию сейчас и&nbsp;получите в&nbsp;подарок 3&nbsp;урока «Основы инвестирования»</h2>
 
-      <div class="bonus-list">
-        <div class="bonus-item reveal">
-          <div class="bonus-item__text">
-            <div class="bonus-item__num">Урок 1</div>
-            <div class="bonus-item__title">Как одно решение может приносить 150 000 ₽/мес пассивного дохода.</div>
+      <div class="bonus-list bonus-list--hint" id="bonusList">
+        <div class="bonus-item">
+          <div class="bonus-item__img-wrap">
+
+            <img src="lesson1.jpg" alt="Урок 1" class="bonus-item__img" width="640" height="360" loading="lazy">
           </div>
-          <img src="lesson1.jpg" alt="Урок 1" class="bonus-item__img" width="640" height="360" loading="lazy">
+          <div class="bonus-item__text">
+            <div class="bonus-item__title">Как одно решение может приносить 150 000 ₽/мес пассивного дохода</div>
+          </div>
         </div>
 
-        <div class="bonus-item reveal reveal-delay-1">
-          <div class="bonus-item__text">
-            <div class="bonus-item__num">Урок 2</div>
-            <div class="bonus-item__title">Правило 10% и почему ваша зарплата стоит 300 миллионов.</div>
+        <div class="bonus-item">
+          <div class="bonus-item__img-wrap">
+
+            <img src="lesson2.jpg" alt="Урок 2" class="bonus-item__img" width="640" height="360" loading="lazy">
           </div>
-          <img src="lesson2.jpg" alt="Урок 2" class="bonus-item__img" width="640" height="360" loading="lazy">
+          <div class="bonus-item__text">
+            <div class="bonus-item__title">Правило 10% и почему ваша зарплата стоит 300 миллионов</div>
+          </div>
         </div>
 
-        <div class="bonus-item reveal reveal-delay-2">
-          <div class="bonus-item__text">
-            <div class="bonus-item__num">Урок 3</div>
-            <div class="bonus-item__title">6 инструментов пассивного дохода с первых вложений.</div>
+        <div class="bonus-item">
+          <div class="bonus-item__img-wrap">
+
+            <img src="lesson3.jpg" alt="Урок 3" class="bonus-item__img" width="640" height="360" loading="lazy">
           </div>
-          <img src="lesson3.jpg" alt="Урок 3" class="bonus-item__img" width="640" height="360" loading="lazy">
+          <div class="bonus-item__text">
+            <div class="bonus-item__title">6 инструментов пассивного дохода с первых вложений</div>
+          </div>
         </div>
+      </div>
+
+      <div class="bonus-dots" id="bonusDots">
+        <span class="bonus-dot active"></span>
+        <span class="bonus-dot"></span>
+        <span class="bonus-dot"></span>
       </div>
 
       <button class="bonus-cta reveal" onclick="openModal()">Получить подарок!</button>
@@ -1111,6 +1167,22 @@
         entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
       }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
       document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+    })();
+
+    // Bonus carousel dots
+    (function() {
+      var list = document.getElementById('bonusList');
+      var dots = document.querySelectorAll('#bonusDots .bonus-dot');
+      if (!list || !dots.length) return;
+      list.addEventListener('scroll', function() {
+        var scrollLeft = list.scrollLeft;
+        var itemWidth = list.querySelector('.bonus-item').offsetWidth;
+        var gap = 14;
+        var idx = Math.round(scrollLeft / (itemWidth + gap));
+        dots.forEach(function(d, i) { d.classList.toggle('active', i === idx); });
+      }, { passive: true });
+      // Remove hint animation after first interaction
+      list.addEventListener('touchstart', function() { list.classList.remove('bonus-list--hint'); }, { once: true, passive: true });
     })();
 
     // Sticky CTA
