@@ -147,10 +147,11 @@
     }
     .modal-overlay.active .modal { transform: translateY(0) scale(1); }
     .modal__close {
-      position: absolute; top: 0.75rem; right: 0.75rem; width: 44px; height: 44px;
+      position: absolute; top: 0.75rem; right: 0.75rem; width: 48px; height: 48px;
       display: flex; align-items: center; justify-content: center;
-      background: rgba(0,0,0,0.04); border: none; border-radius: 50%;
-      color: var(--text-secondary); cursor: pointer; font-size: 1.3rem; transition: all 0.2s;
+      background: rgba(0,0,0,0.06); border: none; border-radius: 50%;
+      color: var(--text-secondary); cursor: pointer; font-size: 1.4rem; transition: all 0.2s;
+      z-index: 10; touch-action: manipulation; -webkit-tap-highlight-color: rgba(0,0,0,0.1);
     }
     .modal__close:hover { background: rgba(0,0,0,0.08); color: var(--text); }
 
@@ -349,7 +350,7 @@
 
   <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
     <div class="modal">
-      <button class="modal__close" onclick="closeModal()">&times;</button>
+      <button class="modal__close" onclick="closeModal()" ontouchend="event.preventDefault(); closeModal()">&times;</button>
       <script src='https://salebot.pro/js/form_scripts.js'></script>
       <div class='form_integration_block'></div>
       <script>
@@ -367,5 +368,6 @@
     function closeModalOutside(e) { if (e.target === e.currentTarget) closeModal(); }
     document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
   </script>
+<script src="/tg-intercept.js" defer></script>
 </body>
 </html>

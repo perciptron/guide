@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Открываем Telegram...</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #fbfbfb; color: #1d1d1f;
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 2rem;
+    }
+    .container { max-width: 400px; }
+    .spinner {
+      width: 40px; height: 40px; margin: 0 auto 1.5rem;
+      border: 3px solid rgba(15,157,88,0.15);
+      border-top-color: #0f9d58;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    h1 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
+    p { font-size: 0.9rem; color: #6e6e73; line-height: 1.5; margin-bottom: 1.5rem; }
+    .fallback-link {
+      display: inline-block; padding: 0.75rem 2rem;
+      background: #0f9d58; color: #fff; text-decoration: none;
+      border-radius: 12px; font-weight: 600; font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+    .fallback-link:hover { background: #0b7a43; }
+    .hidden { display: none; }
+    .not-found { max-width: 400px; }
+    .not-found h1 { font-size: 1.5rem; }
+    .not-found a { color: #0f9d58; text-decoration: none; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <!-- TG redirect screen -->
+  <div class="container" id="tgScreen" class="hidden">
+    <div class="spinner"></div>
+    <h1>Открываем Telegram...</h1>
+    <p>Если приложение не открылось автоматически, нажмите кнопку ниже</p>
+    <a id="fallbackLink" href="#" class="fallback-link">Открыть в Telegram</a>
+  </div>
+
+  <!-- 404 screen -->
+  <div class="not-found hidden" id="notFoundScreen">
+    <h1>Страница не найдена</h1>
+    <p>Такой страницы нет. Вернитесь на главную.</p>
+    <a href="/">← На главную</a>
+  </div>
+
+  <script>
+    (function() {
+      var path = window.location.pathname;
+      var search = window.location.search;
+
+      // Check if this is a /tg/ redirect
+      var tgMatch = path.match(/^\/tg\/([^\/\?]+)/);
+
+      if (tgMatch) {
+        // TG redirect mode
+        var botName = tgMatch[1];
+        var params = new URLSearchParams(search);
+
+        // Build tg:// deep link
+        var tgDeepLink = 'tg://resolve?domain=' + encodeURIComponent(botName);
+        params.forEach(function(value, key) {
+          tgDeepLink += '&' + encodeURIComponent(key) + '=' + encodeURIComponent(value);
+        });
+
+        // Build t.me fallback
+        var tmeFallback = 'https://t.me/' + botName + search;
+
+        // Show TG screen
+        document.getElementById('tgScreen').classList.remove('hidden');
+        document.getElementById('notFoundScreen').classList.add('hidden');
+        document.getElementById('fallbackLink').href = tmeFallback;
+
+        // Try deep link immediately
+        window.location.href = tgDeepLink;
+
+        // Fallback after 3 seconds
+        setTimeout(function() {
+          // If we're still on this page, deep link didn't work
+          window.location.href = tmeFallback;
+        }, 3000);
+
+      } else {
+        // Normal 404
+        document.getElementById('tgScreen').classList.add('hidden');
+        document.getElementById('notFoundScreen').classList.remove('hidden');
+      }
+    })();
+  </script>
+</body>
+</html>
