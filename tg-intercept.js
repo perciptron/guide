@@ -64,7 +64,15 @@
     wrapSalebot();
     if (window._tgWrapped) clearInterval(checkInterval);
   }, 200);
-  setTimeout(function() { clearInterval(checkInterval); }, 30000); // стоп через 30 сек
+  setTimeout(function() { clearInterval(checkInterval); }, 30000);
+
+  // Version stamp in footer
+  document.addEventListener('DOMContentLoaded', function() {
+    var footer = document.querySelector('.footer, footer');
+    if (footer && footer.textContent.indexOf(' v') === -1) {
+      footer.innerHTML = footer.innerHTML.replace(/©/g, '© ').replace(/FIN-RA\b(?!.*\bv\d)/, 'FIN-RA v3');
+    }
+  });
 
   // 4. Перехват navigation events
   window.addEventListener('beforeunload', function() {}, false);
