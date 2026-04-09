@@ -930,7 +930,7 @@
               <div class="timer-box">
                 <span class="timer-box__label">Сгорит через</span>
                 <div class="timer-digits">
-                  <span class="timer-num" id="heroM">05</span>
+                  <span class="timer-num" id="heroM">02</span>
                   <span class="timer-sep">:</span>
                   <span class="timer-num" id="heroS">00</span>
                 </div>
@@ -1091,7 +1091,7 @@
         <p>Индивидуальный предприниматель Толстяков Дмитрий Павлович</p>
         <p>Юр. адрес: Российская Федерация, 191186, Санкт-Петербург, пл. Дворцовая, д. 4, кв. 84</p>
         <p>ОГРНИП 310784733300113 ИНН 784100319408</p>
-        <p>Расчетный счет 40802810700001086829, Банк АО «Тинькофф Банк», БИК банка 044525974, Корр. счет 30101810145250000974</p>
+        <p>Расчетный счет 40802810700001086829, Банк АО «Т-Банк», БИК банка 044525974, Корр. счет 30101810145250000974</p>
       </div>
       <div class="footer__col">
         <a href="https://fin-ra.ru/policy-dt">Политика обработки персональных данных</a>
@@ -1128,7 +1128,7 @@
     // Timer (synced hero + final) — restarts on 0
     (function() {
       var key = 'isTimerEnd2026v4';
-      function reset() { var e = Date.now() + 5*60*1000; sessionStorage.setItem(key, e); return e; }
+      function reset() { var e = Date.now() + 2*60*1000; sessionStorage.setItem(key, e); return e; }
       var stored = sessionStorage.getItem(key);
       var end = (stored && parseInt(stored,10) > Date.now()) ? parseInt(stored,10) : reset();
       function tick() {
