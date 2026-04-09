@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3 стратегии инвестиций для занятых людей — Дмитрий Толстяков</title>
+  <title>3 стратегии инвестиций для занятых людей · Дмитрий Толстяков</title>
   <meta name="description" content="Как создать капитал и выйти на пассивный доход, если у вас мало времени. Три рабочие стратегии от Дмитрия Толстякова, FIN-RA.">
+  <meta property="og:title" content="3 стратегии инвестиций для занятых людей">
+  <meta property="og:description" content="Как создать капитал и выйти на пассивный доход, если у вас мало времени. Три рабочие стратегии от Дмитрия Толстякова.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="FIN-RA">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,9 +24,11 @@
       --gold: #C9A84C;
       --gold-light: #E2C87A;
       --text: #F0EAE0;
-      --muted: #A09080;
+      --muted: #B8A898;
       --border: rgba(201, 168, 76, 0.2);
+      --border-hover: rgba(201, 168, 76, 0.45);
       --radius: 12px;
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     html { scroll-behavior: smooth; }
@@ -33,6 +40,19 @@
       font-size: 16px;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    /* ── GRAIN OVERLAY ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px;
     }
 
     /* ── HEADER ── */
@@ -59,7 +79,21 @@
       margin: 0 auto;
       padding: 72px 24px 48px;
       text-align: center;
+      position: relative;
     }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(201,168,76,0.07) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero > * { position: relative; z-index: 1; }
     .hero .label {
       display: inline-block;
       font-size: 12px;
@@ -149,6 +183,25 @@
       background: var(--border);
     }
 
+    /* ── SECTION BREAK ── */
+    .section-break {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 1px;
+      position: relative;
+      margin-bottom: 64px;
+    }
+    .section-break::before {
+      content: '';
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      top: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
     /* ── SYNOPSIS ── */
     .synopsis {
       max-width: 760px;
@@ -197,9 +250,7 @@
     }
 
     /* strategy card */
-    .strategy {
-      margin-bottom: 64px;
-    }
+    .strategy { margin-bottom: 64px; }
     .strategy-body {
       background: var(--bg2);
       border: 1px solid var(--border);
@@ -209,6 +260,16 @@
     }
     .strategy-body p { font-size: 15px; margin-bottom: 14px; }
     .strategy-body p:last-child { margin-bottom: 0; }
+
+    /* ── UTILITY CLASSES ── */
+    .body-note { font-size: 14px; color: var(--muted); margin-top: 8px; }
+    .section-lead { font-size: 15px; color: var(--muted); margin-bottom: 24px; }
+    .section-sublead { font-size: 15px; color: var(--muted); margin: 20px 0 12px; }
+    .detail-list { padding-left: 20px; color: var(--muted); font-size: 14px; margin-bottom: 16px; }
+    .detail-list li { margin-bottom: 6px; }
+    .detail-list li:last-child { margin-bottom: 0; }
+    .small-note { font-size: 13px; color: var(--muted); margin-top: 8px; }
+    .case-box-spaced { margin-top: 24px; }
 
     /* tools grid */
     .tools-grid {
@@ -222,124 +283,68 @@
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 16px 18px;
+      transition: border-color 0.3s var(--ease), transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
     }
-    .tool-card .tool-name {
-      font-weight: 700;
-      font-size: 14px;
-      color: var(--gold-light);
-      margin-bottom: 4px;
+    .tool-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201,168,76,0.06);
     }
-    .tool-card .tool-desc {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.5;
-    }
+    .tool-card .tool-name { font-weight: 700; font-size: 14px; color: var(--gold-light); margin-bottom: 4px; }
+    .tool-card .tool-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
 
     /* portfolio table */
-    .portfolio-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-      font-size: 14px;
-    }
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; }
+    .portfolio-table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 400px; }
     .portfolio-table th {
-      text-align: left;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gold);
-      padding: 10px 14px;
-      border-bottom: 1px solid var(--border);
-      font-weight: 600;
+      text-align: left; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gold); padding: 10px 14px; border-bottom: 1px solid var(--border); font-weight: 600;
     }
     .portfolio-table td {
-      padding: 12px 14px;
-      border-bottom: 1px solid rgba(201,168,76,0.08);
-      color: var(--muted);
-      vertical-align: top;
+      padding: 12px 14px; border-bottom: 1px solid rgba(201,168,76,0.08);
+      color: var(--muted); vertical-align: top;
     }
     .portfolio-table td:first-child { color: var(--text); font-weight: 500; }
     .portfolio-table tr:last-child td { border-bottom: none; }
 
     /* stat highlight */
-    .stat-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin: 20px 0;
-    }
+    .stat-row { display: flex; flex-wrap: wrap; gap: 16px; margin: 20px 0; }
     .stat-item {
-      flex: 1 1 140px;
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 18px 20px;
-      text-align: center;
+      flex: 1 1 140px; background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 8px; padding: 18px 20px; text-align: center;
+      transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
     }
+    .stat-item:hover { border-color: var(--border-hover); box-shadow: 0 4px 16px rgba(201,168,76,0.06); }
     .stat-item .stat-val {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 28px;
-      font-weight: 600;
-      color: var(--gold-light);
-      line-height: 1;
-      margin-bottom: 6px;
+      font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600;
+      color: var(--gold-light); line-height: 1; margin-bottom: 6px;
+      transition: color 0.3s var(--ease);
     }
-    .stat-item .stat-label {
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.4;
-    }
+    .stat-item:hover .stat-val { color: var(--gold); }
+    .stat-item .stat-label { font-size: 12px; color: var(--muted); line-height: 1.4; }
 
     /* case box */
     .case-box {
       background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.02));
-      border: 1px solid rgba(201,168,76,0.35);
-      border-radius: var(--radius);
-      padding: 24px 28px;
-      margin: 20px 0;
+      border: 1px solid rgba(201,168,76,0.35); border-radius: var(--radius);
+      padding: 24px 28px; margin: 20px 0;
     }
-    .case-box .case-label {
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
+    .case-box .case-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 10px; }
     .case-box p { font-size: 15px; margin-bottom: 8px; }
     .case-box p:last-child { margin-bottom: 0; }
     .case-box strong { color: var(--gold-light); }
 
-    /* withdrawal section */
-    .withdrawal {
-      margin-bottom: 64px;
-    }
-    .withdrawal-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 14px;
-      margin: 20px 0;
-    }
+    /* withdrawal */
+    .withdrawal { margin-bottom: 64px; }
+    .withdrawal-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; margin: 20px 0; }
     .wr-card {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px 20px;
-      text-align: center;
+      background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 24px 20px; text-align: center;
+      transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
     }
-    .wr-card .wr-pct {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 40px;
-      font-weight: 600;
-      color: var(--gold);
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    .wr-card .wr-label {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.4;
-    }
+    .wr-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+    .wr-card .wr-pct { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 600; color: var(--gold); line-height: 1; margin-bottom: 8px; }
+    .wr-card .wr-label { font-size: 13px; color: var(--muted); line-height: 1.4; }
     .wr-card.highlight { border-color: rgba(201,168,76,0.5); }
     .wr-card.highlight .wr-pct { color: var(--gold-light); }
 
@@ -347,104 +352,50 @@
     .avoid-section { margin-bottom: 64px; }
     .avoid-list { list-style: none; margin-top: 20px; }
     .avoid-list li {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      padding: 16px 0;
-      border-bottom: 1px solid rgba(201,168,76,0.08);
-      font-size: 15px;
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 16px 0; border-bottom: 1px solid rgba(201,168,76,0.08); font-size: 15px;
     }
     .avoid-list li:last-child { border-bottom: none; }
     .avoid-list .avoid-num {
-      flex-shrink: 0;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: rgba(201,168,76,0.1);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--gold);
-      margin-top: 2px;
+      flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(201,168,76,0.1); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: var(--gold); margin-top: 2px;
+      transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
     }
-    .avoid-list .avoid-text strong {
-      display: block;
-      color: var(--text);
-      font-weight: 600;
-      margin-bottom: 2px;
-    }
+    .avoid-list li:hover .avoid-num { background: rgba(201,168,76,0.18); border-color: var(--border-hover); }
+    .avoid-list .avoid-text strong { display: block; color: var(--text); font-weight: 600; margin-bottom: 2px; }
     .avoid-list .avoid-text span { color: var(--muted); font-size: 14px; }
 
     /* quote */
-    .quote-block {
-      border-left: 3px solid var(--gold);
-      padding: 18px 24px;
-      margin: 28px 0;
-      background: var(--bg2);
-      border-radius: 0 var(--radius) var(--radius) 0;
-    }
-    .quote-block p {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 19px;
-      font-style: italic;
-      color: var(--text);
-      line-height: 1.5;
-    }
-    .quote-block cite {
-      display: block;
-      margin-top: 10px;
-      font-size: 13px;
-      color: var(--muted);
-      font-style: normal;
-    }
+    .quote-block { border-left: 3px solid var(--gold); padding: 18px 24px; margin: 28px 0; background: var(--bg2); border-radius: 0 var(--radius) var(--radius) 0; }
+    .quote-block p { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-style: italic; color: var(--text); line-height: 1.5; }
+    .quote-block cite { display: block; margin-top: 10px; font-size: 13px; color: var(--muted); font-style: normal; }
 
     /* CTA */
     .cta-section {
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 64px 24px;
-      text-align: center;
-      margin-bottom: 0;
+      background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 64px 24px; text-align: center; position: relative; overflow: hidden;
     }
-    .cta-section h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(26px, 4vw, 38px);
-      font-weight: 600;
-      margin-bottom: 14px;
+    .cta-section::before {
+      content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%);
+      width: 500px; height: 300px;
+      background: radial-gradient(ellipse, rgba(201,168,76,0.05) 0%, transparent 70%);
+      pointer-events: none;
     }
-    .cta-section p {
-      font-size: 16px;
-      color: var(--muted);
-      max-width: 480px;
-      margin: 0 auto 32px;
-    }
+    .cta-section > * { position: relative; z-index: 1; }
+    .cta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(26px, 4vw, 38px); font-weight: 600; margin-bottom: 14px; }
+    .cta-section p { font-size: 16px; color: var(--muted); max-width: 480px; margin: 0 auto 32px; }
     .btn-gold {
-      display: inline-block;
-      background: var(--gold);
-      color: #0E0A06;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 15px;
-      letter-spacing: 0.04em;
-      padding: 16px 36px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
+      display: inline-block; background: var(--gold); color: #0E0A06;
+      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px;
+      letter-spacing: 0.04em; padding: 16px 36px; border-radius: 8px; text-decoration: none;
+      transition: background 0.2s var(--ease), transform 0.15s var(--ease), box-shadow 0.3s var(--ease);
     }
-    .btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.2); }
 
     /* FOOTER */
-    footer {
-      padding: 32px 24px;
-      text-align: center;
-      font-size: 13px;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-    }
+    footer { padding: 32px 24px; text-align: center; font-size: 13px; color: var(--muted); border-top: 1px solid var(--border); }
     footer a { color: var(--gold); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
@@ -452,11 +403,33 @@
     .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-in.visible { opacity: 1; transform: none; }
 
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { padding: 56px 24px 40px; }
+      .hero::before { width: 400px; height: 280px; }
+    }
     @media (max-width: 600px) {
+      .hero { padding: 40px 16px 32px; }
+      .hero::before { width: 300px; height: 200px; }
       .intro-block { padding: 24px 20px; }
       .strategy-body { padding: 20px 18px; }
       .portfolio-table { font-size: 13px; }
       .portfolio-table th, .portfolio-table td { padding: 10px 10px; }
+      .tools-grid { grid-template-columns: 1fr; }
+      .stat-row { flex-direction: column; }
+      .stat-item { flex: 1 1 auto; }
+      .withdrawal-cards { grid-template-columns: 1fr; }
+      .case-box { padding: 20px; }
+      .cta-section { padding: 48px 16px; }
+      .video-section { padding: 0 16px 48px; }
+      .synopsis { padding: 0 16px 60px; }
+      .section-break { padding: 0 16px; }
+      .section-break::before { left: 16px; right: 16px; }
+    }
+    @media (max-width: 380px) {
+      .hero h1 { font-size: 28px; }
+      .stat-item .stat-val { font-size: 24px; }
+      .wr-card .wr-pct { font-size: 32px; }
     }
   </style>
 </head>
@@ -483,7 +456,8 @@
       <iframe
         src="https://kinescope.io/embed/39LjGyM9RHL5gDTegdSnSV"
         allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write"
-        allowfullscreen>
+        allowfullscreen
+        loading="lazy">
       </iframe>
     </div>
   </section>
@@ -495,8 +469,8 @@
 
     <!-- INTRO -->
     <div class="intro-block fade-in">
-      <p>Этот вебинар — для тех, у кого нет времени профессионально торговать на бирже, но есть цель: <strong>создать капитал и выйти на пассивный доход</strong>. Дмитрий Толстяков разобрал три стратегии, которые работают именно для занятых людей — без постоянного мониторинга рынка.</p>
-      <p>Ключевая идея: <strong>цель инвестора — разница между доходами и расходами</strong>, которая перенаправляется в активы. Сначала накопление, потом — пассивный доход.</p>
+      <p>Этот вебинар для тех, у кого нет времени профессионально торговать на бирже, но есть цель: <strong>создать капитал и выйти на пассивный доход</strong>. Дмитрий Толстяков разобрал три стратегии, которые работают именно для занятых людей, без постоянного мониторинга рынка.</p>
+      <p>Ключевая идея: задача на горизонте 10+ лет: <strong>создать капитал, а затем получать с него пассивный доход</strong>. Сначала фаза накопления, потом фаза изъятия.</p>
     </div>
 
     <!-- РИСК-ПРОФИЛЬ -->
@@ -508,12 +482,14 @@
         <div class="case-box">
           <div class="case-label">Правило возраста</div>
           <p><strong>% защитных (консервативных) активов в портфеле ≈ ваш возраст</strong></p>
-          <p>35 лет → 35% в облигации, депозиты, золото. 65% — в акции и другие рисковые активы.<br>
+          <p>35 лет → 35% в облигации, депозиты, золото. 65% в акции и другие рисковые активы.<br>
           50 лет → 50/50. 65 лет → 65% консервативных.</p>
         </div>
-        <p>Это ориентир, а не жёсткое правило. Чем меньше у вас времени до выхода на «личную пенсию» — тем консервативнее должен быть портфель.</p>
+        <p>Это ориентир, а не жёсткое правило. Чем меньше у вас времени до выхода на «личную пенсию», тем консервативнее должен быть портфель.</p>
       </div>
     </div>
+
+    <div class="section-break"></div>
 
     <!-- СТРАТЕГИЯ 1 -->
     <div class="strategy fade-in">
@@ -525,11 +501,11 @@
         <div class="tools-grid">
           <div class="tool-card">
             <div class="tool-name">ОПИФы</div>
-            <div class="tool-desc">Паевые фонды под управлением УК. Примеры: Атон, Арсагера, ВИМ, Альфа. Платите ~3% в год за управление.</div>
+            <div class="tool-desc">Паевые фонды под управлением УК. Примеры: Атон, Арсагера, ВИМ, Альфа, Доход, Инвест Хироус. Комиссия 1–3% в год за управление.</div>
           </div>
           <div class="tool-card">
             <div class="tool-name">НСЖ</div>
-            <div class="tool-desc">Накопительное страхование жизни — «ипотека наоборот»: откладываете фиксированную сумму каждый месяц, получаете капитал через 15–20 лет.</div>
+            <div class="tool-desc">Накопительное страхование жизни, «ипотека наоборот»: откладываете фиксированную сумму каждый месяц, получаете капитал через 15–20 лет.</div>
           </div>
           <div class="tool-card">
             <div class="tool-name">AI-советник</div>
@@ -537,9 +513,11 @@
           </div>
         </div>
 
-        <p style="margin-top: 8px; font-size: 14px; color: var(--muted);">Минус первой стратегии: часть дохода уходит в комиссию управляющим (2–3% годовых). Зато ваше время не тратится совсем.</p>
+        <p class="body-note">Минус первой стратегии: часть дохода уходит в комиссию управляющим (2–3% годовых). Зато ваше время не тратится совсем.</p>
       </div>
     </div>
+
+    <div class="section-break"></div>
 
     <!-- СТРАТЕГИЯ 2 -->
     <div class="strategy fade-in">
@@ -549,12 +527,12 @@
         <p>Покупка объектов с ипотечным плечом для быстрого роста капитала. Подходит для старта, когда нужно быстро увеличить базу.</p>
 
         <p><strong>Схема работы:</strong></p>
-        <p>Берёте ипотеку на квартиру (первичный рынок или вторичку), дожидаетесь роста цены, продаёте. Разница между ценой продажи и суммой ипотечных выплат — ваша прибыль.</p>
+        <p>Берёте ипотеку на квартиру (первичный рынок или вторичку), дожидаетесь роста цены, продаёте. Разница между ценой продажи и суммой ипотечных выплат: ваша прибыль.</p>
 
         <p><strong>Важные нюансы:</strong></p>
-        <ul style="padding-left: 20px; color: var(--muted); font-size: 14px; margin-bottom: 16px;">
-          <li style="margin-bottom: 6px;">Кладовки и машиноместа — зачастую более ликвидные объекты с низким порогом входа</li>
-          <li style="margin-bottom: 6px;">Главный риск — ипотека остаётся, даже если рынок просел. Нужна финансовая подушка</li>
+        <ul class="detail-list">
+          <li>Кладовки и машиноместа: зачастую более ликвидные объекты с низким порогом входа</li>
+          <li>Главный риск: ипотека остаётся, даже если рынок просел. Нужна финансовая подушка</li>
           <li>Стратегия требует понимания рынка недвижимости конкретного города</li>
         </ul>
 
@@ -565,9 +543,11 @@
           <p>Результат: <strong>более 100% годовых</strong> на вложенный капитал за счёт ипотечного плеча</p>
         </div>
 
-        <p>Эта стратегия — для фазы накопления. Когда капитал достаточный — переходите к более пассивным инструментам.</p>
+        <p>Эта стратегия для фазы накопления. Когда капитал достаточный, переходите к более пассивным инструментам.</p>
       </div>
     </div>
+
+    <div class="section-break"></div>
 
     <!-- СТРАТЕГИЯ 3 -->
     <div class="strategy fade-in">
@@ -578,36 +558,16 @@
 
         <p><strong>Базовый состав (сбалансированный):</strong></p>
 
+        <div class="table-wrap">
         <table class="portfolio-table">
-          <thead>
-            <tr>
-              <th>Актив</th>
-              <th>Доля</th>
-              <th>Инструмент</th>
-              <th>Зачем</th>
-            </tr>
-          </thead>
+          <thead><tr><th>Актив</th><th>Доля</th><th>Инструмент</th><th>Зачем</th></tr></thead>
           <tbody>
-            <tr>
-              <td>Акции</td>
-              <td>1/3 (~33%)</td>
-              <td>EQMX (Индекс МосБиржи)</td>
-              <td>Основной рост</td>
-            </tr>
-            <tr>
-              <td>Облигации</td>
-              <td>1/3 (~33%)</td>
-              <td>OBLG / SBRB</td>
-              <td>Стабильность, защита</td>
-            </tr>
-            <tr>
-              <td>Золото</td>
-              <td>1/3 (~33%)</td>
-              <td>GOLD</td>
-              <td>Защита от инфляции и кризисов</td>
-            </tr>
+            <tr><td>Акции</td><td>1/3 (~33%)</td><td>EQMX (Индекс МосБиржи)</td><td>Основной рост</td></tr>
+            <tr><td>Облигации</td><td>1/3 (~33%)</td><td>OBLG / SBRB / TBRU</td><td>Стабильность, защита</td></tr>
+            <tr><td>Золото</td><td>1/3 (~33%)</td><td>GOLD</td><td>Защита от инфляции и кризисов</td></tr>
           </tbody>
         </table>
+        </div>
 
         <div class="stat-row">
           <div class="stat-item">
@@ -626,52 +586,46 @@
 
         <p><strong>Три варианта в зависимости от риск-профиля:</strong></p>
 
+        <div class="table-wrap">
         <table class="portfolio-table">
-          <thead>
-            <tr>
-              <th>Тип</th>
-              <th>Акции</th>
-              <th>Облигации</th>
-              <th>Золото</th>
-            </tr>
-          </thead>
+          <thead><tr><th>Тип</th><th>Акции</th><th>Облигации</th><th>Золото</th></tr></thead>
           <tbody>
-            <tr>
-              <td>Консервативный</td>
-              <td>20%</td>
-              <td>70%</td>
-              <td>10%</td>
-            </tr>
-            <tr>
-              <td>Сбалансированный</td>
-              <td>50%</td>
-              <td>40%</td>
-              <td>10%</td>
-            </tr>
-            <tr>
-              <td>Агрессивный</td>
-              <td>80%</td>
-              <td>15%</td>
-              <td>5%</td>
-            </tr>
+            <tr><td>Консервативный</td><td>20%</td><td>70%</td><td>10%</td></tr>
+            <tr><td>Сбалансированный</td><td>50%</td><td>40%</td><td>10%</td></tr>
+            <tr><td>Агрессивный</td><td>80%</td><td>15%</td><td>5%</td></tr>
           </tbody>
         </table>
+        </div>
 
-        <p><strong>Как делать ребалансировку:</strong> раз в год (или раз в квартал) проверяйте доли. Если акции выросли и стали занимать 50% вместо 33% — <em>докупайте облигации и золото, которые просели</em>. Не продавайте то, что выросло — просто пополняйте отстающих.</p>
+        <p><strong>Как делать ребалансировку:</strong> раз в год (или раз в квартал) проверяйте доли. Если акции выросли и стали занимать 50% вместо 33%, <em>докупайте облигации и золото, которые просели</em>. Не продавайте то, что выросло, просто пополняйте отстающих.</p>
 
         <div class="quote-block">
-          <p>«Задача — не угадать, что вырастет. Задача — всегда держать баланс и докупать то, что просело. Это и есть основная работа ленивого инвестора.»</p>
-          <cite>— Дмитрий Толстяков</cite>
+          <p>Суть подхода: не пытаться угадать, что вырастет. Каждый месяц смотреть на баланс и докупать то, что просело. Покупай дешевле, продавай дороже. Вот и вся работа ленивого инвестора.</p>
+          <cite>по идее Дмитрия Толстякова</cite>
+        </div>
+
+        <p><strong>Два подтипа стратегии:</strong></p>
+        <div class="tools-grid">
+          <div class="tool-card">
+            <div class="tool-name">Фонды без дивидендов (рост)</div>
+            <div class="tool-desc">Просто покупаете фонды каждый месяц. Минимум действий: весь доход реинвестируется автоматически внутри фонда.</div>
+          </div>
+          <div class="tool-card">
+            <div class="tool-name">Кэш-флоу (дивиденды)</div>
+            <div class="tool-desc">Покупаете активы, которые платят дивиденды и купоны. Формируете «инвест-зарплату» уже сейчас. Математически результат примерно тот же, но психологически важно видеть живые деньги на счёте. Требует чуть больше времени на реинвестирование.</div>
+          </div>
         </div>
       </div>
     </div>
+
+    <div class="section-break"></div>
 
     <!-- СТАВКА ИЗЪЯТИЯ -->
     <div class="withdrawal fade-in">
       <div class="section-num">Важный расчёт</div>
       <h2 class="section-title">Безопасная ставка изъятия</h2>
 
-      <p style="font-size: 15px; color: var(--muted); margin-bottom: 24px;">Когда вы создали капитал — важно понять, как его тратить, чтобы хватило надолго. Существует два подхода:</p>
+      <p class="section-lead">Когда вы создали капитал, важно понять, как его тратить, чтобы хватило надолго. Существует два подхода:</p>
 
       <div class="tools-grid">
         <div class="tool-card">
@@ -680,11 +634,11 @@
         </div>
         <div class="tool-card">
           <div class="tool-name">Проедание капитала</div>
-          <div class="tool-desc">Изымаете больше, капитал постепенно уменьшается до нуля. Нет обязательств перед детьми — тратите на себя сейчас.</div>
+          <div class="tool-desc">Изымаете больше, капитал постепенно уменьшается до нуля. Нет обязательств перед детьми, тратите на себя сейчас.</div>
         </div>
       </div>
 
-      <p style="font-size: 15px; color: var(--muted); margin: 20px 0 12px;">Сколько нужно изымать и сколько хватит капитала:</p>
+      <p class="section-sublead">Сколько нужно изымать и сколько хватит капитала:</p>
 
       <div class="withdrawal-cards">
         <div class="wr-card highlight">
@@ -701,14 +655,16 @@
         </div>
       </div>
 
-      <div class="case-box" style="margin-top: 24px;">
+      <div class="case-box case-box-spaced">
         <div class="case-label">Практический расчёт</div>
         <p>Хотите получать <strong>100 000 ₽ в месяц</strong> пассивно?</p>
-        <p>При изъятии 4% (сохранение капитала) — нужно <strong>30 млн ₽</strong></p>
-        <p>При изъятии 7% (на 20 лет) — нужно <strong>17 млн ₽</strong></p>
-        <p style="font-size: 13px; color: var(--muted); margin-top: 8px;">Ставка учитывает инфляцию: каждый год изымаете чуть больше (например, +6%, если инфляция 6%).</p>
+        <p>При изъятии 4% (сохранение капитала) нужно <strong>30 млн ₽</strong></p>
+        <p>При изъятии 7% (на 20 лет) нужно <strong>17 млн ₽</strong></p>
+        <p class="small-note">Ставка учитывает инфляцию: каждый год изымаете чуть больше (например, +6%, если инфляция 6%).</p>
       </div>
     </div>
+
+    <div class="section-break"></div>
 
     <!-- ЧЕГО ИЗБЕГАТЬ -->
     <div class="avoid-section fade-in">
@@ -720,14 +676,14 @@
           <div class="avoid-num">1</div>
           <div class="avoid-text">
             <strong>Активная торговля</strong>
-            <span>Если трейдинг — не ваша профессия, вы не создадите капитал через активную торговлю. Точка.</span>
+            <span>Если трейдинг не ваша профессия, вы не создадите капитал через активную торговлю. Точка.</span>
           </div>
         </li>
         <li>
           <div class="avoid-num">2</div>
           <div class="avoid-text">
             <strong>Автоследование</strong>
-            <span>Копировать чужие сделки — «дядя Вася из Нижнего Новгорода наторговал 40%» — это ловушка. Через год-два сольётся вместе с вашим капиталом.</span>
+            <span>Копировать чужие сделки: «дядя Вася из Нижнего Новгорода наторговал 40%». Это ловушка. Через год-два сольётся вместе с вашим капиталом.</span>
           </div>
         </li>
         <li>
@@ -741,14 +697,14 @@
           <div class="avoid-num">4</div>
           <div class="avoid-text">
             <strong>Псевдоинвестиции и мошенники</strong>
-            <span>«30% годовых, гарантирую» — верный признак потери денег. Особенно если обещают вернуть «послезавтра».</span>
+            <span>«30% годовых, гарантирую»: верный признак потери денег. Особенно если обещают вернуть «послезавтра».</span>
           </div>
         </li>
         <li>
           <div class="avoid-num">5</div>
           <div class="avoid-text">
             <strong>100% капитала в один рискованный актив</strong>
-            <span>Крипта, отдельная акция, земля в одном регионе — может прокатить, а может не прокатить. Диверсификация — это не трусость, это здравый смысл.</span>
+            <span>Крипта, отдельная акция, земля в одном регионе: может прокатить, а может не прокатить. Диверсификация не трусость, это здравый смысл.</span>
           </div>
         </li>
         <li>
@@ -762,21 +718,21 @@
           <div class="avoid-num">7</div>
           <div class="avoid-text">
             <strong>Постоянная смена стратегий</strong>
-            <span>«Шопоголизм» в инвестициях, помноженный на эмоциональную нестабильность — прямой путь к потере денег.</span>
+            <span>«Шопоголизм» в инвестициях, помноженный на эмоциональную нестабильность, прямой путь к потере денег.</span>
           </div>
         </li>
         <li>
           <div class="avoid-num">8</div>
           <div class="avoid-text">
             <strong>Кредитные деньги (кроме ипотеки)</strong>
-            <span>Торговать акциями на заёмные деньги — плохо. Брать ипотеку под недвижимость — допустимо и входит в стратегию #2.</span>
+            <span>Торговать акциями на заёмные деньги: плохо. Брать ипотеку под недвижимость: допустимо и входит в стратегию #2.</span>
           </div>
         </li>
         <li>
           <div class="avoid-num">9</div>
           <div class="avoid-text">
             <strong>Слепо следовать одному блогеру</strong>
-            <span>Даже самому любимому. Смотрите разных авторов, формируйте своё мнение. Ваше решение — ваша ответственность и ваш результат.</span>
+            <span>Даже самому любимому. Смотрите разных авторов, формируйте своё мнение. Ваше решение, ваша ответственность и ваш результат.</span>
           </div>
         </li>
       </ul>
