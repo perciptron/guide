@@ -551,7 +551,7 @@
     .sticky-cta .cta-btn::after { animation: shimmer 5s ease-in-out infinite; }
     @media (max-width: 768px) { .sticky-cta { display: block; } }
 
-    /* Modal */
+    /* Modal — копия из dividends */
     .modal-overlay {
       position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.4);
       display: flex; align-items: center; justify-content: center; padding: 1rem;
@@ -562,13 +562,15 @@
       background: #fff; border-radius: 20px; padding: 2.5rem; max-width: 460px; width: 100%;
       position: relative; transform: translateY(20px) scale(0.97); transition: transform 0.3s ease;
       box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+      max-height: 90vh; overflow-y: auto;
     }
     .modal-overlay.active .modal { transform: translateY(0) scale(1); }
     .modal__close {
-      position: absolute; top: 1rem; right: 1rem; width: 40px; height: 40px;
+      position: absolute; top: 0.75rem; right: 0.75rem; width: 48px; height: 48px;
       display: flex; align-items: center; justify-content: center;
-      background: rgba(0,0,0,0.04); border: none; border-radius: 50%;
-      color: var(--text-secondary); cursor: pointer; font-size: 1.2rem; transition: all 0.2s;
+      background: rgba(0,0,0,0.06); border: none; border-radius: 50%;
+      color: var(--text-secondary); cursor: pointer; font-size: 1.4rem; transition: all 0.2s;
+      z-index: 10; touch-action: manipulation;
     }
     .modal__close:hover { background: rgba(0,0,0,0.08); color: var(--text); }
     .modal .form_integration_block { width: 90%; margin: 0 auto; }
@@ -610,12 +612,10 @@
     .modal .salebot_button .mes_ident { display: none !important; }
     .modal .custom_social_btn_container { height: auto !important; min-height: 0 !important; }
     .modal .salebot_button {
-      width: 100% !important; max-width: 100% !important;
-      padding: 0.875rem 1.5rem !important; font-weight: 600 !important;
-      font-size: 0.95rem !important; border: none !important;
-      border-radius: var(--radius) !important; cursor: pointer !important;
-      margin-bottom: 0.5rem !important; color: #fff !important;
-      font-family: var(--font-display) !important;
+      width: 100% !important; padding: 1rem 2rem !important; color: #fff !important;
+      font-family: var(--font-display) !important; font-size: 0.95rem !important;
+      font-weight: 600 !important; border: none !important; border-radius: var(--radius) !important;
+      cursor: pointer !important; transition: all 0.2s !important; margin-bottom: 0.5rem !important;
     }
     .modal .tg_link { background: #2AABEE !important; }
     .modal .tg_link:hover { background: #229ED9 !important; }
@@ -623,6 +623,30 @@
     .modal .vk_link:hover { background: #0066DD !important; }
     .modal .max_link { background: #0077FF !important; }
     .modal .max_link:hover { background: #0066DD !important; }
+    .modal .form_integration_block input[type="checkbox"] {
+      -webkit-appearance: none; appearance: none; width: 44px !important; height: 24px !important;
+      min-width: 44px; background: #e5e5ea !important; border-radius: 12px !important;
+      border: none !important; position: relative; cursor: pointer; transition: background 0.2s !important;
+      padding: 0 !important; margin: 0 !important;
+    }
+    .modal .form_integration_block input[type="checkbox"]::after {
+      content: ''; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px;
+      background: #fff; border-radius: 50%; transition: transform 0.2s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    }
+    .modal .form_integration_block input[type="checkbox"]:checked { background: var(--green) !important; }
+    .modal .form_integration_block input[type="checkbox"]::before { display: none !important; }
+    .modal .form_integration_block input[type="checkbox"]:checked::after { transform: translateX(20px); }
+    .modal .form_integration_block div:has(> input[type="checkbox"]),
+    .modal .form_integration_block label:has(> input[type="checkbox"]) {
+      display: flex !important; align-items: center !important; gap: 0.625rem !important;
+    }
+    .modal .form_integration_block div:has(> input[type="checkbox"]) a,
+    .modal .form_integration_block div:has(> input[type="checkbox"]) label,
+    .modal .form_integration_block div:has(> input[type="checkbox"]) span,
+    .modal .form_integration_block label:has(> input[type="checkbox"]) span,
+    .modal .form_integration_block label:has(> input[type="checkbox"]) a {
+      flex: 1 !important; font-size: 0.75rem !important; line-height: 1.3 !important; color: var(--text-secondary) !important;
+    }
     @media (max-width: 768px) {
       .modal-overlay { align-items: flex-end; padding: 0; }
       .modal { border-radius: 20px 20px 0 0; padding: 2rem 1.5rem calc(env(safe-area-inset-bottom, 0px) + 1.5rem); max-width: 100%; }
