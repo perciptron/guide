@@ -551,6 +551,83 @@
     .sticky-cta .cta-btn::after { animation: shimmer 5s ease-in-out infinite; }
     @media (max-width: 768px) { .sticky-cta { display: block; } }
 
+    /* Modal */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.4);
+      display: flex; align-items: center; justify-content: center; padding: 1rem;
+      opacity: 0; visibility: hidden; transition: all 0.3s ease;
+    }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+    .modal {
+      background: #fff; border-radius: 20px; padding: 2.5rem; max-width: 460px; width: 100%;
+      position: relative; transform: translateY(20px) scale(0.97); transition: transform 0.3s ease;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+    }
+    .modal-overlay.active .modal { transform: translateY(0) scale(1); }
+    .modal__close {
+      position: absolute; top: 1rem; right: 1rem; width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.04); border: none; border-radius: 50%;
+      color: var(--text-secondary); cursor: pointer; font-size: 1.2rem; transition: all 0.2s;
+    }
+    .modal__close:hover { background: rgba(0,0,0,0.08); color: var(--text); }
+    .modal .form_integration_block { width: 90%; margin: 0 auto; }
+    .modal .form_integration_block input[type="text"],
+    .modal .form_integration_block input[type="email"],
+    .modal .form_integration_block input[type="tel"],
+    .modal .form_integration_block input[type="number"],
+    .modal .form_integration_block textarea,
+    .modal .form_integration_block select {
+      width: 100% !important; background: #f5f5f7 !important;
+      border: 1.5px solid transparent !important; border-radius: 12px !important;
+      padding: 0.75rem 1rem !important; color: var(--text) !important;
+      font-family: var(--font-body) !important; font-size: 16px !important;
+      outline: none !important; transition: all 0.2s !important;
+    }
+    .modal .form_integration_block input:focus,
+    .modal .form_integration_block textarea:focus {
+      border-color: var(--green) !important; background: #fff !important;
+      box-shadow: 0 0 0 3px var(--green-glow) !important;
+    }
+    .modal .form_integration_block input::placeholder,
+    .modal .form_integration_block textarea::placeholder { color: #c7c7cc !important; }
+    .modal .form_integration_block label {
+      color: var(--text) !important; font-family: var(--font-display) !important;
+      font-size: 0.8rem !important; font-weight: 600 !important;
+      margin-bottom: 0.35rem !important; display: block !important;
+    }
+    .modal .form_integration_block button[type="submit"],
+    .modal .form_integration_block input[type="submit"] {
+      width: 100% !important; padding: 0.875rem 1.5rem !important;
+      background: var(--green) !important; color: #fff !important;
+      font-family: var(--font-display) !important; font-size: 1rem !important;
+      font-weight: 600 !important; border: none !important; border-radius: var(--radius) !important;
+      cursor: pointer !important; transition: all 0.2s !important;
+      box-shadow: 0 4px 16px var(--green-glow) !important;
+    }
+    .modal .form_integration_block button[type="submit"]:hover { background: var(--green-dark) !important; }
+    .modal .salebot_button svg, .modal .salebot_button img,
+    .modal .salebot_button .mes_ident { display: none !important; }
+    .modal .custom_social_btn_container { height: auto !important; min-height: 0 !important; }
+    .modal .salebot_button {
+      width: 100% !important; max-width: 100% !important;
+      padding: 0.875rem 1.5rem !important; font-weight: 600 !important;
+      font-size: 0.95rem !important; border: none !important;
+      border-radius: var(--radius) !important; cursor: pointer !important;
+      margin-bottom: 0.5rem !important; color: #fff !important;
+      font-family: var(--font-display) !important;
+    }
+    .modal .tg_link { background: #2AABEE !important; }
+    .modal .tg_link:hover { background: #229ED9 !important; }
+    .modal .vk_link { background: #0077FF !important; }
+    .modal .vk_link:hover { background: #0066DD !important; }
+    .modal .max_link { background: #0077FF !important; }
+    .modal .max_link:hover { background: #0066DD !important; }
+    @media (max-width: 768px) {
+      .modal-overlay { align-items: flex-end; padding: 0; }
+      .modal { border-radius: 20px 20px 0 0; padding: 2rem 1.5rem calc(env(safe-area-inset-bottom, 0px) + 1.5rem); max-width: 100%; }
+    }
+
     /* ================================
        RESPONSIVE — large screens
        ================================ */
@@ -709,50 +786,6 @@
   </section>
 
   <!-- ===== 3. REGISTRATION ===== -->
-  <section class="reg-section" id="register">
-    <div class="reg-container">
-      <div class="reg-top">
-        <h2 class="reg-heading reveal">Ещё 2 урока + 3 живых эфира — <em style="font-style:normal;color:var(--green)">бесплатно</em></h2>
-        <p class="reg-sub reveal">Зарегистрируйтесь бесплатно — и получите ещё 2 урока + доступ к 3 живым эфирам с разбором конкретных инструментов</p>
-      </div>
-
-      <div class="reg-body">
-        <div class="reg-benefits reveal">
-          <div class="reg-benefit">
-            <div class="reg-benefit__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <span><strong>Урок 2:</strong> Как 100 000 &#8381; превратить в капитал. Правило 10%</span>
-          </div>
-          <div class="reg-benefit">
-            <div class="reg-benefit__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <span><strong>Урок 3:</strong> 6 инструментов пассивного дохода с реальными примерами</span>
-          </div>
-          <div class="reg-benefit">
-            <div class="reg-benefit__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <span><strong>3 живых эфира:</strong> фондовый рынок, криптовалюта, недвижимость</span>
-          </div>
-          <div class="reg-benefit">
-            <div class="reg-benefit__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <span><strong>Бонус:</strong> Гайд «Куда инвестировать в 2026 году»</span>
-          </div>
-
-          <div class="reg-gift">
-            <img src="/invest-salary-2026/guide-cover.png" alt="Гайд" class="reg-gift__img" width="595" height="842">
-            <div class="reg-gift__text">Подарок за регистрацию: <strong>гайд для новичков</strong> с пошаговым планом первых инвестиций</div>
-          </div>
-        </div>
-
-        <div class="reg-form-card reveal reveal-delay-1">
-          <div class="reg-form-card__title">Продолжить обучение</div>
-          <div class="reg-form-card__sub">Выберите удобный мессенджер для получения уроков</div>
-          <div style="text-align:center;font-size:12px;color:var(--text-secondary);margin-bottom:12px;">Проблемы с Telegram? <a href="tg://proxy?server=proxy.fin-ra.pro&port=8443&secret=ee24e07bbc4b4290c4251d17c437b13e8670726f78792e66696e2d72612e70726f" style="color:var(--green);text-decoration:none;">Подключите бесплатный прокси</a></div>
-          <script src='https://salebot.pro/js/form_scripts.js'></script>
-          <div class='form_integration_block'></div>
-          <script>FormIntegration.init({ project_id: 317313, guid: 'zpreg' })</script>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== 4. SPEAKER ===== -->
   <section class="section">
     <div class="container">
@@ -828,7 +861,7 @@
       </div>
 
       <div style="text-align:center;margin-top:2rem" class="reveal">
-        <a href="#register" class="cta-btn cta-btn--static">Записаться на эфиры бесплатно</a>
+        <button class="cta-btn cta-btn--static" onclick="openModal()">Записаться на эфиры бесплатно</button>
       </div>
     </div>
   </section>
@@ -838,7 +871,7 @@
     <div class="container">
       <h2 class="section-title reveal">Урок посмотрели. Следующий шаг —<br><em>получить остальные материалы</em></h2>
       <p class="final-cta__sub reveal">Зарегистрируйтесь, чтобы продолжить обучение и получить доступ к 3 живым эфирам</p>
-      <a href="#register" class="cta-btn cta-btn--static reveal">Продолжить обучение — бесплатно</a>
+      <button class="cta-btn cta-btn--static reveal" onclick="openModal()">Продолжить обучение — бесплатно</button>
     </div>
   </section>
 
@@ -864,8 +897,24 @@
   </footer>
 
   <!-- Sticky CTA mobile -->
-  <div class="sticky-cta" id="stickyCta"><a href="#register" class="cta-btn">Продолжить обучение</a></div>
+  <div class="sticky-cta" id="stickyCta"><button class="cta-btn" onclick="openModal()">Продолжить обучение</button></div>
 
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+    <div class="modal">
+      <button class="modal__close" onclick="closeModal()">&times;</button>
+      <script src='https://salebot.pro/js/form_scripts.js'></script>
+      <div class='form_integration_block'></div>
+      <script>FormIntegration.init({ project_id: 317313, guid: 'zpreg' })</script>
+    </div>
+  </div>
+
+  <script>
+    function openModal() { document.getElementById('modalOverlay').classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeModal() { document.getElementById('modalOverlay').classList.remove('active'); document.body.style.overflow = ''; }
+    function closeModalOutside(e) { if (e.target === e.currentTarget) closeModal(); }
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+  </script>
   <script>
     // Dates
     (function() {
