@@ -200,9 +200,10 @@
       animation: fadeUp 0.6s ease 0.35s both;
     }
     .video-highlights__item {
-      display: flex; align-items: center; gap: 0.4rem;
+      display: inline-flex; align-items: flex-start; gap: 0.4rem;
       font-size: 0.82rem; color: var(--text-secondary);
     }
+    .video-highlights__item svg { margin-top: 0.2rem; }
     .video-highlights__item svg {
       width: 16px; height: 16px; color: var(--green); flex-shrink: 0;
     }
@@ -586,8 +587,9 @@
       .speaker-mini { margin-bottom: 1rem; }
 
       .video-wrap { border-radius: 12px; margin-bottom: 1.25rem; }
-      .video-highlights { gap: 0.75rem; }
+      .video-highlights { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1rem; }
       .video-highlights__item { font-size: 0.75rem; }
+      .video-highlights__item:last-child { flex-basis: 100%; justify-content: center; }
 
       .cta-btn { width: 100%; justify-content: center; font-size: 0.95rem; padding: 0.85rem 1.5rem; }
 
@@ -669,7 +671,7 @@
         </div>
         <div class="video-highlights__item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          Кейс из урока: 90 000 &#8381; в 1998 &rarr; 150 000 &#8381;/мес сегодня
+          90 000 &#8381; &rarr; 150 000 &#8381;/мес (кейс из урока)
         </div>
       </div>
     </div>
