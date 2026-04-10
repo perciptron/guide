@@ -647,7 +647,7 @@
         <img src="/invest-salary-2026/speaker.png" alt="Дмитрий Толстяков" class="speaker-mini__avatar" width="200" height="200">
         <div class="speaker-mini__info">
           <div class="speaker-mini__name">Дмитрий Толстяков</div>
-          <div class="speaker-mini__role">Основатель FIN-RA &middot; обучил 120 000+ человек</div>
+          <div class="speaker-mini__role">Основатель FIN-RA &middot; обучил 150 000+ человек</div>
         </div>
       </div>
 
@@ -766,7 +766,7 @@
           </div>
           <div class="speaker-stats">
             <div class="speaker-stat">
-              <div class="speaker-stat__num">120 000+</div>
+              <div class="speaker-stat__num">150 000+</div>
               <div class="speaker-stat__label">обученных<br>человек</div>
             </div>
             <div class="speaker-stat">
@@ -787,7 +787,7 @@
   <section class="section section--alt">
     <div class="container">
       <div class="section-label reveal">Что ждёт дальше</div>
-      <h2 class="section-title reveal">3 эфира: фондовый рынок, криптовалюта, недвижимость.<br><em>Конкретные инструменты</em> с числами</h2>
+      <h2 class="section-title reveal">3 живых эфира с <em>конкретными инструментами</em></h2>
 
       <div class="program-grid">
         <div class="program-card reveal">
@@ -882,8 +882,10 @@
     (function() {
       var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      }, { threshold: 0.05, rootMargin: '0px 0px 0px 0px' });
       document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+      // Fallback: reveal all after 2s in case observer fails
+      setTimeout(function() { document.querySelectorAll('.reveal:not(.visible)').forEach(function(el) { el.classList.add('visible'); }); }, 2000);
     })();
 
     // Sticky CTA
