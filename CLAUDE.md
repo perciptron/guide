@@ -209,6 +209,6 @@ Salebot → $.ajax → ответ с t.me/bot?start=xxx
 ### TG-прокси для пользователей
 На лендингах добавлять ссылку на бесплатный MTProxy:
 ```
-tg://proxy?server=proxy.fin-ra.pro&port=8443&secret=ee24e07bbc4b4290c4251d17c437b13e8670726f78792e66696e2d72612e70726f
+tg://proxy?server=proxy2.fin-ra.pro&port=8443&secret=ee24e07bbc4b4290c4251d17c437b13e8670726f7879322e66696e2d72612e70726f
 ```
 Текст: «Проблемы с Telegram? Подключите бесплатный прокси»
