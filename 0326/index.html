@@ -545,7 +545,14 @@
     .modal .form_integration_block .salebot-checkbox-field { margin-top: 0.75rem !important; }
     .modal .form_integration_block .salebot-checkbox {
       margin: 0 !important; padding: 0 !important;
-      display: flex !important; align-items: center !important; gap: 0.625rem !important;
+      display: flex !important; align-items: center !important; gap: 0 !important;
+    }
+    .modal .form_integration_block .salebot-checkbox > input[type="checkbox"] {
+      margin-right: 0.625rem !important;
+    }
+    .modal .form_integration_block .salebot-checkbox > span,
+    .modal .form_integration_block .salebot-checkbox > .salebot-privacy__label-text {
+      margin-left: 0 !important; padding-left: 0 !important;
     }
     /* Убрать ведущий пробел из текста */
     .modal .form_integration_block .salebot-privacy__label-text {
