@@ -64,24 +64,28 @@
 
 ### Элементы
 - **Badge** — просто текст + точка, без фона и border
-- **Буллеты** — чистый список, круглые зелёные чекмарки (`border-radius: 50%`)
-- **CTA** — плоский `var(--green)`, hover = `var(--green-dark)` + лёгкая тень. `font-weight: 600`
+- **Буллеты** — чистый список, круглые зелёные чекмарки (`border-radius: 50%`, `gap: 0.6rem`)
+- **CTA** — плоский `var(--green)`, hover = `var(--green-dark)` + лёгкая тень. `font-weight: 600`, pulse-glow анимация каждые 4 сек
+- **cta-hint** — мелкий текст под CTA с чекмарком, описывает куда придёт гайд. Формулировка: «Гайд придёт в Telegram или MAX»
 - **Обложка** — чистая тень `0 20px 50px rgba(0,0,0,0.08)`, hover = lift + усиление тени
 - **Float-теги** — белый фон `#fff`, лёгкая тень, без blur
-- **Модалка** — чистый белый `#fff`, overlay `rgba(0,0,0,0.4)` без blur, `border-radius: 20px`
-- **Кнопка закрытия** — круглая (`border-radius: 50%`), без border
+- **Proxy-hint** — pill-плашка с info-иконкой. Фон `rgba(15,157,88,0.06)`, `border-radius: 8px`, `padding: 0.6rem 0.85rem`, `width: fit-content`, `font-family: DM Sans`, `font-size: 0.78rem`. Располагается над CTA. Текст: «Проблемы с Telegram? **Подключите прокси**»
+- **Модалка** — чистый белый `#fff`, overlay `rgba(0,0,0,0.4)` без blur, `border-radius: 20px`, `max-width: 460px`
+- **Кнопка закрытия модалки** — круглая 40×40 на десктопе (44×44 мобилка), `z-index: 9999`, `touch-action: manipulation`. Обязательно `padding-top: 3rem` у модалки чтобы форма не перекрывала кнопку
 - **Инпуты формы** — фон `#f5f5f7`, border transparent, focus = зелёный border + glow
+- **Чекбоксы формы (toggle-switch)** — `-webkit-appearance: none`, 44×24px, фон `#e5e5ea`, активный = зелёный. Круглый белый `::after` с transform `translateX(20px)` при `:checked`
+- **Выравнивание чекбоксов** — оба чекбокса (согласие + политика) в `display: flex` с `margin-right: 0.625rem` на input (не `gap`). Сброс `margin/padding` на контейнерах `.ml_quiz.quiz_checkbox`, `.salebot-checkbox-field`, `.ml_answers`. `font-size: 0` на `.salebot-checkbox-field` гасит whitespace-ноды
 - **Кнопки мессенджеров** — каждая в фирменном цвете (см. ниже), padding как у CTA (`1rem 2rem`)
 
 ### Кнопки мессенджеров в форме Salebot
 
-Эталон: `/0326max/index.html` — форма с тремя кнопками (VK, TG, MAX).
+Форма с тремя кнопками — VK, Telegram, MAX. Гайд выдаётся через TG или MAX, VK опционально.
 
 | Мессенджер | CSS-класс Salebot | Цвет | Hover |
 |-----------|-------------------|------|-------|
 | VK | `.vk_link` | `#0077FF` | `#0066DD` |
 | Telegram | `.tg_link` | `#2AABEE` | `#229ED9` |
-| MAX | `.max_link` | `#0077FF` | `#0066DD` |
+| MAX | `.max_link` | `linear-gradient(90deg, #527CF2, #9040C8)` | `linear-gradient(90deg, #4870E0, #8038B8)` |
 
 **CSS-правила для стилизации кнопок Salebot:**
 - Скрывать SVG-иконки: `.salebot_button svg, .salebot_button img, .salebot_button .mes_ident { display: none }`
@@ -93,9 +97,67 @@
 
 ### Адаптив
 - **768px** — мобилка: одна колонка, обложка сверху (маленькая 160px), sticky CTA внизу, модалка = bottom-sheet
+  - **Скрывать `.hero__desc`** на мобилке — сразу заголовок → буллеты → proxy-hint → CTA
+  - Кнопка закрытия модалки минимум 44×44 (Apple touch target)
 - **1400px+** — увеличение шрифтов, gap, обложки до 380px
 - **1800px+** — дальнейшее масштабирование до 420px обложка
 - **2200px+** — максимум: 4.6rem заголовок, 460px обложка
+
+### Структура разметки hero (эталон 0326)
+
+```html
+<section class="hero">
+  <div class="hero__inner">
+    <div class="hero__content">
+      <div class="badge">Подборка ОФЗ</div>
+      <h1 class="hero__title">ТОП-30 облигаций федерального займа <span>(ОФЗ)</span></h1>
+      <p class="hero__desc">Описание гайда...</p>  <!-- скрыто на мобилке -->
+      <ul class="hero__bullets">
+        <li>Буллет 1</li>
+        <li>Буллет 2</li>
+        <li>Буллет 3</li>
+      </ul>
+      <div class="proxy-hint">
+        <span>Проблемы с Telegram? <a href="tg://proxy?...">Подключите прокси</a></span>
+      </div>
+      <button class="cta-btn" onclick="openModal()">
+        <svg>...</svg>
+        Забрать гайд бесплатно
+      </button>
+      <span class="cta-hint">Гайд придёт в Telegram или MAX</span>
+    </div>
+    <div class="hero__cover">
+      <div class="cover-wrapper" onclick="openModal()">
+        <img src="обложка.png" alt="Обложка гайда">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Модалка с формой Salebot -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <button class="modal__close" onclick="closeModal()">&times;</button>
+    <script src='https://salebot.pro/js/form_scripts.js'></script>
+    <div class='form_integration_block'></div>
+    <script>
+      FormIntegration.init({ project_id: XXX, guid: 'XXX' })
+    </script>
+  </div>
+</div>
+
+<script src="/tg-intercept.js" defer></script>
+```
+
+### Порядок элементов в hero (сверху вниз)
+
+1. **Badge** — короткий лейбл категории
+2. **H1** — заголовок с акцентом на зелёный span
+3. **hero__desc** — описание, 2-3 строки. **Скрыто на мобилке** (`display: none`)
+4. **hero__bullets** — 3 буллета с чекмарками
+5. **proxy-hint** — pill-плашка с ссылкой на прокси
+6. **cta-btn** — основная кнопка «Забрать гайд бесплатно»
+7. **cta-hint** — мелкий текст «Гайд придёт в Telegram или MAX»
 
 ## Лид-воронка
 
@@ -138,7 +200,7 @@ npx serve -l 3000
 
 - Каждый лендинг — самостоятельный HTML-файл со встроенными стилями
 - Не использовать внешние CSS/JS файлы (всё inline для скорости)
-- **Новые гайды создавать копированием `/0326max/index.html`** — это эталон (3 кнопки мессенджеров)
+- **Новые гайды создавать копированием `/0326/index.html`** — это эталон (Apple-минимализм, 3 кнопки мессенджеров, proxy-hint, доработанная модалка)
 - Salebot GUID уникален для каждой кампании — менять при создании нового лендинга
 - Изображения хранить в папке лендинга (logo.png, обложка.png и т.д.)
 - Коммиты на русском или английском, пушить в main — деплой автоматический
