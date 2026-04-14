@@ -548,7 +548,18 @@
       display: flex !important; align-items: center !important; gap: 0.625rem !important;
     }
     /* Убрать ведущий пробел из текста */
-    .modal .form_integration_block .salebot-privacy__label-text { padding-left: 0 !important; margin: 0 !important; flex: 1 !important; }
+    .modal .form_integration_block .salebot-privacy__label-text {
+      padding: 0 !important; margin: 0 !important; flex: 1 !important;
+      text-indent: 0 !important;
+    }
+    .modal .form_integration_block .salebot-privacy__label-text a,
+    .modal .form_integration_block .salebot-privacy__link {
+      padding: 0 !important; margin: 0 !important; text-indent: 0 !important;
+    }
+    /* Убрать лишние пробелы в inline элементах */
+    .modal .form_integration_block .salebot-privacy__label { white-space: normal; }
+    .modal .form_integration_block .salebot-checkbox-field { font-size: 0 !important; }
+    .modal .form_integration_block .salebot-checkbox-field .salebot-checkbox { font-size: initial !important; }
     .modal .form_integration_block .salebot-privacy__label-text a,
     .modal .form_integration_block .salebot-privacy__link {
       font-size: 0.75rem !important;
