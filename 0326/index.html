@@ -169,6 +169,31 @@
       background-size: cover;
     }
 
+    /* Proxy hint — отдельный блок с воздухом */
+    .proxy-hint {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.6rem 0.85rem;
+      background: rgba(15,157,88,0.06);
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      width: fit-content;
+    }
+    .proxy-hint::before {
+      content: ''; flex-shrink: 0;
+      width: 14px; height: 14px;
+      background: var(--green);
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='8' x2='12' y2='12'/%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'/%3E%3C/svg%3E") no-repeat center / contain;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='8' x2='12' y2='12'/%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'/%3E%3C/svg%3E") no-repeat center / contain;
+    }
+    .proxy-hint a {
+      color: var(--green); font-weight: 600; text-decoration: none;
+      white-space: nowrap;
+    }
+    .proxy-hint a:hover { text-decoration: underline; }
+
     .cta-btn {
       display: inline-flex;
       align-items: center;
@@ -745,8 +770,8 @@
             <li>Рублёвые и валютные инструменты</li>
           </ul>
 
-          <div class="proxy-hint" style="text-align:left;background:none;border:none;padding:0;margin-top:-0.5rem;font-size:0.8rem;color:var(--text-secondary);margin-bottom:0.75rem;">
-            Проблемы с Telegram? <a href="tg://proxy?server=proxy2.fin-ra.pro&port=8443&secret=ee24e07bbc4b4290c4251d17c437b13e8670726f7879322e66696e2d72612e70726f" style="color:var(--green);font-weight:600;text-decoration:none;">Подключите бесплатный прокси</a>
+          <div class="proxy-hint">
+            <span>Проблемы с Telegram? <a href="tg://proxy?server=proxy2.fin-ra.pro&port=8443&secret=ee24e07bbc4b4290c4251d17c437b13e8670726f7879322e66696e2d72612e70726f">Подключите прокси</a></span>
           </div>
 
           <button class="cta-btn" onclick="openModal()">
