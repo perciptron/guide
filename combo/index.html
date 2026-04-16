@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="До 25 апреля при покупке тарифа «Комбо» вы получите курс «Нейрокапитал» стоимостью 40 000 руб. бесплатно. Два курса по цене одного.">
+  <meta name="theme-color" content="#fbfbfb">
+  <meta property="og:title" content="Инвест-зарплата + Нейрокапитал — 2 курса по цене одного">
+  <meta property="og:description" content="Тариф «Комбо»: курс создания пассивного дохода + ИИ для инвестора. Бонус сгорает 25 апреля.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://guides.fin-ra.pro/combo/">
+  <link rel="icon" href="/favicon.ico">
+  <title>Тариф «Комбо» — Инвест-зарплата + Нейрокапитал | FIN-RA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green: #0f9d58;
+      --green-dark: #0b7a43;
+      --green-glow: rgba(15,157,88,0.15);
+      --green-subtle: rgba(15,157,88,0.06);
+      --bg: #fbfbfb;
+      --bg-alt: #f5f5f7;
+      --text: #1d1d1f;
+      --text-secondary: #6e6e73;
+      --separator: rgba(0,0,0,0.06);
+      --radius: 14px;
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --bonus-bg: #1d1d1f;
+      --bonus-text: #f5f5f7;
+      --red: #ea4335;
+      --red-bg: rgba(234,67,53,0.06);
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* === UTILITY === */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 5rem 0; }
+    .section--alt { background: var(--bg-alt); }
+
+    .section-label {
+      font-family: var(--font-display);
+      font-size: 0.7rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--green); margin-bottom: 0.75rem;
+    }
+    .section-label::before {
+      content: ''; display: inline-block;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--green); margin-right: 0.5rem;
+      vertical-align: middle;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800; line-height: 1.1;
+      letter-spacing: -0.04em; margin-bottom: 1.25rem;
+      text-wrap: balance;
+    }
+    .section-title em { font-style: normal; color: var(--green); }
+
+    .section-desc {
+      font-size: 1.05rem; line-height: 1.6;
+      color: var(--text-secondary); max-width: 600px;
+    }
+
+    /* === ANIMATIONS === */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes ctaGlow {
+      0%, 100% { box-shadow: 0 4px 16px var(--green-glow); }
+      50% { box-shadow: 0 8px 32px rgba(15,157,88,0.3); }
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; } 50% { opacity: 0.3; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* === HEADER === */
+    .header {
+      padding: 1.25rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      animation: fadeUp 0.5s ease both;
+    }
+    .header__logo { height: 28px; }
+    .header__tag {
+      font-family: var(--font-display);
+      font-size: 0.65rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: #fff; background: var(--text);
+      padding: 0.35rem 0.85rem; border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    /* === CTA BUTTON (reused) === */
+    .cta-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 0.6rem; padding: 1rem 2rem;
+      background: var(--green); color: #fff;
+      font-family: var(--font-display); font-size: 1rem; font-weight: 600;
+      border: none; border-radius: var(--radius);
+      cursor: pointer; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      text-decoration: none; letter-spacing: -0.01em;
+      white-space: nowrap;
+      animation: ctaGlow 4s ease-in-out 2s infinite;
+    }
+    .cta-btn:hover {
+      background: var(--green-dark); transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--green-glow);
+      animation: none;
+    }
+    .cta-btn:active { transform: scale(0.98); box-shadow: none; }
+    .cta-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* ================================
+       1. HERO
+       ================================ */
+    .hero {
+      padding: 2.5rem 0 4.5rem;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
+    }
+    .hero__inner {
+      text-align: center;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 1.75rem;
+    }
+
+    .hero__deadline {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--red-bg); color: var(--red);
+      font-family: var(--font-display); font-size: 0.72rem; font-weight: 600;
+      padding: 0.4rem 1rem; border-radius: 100px;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      animation: fadeUp 0.5s ease 0.1s both;
+      white-space: nowrap;
+    }
+    .hero__deadline::before {
+      content: ''; width: 7px; height: 7px;
+      background: var(--red); border-radius: 50%;
+      animation: blink 1.5s ease-in-out infinite;
+    }
+
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      font-weight: 800; line-height: 1.1;
+      letter-spacing: -0.04em;
+      max-width: 720px;
+      text-wrap: balance;
+      animation: fadeUp 0.6s ease 0.15s both;
+    }
+    .hero__title em { font-style: normal; color: var(--green); }
+
+    .hero__price-block {
+      display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
+      animation: fadeUp 0.6s ease 0.2s both;
+    }
+    .hero__price-big {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 800; color: var(--green);
+      letter-spacing: -0.04em; line-height: 1;
+    }
+    .hero__price-note {
+      font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;
+      text-wrap: balance; text-align: center;
+    }
+    .hero__price-note strong { color: var(--text); }
+
+    .hero__sub {
+      font-size: 1.05rem; line-height: 1.6;
+      color: var(--text-secondary); max-width: 540px;
+      animation: fadeUp 0.6s ease 0.25s both;
+      text-wrap: balance;
+    }
+
+    /* Timer */
+    .timer {
+      display: flex; gap: 0.6rem;
+      animation: fadeUp 0.6s ease 0.3s both;
+    }
+    .timer__cell {
+      display: flex; flex-direction: column; align-items: center;
+      background: #fff; border: 1px solid var(--separator);
+      border-radius: 12px; padding: 0.75rem 1rem; min-width: 72px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .timer__num {
+      font-family: var(--font-display); font-size: 1.6rem;
+      font-weight: 800; color: var(--text); line-height: 1;
+      letter-spacing: -0.03em;
+      font-variant-numeric: tabular-nums;
+    }
+    .timer__label {
+      font-size: 0.6rem; color: var(--text-secondary);
+      margin-top: 0.3rem; text-transform: uppercase;
+      letter-spacing: 0.08em; font-weight: 500;
+    }
+
+    .hero__cta {
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      animation: fadeUp 0.6s ease 0.35s both;
+    }
+    .hero__cta .cta-hint {
+      font-size: 0.75rem; color: var(--text-secondary);
+    }
+
+    /* ================================
+       2. О КУРСЕ
+       ================================ */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.25rem; margin-top: 2.5rem;
+    }
+    .about-card {
+      background: #fff; border: 1px solid var(--separator);
+      border-radius: 16px; padding: 1.75rem;
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                  box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .about-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px -5px rgba(0,0,0,0.08);
+    }
+    .about-card__icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--green-subtle);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 0.85rem; color: var(--green);
+    }
+    .about-card__icon svg { width: 20px; height: 20px; }
+    .about-card__title {
+      font-family: var(--font-display); font-size: 1.05rem;
+      font-weight: 700; margin-bottom: 0.45rem;
+    }
+    .about-card__text {
+      font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary);
+    }
+
+    .about-note {
+      margin-top: 2rem; padding: 1.5rem 1.75rem;
+      background: var(--green-subtle); border-radius: 16px;
+      border: 1px solid rgba(15,157,88,0.08);
+      display: flex; flex-direction: column; gap: 0.6rem;
+    }
+    .about-note__item {
+      font-size: 0.92rem; color: var(--text); font-weight: 500;
+      display: flex; align-items: center; gap: 0.7rem;
+    }
+    .about-note__item::before {
+      content: ''; width: 18px; height: 18px; flex-shrink: 0;
+      background: var(--green); border-radius: 50%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M8.5 13.5L5.5 10.5L6.5 9.5L8.5 11.5L13.5 6.5L14.5 7.5L8.5 13.5Z' fill='white'/%3E%3C/svg%3E");
+      background-size: cover;
+    }
+
+    /* ================================
+       3. КОМУ ПОДОЙДЁТ
+       ================================ */
+    .fit-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2.5rem; margin-top: 2rem;
+    }
+    .fit-col__heading {
+      font-family: var(--font-display); font-size: 1.1rem;
+      font-weight: 700; margin-bottom: 1.15rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .fit-col__heading .icon-yes {
+      width: 26px; height: 26px; background: var(--green);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .fit-col__heading .icon-yes svg { width: 14px; height: 14px; color: #fff; }
+    .fit-col__heading .icon-no {
+      width: 26px; height: 26px; background: #e5e5ea;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .fit-col__heading .icon-no svg { width: 12px; height: 12px; color: var(--text-secondary); }
+    .fit-list {
+      list-style: none; display: flex; flex-direction: column; gap: 0.75rem;
+    }
+    .fit-list li {
+      font-size: 0.95rem; line-height: 1.5;
+      display: flex; align-items: flex-start; gap: 0.7rem;
+      color: var(--text);
+    }
+    .fit-list li::before {
+      content: ''; flex-shrink: 0; width: 20px; height: 20px;
+      border-radius: 50%; margin-top: 1px;
+    }
+    .fit-list--yes li::before {
+      background: var(--green);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M8.5 13.5L5.5 10.5L6.5 9.5L8.5 11.5L13.5 6.5L14.5 7.5L8.5 13.5Z' fill='white'/%3E%3C/svg%3E");
+      background-size: cover;
+    }
+    .fit-list--no li::before {
+      background: #e5e5ea;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M13.5 7.5L12.5 6.5L10 9L7.5 6.5L6.5 7.5L9 10L6.5 12.5L7.5 13.5L10 11L12.5 13.5L13.5 12.5L11 10L13.5 7.5Z' fill='%2386868b'/%3E%3C/svg%3E");
+      background-size: cover;
+    }
+
+    /* ================================
+       4. РЕЗУЛЬТАТЫ
+       ================================ */
+    .results-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem; margin-top: 2.5rem;
+    }
+    .result-card {
+      background: #fff; border: 1px solid var(--separator);
+      border-radius: 16px; padding: 1.75rem;
+      display: flex; flex-direction: column; gap: 0.5rem;
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                  box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .result-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px -5px rgba(0,0,0,0.08);
+    }
+    .result-card__num {
+      font-family: var(--font-display); font-size: 2rem;
+      font-weight: 800; color: var(--green); line-height: 1;
+      opacity: 0.3;
+    }
+    .result-card__title {
+      font-family: var(--font-display); font-size: 1rem;
+      font-weight: 700;
+    }
+    .result-card__text {
+      font-size: 0.88rem; line-height: 1.55; color: var(--text-secondary);
+    }
+
+    /* ================================
+       5. БОНУС (тёмный контрастный)
+       ================================ */
+    .bonus {
+      background: var(--bonus-bg); color: var(--bonus-text);
+      padding: 5rem 0;
+    }
+    .bonus .section-label { color: rgba(15,157,88,0.7); }
+    .bonus .section-label::before { background: var(--green); }
+    .bonus .section-title { color: #fff; }
+    .bonus .section-title em { color: var(--green); }
+    .bonus .section-desc { color: rgba(255,255,255,0.55); }
+
+    .bonus__card {
+      margin-top: 2.5rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px; padding: 2.5rem;
+      display: grid; grid-template-columns: 180px 1fr; gap: 2.5rem;
+      align-items: start;
+    }
+    .bonus__card-left {
+      display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+      padding-top: 0.5rem;
+    }
+    .bonus__price-badge {
+      background: var(--green); color: #fff;
+      font-family: var(--font-display); font-size: 0.72rem; font-weight: 600;
+      padding: 0.35rem 0.85rem; border-radius: 100px;
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .bonus__old-price {
+      font-family: var(--font-display); font-size: 1.3rem;
+      font-weight: 600; color: rgba(255,255,255,0.35);
+      text-decoration: line-through;
+    }
+    .bonus__new-price {
+      font-family: var(--font-display); font-size: 2.8rem;
+      font-weight: 800; color: var(--green); line-height: 1;
+    }
+    .bonus__card-right {
+      display: flex; flex-direction: column; gap: 0.85rem;
+    }
+    .bonus__card-title {
+      font-family: var(--font-display); font-size: 1.25rem;
+      font-weight: 700; color: #fff; line-height: 1.25;
+    }
+    .bonus__card-text {
+      font-size: 0.92rem; line-height: 1.6;
+      color: rgba(255,255,255,0.55);
+    }
+    .bonus__features {
+      list-style: none; display: flex; flex-direction: column; gap: 0.6rem;
+      margin-top: 0.25rem;
+    }
+    .bonus__features li {
+      font-size: 0.9rem; color: rgba(255,255,255,0.8);
+      display: flex; align-items: center; gap: 0.7rem;
+    }
+    .bonus__features li::before {
+      content: ''; width: 20px; height: 20px; flex-shrink: 0;
+      background: var(--green); border-radius: 50%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M8.5 13.5L5.5 10.5L6.5 9.5L8.5 11.5L13.5 6.5L14.5 7.5L8.5 13.5Z' fill='white'/%3E%3C/svg%3E");
+      background-size: cover;
+    }
+
+    /* ================================
+       6. URGENCY
+       ================================ */
+    .urgency { text-align: center; }
+    .urgency__inner {
+      max-width: 640px; margin: 0 auto;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 1.75rem;
+    }
+    .urgency__items {
+      display: flex; flex-direction: column; gap: 0.75rem;
+      width: 100%; text-align: left;
+    }
+    .urgency__item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      background: var(--red-bg);
+      border: 1px solid rgba(234,67,53,0.08);
+      border-radius: 14px; padding: 1.15rem 1.35rem;
+    }
+    .urgency__icon {
+      width: 36px; height: 36px; flex-shrink: 0;
+      background: rgba(234,67,53,0.1);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 1px;
+    }
+    .urgency__icon svg { width: 18px; height: 18px; color: var(--red); }
+    .urgency__text {
+      font-size: 0.92rem; line-height: 1.5; color: var(--text);
+    }
+    .urgency__text strong {
+      color: var(--red); font-weight: 700;
+    }
+
+    /* ================================
+       7. FAQ
+       ================================ */
+    .faq-list {
+      max-width: 700px; margin: 2rem auto 0;
+      display: flex; flex-direction: column;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--separator);
+    }
+    .faq-q {
+      width: 100%; background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 0;
+      font-family: var(--font-display); font-size: 1rem;
+      font-weight: 600; color: var(--text); text-align: left;
+      transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--green); }
+    .faq-q::after {
+      content: '+'; font-size: 1.3rem; font-weight: 400;
+      color: var(--text-secondary); transition: transform 0.3s;
+      flex-shrink: 0; margin-left: 1rem;
+    }
+    .faq-item.open .faq-q::after { content: '−'; }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      font-size: 0.92rem; line-height: 1.65; color: var(--text-secondary);
+    }
+    .faq-item.open .faq-a { max-height: 300px; padding-bottom: 1.25rem; }
+
+    /* ================================
+       8. FINAL CTA
+       ================================ */
+    .final-cta {
+      text-align: center; padding: 5rem 0 3rem;
+    }
+    .final-cta__inner {
+      display: flex; flex-direction: column; align-items: center; gap: 1.25rem;
+    }
+    .final-cta__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 800; line-height: 1.1; letter-spacing: -0.04em;
+      text-wrap: balance;
+    }
+    .final-cta__title em { font-style: normal; color: var(--green); }
+    .final-cta__sub {
+      font-size: 0.95rem; color: var(--text-secondary); max-width: 480px;
+      text-wrap: balance;
+    }
+    .final-cta__hint {
+      font-size: 0.75rem; color: var(--text-secondary);
+    }
+
+    /* === FOOTER === */
+    .footer {
+      padding: 1.5rem 2.5rem; text-align: center;
+      font-size: 0.75rem; color: var(--text-secondary);
+    }
+    .footer a { color: var(--text-secondary); text-decoration: none; }
+
+    /* === STICKY CTA (mobile) === */
+    .sticky-cta { display: none; }
+
+    /* ================================
+       RESPONSIVE — LARGE
+       ================================ */
+    @media (min-width: 1400px) {
+      .container { max-width: 1300px; }
+      .hero__title { font-size: 3.2rem; }
+      .section-title { font-size: 3rem; }
+      .bonus__card { grid-template-columns: 200px 1fr; }
+    }
+
+    /* ================================
+       RESPONSIVE — MOBILE
+       ================================ */
+    @media (max-width: 768px) {
+      .header { padding: 1rem 1.25rem; }
+      .header__logo { height: 24px; }
+      .header__tag { font-size: 0.6rem; padding: 0.3rem 0.7rem; }
+
+      .hero { padding: 1rem 0 2.5rem; }
+      .hero__inner { gap: 1.25rem; }
+      .hero__title { font-size: 1.5rem; line-height: 1.15; }
+      .hero__price-big { font-size: 2.4rem; }
+      .hero__sub { font-size: 0.9rem; }
+
+      .timer { gap: 0.5rem; }
+      .timer__cell { min-width: 0; flex: 1; padding: 0.65rem 0.5rem; }
+      .timer__num { font-size: 1.35rem; }
+
+      .container { padding: 0 1.25rem; }
+      .section { padding: 3.5rem 0; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 0.75rem; margin-top: 1.75rem; }
+      .about-card { padding: 1.25rem; }
+      .fit-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .results-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.75rem; }
+      .result-card { padding: 1.25rem; }
+      .result-card__num { font-size: 1.6rem; }
+
+      .bonus { padding: 3.5rem 0; }
+      .bonus__card {
+        grid-template-columns: 1fr; text-align: center;
+        padding: 1.75rem; gap: 1.5rem;
+      }
+      .bonus__card-left {
+        flex-direction: row; justify-content: center; gap: 1rem;
+        align-items: center; padding-top: 0;
+      }
+      .bonus__old-price { font-size: 1.1rem; }
+      .bonus__new-price { font-size: 2rem; }
+      .bonus__card-right { text-align: left; }
+      .bonus__features { align-items: flex-start; }
+
+      .urgency__inner { max-width: 100%; }
+      .urgency__item { padding: 1rem; gap: 0.85rem; }
+      .urgency__icon { width: 32px; height: 32px; min-width: 32px; }
+      .urgency__icon svg { width: 16px; height: 16px; }
+      .urgency__text { font-size: 0.88rem; }
+
+      .cta-btn { white-space: normal; text-align: center; }
+
+      .sticky-cta {
+        display: flex; position: fixed; bottom: 0; left: 0; right: 0;
+        z-index: 100;
+        padding: 0.75rem 1.25rem calc(env(safe-area-inset-bottom, 0px) + 0.75rem);
+        background: rgba(251,251,251,0.95);
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+        border-top: 1px solid var(--separator);
+      }
+      .sticky-cta .cta-btn {
+        width: 100%; padding: 0.875rem 1.5rem;
+        font-size: 0.92rem;
+      }
+
+      .final-cta { padding: 3rem 0 6rem; }
+
+      .faq-list { margin-top: 1.5rem; }
+      .faq-q { font-size: 0.95rem; padding: 1.1rem 0; }
+    }
+
+    /* Small phones */
+    @media (max-width: 380px) {
+      .hero__title { font-size: 1.35rem; }
+      .hero__price-big { font-size: 2rem; }
+      .timer__num { font-size: 1.15rem; }
+      .results-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- === HEADER === -->
+  <header class="header">
+    <img src="/0326/logo.png" alt="FIN-RA" class="header__logo">
+    <span class="header__tag">Акция до 25 апреля</span>
+  </header>
+
+  <!-- === 1. HERO === -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero__inner">
+
+        <div class="hero__deadline">Предложение ограничено</div>
+
+        <h1 class="hero__title">
+          Купите тариф «Комбо» до&nbsp;25&nbsp;апреля и&nbsp;получите курс <em>«Нейрокапитал»</em> за&nbsp;40&nbsp;000&nbsp;₽ в&nbsp;подарок
+        </h1>
+
+        <div class="hero__price-block">
+          <div class="hero__price-big">7&nbsp;033&nbsp;₽/мес</div>
+          <div class="hero__price-note">
+            Рассрочка на 12 месяцев · <strong>2&nbsp;курса на&nbsp;сумму 124&nbsp;400&nbsp;₽</strong>
+          </div>
+        </div>
+
+        <p class="hero__sub">
+          Научитесь зарабатывать на&nbsp;инвестициях от&nbsp;30&nbsp;000&nbsp;₽ в&nbsp;месяц — даже если начинаете с&nbsp;нуля
+        </p>
+
+        <div class="timer" id="timer">
+          <div class="timer__cell">
+            <span class="timer__num" id="timer-days">00</span>
+            <span class="timer__label">дней</span>
+          </div>
+          <div class="timer__cell">
+            <span class="timer__num" id="timer-hours">00</span>
+            <span class="timer__label">часов</span>
+          </div>
+          <div class="timer__cell">
+            <span class="timer__num" id="timer-mins">00</span>
+            <span class="timer__label">минут</span>
+          </div>
+          <div class="timer__cell">
+            <span class="timer__num" id="timer-secs">00</span>
+            <span class="timer__label">секунд</span>
+          </div>
+        </div>
+
+        <div class="hero__cta">
+          <a href="#buy" class="cta-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            Забрать оба курса
+          </a>
+          <span class="cta-hint" style="font-size:0.75rem;color:var(--text-secondary)">Перейдёте на страницу оплаты</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- === 2. О КУРСЕ === -->
+  <section class="section section--alt" id="about">
+    <div class="container">
+      <div class="section-label reveal">О курсе</div>
+      <h2 class="section-title reveal">Что такое <em>«Инвест-зарплата»</em></h2>
+      <p class="section-desc reveal">
+        Это не&nbsp;про трейдинг и&nbsp;не&nbsp;про «быстрые деньги». Это курс о&nbsp;том, как шаг за&nbsp;шагом создать капитал и&nbsp;начать получать доход от&nbsp;инвестиций.
+      </p>
+
+      <div class="about-grid">
+        <div class="about-card reveal">
+          <div class="about-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div class="about-card__title">Пошаговый план</div>
+          <div class="about-card__text">От открытия брокерского счёта до&nbsp;первых инвестиций. Каждый шаг разобран так, чтобы можно было повторить без&nbsp;опыта.</div>
+        </div>
+        <div class="about-card reveal">
+          <div class="about-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <div class="about-card__title">Реальные инструменты</div>
+          <div class="about-card__text">Акции, облигации, фонды, недвижимость и&nbsp;крипта — разбираем каждый инструмент на&nbsp;практике.</div>
+        </div>
+        <div class="about-card reveal">
+          <div class="about-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <div class="about-card__title">Формат обучения</div>
+          <div class="about-card__text">Видеоуроки, домашние задания, поддержка куратора. Обучение в&nbsp;удобном темпе — доступ к&nbsp;материалам навсегда.</div>
+        </div>
+        <div class="about-card reveal">
+          <div class="about-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="18"/></svg>
+          </div>
+          <div class="about-card__title">Результат</div>
+          <div class="about-card__text">Готовый портфель инвестиций, план на&nbsp;годы вперёд и&nbsp;доход от&nbsp;30&nbsp;000&nbsp;₽ в&nbsp;месяц.</div>
+        </div>
+      </div>
+
+      <div class="about-note reveal">
+        <div class="about-note__item">Это система создания капитала, а&nbsp;не&nbsp;спекуляций</div>
+        <div class="about-note__item">Пошаговый план инвестирования с&nbsp;нуля до&nbsp;результата</div>
+        <div class="about-note__item">Подходит даже тем, кто ни&nbsp;разу не&nbsp;покупал акции</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === 3. КОМУ ПОДОЙДЁТ === -->
+  <section class="section" id="fit">
+    <div class="container">
+      <div class="section-label reveal">Для кого</div>
+      <h2 class="section-title reveal">Кому подойдёт <em>курс</em></h2>
+
+      <div class="fit-grid">
+        <div class="reveal">
+          <div class="fit-col__heading">
+            <span class="icon-yes">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            Подойдёт, если вы:
+          </div>
+          <ul class="fit-list fit-list--yes">
+            <li>Не понимаете, как начать инвестировать</li>
+            <li>Есть доход, но нет накоплений и&nbsp;капитала</li>
+            <li>Деньги лежат без дела — на вкладе или&nbsp;«под&nbsp;подушкой»</li>
+            <li>Хотите создать пассивный доход, который работает без&nbsp;вас</li>
+            <li>Боитесь потерять деньги в&nbsp;инвестициях</li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <div class="fit-col__heading">
+            <span class="icon-no">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </span>
+            Не подойдёт, если вы:
+          </div>
+          <ul class="fit-list fit-list--no">
+            <li>Ищете способ «заработать быстро» за&nbsp;пару дней</li>
+            <li>Не готовы учиться и&nbsp;применять знания</li>
+            <li>Хотите гарантий дохода без&nbsp;усилий</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === 4. РЕЗУЛЬТАТЫ === -->
+  <section class="section section--alt" id="results">
+    <div class="container">
+      <div class="section-label reveal">Результаты</div>
+      <h2 class="section-title reveal">Что вы получите после <em>обучения</em></h2>
+
+      <div class="results-grid">
+        <div class="result-card reveal">
+          <div class="result-card__num">01</div>
+          <div class="result-card__title">Понимание рынка</div>
+          <div class="result-card__text">Поймёте, как устроен рынок, что влияет на&nbsp;цены и&nbsp;как выбирать компании.</div>
+        </div>
+        <div class="result-card reveal">
+          <div class="result-card__num">02</div>
+          <div class="result-card__title">Инвестиционный план</div>
+          <div class="result-card__text">Составите личный план: куда вложить, сколько и&nbsp;на&nbsp;какой срок.</div>
+        </div>
+        <div class="result-card reveal">
+          <div class="result-card__num">03</div>
+          <div class="result-card__title">Первые инвестиции</div>
+          <div class="result-card__text">Откроете счёт и&nbsp;сделаете первые покупки — акции, облигации, фонды.</div>
+        </div>
+        <div class="result-card reveal">
+          <div class="result-card__num">04</div>
+          <div class="result-card__title">Стратегия на годы</div>
+          <div class="result-card__text">Получите систему, которая работает в&nbsp;любой ситуации — и&nbsp;в&nbsp;рост, и&nbsp;в&nbsp;кризис.</div>
+        </div>
+        <div class="result-card reveal">
+          <div class="result-card__num">05</div>
+          <div class="result-card__title">Контроль рисков</div>
+          <div class="result-card__text">Научитесь защищать деньги — не класть всё в&nbsp;одно место и&nbsp;не паниковать при&nbsp;падениях.</div>
+        </div>
+        <div class="result-card reveal">
+          <div class="result-card__num">06</div>
+          <div class="result-card__title">Пассивный доход</div>
+          <div class="result-card__text">Дивиденды, проценты, арендные платежи — деньги приходят, даже когда вы&nbsp;отдыхаете.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === 5. БОНУС === -->
+  <section class="bonus" id="bonus">
+    <div class="container">
+      <div class="section-label reveal">Бонус к тарифу «Комбо»</div>
+      <h2 class="section-title reveal">Вы получаете второй курс <em>бесплатно</em></h2>
+      <p class="section-desc reveal">
+        Курс «Нейрокапитал» научит вас использовать искусственный интеллект, чтобы быстрее принимать решения в&nbsp;инвестициях и&nbsp;в&nbsp;жизни.
+      </p>
+
+      <div class="bonus__card reveal">
+        <div class="bonus__card-left">
+          <span class="bonus__price-badge">Бонус</span>
+          <div class="bonus__old-price">40&nbsp;000&nbsp;₽</div>
+          <div class="bonus__new-price">0&nbsp;₽</div>
+        </div>
+        <div class="bonus__card-right">
+          <div class="bonus__card-title">Курс «Нейрокапитал»<br>тариф самостоятельный</div>
+          <div class="bonus__card-text">
+            1,5 месяца онлайн-обучения. Без программирования и&nbsp;технических сложностей — только практические навыки для&nbsp;инвестора.
+          </div>
+          <ul class="bonus__features">
+            <li>Анализ компаний с&nbsp;помощью ИИ — за&nbsp;минуты, а&nbsp;не&nbsp;за&nbsp;часы</li>
+            <li>ИИ сделает за&nbsp;вас рутину: отчёты, таблицы, мониторинг</li>
+            <li>Готовые запросы к&nbsp;ИИ для принятия решений</li>
+            <li>Освободите время и&nbsp;увеличите доход с&nbsp;помощью технологий</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === 6. URGENCY === -->
+  <section class="section urgency" id="urgency">
+    <div class="container">
+      <div class="urgency__inner">
+        <div class="section-label reveal">Ограниченное предложение</div>
+        <h2 class="section-title reveal" style="text-align:center">Почему выгодно <em>именно&nbsp;сейчас</em></h2>
+
+        <div class="urgency__items reveal">
+          <div class="urgency__item">
+            <div class="urgency__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="urgency__text">
+              <strong>После 25&nbsp;апреля бонус сгорит</strong> — курс «Нейрокапитал» можно будет купить только отдельно за&nbsp;40&nbsp;000&nbsp;₽
+            </div>
+          </div>
+          <div class="urgency__item">
+            <div class="urgency__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="urgency__text">
+              <strong>Цена вырастет</strong> — сейчас рассрочка 7&nbsp;033&nbsp;₽/мес, потом будет дороже
+            </div>
+          </div>
+          <div class="urgency__item">
+            <div class="urgency__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <div class="urgency__text">
+              <strong>Это разовая акция</strong> — два полноценных курса по&nbsp;цене одного, такого предложения больше не&nbsp;будет
+            </div>
+          </div>
+        </div>
+
+        <div class="timer" id="timer2" style="animation:none;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === 7. FAQ === -->
+  <section class="section section--alt" id="faq">
+    <div class="container">
+      <div class="section-label reveal" style="text-align:center">Вопросы</div>
+      <h2 class="section-title reveal" style="text-align:center">Частые <em>вопросы</em></h2>
+
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <button class="faq-q" onclick="toggleFaq(this)">Я новичок, подойдёт ли мне курс?</button>
+          <div class="faq-a">Да. Курс «Инвест-зарплата» создан для тех, кто начинает с нуля. Все темы разобраны пошагово — от открытия счёта до составления портфеля. Специальных знаний не требуется.</div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q" onclick="toggleFaq(this)">Что входит в тариф «Комбо»?</button>
+          <div class="faq-a">Вы получаете сразу два курса: «Инвест-зарплата» (основной) + «Нейрокапитал» (курс про ИИ за 40 000 ₽ — в подарок). Вместе они стоят 124 400 ₽, а вы платите только за один.</div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q" onclick="toggleFaq(this)">Можно ли оплатить в рассрочку?</button>
+          <div class="faq-a">Да, доступна рассрочка на 12 месяцев. Платёж составит 7 033 ₽/мес. Без переплат и скрытых комиссий.</div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q" onclick="toggleFaq(this)">Сколько длится обучение?</button>
+          <div class="faq-a">Основной курс — несколько месяцев, «Нейрокапитал» — полтора месяца. Но торопиться не нужно: доступ к урокам остаётся навсегда, учитесь когда удобно.</div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q" onclick="toggleFaq(this)">Что будет после 25 апреля?</button>
+          <div class="faq-a">Бонус перестанет действовать. Купить «Инвест-зарплату» можно будет и потом, но курс про ИИ придётся покупать отдельно за 40 000 ₽.</div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q" onclick="toggleFaq(this)">Нужен ли большой капитал для старта?</button>
+          <div class="faq-a">Нет. Начать можно с любой суммы — даже с 1 000 ₽. Главное — система и регулярность. Курс научит работать с тем бюджетом, который у вас есть.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === 8. FINAL CTA === -->
+  <section class="final-cta" id="buy">
+    <div class="container">
+      <div class="final-cta__inner">
+        <div class="section-label">Последний шаг</div>
+        <h2 class="final-cta__title">Два курса. Одна цена. <em>Решение за&nbsp;вами.</em></h2>
+        <p class="final-cta__sub">
+          «Инвест-зарплата» + «Нейрокапитал» по&nbsp;цене одного тарифа. Бонус действует до&nbsp;25&nbsp;апреля.
+        </p>
+        <a href="#buy" class="cta-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          Забрать бонус сейчас
+        </a>
+        <span class="final-cta__hint">Перейдёте на страницу оплаты</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- === FOOTER === -->
+  <footer class="footer">
+    &copy; <a href="https://fin-ra.ru/">FIN-RA</a> — Школа безопасных инвестиций
+  </footer>
+
+  <!-- === STICKY CTA (mobile) === -->
+  <div class="sticky-cta">
+    <a href="#buy" class="cta-btn" style="animation:none;">
+      Забрать оба курса
+    </a>
+  </div>
+
+  <script>
+    /* === COUNTDOWN TIMER === */
+    (function() {
+      var deadline = new Date('2026-04-25T23:59:59+03:00').getTime();
+
+      function pad(n) { return n < 10 ? '0' + n : n; }
+
+      function updateTimers() {
+        var now = Date.now();
+        var diff = deadline - now;
+        if (diff <= 0) {
+          document.querySelectorAll('.timer').forEach(function(t) {
+            t.innerHTML = '<div style="font-family:var(--font-display);font-weight:600;color:var(--red);font-size:1rem;">Предложение завершено</div>';
+          });
+          return;
+        }
+        var d = Math.floor(diff / 86400000);
+        var h = Math.floor((diff % 86400000) / 3600000);
+        var m = Math.floor((diff % 3600000) / 60000);
+        var s = Math.floor((diff % 60000) / 1000);
+
+        var el = document.getElementById('timer-days');
+        if (el) { el.textContent = pad(d); }
+        el = document.getElementById('timer-hours');
+        if (el) { el.textContent = pad(h); }
+        el = document.getElementById('timer-mins');
+        if (el) { el.textContent = pad(m); }
+        el = document.getElementById('timer-secs');
+        if (el) { el.textContent = pad(s); }
+
+        var t2 = document.getElementById('timer2');
+        if (t2 && !t2.dataset.init) {
+          t2.innerHTML =
+            '<div class="timer__cell"><span class="timer__num" id="t2-d">00</span><span class="timer__label">дней</span></div>' +
+            '<div class="timer__cell"><span class="timer__num" id="t2-h">00</span><span class="timer__label">часов</span></div>' +
+            '<div class="timer__cell"><span class="timer__num" id="t2-m">00</span><span class="timer__label">минут</span></div>' +
+            '<div class="timer__cell"><span class="timer__num" id="t2-s">00</span><span class="timer__label">секунд</span></div>';
+          t2.dataset.init = '1';
+        }
+        el = document.getElementById('t2-d');
+        if (el) { el.textContent = pad(d); }
+        el = document.getElementById('t2-h');
+        if (el) { el.textContent = pad(h); }
+        el = document.getElementById('t2-m');
+        if (el) { el.textContent = pad(m); }
+        el = document.getElementById('t2-s');
+        if (el) { el.textContent = pad(s); }
+      }
+
+      updateTimers();
+      setInterval(updateTimers, 1000);
+    })();
+
+    /* === FAQ TOGGLE === */
+    function toggleFaq(btn) {
+      var item = btn.parentElement;
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(el) {
+        el.classList.remove('open');
+      });
+      if (!isOpen) { item.classList.add('open'); }
+    }
+
+    /* === REVEAL ON SCROLL === */
+    (function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if (!reveals.length) return;
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      reveals.forEach(function(el) { observer.observe(el); });
+    })();
+  </script>
+
+</body>
+</html>
