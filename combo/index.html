@@ -232,6 +232,92 @@
     }
 
     /* ================================
+       1.5 ПРЕВЬЮ КУРСОВ
+       ================================ */
+    .courses-preview {
+      padding: 3.5rem 0 4.5rem;
+      background: var(--bg-alt);
+    }
+    .courses-preview__head {
+      text-align: center; margin-bottom: 2.5rem;
+    }
+    .courses-preview__title {
+      font-family: var(--font-display);
+      font-size: 2rem; font-weight: 800;
+      letter-spacing: -0.04em; line-height: 1.1;
+      text-wrap: balance;
+    }
+    .courses-preview__title em {
+      font-style: normal; color: var(--green);
+    }
+    .courses-preview__sub {
+      margin-top: 0.75rem; font-size: 1rem;
+      color: var(--text-secondary); line-height: 1.5;
+      text-wrap: balance;
+    }
+    .courses-preview__grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .course-card {
+      background: #fff; border: 1px solid var(--separator);
+      border-radius: 20px; padding: 1.25rem;
+      display: flex; flex-direction: column;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .course-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.12);
+    }
+    .course-card__badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-family: var(--font-display);
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 0.85rem;
+      align-self: flex-start;
+    }
+    .course-card__badge::before {
+      content: ''; width: 6px; height: 6px;
+      background: var(--green); border-radius: 50%;
+    }
+    .course-card--bonus .course-card__badge { color: #b8860b; }
+    .course-card--bonus .course-card__badge::before { background: #b8860b; }
+    .course-card__name {
+      font-family: var(--font-display);
+      font-size: 1.25rem; font-weight: 700;
+      letter-spacing: -0.02em; line-height: 1.2;
+      margin-bottom: 0.4rem;
+    }
+    .course-card__desc {
+      font-size: 0.88rem; line-height: 1.5;
+      color: var(--text-secondary); margin-bottom: 1rem;
+    }
+    .course-card__img-wrap {
+      border-radius: 12px; overflow: hidden;
+      background: var(--bg-alt);
+      border: 1px solid var(--separator);
+      margin-top: auto;
+      aspect-ratio: 4 / 3;
+    }
+    .course-card__img {
+      width: 100%; height: 100%; display: block;
+      object-fit: cover; object-position: top;
+    }
+    .course-card__price {
+      display: flex; align-items: baseline; gap: 0.6rem;
+      margin-top: 1rem; font-family: var(--font-display);
+    }
+    .course-card__price-old {
+      font-size: 0.95rem; color: var(--text-secondary);
+      text-decoration: line-through;
+    }
+    .course-card__price-new {
+      font-size: 1.15rem; font-weight: 700; color: var(--green);
+    }
+
+    /* ================================
        2. О КУРСЕ
        ================================ */
     .about-grid {
@@ -555,6 +641,15 @@
       .container { padding: 0 1.25rem; }
       .section { padding: 3.5rem 0; }
 
+      .courses-preview { padding: 2.5rem 0 3rem; }
+      .courses-preview__head { margin-bottom: 1.75rem; }
+      .courses-preview__title { font-size: 1.4rem; }
+      .courses-preview__sub { font-size: 0.9rem; }
+      .courses-preview__grid { grid-template-columns: 1fr; gap: 1rem; }
+      .course-card { padding: 1rem; border-radius: 16px; }
+      .course-card__name { font-size: 1.1rem; }
+      .course-card__desc { font-size: 0.85rem; }
+
       .about-grid { grid-template-columns: 1fr; gap: 0.75rem; margin-top: 1.75rem; }
       .about-card { padding: 1.25rem; }
       .fit-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -635,7 +730,7 @@
         <div class="hero__price-block">
           <div class="hero__price-big">7&nbsp;033&nbsp;₽/мес</div>
           <div class="hero__price-note">
-            Рассрочка на 12 месяцев · <strong>2&nbsp;курса на&nbsp;сумму 124&nbsp;400&nbsp;₽</strong>
+            Рассрочка на 12&nbsp;месяцев · платите только за&nbsp;один курс <strong>7&nbsp;033&nbsp;₽</strong>, получаете <strong>2&nbsp;курса на&nbsp;сумму 124&nbsp;000&nbsp;₽</strong>
           </div>
         </div>
 
@@ -674,8 +769,43 @@
     </div>
   </section>
 
+  <!-- === 1.5 ПРЕВЬЮ КУРСОВ === -->
+  <section class="courses-preview">
+    <div class="container">
+      <div class="courses-preview__head reveal">
+        <h2 class="courses-preview__title">Что вы получите в&nbsp;тарифе <em>«Комбо»</em></h2>
+        <p class="courses-preview__sub">Два полноценных курса по&nbsp;цене одного — до&nbsp;25&nbsp;апреля</p>
+      </div>
+      <div class="courses-preview__grid">
+        <div class="course-card reveal">
+          <span class="course-card__badge">Основной курс</span>
+          <div class="course-card__name">Инвест-зарплата</div>
+          <div class="course-card__desc">Создадите капитал и&nbsp;научитесь получать доход от&nbsp;инвестиций — акции, облигации, фонды.</div>
+          <div class="course-card__img-wrap">
+            <img src="invest-salary.png" alt="Программа курса Инвест-зарплата" class="course-card__img" width="810" height="973" loading="lazy">
+          </div>
+          <div class="course-card__price">
+            <span class="course-card__price-new">84&nbsp;400&nbsp;₽</span>
+          </div>
+        </div>
+        <div class="course-card course-card--bonus reveal">
+          <span class="course-card__badge">Бонус · бесплатно</span>
+          <div class="course-card__name">Нейрокапитал</div>
+          <div class="course-card__desc">Освоите ИИ для инвестора: анализ компаний, готовые запросы, автоматизация рутины.</div>
+          <div class="course-card__img-wrap">
+            <img src="neurokapital.png" alt="Программа курса Нейрокапитал" class="course-card__img" width="1325" height="1220" loading="lazy">
+          </div>
+          <div class="course-card__price">
+            <span class="course-card__price-old">40&nbsp;000&nbsp;₽</span>
+            <span class="course-card__price-new">0&nbsp;₽</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- === 2. О КУРСЕ === -->
-  <section class="section section--alt" id="about">
+  <section class="section" id="about">
     <div class="container">
       <div class="section-label reveal">О курсе</div>
       <h2 class="section-title reveal">Что такое <em>«Инвест-зарплата»</em></h2>
@@ -722,46 +852,7 @@
     </div>
   </section>
 
-  <!-- === 3. КОМУ ПОДОЙДЁТ === -->
-  <section class="section" id="fit">
-    <div class="container">
-      <div class="section-label reveal">Для кого</div>
-      <h2 class="section-title reveal">Кому подойдёт <em>курс</em></h2>
-
-      <div class="fit-grid">
-        <div class="reveal">
-          <div class="fit-col__heading">
-            <span class="icon-yes">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            </span>
-            Подойдёт, если вы:
-          </div>
-          <ul class="fit-list fit-list--yes">
-            <li>Не понимаете, как начать инвестировать</li>
-            <li>Есть доход, но нет накоплений и&nbsp;капитала</li>
-            <li>Деньги лежат без дела — на вкладе или&nbsp;«под&nbsp;подушкой»</li>
-            <li>Хотите создать пассивный доход, который работает без&nbsp;вас</li>
-            <li>Боитесь потерять деньги в&nbsp;инвестициях</li>
-          </ul>
-        </div>
-        <div class="reveal">
-          <div class="fit-col__heading">
-            <span class="icon-no">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </span>
-            Не подойдёт, если вы:
-          </div>
-          <ul class="fit-list fit-list--no">
-            <li>Ищете способ «заработать быстро» за&nbsp;пару дней</li>
-            <li>Не готовы учиться и&nbsp;применять знания</li>
-            <li>Хотите гарантий дохода без&nbsp;усилий</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- === 4. РЕЗУЛЬТАТЫ === -->
+  <!-- === 3. РЕЗУЛЬТАТЫ === -->
   <section class="section section--alt" id="results">
     <div class="container">
       <div class="section-label reveal">Результаты</div>
@@ -872,42 +963,7 @@
     </div>
   </section>
 
-  <!-- === 7. FAQ === -->
-  <section class="section section--alt" id="faq">
-    <div class="container">
-      <div class="section-label reveal" style="text-align:center">Вопросы</div>
-      <h2 class="section-title reveal" style="text-align:center">Частые <em>вопросы</em></h2>
-
-      <div class="faq-list">
-        <div class="faq-item reveal">
-          <button class="faq-q" onclick="toggleFaq(this)">Я новичок, подойдёт ли мне курс?</button>
-          <div class="faq-a">Да. Курс «Инвест-зарплата» создан для тех, кто начинает с нуля. Все темы разобраны пошагово — от открытия счёта до составления портфеля. Специальных знаний не требуется.</div>
-        </div>
-        <div class="faq-item reveal">
-          <button class="faq-q" onclick="toggleFaq(this)">Что входит в тариф «Комбо»?</button>
-          <div class="faq-a">Вы получаете сразу два курса: «Инвест-зарплата» (основной) + «Нейрокапитал» (курс про ИИ за 40 000 ₽ — в подарок). Вместе они стоят 124 400 ₽, а вы платите только за один.</div>
-        </div>
-        <div class="faq-item reveal">
-          <button class="faq-q" onclick="toggleFaq(this)">Можно ли оплатить в рассрочку?</button>
-          <div class="faq-a">Да, доступна рассрочка на 12 месяцев. Платёж составит 7 033 ₽/мес. Без переплат и скрытых комиссий.</div>
-        </div>
-        <div class="faq-item reveal">
-          <button class="faq-q" onclick="toggleFaq(this)">Сколько длится обучение?</button>
-          <div class="faq-a">Основной курс — несколько месяцев, «Нейрокапитал» — полтора месяца. Но торопиться не нужно: доступ к урокам остаётся навсегда, учитесь когда удобно.</div>
-        </div>
-        <div class="faq-item reveal">
-          <button class="faq-q" onclick="toggleFaq(this)">Что будет после 25 апреля?</button>
-          <div class="faq-a">Бонус перестанет действовать. Купить «Инвест-зарплату» можно будет и потом, но курс про ИИ придётся покупать отдельно за 40 000 ₽.</div>
-        </div>
-        <div class="faq-item reveal">
-          <button class="faq-q" onclick="toggleFaq(this)">Нужен ли большой капитал для старта?</button>
-          <div class="faq-a">Нет. Начать можно с любой суммы — даже с 1 000 ₽. Главное — система и регулярность. Курс научит работать с тем бюджетом, который у вас есть.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- === 8. FINAL CTA === -->
+  <!-- === 7. FINAL CTA === -->
   <section class="final-cta" id="buy">
     <div class="container">
       <div class="final-cta__inner">
