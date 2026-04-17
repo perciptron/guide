@@ -1124,12 +1124,19 @@
 
   <!--
     === CTA FLOW ===
-    Все кнопки открывают модалку с формой Salebot (project 317313,
-    guid a96fa570dae4e3ffd17b072f76303f1b). Пользователь выбирает
-    мессенджер (VK / TG / MAX) и переходит в бота.
+    Все кнопки вызывают openModal(). Маршрутизация:
+      • ?src=tg  → прямой переход в TG-бота (без модалки)
+      • ?src=vk  → прямой переход в VK-бота (без модалки)
+      • без src  → модалка с формой Salebot (project 317313,
+        guid a96fa570dae4e3ffd17b072f76303f1b) — выбор VK/TG/MAX
+
     В AmoCRM создаётся лид: этап «Заявка в ОП», тег 1+1.
     Бот отправляет: «Мы зафиксировали предложение за вами,
     в течение 30 минут с вами свяжется наш менеджер!»
+
+    Ссылки рассылок:
+      TG: https://guides.fin-ra.pro/combo/?src=tg
+      VK: https://guides.fin-ra.pro/combo/?src=vk
   -->
 
   <!-- === 1. HERO === -->
@@ -1543,14 +1550,44 @@
       reveals.forEach(function(el) { observer.observe(el); });
     })();
 
-    /* === MODAL ===
-       Открывает форму Salebot с выбором мессенджера (VK/TG/MAX).
-       При клике пользователь получает сообщение в боте:
-       «Мы зафиксировали предложение за вами, в течение 30 минут
-        с вами свяжется наш менеджер!»
-       В AmoCRM создаётся лид на этапе «Заявка в ОП» с тегом 1+1.
+    /* === CTA ROUTING ===
+       Логика:
+       • URL ?src=tg  → клик по кнопке = прямой переход в TG-бота
+       • URL ?src=vk  → клик = прямой переход в VK-бота
+       • Без метки    → открывается модалка с выбором (VK/TG/MAX)
+
+       В AmoCRM создаётся лид: этап «Заявка в ОП», тег 1+1.
+       Бот пишет: «Мы зафиксировали предложение за вами, в течение
+       30 минут с вами свяжется наш менеджер!»
     */
+    var BOT_LINKS = {
+      tg: 'tg://resolve?domain=finra_profit_bot&start=combo_offer',
+      vk: 'https://s.salebot.pro//a96fa570dae4e3ffd17b072f76303f1b_0_f'
+    };
+
+    (function() {
+      try {
+        var src = new URLSearchParams(location.search).get('src');
+        if (src) sessionStorage.setItem('finra_src', src.toLowerCase());
+      } catch (e) {}
+    })();
+
+    function getDirectLink() {
+      var src;
+      try {
+        src = new URLSearchParams(location.search).get('src')
+          || sessionStorage.getItem('finra_src');
+      } catch (e) { src = null; }
+      if (!src) return null;
+      return BOT_LINKS[src.toLowerCase()] || null;
+    }
+
     function openModal() {
+      var direct = getDirectLink();
+      if (direct) {
+        location.href = direct;
+        return;
+      }
       document.getElementById('modalOverlay').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
