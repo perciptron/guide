@@ -156,15 +156,24 @@
     .hero__inner {
       display: grid;
       grid-template-columns: 1.05fr 0.95fr;
-      gap: 4rem;
-      align-items: center;
+      grid-template-areas:
+        "lead card"
+        "tail card";
+      grid-template-rows: auto 1fr;
+      gap: 1.75rem 4rem;
+      align-items: start;
     }
-
-    /* Left content */
-    .hero__content {
-      display: flex; flex-direction: column; gap: 1.5rem;
+    .hero__lead {
+      grid-area: lead;
+      display: flex; flex-direction: column; gap: 1.25rem;
       animation: fadeUp 0.7s ease 0.1s both;
     }
+    .hero__tail {
+      grid-area: tail;
+      display: flex; flex-direction: column; gap: 1.25rem;
+      animation: fadeUp 0.7s ease 0.3s both;
+    }
+    .offer-card { grid-area: card; }
 
     .hero__deadline {
       display: inline-flex; align-items: center; gap: 0.5rem;
@@ -324,7 +333,10 @@
     }
     .offer-card__price-hint {
       font-size: 0.78rem; color: var(--text-secondary);
-      margin-top: 0.15rem;
+      margin-top: 0.25rem; line-height: 1.45;
+    }
+    .offer-card__price-hint strong {
+      color: var(--text); font-weight: 700;
     }
 
     .offer-card__timer-wrap {
@@ -784,9 +796,16 @@
 
       .hero { padding: 1.5rem 0 3rem; }
       .hero__inner {
-        grid-template-columns: 1fr; gap: 1.5rem;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "lead"
+          "card"
+          "tail";
+        grid-template-rows: auto auto auto;
+        gap: 1.25rem;
       }
-      .hero__content { gap: 1.1rem; order: 2; }
+      .hero__lead { gap: 0.9rem; }
+      .hero__tail { gap: 1rem; }
       .hero__title { font-size: 1.85rem; line-height: 1.08; }
       .hero__sub { font-size: 0.95rem; }
       .hero__bullets { gap: 0.55rem; }
@@ -795,7 +814,7 @@
       .hero__cta-row .cta-btn { width: 100%; }
       .hero__cta-row .cta-hint { align-self: center; }
 
-      .offer-card { order: 1; padding: 1.25rem; border-radius: 20px; gap: 1rem; }
+      .offer-card { padding: 1.25rem; border-radius: 20px; gap: 1rem; }
       .offer-card__price-big { font-size: 2.2rem; }
       .offer-course__thumb { width: 42px; height: 42px; }
       .offer-card__timer-wrap {
@@ -899,8 +918,8 @@
     <div class="container">
       <div class="hero__inner">
 
-        <!-- LEFT: Content -->
-        <div class="hero__content">
+        <!-- LEFT TOP: Lead (badge, title, sub) -->
+        <div class="hero__lead">
           <div class="hero__deadline">Акция до&nbsp;25&nbsp;апреля</div>
 
           <h1 class="hero__title">
@@ -910,7 +929,10 @@
           <p class="hero__sub">
             Купите тариф «Комбо» — получите курс «Нейрокапитал» за&nbsp;40&nbsp;000&nbsp;₽ в&nbsp;подарок. Научитесь зарабатывать на&nbsp;инвестициях от&nbsp;30&nbsp;000&nbsp;₽ в&nbsp;месяц.
           </p>
+        </div>
 
+        <!-- LEFT BOTTOM: Tail (bullets, CTA) -->
+        <div class="hero__tail">
           <ul class="hero__bullets">
             <li>Пошаговый план — даже если начинаете с&nbsp;нуля</li>
             <li>Бонус: курс про ИИ для&nbsp;инвестора за&nbsp;40&nbsp;000&nbsp;₽ — бесплатно</li>
@@ -938,7 +960,7 @@
               <img src="invest-salary.png" alt="" class="offer-course__thumb" width="48" height="48">
               <div class="offer-course__info">
                 <div class="offer-course__name">Инвест-зарплата</div>
-                <div class="offer-course__price">84&nbsp;400&nbsp;₽</div>
+                <div class="offer-course__price">7&nbsp;033&nbsp;₽/мес</div>
               </div>
               <span class="offer-course__check">
                 <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 10 9 14 15 6"/></svg>
@@ -965,7 +987,7 @@
               <span class="offer-card__price-big">7&nbsp;033&nbsp;₽</span>
               <span class="offer-card__price-unit">/мес</span>
             </div>
-            <div class="offer-card__price-hint">Рассрочка на&nbsp;12&nbsp;месяцев · без переплат</div>
+            <div class="offer-card__price-hint">Рассрочка на&nbsp;12&nbsp;месяцев, без переплат<br>или <strong>84&nbsp;400&nbsp;₽</strong> сразу</div>
           </div>
 
           <div class="offer-card__timer-wrap">
