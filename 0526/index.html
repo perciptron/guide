@@ -65,48 +65,97 @@
     .product-card {
       background: var(--paper);
       border-radius: 24px;
-      max-width: 980px;
+      max-width: 1100px;
       width: 100%;
       display: grid;
-      grid-template-columns: 1fr 1.05fr;
+      grid-template-columns: 1.15fr 1fr;
       overflow: hidden;
       box-shadow:
         0 1px 0 rgba(255,255,255,0.6) inset,
         0 1px 3px rgba(20,23,26,0.04),
         0 30px 60px -20px rgba(20,23,26,0.18),
         0 60px 100px -30px rgba(20,23,26,0.14);
+      animation: cardRise 0.9s cubic-bezier(.2,.8,.2,1) both;
     }
 
     /* LEFT — cover panel */
     .product-card__cover {
-      background: linear-gradient(180deg, #f0eee8 0%, #e8e5dc 100%);
-      padding: 3rem 2.5rem;
+      background:
+        radial-gradient(120% 100% at 30% 20%, #f4f2eb 0%, #e8e5dc 70%, #ddd9cf 100%);
+      padding: 2.5rem 2rem;
       display: flex; align-items: center; justify-content: center;
       position: relative;
       border-right: 1px solid var(--hairline);
+      overflow: hidden;
+      min-height: 580px;
+      perspective: 1400px;
+    }
+    .product-card__cover::before {
+      content: '';
+      position: absolute; inset: -2px;
+      background: radial-gradient(60% 50% at 50% 110%, rgba(15,157,88,0.10), transparent 70%);
+      pointer-events: none;
+      animation: glowPulse 6s ease-in-out infinite;
     }
     .cover-holder {
       position: relative;
       width: 100%;
-      max-width: 280px;
+      max-width: 380px;
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(.2,.8,.2,1);
+      animation: coverFloat 7s ease-in-out infinite;
+      will-change: transform;
+    }
+    .product-card__cover:hover .cover-holder {
+      animation-play-state: paused;
+      transform:
+        translateY(var(--ty, 0))
+        rotateX(calc(var(--ry, 0) * 1deg))
+        rotateY(calc(var(--rx, 0) * 1deg));
     }
     .cover-holder img {
       width: 100%; height: auto; display: block;
       border-radius: 10px;
       box-shadow:
         0 1px 0 rgba(255,255,255,0.5) inset,
-        0 14px 30px -10px rgba(20,23,26,0.22),
-        0 30px 50px -16px rgba(20,23,26,0.18);
+        0 2px 4px rgba(20,23,26,0.06),
+        0 24px 50px -12px rgba(20,23,26,0.28),
+        0 50px 90px -20px rgba(20,23,26,0.24);
+      transition: box-shadow 0.5s ease;
+    }
+    .cover-holder:hover img {
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.5) inset,
+        0 2px 6px rgba(20,23,26,0.08),
+        0 36px 70px -14px rgba(20,23,26,0.34),
+        0 70px 120px -24px rgba(20,23,26,0.28);
     }
     .free-badge {
       position: absolute;
-      top: -12px; right: -14px;
+      top: -14px; right: -18px;
       background: var(--green);
       color: #fff;
-      padding: 0.4rem 0.85rem;
+      padding: 0.5rem 1rem;
       border-radius: 100px;
-      font-size: 0.74rem; font-weight: 500;
-      box-shadow: 0 8px 20px -4px rgba(15,157,88,0.45);
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.005em;
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.25) inset,
+        0 10px 24px -4px rgba(15,157,88,0.5),
+        0 2px 6px rgba(15,157,88,0.25);
+      transform: translateZ(40px);
+      animation: badgePop 0.8s cubic-bezier(.34,1.56,.64,1) 0.6s both;
+    }
+    .free-badge::before {
+      content: '';
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #fff;
+      margin-right: 0.45rem;
+      vertical-align: middle;
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.25);
+      animation: dotPulse 2.4s ease-in-out infinite;
     }
 
     /* RIGHT — content */
@@ -179,8 +228,8 @@
     .cta:hover .cta__arrow { transform: translateX(2px); }
 
     .meta-row {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 0.5rem;
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.9rem;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.7rem; color: var(--text-mid);
       letter-spacing: 0.04em;
@@ -281,6 +330,27 @@
     .modal .form_integration_block input[type="checkbox"]:checked { background: var(--green) !important; }
     .modal .form_integration_block input[type="checkbox"]:checked::after { transform: translateX(20px); }
 
+    @keyframes cardRise {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes coverFloat {
+      0%, 100% { transform: translateY(0) rotateX(0) rotateY(0); }
+      50% { transform: translateY(-10px) rotateX(1.5deg) rotateY(-1deg); }
+    }
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+    @keyframes badgePop {
+      from { opacity: 0; transform: translateZ(40px) scale(0.6) rotate(-12deg); }
+      to { opacity: 1; transform: translateZ(40px) scale(1) rotate(0); }
+    }
+    @keyframes dotPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.5); }
+      50% { box-shadow: 0 0 0 6px rgba(255,255,255,0); }
+    }
+
     /* === MOBILE === */
     @media (max-width: 768px) {
       .topbar { padding: 1rem 1.25rem; }
@@ -295,11 +365,12 @@
           0 20px 40px -20px rgba(20,23,26,0.18);
       }
       .product-card__cover {
-        padding: 2.5rem 2rem 1.5rem;
+        padding: 2.5rem 2rem 1.75rem;
         border-right: none;
         border-bottom: 1px solid var(--hairline);
+        min-height: 0;
       }
-      .cover-holder { max-width: 180px; }
+      .cover-holder { max-width: 200px; animation-duration: 6s; }
       .free-badge { font-size: 0.7rem; padding: 0.35rem 0.75rem; top: -10px; right: -10px; }
 
       .product-card__body { padding: 1.75rem 1.5rem 1.75rem; gap: 1.25rem; }
@@ -307,7 +378,7 @@
       .desc { display: none; }
       .bullets { padding: 0.9rem 0; }
       .bullets li { font-size: 0.92rem; }
-      .meta-row { font-size: 0.62rem; flex-wrap: wrap; gap: 0.4rem; }
+      .meta-row { font-size: 0.62rem; flex-wrap: wrap; gap: 0.6rem; justify-content: center; }
 
       .modal-overlay { align-items: flex-end; padding: 0; }
       .modal { padding: 3rem 1rem 1.5rem; border-radius: 20px 20px 0 0; max-height: 92dvh; overflow-y: auto; margin: 0 6px; width: calc(100% - 12px); }
@@ -392,6 +463,31 @@
     function closeModal() { document.getElementById('modalOverlay').classList.remove('active'); document.body.style.overflow = ''; }
     function closeModalOutside(e) { if (e.target === e.currentTarget) closeModal(); }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    /* Cover parallax — desktop only */
+    (function () {
+      if (window.matchMedia('(max-width: 768px)').matches || window.matchMedia('(hover: none)').matches) return;
+      const panel = document.querySelector('.product-card__cover');
+      const holder = document.querySelector('.cover-holder');
+      if (!panel || !holder) return;
+      let raf = null;
+      panel.addEventListener('mousemove', (e) => {
+        const r = panel.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        if (raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          holder.style.setProperty('--rx', (px * 6).toFixed(2));
+          holder.style.setProperty('--ry', (-py * 5).toFixed(2));
+          holder.style.setProperty('--ty', (py * -6).toFixed(2) + 'px');
+        });
+      });
+      panel.addEventListener('mouseleave', () => {
+        holder.style.setProperty('--rx', 0);
+        holder.style.setProperty('--ry', 0);
+        holder.style.setProperty('--ty', '0px');
+      });
+    })();
   </script>
   <script src="/tg-intercept.js" defer></script>
 </body>
