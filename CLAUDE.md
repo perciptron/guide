@@ -14,7 +14,7 @@
 /                     → редирект на https://fin-ra.ru/
 /0226/                → [активен] Гайд "Облигации с ежемесячным купоном 2026" (36 стр., старая версия)
 /0326/                → [активен] Гайд "ТОП-30 ОФЗ" (19 стр., 6 категорий)
-/0526/                → [активен] Гайд "Облигации с ежемесячным купоном 2026" (36 стр., новая версия по эталону)
+/0526/                → [активен/ЭТАЛОН] Гайд "Облигации с ежемесячным купоном 2026" (36 стр.)
 /0326max/             → дубль 0326 (для A/B или отдельного трафика)
 /0426/                → [активен] Гайд "ИИ для инвестора" (43 стр., промпты для ChatGPT)
 /dividends/           → [активен] Гайд "ТОП дивидендных акций 2026" (17 стр.)
@@ -31,52 +31,65 @@
 - **Salebot.pro** — формы сбора лидов (FormIntegration API, project ID: 354621)
 - **GitHub Pages** — хостинг через CNAME
 
-## Эталонный шаблон для гайдов — Apple-минимализм (0326)
+## Эталонный шаблон для гайдов — Premium-минимализм (0526)
 
-Все новые лендинги гайдов создавать на основе `/0326/index.html`.
+Все новые лендинги гайдов создавать на основе `/0526/index.html`.
 
 ### Визуальный стиль
-- **Философия:** Apple-минимализм — чистота, типография, воздух
-- **Фон:** чистый `#fbfbfb`, без паттернов, grain, blur, glassmorphism
+- **Философия:** Premium-минимализм — single product-card, бумажный фон, премиум-тени
+- **Фон:** тёплый `#ece9e1` (бумага), без паттернов, grain, glassmorphism
+- **Контент в одной карточке** `--paper #fbfaf6` с `border-radius: 24px` и многоуровневыми тенями
 - **Никаких:** dot grid, grain overlay, ambient blobs, backdrop-filter, стеклянных эффектов
 
 ### Палитра
 | Переменная | Значение | Назначение |
 |-----------|----------|------------|
-| `--green` | `#0f9d58` | Акцентный (CTA, чекмарки, badge) |
-| `--green-dark` | `#0b7a43` | Hover-состояния |
-| `--green-glow` | `rgba(15,157,88,0.15)` | Тень CTA при пульсации |
-| `--bg` | `#fbfbfb` | Фон страницы |
-| `--text` | `#1d1d1f` | Основной текст (Apple black) |
-| `--text-secondary` | `#86868b` | Вторичный текст (Apple grey) |
-| `--separator` | `rgba(0,0,0,0.06)` | Разделители |
+| `--green` | `#0f9d58` | Акцентный (CTA arrow, чекмарки, free-badge) |
+| `--green-tint` | `rgba(15,157,88,0.08)` | Фон чекмарков буллетов |
+| `--bg` | `#ece9e1` | Тёплый бумажный фон страницы |
+| `--paper` | `#fbfaf6` | Фон product-card |
+| `--ink` | `#14171a` | Основной текст и CTA |
+| `--text-mid` | `#5a5f66` | Вторичный текст |
+| `--text-muted` | `#8c8f94` | Третичный текст (meta-row) |
+| `--hairline` | `rgba(20,23,26,0.08)` | Тонкие линии между секциями |
 
 ### Типография
-- **Display:** Outfit, weight 800, `letter-spacing: -0.05em`, `line-height: 1.04`
-- **Body:** DM Sans, `line-height: 1.6`, цвет `--text-secondary`
-- **`(ОФЗ)`** или акцентные слова — просто `color: var(--green)`, без gradient clip
-- `-webkit-font-smoothing: antialiased` на body
+- **Display:** Outfit, weight 500, `letter-spacing: -0.04em`, `line-height: 1.06` (НЕ 800!)
+- **Body:** DM Sans, weight 400-500
+- **Технические метки:** JetBrains Mono, weight 500, uppercase, `letter-spacing: 0.06em`
+- **Акцент** в заголовке — отдельное слово через `<span class="accent">` с `color: var(--green)`
 
-### Анимации (только две + входные)
-- **fadeUp** — вход элементов, 0.8s ease, stagger через animation-delay
-- **fadeDown** — вход хедера
-- **ctaGlow** — тень CTA плавно нарастает/гаснет каждые 4 сек, `animation: ctaGlow 4s ease-in-out 2s infinite`. Останавливается при hover (`animation: none`)
-- **coverFloat** — обложка парит ±5px каждые 5 сек, `animation: coverFloat 5s ease-in-out infinite`. Останавливается при hover
+### Анимации
+- **cardRise** — entrance, 0.9s cubic-bezier, появление карточки снизу
+- **coverFloat** — обложка парит ±10px и rotateX 1.5° каждые 7 сек
+- **glowPulse** — мягкий зелёный glow внизу cover-panel, 6 сек
+- **badgePop** — отскок free-badge при загрузке (cubic-bezier(.34,1.56,.64,1))
+- **dotPulse** — белая точка в free-badge пульсирует
+- **3D parallax** — JS отслеживает mousemove на cover-panel, обложка наклоняется ±6°/5°. Только desktop, `(hover: none)` отключает
+
+### Структура — single product-card
+
+Вместо двух колонок hero — единая `.product-card` с двумя зонами:
+- **`.product-card__cover`** (слева): радиальный градиент фон, обложка, free-badge
+- **`.product-card__body`** (справа): eyebrow → title → desc → bullets → CTA → meta-row → proxy
 
 ### Элементы
-- **Badge** — просто текст + точка, без фона и border
-- **Буллеты** — чистый список, круглые зелёные чекмарки (`border-radius: 50%`, `gap: 0.6rem`)
-- **CTA** — плоский `var(--green)`, hover = `var(--green-dark)` + лёгкая тень. `font-weight: 600`, pulse-glow анимация каждые 4 сек
-- **cta-hint** — мелкий текст под CTA с чекмарком, описывает куда придёт гайд. Формулировка: «Гайд придёт в Telegram или MAX»
-- **Обложка** — чистая тень `0 20px 50px rgba(0,0,0,0.08)`, hover = lift + усиление тени
-- **Float-теги** — белый фон `#fff`, лёгкая тень, без blur
-- **Proxy-hint** — pill-плашка с info-иконкой. Фон `rgba(15,157,88,0.06)`, `border-radius: 8px`, `padding: 0.6rem 0.85rem`, `width: fit-content`, `font-family: DM Sans`, `font-size: 0.78rem`. Располагается над CTA. Текст: «Проблемы с Telegram? **Подключите прокси**»
-- **Модалка** — чистый белый `#fff`, overlay `rgba(0,0,0,0.4)` без blur, `border-radius: 20px`, `max-width: 460px`
-- **Кнопка закрытия модалки** — круглая 40×40 на десктопе (44×44 мобилка), `z-index: 9999`, `touch-action: manipulation`. Обязательно `padding-top: 3rem` у модалки чтобы форма не перекрывала кнопку
-- **Инпуты формы** — фон `#f5f5f7`, border transparent, focus = зелёный border + glow
-- **Чекбоксы формы (toggle-switch)** — `-webkit-appearance: none`, 44×24px, фон `#e5e5ea`, активный = зелёный. Круглый белый `::after` с transform `translateX(20px)` при `:checked`
-- **Выравнивание чекбоксов** — оба чекбокса (согласие + политика) в `display: flex` с `margin-right: 0.625rem` на input (не `gap`). Сброс `margin/padding` на контейнерах `.ml_quiz.quiz_checkbox`, `.salebot-checkbox-field`, `.ml_answers`. `font-size: 0` на `.salebot-checkbox-field` гасит whitespace-ноды
-- **Кнопки мессенджеров** — каждая в фирменном цвете (см. ниже), padding как у CTA (`1rem 2rem`)
+- **Topbar** — лого + разделитель + tagline слева, label справа. Без border-bottom
+- **Free-badge** — зелёный pill в углу обложки, с белой точкой и glow-shadow
+- **Eyebrow** — JetBrains Mono uppercase «PDF-гайд · 36 страниц»
+- **Title** — Outfit weight 500 (не 800!), `clamp(2rem, 4vw, 2.85rem)`, accent-слово зелёным
+- **Desc** — DM Sans, скрыт на мобилке (`display: none`)
+- **Буллеты** — 16×16 круг с `--green-tint` фоном и зелёным чекмарком, разделители hairline
+- **CTA** — тёмная плоская (`--ink`), занимает всю ширину body, с зелёным circular arrow внутри (28px)
+- **Meta-row** — JetBrains Mono, через разделители «·»: `PDF · 36 стр. · 25 мин · Telegram / MAX`
+- **Proxy** — мелкий текст с info-иконкой, ссылка с underline через `--hairline`
+- **Cover** — обложка PDF с 4-уровневыми тенями, parallax-tilt при hover
+- **Модалка** — чистый белый `#fff`, overlay `rgba(20,23,26,0.5)` без blur, `border-radius: 20px`, `max-width: 460px`
+- **Кнопка закрытия модалки** — круглая 36px (32px на мобилке), `z-index: 9999`, `padding-top: 3rem` у `.modal` на мобилке
+- **Инпуты формы** — фон `#f5f5f7`, focus = зелёный border + glow
+- **Чекбоксы формы (toggle-switch)** — `-webkit-appearance: none`, 44×24px, фон `#e5e5ea`, активный = зелёный
+- **Выравнивание чекбоксов** — `margin-right: 0.625rem` на input (не `gap`). Сброс на `.ml_quiz.quiz_checkbox`, `.salebot-checkbox-field`, `.ml_answers`. `font-size: 0` гасит whitespace
+- **Кнопки мессенджеров** — каждая в фирменном цвете (см. ниже)
 
 ### Кнопки мессенджеров в форме Salebot
 
@@ -104,36 +117,49 @@
 - **1800px+** — дальнейшее масштабирование до 420px обложка
 - **2200px+** — максимум: 4.6rem заголовок, 460px обложка
 
-### Структура разметки hero (эталон 0326)
+### Структура разметки (эталон 0526)
 
 ```html
-<section class="hero">
-  <div class="hero__inner">
-    <div class="hero__content">
-      <div class="badge">Подборка ОФЗ</div>
-      <h1 class="hero__title">ТОП-30 облигаций федерального займа <span>(ОФЗ)</span></h1>
-      <p class="hero__desc">Описание гайда...</p>  <!-- скрыто на мобилке -->
-      <ul class="hero__bullets">
+<header class="topbar">
+  <div class="topbar__brand">
+    <img src="logo.png" alt="FIN-RA">
+    <span class="topbar__divider"></span>
+    <span class="topbar__tag">Школа безопасных инвестиций</span>
+  </div>
+  <span class="topbar__label">Подборка облигаций</span>
+</header>
+
+<main class="stage">
+  <article class="product-card">
+    <div class="product-card__cover">
+      <div class="cover-holder" onclick="openModal()">
+        <span class="free-badge">Бесплатно</span>
+        <img src="обложка.png" alt="Обложка гайда">
+      </div>
+    </div>
+
+    <div class="product-card__body">
+      <div class="eyebrow">PDF-гайд&nbsp;·&nbsp;36 страниц</div>
+      <h1 class="title">Облигации с <span class="accent">ежемесячным</span> купоном 2026</h1>
+      <p class="desc">Описание...</p>
+      <ul class="bullets">
         <li>Буллет 1</li>
         <li>Буллет 2</li>
         <li>Буллет 3</li>
       </ul>
-      <div class="proxy-hint">
-        <span>Проблемы с Telegram? <a href="tg://proxy?...">Подключите прокси</a></span>
-      </div>
-      <button class="cta-btn" onclick="openModal()">
-        <svg>...</svg>
-        Забрать гайд бесплатно
+      <button class="cta" onclick="openModal()">
+        <span>Забрать гайд бесплатно</span>
+        <span class="cta__arrow"><svg>↓</svg></span>
       </button>
-      <span class="cta-hint">Гайд придёт в Telegram или MAX</span>
-    </div>
-    <div class="hero__cover">
-      <div class="cover-wrapper" onclick="openModal()">
-        <img src="обложка.png" alt="Обложка гайда">
+      <div class="meta-row">
+        <span>PDF</span><span>36 стр.</span><span>25 мин</span><span>Telegram / MAX</span>
       </div>
+      <p class="proxy"><span>Проблемы с Telegram? <a href="tg://proxy?...">Подключите прокси</a></span></p>
     </div>
-  </div>
-</section>
+  </article>
+</main>
+
+<footer class="footer">&copy; <a href="https://fin-ra.ru/">FIN-RA</a> — Школа безопасных инвестиций</footer>
 
 <!-- Модалка с формой Salebot -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
@@ -141,14 +167,25 @@
     <button class="modal__close" onclick="closeModal()">&times;</button>
     <script src='https://salebot.pro/js/form_scripts.js'></script>
     <div class='form_integration_block'></div>
-    <script>
-      FormIntegration.init({ project_id: XXX, guid: 'XXX' })
-    </script>
+    <script>FormIntegration.init({ project_id: XXX, guid: 'XXX' })</script>
   </div>
 </div>
 
 <script src="/tg-intercept.js" defer></script>
 ```
+
+### Что меняется при создании нового гайда
+
+1. **Title** + accent-слово в `<span class="accent">`
+2. **Eyebrow** — количество страниц
+3. **Description** (на мобилке скрыт)
+4. **3 буллета**
+5. **Meta-row** — `PDF · {N стр.} · {M мин} · Telegram / MAX`
+6. **og:url** + **og:image** + **og:title** + **og:description** + **meta description**
+7. **Salebot GUID и project_id**
+8. **Topbar label** — категория гайда
+9. **Title тега** `<title>FIN-RA — ...</title>`
+10. **Обложка** `обложка.png` в директории гайда
 
 ### Порядок элементов в hero (сверху вниз)
 
@@ -202,7 +239,7 @@ npx serve -l 3000
 
 - Каждый лендинг — самостоятельный HTML-файл со встроенными стилями
 - Не использовать внешние CSS/JS файлы (всё inline для скорости)
-- **Новые гайды создавать копированием `/0326/index.html`** — это эталон (Apple-минимализм, 3 кнопки мессенджеров, proxy-hint, доработанная модалка)
+- **Новые гайды создавать копированием `/0526/index.html`** — это эталон (Premium-минимализм: single product-card с тёплым бумажным фоном, 3D parallax обложки, JetBrains Mono для меток, тёмная плоская CTA с зелёным circular arrow)
 - Salebot GUID уникален для каждой кампании — менять при создании нового лендинга
 - Изображения хранить в папке лендинга (logo.png, обложка.png и т.д.)
 - Коммиты на русском или английском, пушить в main — деплой автоматический
