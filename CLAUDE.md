@@ -216,7 +216,7 @@
 | 0426 (TG) | `768259744d146c9bfb2c7225f7d2a3e4` | 354621 |
 | dividends (TG+MAX) | `75382c3836819abab95a19511bf78fc1` | 317313 |
 | invest-salary-2026 | `zpreg` | 317313 |
-| anketa | `d855dd33ada4d1e7a7d5b8d10e35bb55` | 317313 |
+| anketa | `596132074c1ec31deb915cca849e2726` | 317313 |
 
 ## Модалка (общий паттерн)
 
