@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Квиз FIN-RA — какой вы инвестор: Баффет, Гейтс, Маск, Кийосаки или Трамп? Узнайте свой риск-профиль за 3 минуты.">
+  <meta name="theme-color" content="#ece9e1">
+  <meta property="og:title" content="Какой вы инвестор: Баффет, Гейтс, Маск, Кийосаки или Трамп? — FIN-RA">
+  <meta property="og:description" content="Пройдите 8 вопросов и узнайте свой риск-профиль и стиль инвестирования.">
+  <meta property="og:url" content="https://guides.fin-ra.pro/quiz-investor/">
+  <link rel="icon" href="/favicon.ico">
+  <title>FIN-RA — Какой вы инвестор?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://salebot.pro/js/form_scripts.js"></script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --green: #0f9d58;
+      --green-tint: rgba(15,157,88,0.08);
+      --amber: #d28a14;
+      --amber-tint: rgba(210,138,20,0.10);
+      --bg: #ece9e1;
+      --paper: #fbfaf6;
+      --ink: #14171a;
+      --text-mid: #5a5f66;
+      --text-muted: #8c8f94;
+      --hairline: rgba(20,23,26,0.08);
+      --radius: 14px;
+    }
+    html { font-size: 16px; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100dvh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar {
+      padding: 1.25rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .topbar__brand { display: inline-flex; align-items: center; gap: 0.75rem; }
+    .topbar__brand img { height: 22px; }
+    .topbar__divider { width: 1px; height: 14px; background: var(--hairline); }
+    .topbar__tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem; color: var(--text-mid);
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .topbar__label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem; color: var(--text-mid);
+      letter-spacing: 0.06em; text-transform: uppercase;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+    }
+    .topbar__label::before {
+      content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--green);
+    }
+
+    .stage {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem 1.5rem 2rem;
+    }
+
+    .product-card {
+      background: var(--paper);
+      border-radius: 24px;
+      max-width: 1100px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      overflow: hidden;
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.6) inset,
+        0 1px 3px rgba(20,23,26,0.04),
+        0 30px 60px -20px rgba(20,23,26,0.18),
+        0 60px 100px -30px rgba(20,23,26,0.14);
+      animation: cardRise 0.9s cubic-bezier(.2,.8,.2,1) both;
+    }
+
+    /* LEFT — figure panel */
+    .quiz-cover {
+      background:
+        radial-gradient(120% 100% at 30% 20%, #f4f2eb 0%, #e8e5dc 70%, #ddd9cf 100%);
+      padding: 2.5rem 2rem;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      border-right: 1px solid var(--hairline);
+      overflow: hidden;
+      min-height: 580px;
+    }
+    .quiz-cover::before {
+      content: '';
+      position: absolute; inset: -2px;
+      background: radial-gradient(60% 50% at 50% 110%, rgba(15,157,88,0.10), transparent 70%);
+      pointer-events: none;
+      animation: glowPulse 6s ease-in-out infinite;
+    }
+    .quiz-cover--stop::before {
+      background: radial-gradient(60% 50% at 50% 110%, rgba(210,138,20,0.16), transparent 70%);
+    }
+
+    .quiz-figure {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 1rem; text-align: center;
+      animation: figureRise 0.55s cubic-bezier(.2,.8,.2,1) both;
+    }
+    .quiz-figure__big {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      font-size: clamp(6rem, 13vw, 10.5rem);
+      letter-spacing: -0.05em;
+      line-height: 0.9;
+      color: var(--ink);
+      display: inline-flex; align-items: baseline; gap: 0.4rem;
+    }
+    .quiz-figure__divider {
+      color: var(--text-muted); font-weight: 200; font-size: 0.7em;
+      margin: 0 0.05em;
+    }
+    .quiz-figure__total {
+      color: var(--text-muted); font-weight: 300; font-size: 0.55em;
+    }
+    .quiz-figure__label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+    }
+    .quiz-progress-bar {
+      width: 220px; max-width: 100%;
+      height: 4px;
+      background: rgba(20,23,26,0.06);
+      border-radius: 4px;
+      margin-top: 0.75rem;
+      overflow: hidden;
+    }
+    .quiz-progress-bar__fill {
+      height: 100%;
+      background: var(--green);
+      border-radius: 4px;
+      transition: width 0.45s cubic-bezier(.2,.8,.2,1);
+    }
+    .quiz-figure--stop .quiz-figure__big { color: var(--amber); font-size: clamp(4rem, 8vw, 6rem); font-weight: 400; }
+    .quiz-figure--stop .quiz-figure__label { color: var(--amber); }
+    .quiz-figure--persona .quiz-figure__big {
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 500;
+      letter-spacing: -0.045em;
+      line-height: 1;
+    }
+    .quiz-figure--persona .quiz-figure__role {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 400;
+      color: var(--text-mid);
+      max-width: 240px;
+      text-align: center;
+      line-height: 1.35;
+    }
+    .quiz-figure--persona .quiz-figure__label {
+      color: var(--green);
+    }
+
+    /* RIGHT — content */
+    .product-card__body {
+      padding: 3rem 2.75rem;
+      display: flex; flex-direction: column; gap: 1.25rem;
+      animation: figureRise 0.55s cubic-bezier(.2,.8,.2,1) both 0.08s;
+    }
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; color: var(--text-mid);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      display: inline-flex; align-items: center; gap: 0.6rem;
+    }
+    .eyebrow .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--green); }
+    .eyebrow--amber .dot { background: var(--amber); }
+
+    .title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.85rem, 3.4vw, 2.55rem);
+      font-weight: 500;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+    }
+    .title .accent { color: var(--green); }
+
+    .question-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.35rem, 2vw, 1.7rem);
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .desc {
+      font-size: 1rem; line-height: 1.55;
+      color: var(--text-mid);
+      max-width: 460px;
+    }
+
+    .result-text {
+      font-size: 0.97rem; line-height: 1.6;
+      color: var(--text-mid);
+      max-width: 480px;
+    }
+    .result-text p + p { margin-top: 0.85rem; }
+
+    .bullets {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 0.7rem;
+      padding: 1rem 0;
+      border-top: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+    }
+    .bullets li {
+      display: flex; align-items: center; gap: 0.7rem;
+      font-size: 0.96rem; color: var(--ink);
+    }
+    .bullets li::before {
+      content: ''; flex-shrink: 0;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--green-tint);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6.5 10.3L4.4 8.2l0.8-0.8L6.5 8.7l4.3-4.3 0.8 0.8z' fill='%230f9d58'/%3E%3C/svg%3E");
+      background-size: cover;
+    }
+
+    .quiz-options {
+      display: flex; flex-direction: column; gap: 0.55rem;
+      margin-top: 0.25rem;
+    }
+    .quiz-option {
+      text-align: left;
+      background: #fff;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      padding: 0.85rem 2.5rem 0.85rem 1.05rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.94rem; font-weight: 400;
+      color: var(--ink); cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
+      line-height: 1.4;
+      position: relative;
+    }
+    .quiz-option::after {
+      content: '';
+      position: absolute; right: 1rem; top: 50%;
+      width: 14px; height: 14px;
+      transform: translateY(-50%) translateX(-4px);
+      background: var(--text-muted);
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2.5 8h10M8.5 4l4 4-4 4' stroke='currentColor' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2.5 8h10M8.5 4l4 4-4 4' stroke='currentColor' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;
+      opacity: 0; transition: opacity 0.2s, transform 0.2s, background 0.2s;
+    }
+    .quiz-option:hover {
+      border-color: var(--green);
+      background: rgba(15,157,88,0.04);
+    }
+    .quiz-option:hover::after {
+      opacity: 1; background: var(--green); transform: translateY(-50%) translateX(0);
+    }
+    .quiz-option:active { transform: scale(0.995); }
+
+    .cta {
+      display: inline-flex; align-items: center; justify-content: space-between;
+      gap: 0.65rem;
+      padding: 1.05rem 1.4rem 1.05rem 1.6rem;
+      background: var(--ink); color: #fff;
+      border: none; border-radius: var(--radius);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem; font-weight: 500;
+      cursor: pointer; width: 100%;
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: 0 10px 24px -10px rgba(20,23,26,0.5);
+    }
+    .cta:hover { background: #000; transform: translateY(-1px); }
+    .cta__arrow {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--green);
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: transform 0.25s ease;
+    }
+    .cta:hover .cta__arrow { transform: translateX(2px); }
+
+    .meta-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.9rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; color: var(--text-mid);
+      letter-spacing: 0.04em;
+    }
+    .meta-row span::before { content: '· '; color: var(--text-muted); margin-right: 0.15rem; }
+    .meta-row span:first-child::before { display: none; }
+
+    .quiz-back {
+      align-self: flex-start;
+      background: none; border: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-muted); cursor: pointer;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0; margin-top: -0.5rem;
+      transition: color 0.15s ease;
+    }
+    .quiz-back:hover { color: var(--ink); }
+    .quiz-back::before { content: '←'; font-size: 0.95rem; }
+
+    .footer {
+      padding: 1rem 2rem 1.5rem;
+      text-align: center; font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+    .footer a { color: var(--text-muted); text-decoration: none; }
+
+    /* MODAL */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(20,23,26,0.5);
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem; opacity: 0; visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+    .modal {
+      background: #fff; border-radius: 20px; padding: 2.5rem;
+      max-width: 460px; width: 100%; position: relative;
+      transform: translateY(16px) scale(0.98);
+      transition: transform 0.35s cubic-bezier(.2,.8,.2,1);
+      box-shadow: 0 30px 80px rgba(20,23,26,0.22);
+    }
+    .modal-overlay.active .modal { transform: translateY(0) scale(1); }
+    .modal__close {
+      position: absolute; top: 1rem; right: 1rem;
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.04); border: none; border-radius: 50%;
+      color: var(--text-mid); cursor: pointer; font-size: 1.2rem;
+      z-index: 10;
+    }
+    .modal__title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem; font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+    }
+    .modal__sub {
+      font-size: 0.88rem; color: var(--text-mid);
+      margin-bottom: 1.5rem; line-height: 1.45;
+    }
+    .modal .form_integration_block { width: 100%; margin: 0 auto; }
+    .modal .form_integration_block input[type="text"],
+    .modal .form_integration_block input[type="email"],
+    .modal .form_integration_block input[type="tel"],
+    .modal .form_integration_block textarea {
+      width: 100% !important; background: #f5f5f7 !important;
+      border: 1.5px solid transparent !important; border-radius: 12px !important;
+      padding: 0.75rem 1rem !important; font-family: 'DM Sans', sans-serif !important;
+      font-size: 0.95rem !important; outline: none !important;
+    }
+    .modal .form_integration_block input:focus,
+    .modal .form_integration_block textarea:focus {
+      border-color: var(--green) !important; background: #fff !important;
+      box-shadow: 0 0 0 3px rgba(15,157,88,0.18) !important;
+    }
+    .modal .form_integration_block label {
+      color: var(--ink) !important; font-family: 'DM Sans', sans-serif !important;
+      font-size: 0.82rem !important; font-weight: 500 !important;
+      margin-bottom: 0.35rem !important; display: block !important;
+    }
+    .modal .form_integration_block .salebot_button img,
+    .modal .form_integration_block .salebot_button svg,
+    .modal .form_integration_block .salebot_button .mes_ident { display: none !important; }
+    .modal .form_integration_block .salebot_button {
+      width: 100% !important; padding: 0.6rem 1.5rem !important;
+      color: #fff !important; font-family: 'DM Sans', sans-serif !important;
+      font-size: 1rem !important; font-weight: 500 !important;
+      border: none !important; border-radius: 12px !important;
+      cursor: pointer !important; margin-bottom: 0.5rem !important;
+    }
+    .modal .form_integration_block .tg_link { background: #2AABEE !important; }
+    .modal .form_integration_block .tg_link:hover { background: #229ED9 !important; }
+    .modal .form_integration_block .vk_link { background: #0077FF !important; }
+    .modal .form_integration_block .vk_link:hover { background: #0066DD !important; }
+    .modal .form_integration_block .max_link { background: linear-gradient(90deg, #527CF2 0%, #9040C8 100%) !important; }
+    .modal .form_integration_block .max_link:hover { background: linear-gradient(90deg, #4870E0 0%, #8038B8 100%) !important; }
+    .modal .form_integration_block .custom_social_btn_container { height: auto !important; min-height: 0 !important; }
+    .modal .form_integration_block button[type="submit"],
+    .modal .form_integration_block input[type="submit"],
+    .modal .form_integration_block .btn,
+    .modal .form_integration_block .submit-btn {
+      width: 100% !important; padding: 0.6rem 1.5rem !important;
+      background: var(--ink) !important; color: #fff !important;
+      font-family: 'DM Sans', sans-serif !important;
+      font-size: 1rem !important; font-weight: 500 !important;
+      border: none !important; border-radius: 12px !important;
+      cursor: pointer !important;
+    }
+    .modal .form_integration_block button[type="submit"]:hover,
+    .modal .form_integration_block input[type="submit"]:hover,
+    .modal .form_integration_block .btn:hover,
+    .modal .form_integration_block .submit-btn:hover { background: #000 !important; }
+    .modal .form_integration_block input[type="checkbox"] {
+      -webkit-appearance: none; appearance: none;
+      width: 44px !important; height: 24px !important; min-width: 44px;
+      background: #e5e5ea !important; border-radius: 12px !important;
+      border: none !important; position: relative; cursor: pointer;
+      padding: 0 !important; margin: 0 !important; vertical-align: middle;
+    }
+    .modal .form_integration_block input[type="checkbox"]::after {
+      content: ''; position: absolute; top: 2px; left: 2px;
+      width: 20px; height: 20px; background: #fff; border-radius: 50%;
+      transition: transform 0.2s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    }
+    .modal .form_integration_block input[type="checkbox"]::before { display: none !important; }
+    .modal .form_integration_block input[type="checkbox"]:checked { background: var(--green) !important; background-image: none !important; }
+    .modal .form_integration_block input[type="checkbox"]:checked::after { transform: translateX(20px); }
+    .modal .form_integration_block div:has(> input[type="checkbox"]),
+    .modal .form_integration_block label:has(> input[type="checkbox"]),
+    .modal .form_integration_block p:has(> input[type="checkbox"]) {
+      display: flex !important; align-items: center !important; gap: 0.625rem !important;
+    }
+    .modal .form_integration_block div:has(> input[type="checkbox"]) a,
+    .modal .form_integration_block div:has(> input[type="checkbox"]) label,
+    .modal .form_integration_block div:has(> input[type="checkbox"]) span,
+    .modal .form_integration_block label:has(> input[type="checkbox"]) span,
+    .modal .form_integration_block label:has(> input[type="checkbox"]) a {
+      flex: 1 !important; font-size: 0.75rem !important; line-height: 1.3 !important;
+      color: var(--text-mid) !important; font-family: 'DM Sans', sans-serif !important;
+      font-style: normal !important; font-weight: 400 !important; text-decoration: none !important;
+    }
+    .modal .form_integration_block label:has(> input[type="checkbox"]) p,
+    .modal .form_integration_block .salebot-privacy__label-text p { margin: 0 !important; padding: 0 !important; }
+    .modal .form_integration_block .ml_quiz.quiz_checkbox,
+    .modal .form_integration_block .salebot-checkbox-field,
+    .modal .form_integration_block .ml_answers { padding: 0 !important; margin: 0 0 0.75rem 0 !important; }
+    .modal .form_integration_block .salebot-checkbox-field { margin-top: 0.75rem !important; font-size: 0 !important; }
+    .modal .form_integration_block .salebot-checkbox-field .salebot-checkbox { font-size: initial !important; }
+    .modal .form_integration_block .salebot-checkbox {
+      margin: 0 !important; padding: 0 !important;
+      display: flex !important; align-items: center !important; gap: 0 !important;
+    }
+    .modal .form_integration_block .salebot-checkbox > input[type="checkbox"] { margin-right: 0.625rem !important; }
+    .modal .form_integration_block .salebot-checkbox > span,
+    .modal .form_integration_block .salebot-checkbox > .salebot-privacy__label-text { margin-left: 0 !important; padding-left: 0 !important; }
+    .modal .form_integration_block .salebot-privacy__label-text {
+      padding: 0 !important; margin: 0 !important; flex: 1 !important; text-indent: 0 !important;
+    }
+    .modal .form_integration_block .salebot-privacy__label-text a,
+    .modal .form_integration_block .salebot-privacy__link {
+      padding: 0 !important; margin: 0 !important; text-indent: 0 !important;
+      font-size: 0.75rem !important; line-height: 1.3 !important;
+      color: var(--text-mid) !important; font-family: 'DM Sans', sans-serif !important;
+      font-style: normal !important; font-weight: 400 !important; text-decoration: none !important;
+    }
+    .modal .form_integration_block .salebot-privacy__label { white-space: normal; }
+
+    @keyframes cardRise {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes figureRise {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .topbar { padding: 1rem 1.25rem; }
+      .topbar__tag, .topbar__divider { display: none; }
+      .stage { padding: 0.5rem 1rem 1.5rem; }
+
+      .product-card {
+        grid-template-columns: 1fr;
+        border-radius: 22px;
+        box-shadow:
+          0 1px 0 rgba(255,255,255,0.6) inset,
+          0 20px 40px -20px rgba(20,23,26,0.18);
+      }
+      .quiz-cover {
+        padding: 1.75rem 1rem 1rem;
+        border-right: none;
+        border-bottom: 1px solid var(--hairline);
+        min-height: 0;
+      }
+      .quiz-figure__big { font-size: clamp(4rem, 16vw, 6rem); }
+      .quiz-figure--stop .quiz-figure__big { font-size: clamp(2.5rem, 10vw, 4rem); }
+      .quiz-progress-bar { width: 160px; }
+
+      .product-card__body { padding: 1.5rem 1.25rem 1.5rem; gap: 1rem; }
+      .title { font-size: clamp(1.55rem, 6vw, 2rem); text-wrap: balance; }
+      .question-title { font-size: clamp(1.2rem, 5vw, 1.5rem); text-wrap: balance; }
+      .desc { display: none; }
+      .result-text { font-size: 0.92rem; }
+      .bullets { padding: 0.9rem 0; }
+      .bullets li { font-size: 0.92rem; }
+      .quiz-option { font-size: 0.9rem; padding: 0.8rem 2.25rem 0.8rem 0.95rem; }
+      .meta-row { font-size: 0.62rem; flex-wrap: wrap; gap: 0.6rem; justify-content: center; }
+
+      .modal-overlay { align-items: flex-end; padding: 0; }
+      .modal { padding: 3rem 1rem 1.5rem; border-radius: 20px 20px 0 0; max-height: 92dvh; overflow-y: auto; margin: 0 6px; width: calc(100% - 12px); }
+      .modal__close { width: 32px; height: 32px; top: 0.75rem; right: 0.75rem; font-size: 1rem; z-index: 9999 !important; }
+      .modal .form_integration_block { width: 100% !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__brand">
+      <img src="/logo.png" alt="FIN-RA">
+      <span class="topbar__divider"></span>
+      <span class="topbar__tag">Школа безопасных инвестиций</span>
+    </div>
+    <span class="topbar__label">Риск-профиль инвестора</span>
+  </header>
+
+  <main class="stage">
+    <article class="product-card" id="quizCard"></article>
+  </main>
+
+  <footer class="footer">&copy; <a href="https://fin-ra.ru/">FIN-RA</a> — Школа безопасных инвестиций</footer>
+
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+    <div class="modal">
+      <button class="modal__close" onclick="closeModal()">&times;</button>
+      <h3 class="modal__title" id="modalTitle">Получить результат</h3>
+      <p class="modal__sub" id="modalSub">Оставьте контакт — пришлём ссылку на бесплатное обучение.</p>
+      <div class="form_integration_block"></div>
+    </div>
+  </div>
+
+  <script>
+    /* === QUIZ #3 — Какой вы инвестор: Баффет, Гейтс, Маск, Кийосаки или Трамп? === */
+    const QUIZ = {
+      type: 'persona',
+      meta: { count: 8, duration: '3 минуты' },
+      intro: {
+        eyebrow: 'РИСК-ПРОФИЛЬ · 8 ВОПРОСОВ',
+        title: 'Какой вы <span class="accent">инвестор</span>: Баффет, Гейтс, Маск, Кийосаки или Трамп?',
+        desc: 'У каждого инвестора свой подход к деньгам: кто-то выбирает надёжность, кто-то ищет пассивный доход, кто-то делает ставку на технологии, а кто-то готов рисковать ради крупного результата. Пройдите короткий квиз и узнайте, какой риск-профиль ближе вам.',
+        bullets: [
+          '8 вопросов · около 3 минут',
+          '5 архетипов инвесторов',
+          'Что это значит для ваших решений'
+        ],
+        cta: 'Пройти квиз',
+        meta: ['Бесплатно', '3 мин', 'Анонимно']
+      },
+      questions: [
+        {
+          q: 'Вы получили неожиданную крупную сумму денег. Что сделаете в первую очередь?',
+          options: [
+            { t: 'Распределю между разными инструментами: акции, валюта, недвижимость', p: 'gates' },
+            { t: 'Положу на вклад или куплю облигации — надёжно и предсказуемо', p: 'buffett' },
+            { t: 'Сделаю крупную ставку на одну идею, если верю, что она может дать большой результат', p: 'trump' },
+            { t: 'Вложу в недвижимость или актив, который может приносить регулярный доход', p: 'kiyosaki' },
+            { t: 'Куплю активы из перспективных сфер: технологии, ИИ, криптовалюты, новые рынки', p: 'musk' }
+          ]
+        },
+        {
+          q: 'Как вы реагируете, когда ваши инвестиции временно падают в цене?',
+          options: [
+            { t: 'Если верю в перспективу актива, могу докупить на падении', p: 'musk' },
+            { t: 'Немного переживаю, но не принимаю резких решений', p: 'kiyosaki' },
+            { t: 'Готов(а) терпеть сильные просадки, если вижу шанс на крупную прибыль', p: 'trump' },
+            { t: 'Анализирую портфель и при необходимости перераспределяю', p: 'gates' },
+            { t: 'Спокойно — я изначально выбирал(а) надёжные инструменты', p: 'buffett' }
+          ]
+        },
+        {
+          q: 'При какой просадке портфеля вы начнёте сильно переживать?',
+          options: [
+            { t: 'При 10–15% начну переживать, но постараюсь придерживаться плана', p: 'kiyosaki' },
+            { t: 'Могу выдержать 40% ради потенциального роста', p: 'musk' },
+            { t: 'Уже при 5% мне будет некомфортно', p: 'buffett' },
+            { t: 'Готов(а) к очень сильным просадкам, если верю в идею', p: 'trump' },
+            { t: '20–30% неприятно, но я понимаю, что такое бывает', p: 'gates' }
+          ]
+        },
+        {
+          q: 'Какой горизонт инвестирования вам ближе?',
+          options: [
+            { t: '3–5 лет — хочу достаточно быстрый результат', p: 'musk' },
+            { t: '10–20 лет и более — мне близка долгосрочная стратегия', p: 'buffett' },
+            { t: 'Горизонт не так важен — если вижу крупную возможность, готов(а) действовать быстро', p: 'trump' },
+            { t: 'Гибко — часть денег на долгий срок, часть на средний', p: 'gates' },
+            { t: '5–10 лет — хочу видеть результат, но готов(а) ждать', p: 'kiyosaki' }
+          ]
+        },
+        {
+          q: 'Что для вас важнее в инвестициях?',
+          options: [
+            { t: 'Создать источник пассивного дохода, который работает без меня', p: 'kiyosaki' },
+            { t: 'Максимально нарастить капитал через перспективные активы', p: 'musk' },
+            { t: 'Сохранить то, что есть, и получать небольшой, но стабильный доход', p: 'buffett' },
+            { t: 'Получить крупный результат, даже если ради этого нужно сильно рискнуть', p: 'trump' },
+            { t: 'Иметь сбалансированный портфель, который спокойнее проходит разные рыночные периоды', p: 'gates' }
+          ]
+        },
+        {
+          q: 'Как вы принимаете инвестиционные решения?',
+          options: [
+            { t: 'Доверяю своей интуиции и убеждённости в идее', p: 'trump' },
+            { t: 'Оцениваю, как это вписывается в общую структуру моего портфеля', p: 'gates' },
+            { t: 'Долго изучаю, анализирую и только потом действую', p: 'buffett' },
+            { t: 'Слежу за новыми трендами и ищу активы, которые могут сильно вырасти', p: 'musk' },
+            { t: 'Смотрю на денежный поток — сколько это может приносить регулярно', p: 'kiyosaki' }
+          ]
+        },
+        {
+          q: 'Как вы относитесь к кредитам для инвестиций?',
+          options: [
+            { t: 'Осторожно и только если риски просчитаны', p: 'gates' },
+            { t: 'Могу активно использовать заёмные деньги, если вижу крупную возможность', p: 'trump' },
+            { t: 'Никогда — инвестирую только собственные средства', p: 'buffett' },
+            { t: 'Иногда использую — заёмные деньги могут ускорить результат', p: 'musk' },
+            { t: 'Допускаю ипотеку — недвижимость считаю более понятным активом', p: 'kiyosaki' }
+          ]
+        },
+        {
+          q: 'Какая мысль вам ближе всего?',
+          options: [
+            { t: 'Будущее за технологиями, и важно не упустить новые возможности', p: 'musk' },
+            { t: 'Лучше медленно наращивать капитал, чем рисковать ради быстрого результата', p: 'buffett' },
+            { t: 'Большие результаты требуют решительных действий', p: 'trump' },
+            { t: 'Не клади все яйца в одну корзину', p: 'gates' },
+            { t: 'Пусть деньги работают на меня, пока я занимаюсь жизнью', p: 'kiyosaki' }
+          ]
+        }
+      ],
+      // Порядок от самого осторожного к самому рискованному — для tie-break fallback
+      conservatismOrder: ['buffett', 'kiyosaki', 'gates', 'musk', 'trump'],
+      personas: {
+        buffett: {
+          eyebrow: 'РЕЗУЛЬТАТ · УОРРЕН БАФФЕТ',
+          short: 'Баффет',
+          full: 'Уоррен Баффет',
+          role: 'Осторожный стратег',
+          title: 'Осторожный <span class="accent">стратег</span>',
+          paragraphs: [
+            'Ваш риск-профиль ближе к подходу Уоррена Баффета: спокойный, долгосрочный, с фокусом на надёжность и понятные решения.',
+            'Вам важно не гнаться за быстрыми результатами, а сохранить капитал, избегать лишней суеты и выбирать инструменты, в которых вы действительно понимаете логику. Это сильная сторона: такой подход помогает не принимать импульсивных решений и спокойнее проходить рыночные колебания.',
+            'Но у осторожной стратегии есть и слабое место: если слишком долго оставаться только в самых консервативных инструментах, капитал может расти медленнее, чем хотелось бы, а часть возможностей будет проходить мимо.',
+            'Следующий шаг — понять, как сохранить спокойный подход, но при этом постепенно сделать деньги более эффективными: распределять капитал, выбирать понятные инструменты и создавать источник дополнительного дохода без лишнего риска.',
+            'В бесплатном обучении «Инвест-зарплата» вы увидите, как выстроить инвестиционную систему, которая подходит даже тем, кто не хочет рисковать без понимания.'
+          ],
+          cta: 'Выстроить надёжную систему'
+        },
+        kiyosaki: {
+          eyebrow: 'РЕЗУЛЬТАТ · РОБЕРТ КИЙОСАКИ',
+          short: 'Кийосаки',
+          full: 'Роберт Кийосаки',
+          role: 'Создатель пассивного дохода',
+          title: 'Создатель <span class="accent">пассивного дохода</span>',
+          paragraphs: [
+            'Ваш риск-профиль ближе к подходу Роберта Кийосаки: вам важна идея активов, которые могут приносить регулярный доход.',
+            'Вы смотрите на деньги не только как на запас, который нужно сохранить, но и как на ресурс, который может работать на вас. Вам близка логика пассивного дохода: вложить деньги в активы, которые со временем могут давать регулярный денежный поток.',
+            'Сильная сторона такого подхода — практичность. Вы не просто хотите «заработать на росте», а ищете понятную пользу: доход, аренду, проценты, выплаты. Но слабое место в том, что не каждый актив с обещанием дохода действительно надёжен. Важно уметь отличать рабочие инструменты от красивых обещаний.',
+            'Следующий шаг — разобраться, какие инструменты могут создавать регулярный доход, какие риски за ними стоят и как не вкладывать деньги только потому, что идея звучит привлекательно.',
+            'В бесплатном обучении «Инвест-зарплата» вы увидите, как постепенно формировать дополнительный источник дохода и подходить к инвестициям системно, а не наугад.'
+          ],
+          cta: 'Научиться создавать пассивный доход'
+        },
+        gates: {
+          eyebrow: 'РЕЗУЛЬТАТ · БИЛЛ ГЕЙТС',
+          short: 'Гейтс',
+          full: 'Билл Гейтс',
+          role: 'Рациональный диверсификатор',
+          title: 'Рациональный <span class="accent">диверсификатор</span>',
+          paragraphs: [
+            'Ваш риск-профиль ближе к подходу Билла Гейтса: вам важны баланс, распределение и защита капитала через разные инструменты.',
+            'Вы не склонны ставить всё на одну идею. Вам ближе подход, при котором деньги распределяются между разными направлениями: часть — в более надёжные инструменты, часть — в активы с потенциалом роста, часть — в защитные решения.',
+            'Сильная сторона такого профиля — устойчивость. Когда портфель собран не из одного инструмента, а из нескольких направлений, он может спокойнее проходить разные рыночные периоды. Но есть и слабое место: если распределять деньги без понятной логики, портфель может стать просто набором случайных активов, а не системой.',
+            'Следующий шаг — понять, как собирать портфель осознанно: под цели, срок, риск и желаемый уровень дохода. Не просто «купить всего понемногу», а выстроить структуру, где каждый инструмент выполняет свою роль.',
+            'В бесплатном обучении «Инвест-зарплата» вы увидите, как подойти к инвестициям системно и постепенно выстроить портфель, который работает на ваши финансовые цели.'
+          ],
+          cta: 'Собрать сбалансированный портфель'
+        },
+        musk: {
+          eyebrow: 'РЕЗУЛЬТАТ · ИЛОН МАСК',
+          short: 'Маск',
+          full: 'Илон Маск',
+          role: 'Инвестор будущего',
+          title: 'Инвестор <span class="accent">будущего</span>',
+          paragraphs: [
+            'Ваш риск-профиль ближе к подходу Илона Маска: вам интересны технологии, новые рынки и активы с высоким потенциалом роста.',
+            'Вы готовы смотреть вперёд и не боитесь идей, которые для других кажутся слишком новыми или рискованными. Технологии, искусственный интеллект, криптовалюты, быстрорастущие компании и новые секторы могут казаться вам более интересными, чем классические консервативные инструменты.',
+            'Сильная сторона такого подхода — способность видеть возможности раньше других. Но у него есть и серьёзный риск: перспективные активы могут сильно расти, но так же сильно падать. Если заходить в них без системы, можно не столько инвестировать, сколько эмоционально реагировать на хайп и новости.',
+            'Следующий шаг — научиться отличать перспективную идею от модной темы, контролировать риск и не ставить под угрозу весь капитал ради одного направления.',
+            'В бесплатном обучении «Инвест-зарплата» вы увидите, как подходить к инвестициям спокойнее: выбирать инструменты осознанно, распределять деньги и строить систему, а не зависеть только от трендов.'
+          ],
+          cta: 'Инвестировать в будущее осознанно'
+        },
+        trump: {
+          eyebrow: 'РЕЗУЛЬТАТ · ДОНАЛЬД ТРАМП',
+          short: 'Трамп',
+          full: 'Дональд Трамп',
+          role: 'Игрок на крупные возможности',
+          title: 'Игрок на <span class="accent">крупные возможности</span>',
+          paragraphs: [
+            'Ваш риск-профиль ближе к подходу Дональда Трампа: масштабные идеи, решительные действия и готовность делать крупные ставки ради большого результата.',
+            'Вы не из тех, кто всегда выбирает самый осторожный путь. Если видите сильную возможность, вам может быть близка идея действовать крупно, быстро и уверенно. Такой подход может давать мощный импульс, особенно если решение оказалось верным.',
+            'Но у этого профиля самый высокий риск. Крупная ставка может принести большой результат, но одна ошибка способна сильно ударить по капиталу. Поэтому главная задача — не убрать решительность, а поставить ей рамки: заранее понимать, какой суммой можно рисковать, где остановиться и какую часть капитала нельзя подвергать опасности.',
+            'Следующий шаг — научиться соединять амбициозность с системой. Не отказываться от крупных идей, но проверять их, ограничивать риски и не ставить под удар деньги, которые нужны для жизни, подушки и долгосрочных целей.',
+            'В бесплатном обучении «Инвест-зарплата» вы увидите, как подходить к инвестициям более системно: распределять капитал, управлять риском и искать возможности без хаотичных решений.'
+          ],
+          cta: 'Научиться управлять риском'
+        }
+      },
+      products: {
+        iz: { project_id: 317313, guid: 'zpreg', modalTitle: 'Инвест-зарплата', modalSub: 'Оставьте контакт — пришлём ссылку на бесплатное обучение по системному инвестированию.' }
+      }
+    };
+
+    const state = {
+      screen: 'intro',
+      currentQ: 0,
+      answers: []
+    };
+
+    const card = document.getElementById('quizCard');
+
+    function render() {
+      if (state.screen === 'intro') card.innerHTML = renderIntro();
+      else if (state.screen === 'question') card.innerHTML = renderQuestion();
+      else if (state.screen === 'result') card.innerHTML = renderResult();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderIntro() {
+      const i = QUIZ.intro;
+      return `
+        <div class="quiz-cover">
+          <div class="quiz-figure">
+            <div class="quiz-figure__big">${QUIZ.meta.count}</div>
+            <div class="quiz-figure__label">ВОПРОСОВ · ${QUIZ.meta.duration.toUpperCase()}</div>
+          </div>
+        </div>
+        <div class="product-card__body">
+          <div class="eyebrow"><span class="dot"></span> ${i.eyebrow}</div>
+          <h1 class="title">${i.title}</h1>
+          <p class="desc">${i.desc}</p>
+          <ul class="bullets">
+            ${i.bullets.map(b => `<li>${b}</li>`).join('')}
+          </ul>
+          <button class="cta" onclick="startQuiz()">
+            <span>${i.cta}</span>
+            <span class="cta__arrow">
+              <svg viewBox="0 0 16 16" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" width="13" height="13"><path d="M3 8h9"/><polyline points="8 4 12 8 8 12"/></svg>
+            </span>
+          </button>
+          <div class="meta-row">
+            ${i.meta.map(m => `<span>${m}</span>`).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderQuestion() {
+      const num = state.currentQ + 1;
+      const total = QUIZ.questions.length;
+      const pct = (num / total * 100).toFixed(0);
+      const q = QUIZ.questions[state.currentQ];
+      const backBtn = state.currentQ > 0
+        ? `<button class="quiz-back" onclick="goBack()">Назад</button>`
+        : '';
+      return `
+        <div class="quiz-cover">
+          <div class="quiz-figure">
+            <div class="quiz-figure__big">${num} <span class="quiz-figure__divider">/</span> <span class="quiz-figure__total">${total}</span></div>
+            <div class="quiz-figure__label">ВОПРОС</div>
+            <div class="quiz-progress-bar"><div class="quiz-progress-bar__fill" style="width: ${pct}%"></div></div>
+          </div>
+        </div>
+        <div class="product-card__body">
+          <div class="eyebrow"><span class="dot"></span> Вопрос ${num} из ${total}</div>
+          <h2 class="question-title">${q.q}</h2>
+          <div class="quiz-options">
+            ${q.options.map((opt, i) => `<button class="quiz-option" onclick="selectAnswer(${i})">${opt.t}</button>`).join('')}
+          </div>
+          ${backBtn}
+        </div>
+      `;
+    }
+
+    function renderResult() {
+      const r = computeResult();
+      const coverFigure = `
+        <div class="quiz-figure quiz-figure--persona">
+          <div class="quiz-figure__big">${r.short}</div>
+          <div class="quiz-figure__role">${r.full} — ${r.role}</div>
+        </div>`;
+
+      return `
+        <div class="quiz-cover">${coverFigure}</div>
+        <div class="product-card__body">
+          <div class="eyebrow"><span class="dot"></span> ${r.eyebrow}</div>
+          <h1 class="title">${r.title}</h1>
+          <div class="result-text">
+            ${r.paragraphs.map(p => `<p>${p}</p>`).join('')}
+          </div>
+          <button class="cta" onclick="openResultModal()">
+            <span>${r.cta}</span>
+            <span class="cta__arrow">
+              <svg viewBox="0 0 16 16" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" width="13" height="13"><path d="M3 8h9"/><polyline points="8 4 12 8 8 12"/></svg>
+            </span>
+          </button>
+          <div class="meta-row">
+            <span>Бесплатно</span>
+            <span>Telegram / MAX</span>
+            <span>5 минут</span>
+          </div>
+          <p class="meta-row" style="justify-content: flex-start;"><a href="#" onclick="restart(event)" style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); text-decoration: underline; text-decoration-color: var(--hairline); text-underline-offset: 3px;">Пройти ещё раз</a></p>
+        </div>
+      `;
+    }
+
+    function computeResult() {
+      const counts = {};
+      state.answers.forEach(a => { counts[a.persona] = (counts[a.persona] || 0) + 1; });
+      const maxCount = Math.max(...Object.values(counts));
+      const leaders = Object.keys(counts).filter(p => counts[p] === maxCount);
+
+      let winner;
+      if (leaders.length === 1) {
+        winner = leaders[0];
+      } else {
+        // Tie-break 1: ответ на вопрос 3 (index 2)
+        const q3 = state.answers[2] && state.answers[2].persona;
+        if (q3 && leaders.includes(q3)) {
+          winner = q3;
+        } else {
+          // Tie-break 2: ответ на вопрос 7 (index 6)
+          const q7 = state.answers[6] && state.answers[6].persona;
+          if (q7 && leaders.includes(q7)) {
+            winner = q7;
+          } else {
+            // Fallback: более осторожный профиль
+            winner = QUIZ.conservatismOrder.find(p => leaders.includes(p)) || leaders[0];
+          }
+        }
+      }
+
+      return Object.assign({ key: winner }, QUIZ.personas[winner]);
+    }
+
+    function startQuiz() {
+      state.screen = 'question';
+      state.currentQ = 0;
+      state.answers = [];
+      render();
+    }
+
+    function selectAnswer(i) {
+      const opt = QUIZ.questions[state.currentQ].options[i];
+      state.answers[state.currentQ] = { persona: opt.p };
+      if (state.currentQ < QUIZ.questions.length - 1) {
+        state.currentQ++;
+        render();
+      } else {
+        state.screen = 'result';
+        render();
+      }
+    }
+
+    function goBack() {
+      if (state.currentQ > 0) {
+        state.currentQ--;
+        state.answers.pop();
+        render();
+      }
+    }
+
+    function restart(e) {
+      if (e) e.preventDefault();
+      state.screen = 'intro';
+      state.currentQ = 0;
+      state.answers = [];
+      render();
+    }
+
+    function openResultModal() {
+      const p = QUIZ.products.iz;
+      document.getElementById('modalTitle').textContent = p.modalTitle;
+      document.getElementById('modalSub').textContent = p.modalSub;
+      const block = document.querySelector('.form_integration_block');
+      block.innerHTML = '';
+      if (window.FormIntegration) {
+        FormIntegration.init({ project_id: p.project_id, guid: p.guid });
+      }
+      document.getElementById('modalOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    function closeModalOutside(e) { if (e.target === e.currentTarget) closeModal(); }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    render();
+  </script>
+  <script src="/tg-intercept.js" defer></script>
+</body>
+</html>
