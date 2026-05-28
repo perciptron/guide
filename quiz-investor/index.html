@@ -536,8 +536,6 @@
   <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
     <div class="modal">
       <button class="modal__close" onclick="closeModal()">&times;</button>
-      <h3 class="modal__title" id="modalTitle">Получить результат</h3>
-      <p class="modal__sub" id="modalSub">Оставьте контакт — пришлём ссылку на бесплатное обучение.</p>
       <div class="form_integration_block"></div>
     </div>
   </div>
@@ -894,8 +892,6 @@
 
     function openResultModal() {
       const p = QUIZ.products.iz;
-      document.getElementById('modalTitle').textContent = p.modalTitle;
-      document.getElementById('modalSub').textContent = p.modalSub;
       const block = document.querySelector('.form_integration_block');
       block.innerHTML = '';
       if (window.FormIntegration) {
