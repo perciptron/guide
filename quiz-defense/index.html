@@ -153,6 +153,19 @@
     .quiz-figure--stop .quiz-figure__big { color: var(--amber); font-size: clamp(4rem, 8vw, 6rem); font-weight: 400; }
     .quiz-figure--stop .quiz-figure__label { color: var(--amber); }
 
+    .quiz-illu {
+      width: clamp(160px, 22vw, 260px);
+      height: clamp(160px, 22vw, 260px);
+      display: flex; align-items: center; justify-content: center;
+      animation: illuFloat 6s ease-in-out infinite;
+      filter: drop-shadow(0 24px 36px rgba(20,23,26,0.18));
+    }
+    .quiz-illu svg { width: 100%; height: 100%; display: block; }
+    @keyframes illuFloat {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-8px) rotate(-0.6deg); }
+    }
+
     /* RIGHT — content */
     .product-card__body {
       padding: 3rem 2.75rem;
@@ -506,7 +519,6 @@
       <span class="topbar__divider"></span>
       <span class="topbar__tag">Школа безопасных инвестиций</span>
     </div>
-    <span class="topbar__label">Квиз о защите денег</span>
   </header>
 
   <main class="stage">
@@ -523,6 +535,41 @@
   </div>
 
   <script>
+    const ICON_MAIN = `
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="shieldGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#2a3037"/>
+            <stop offset="100%" stop-color="#14171a"/>
+          </linearGradient>
+          <linearGradient id="shieldLight" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="rgba(255,255,255,0.08)"/>
+            <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="100" cy="186" rx="44" ry="5" fill="rgba(20,23,26,0.12)"/>
+        <path d="M100 22 L36 46 V108 Q36 156 100 180 Q164 156 164 108 V46 Z" fill="url(#shieldGrad)"/>
+        <path d="M100 22 L36 46 V60 Q36 64 38 64 L100 36 Z" fill="url(#shieldLight)"/>
+        <path d="M100 32 L46 52 V108 Q46 150 100 170 Q154 150 154 108 V52 Z" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+        <path d="M72 102 L92 122 L132 78" stroke="rgba(15,157,88,0.35)" stroke-width="14" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M72 102 L92 122 L132 78" stroke="#11b16a" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>`;
+
+    const ICON_STOP = `
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="warnGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#e2a131"/>
+            <stop offset="100%" stop-color="#c47d10"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="100" cy="178" rx="58" ry="6" fill="rgba(210,138,20,0.20)"/>
+        <path d="M100 26 L176 162 a8 8 0 0 1 -7 12 H31 a8 8 0 0 1 -7 -12 Z" fill="url(#warnGrad)"/>
+        <path d="M100 26 L176 162 a8 8 0 0 1 -7 12 H31 a8 8 0 0 1 -7 -12 Z" fill="none" stroke="rgba(255,255,255,0.20)" stroke-width="1.5"/>
+        <rect x="92" y="76" width="16" height="56" rx="4" fill="#fff"/>
+        <circle cx="100" cy="148" r="8" fill="#fff"/>
+      </svg>`;
+
     /* === QUIZ #2 — Насколько защищены ваши деньги? === */
     const QUIZ = {
       meta: { count: 8, duration: '3 минуты' },
@@ -709,8 +756,8 @@
       return `
         <div class="quiz-cover">
           <div class="quiz-figure">
-            <div class="quiz-figure__big">${QUIZ.meta.count}</div>
-            <div class="quiz-figure__label">ВОПРОСОВ · ${QUIZ.meta.duration.toUpperCase()}</div>
+            <div class="quiz-illu">${ICON_MAIN}</div>
+            <div class="quiz-figure__label">${QUIZ.meta.count} ВОПРОСОВ · ${QUIZ.meta.duration.toUpperCase()}</div>
           </div>
         </div>
         <div class="product-card__body">
@@ -744,8 +791,7 @@
       return `
         <div class="quiz-cover">
           <div class="quiz-figure">
-            <div class="quiz-figure__big">${num} <span class="quiz-figure__divider">/</span> <span class="quiz-figure__total">${total}</span></div>
-            <div class="quiz-figure__label">ВОПРОС</div>
+            <div class="quiz-illu">${ICON_MAIN}</div>
             <div class="quiz-progress-bar"><div class="quiz-progress-bar__fill" style="width: ${pct}%"></div></div>
           </div>
         </div>
@@ -769,13 +815,13 @@
       const coverFigure = isStop
         ? `
           <div class="quiz-figure quiz-figure--stop">
-            <div class="quiz-figure__big">!</div>
+            <div class="quiz-illu">${ICON_STOP}</div>
             <div class="quiz-figure__label">Стоп-сигнал</div>
           </div>`
         : `
           <div class="quiz-figure">
-            <div class="quiz-figure__big">${totalScore} <span class="quiz-figure__divider">/</span> <span class="quiz-figure__total">${maxScore}</span></div>
-            <div class="quiz-figure__label">БАЛЛОВ ИЗ ${maxScore}</div>
+            <div class="quiz-illu">${ICON_MAIN}</div>
+            <div class="quiz-figure__label">${totalScore} ИЗ ${maxScore} БАЛЛОВ</div>
           </div>`;
 
       const eyebrowClass = isStop ? 'eyebrow eyebrow--amber' : 'eyebrow';

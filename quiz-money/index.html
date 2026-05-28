@@ -153,6 +153,19 @@
     .quiz-figure--stop .quiz-figure__big { color: var(--amber); font-size: clamp(4rem, 8vw, 6rem); font-weight: 400; }
     .quiz-figure--stop .quiz-figure__label { color: var(--amber); }
 
+    .quiz-illu {
+      width: clamp(180px, 22vw, 260px);
+      height: clamp(180px, 22vw, 260px);
+      display: flex; align-items: center; justify-content: center;
+      animation: illuFloat 6s ease-in-out infinite;
+      filter: drop-shadow(0 24px 36px rgba(20,23,26,0.18));
+    }
+    .quiz-illu svg { width: 100%; height: 100%; display: block; }
+    @keyframes illuFloat {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-8px) rotate(-0.6deg); }
+    }
+
     /* RIGHT — content */
     .product-card__body {
       padding: 3rem 2.75rem;
@@ -506,7 +519,6 @@
       <span class="topbar__divider"></span>
       <span class="topbar__tag">Школа безопасных инвестиций</span>
     </div>
-    <span class="topbar__label">Финансовый квиз</span>
   </header>
 
   <main class="stage">
@@ -523,6 +535,48 @@
   </div>
 
   <script>
+    const ICON_MAIN = `
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="walletGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#2a3037"/>
+            <stop offset="100%" stop-color="#14171a"/>
+          </linearGradient>
+          <linearGradient id="walletFlap" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1f2329"/>
+            <stop offset="100%" stop-color="#0d1013"/>
+          </linearGradient>
+          <linearGradient id="coinGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#11b16a"/>
+            <stop offset="100%" stop-color="#0f9d58"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="100" cy="180" rx="64" ry="6" fill="rgba(20,23,26,0.10)"/>
+        <rect x="30" y="76" width="140" height="100" rx="16" fill="url(#walletGrad)"/>
+        <path d="M30 92 H170 V80 Q170 70 160 70 H40 Q30 70 30 80 Z" fill="url(#walletFlap)"/>
+        <line x1="50" y1="112" x2="150" y2="112" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+        <line x1="50" y1="126" x2="124" y2="126" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+        <path d="M170 146 H132 a12 12 0 0 0 -12 12 v6 a12 12 0 0 0 12 12 H170 Z" fill="#0b0d10"/>
+        <circle cx="148" cy="161" r="15" fill="url(#coinGrad)"/>
+        <circle cx="148" cy="161" r="10" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+        <text x="148" y="167" text-anchor="middle" font-family="Outfit, sans-serif" font-size="14" font-weight="500" fill="#fff" opacity="0.92">₽</text>
+      </svg>`;
+
+    const ICON_STOP = `
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="warnGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#e2a131"/>
+            <stop offset="100%" stop-color="#c47d10"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="100" cy="178" rx="58" ry="6" fill="rgba(210,138,20,0.20)"/>
+        <path d="M100 26 L176 162 a8 8 0 0 1 -7 12 H31 a8 8 0 0 1 -7 -12 Z" fill="url(#warnGrad)"/>
+        <path d="M100 26 L176 162 a8 8 0 0 1 -7 12 H31 a8 8 0 0 1 -7 -12 Z" fill="none" stroke="rgba(255,255,255,0.20)" stroke-width="1.5"/>
+        <rect x="92" y="76" width="16" height="56" rx="4" fill="#fff"/>
+        <circle cx="100" cy="148" r="8" fill="#fff"/>
+      </svg>`;
+
     /* === QUIZ #1 — Где вы теряете деньги прямо сейчас? === */
     const QUIZ = {
       meta: { count: 7, duration: '3 минуты' },
@@ -702,8 +756,8 @@
       return `
         <div class="quiz-cover">
           <div class="quiz-figure">
-            <div class="quiz-figure__big">${QUIZ.meta.count}</div>
-            <div class="quiz-figure__label">ВОПРОСОВ · ${QUIZ.meta.duration.toUpperCase()}</div>
+            <div class="quiz-illu">${ICON_MAIN}</div>
+            <div class="quiz-figure__label">${QUIZ.meta.count} ВОПРОСОВ · ${QUIZ.meta.duration.toUpperCase()}</div>
           </div>
         </div>
         <div class="product-card__body">
@@ -737,8 +791,7 @@
       return `
         <div class="quiz-cover">
           <div class="quiz-figure">
-            <div class="quiz-figure__big">${num} <span class="quiz-figure__divider">/</span> <span class="quiz-figure__total">${total}</span></div>
-            <div class="quiz-figure__label">ВОПРОС</div>
+            <div class="quiz-illu">${ICON_MAIN}</div>
             <div class="quiz-progress-bar"><div class="quiz-progress-bar__fill" style="width: ${pct}%"></div></div>
           </div>
         </div>
@@ -762,13 +815,13 @@
       const coverFigure = isStop
         ? `
           <div class="quiz-figure quiz-figure--stop">
-            <div class="quiz-figure__big">!</div>
+            <div class="quiz-illu">${ICON_STOP}</div>
             <div class="quiz-figure__label">Стоп-сигнал</div>
           </div>`
         : `
           <div class="quiz-figure">
-            <div class="quiz-figure__big">${totalScore} <span class="quiz-figure__divider">/</span> <span class="quiz-figure__total">${maxScore}</span></div>
-            <div class="quiz-figure__label">БАЛЛОВ ИЗ ${maxScore}</div>
+            <div class="quiz-illu">${ICON_MAIN}</div>
+            <div class="quiz-figure__label">${totalScore} ИЗ ${maxScore} БАЛЛОВ</div>
           </div>`;
 
       const eyebrowClass = isStop ? 'eyebrow eyebrow--amber' : 'eyebrow';

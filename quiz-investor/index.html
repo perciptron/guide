@@ -170,6 +170,18 @@
     .quiz-figure--persona .quiz-figure__label {
       color: var(--green);
     }
+    .quiz-illu {
+      width: clamp(160px, 22vw, 260px);
+      height: clamp(160px, 22vw, 260px);
+      display: flex; align-items: center; justify-content: center;
+      animation: illuFloat 6s ease-in-out infinite;
+      filter: drop-shadow(0 24px 36px rgba(20,23,26,0.18));
+    }
+    .quiz-illu svg { width: 100%; height: 100%; display: block; }
+    @keyframes illuFloat {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-8px) rotate(-0.6deg); }
+    }
 
     /* RIGHT — content */
     .product-card__body {
@@ -524,7 +536,6 @@
       <span class="topbar__divider"></span>
       <span class="topbar__tag">Школа безопасных инвестиций</span>
     </div>
-    <span class="topbar__label">Риск-профиль инвестора</span>
   </header>
 
   <main class="stage">
@@ -541,6 +552,29 @@
   </div>
 
   <script>
+    const ICON_MAIN = `
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#2a3037"/>
+            <stop offset="100%" stop-color="#14171a"/>
+          </linearGradient>
+          <linearGradient id="barAccent" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#11b16a"/>
+            <stop offset="100%" stop-color="#0f9d58"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="100" cy="174" rx="68" ry="5" fill="rgba(20,23,26,0.10)"/>
+        <line x1="26" y1="166" x2="174" y2="166" stroke="rgba(20,23,26,0.15)" stroke-width="1"/>
+        <rect x="38" y="126" width="22" height="40" rx="4" fill="url(#barGrad)"/>
+        <rect x="68" y="104" width="22" height="62" rx="4" fill="url(#barGrad)"/>
+        <rect x="98" y="84" width="22" height="82" rx="4" fill="url(#barGrad)"/>
+        <rect x="128" y="50" width="22" height="116" rx="4" fill="url(#barAccent)"/>
+        <path d="M36 126 L72 104 L102 84 L138 60" stroke="rgba(15,157,88,0.55)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 3"/>
+        <circle cx="139" cy="58" r="6" fill="#0f9d58"/>
+        <circle cx="139" cy="58" r="3" fill="#11b16a"/>
+      </svg>`;
+
     /* === QUIZ #3 — Какой вы инвестор: Баффет, Гейтс, Маск, Кийосаки или Трамп? === */
     const QUIZ = {
       type: 'persona',
@@ -743,8 +777,8 @@
       return `
         <div class="quiz-cover">
           <div class="quiz-figure">
-            <div class="quiz-figure__big">${QUIZ.meta.count}</div>
-            <div class="quiz-figure__label">ВОПРОСОВ · ${QUIZ.meta.duration.toUpperCase()}</div>
+            <div class="quiz-illu">${ICON_MAIN}</div>
+            <div class="quiz-figure__label">${QUIZ.meta.count} ВОПРОСОВ · ${QUIZ.meta.duration.toUpperCase()}</div>
           </div>
         </div>
         <div class="product-card__body">
@@ -778,8 +812,7 @@
       return `
         <div class="quiz-cover">
           <div class="quiz-figure">
-            <div class="quiz-figure__big">${num} <span class="quiz-figure__divider">/</span> <span class="quiz-figure__total">${total}</span></div>
-            <div class="quiz-figure__label">ВОПРОС</div>
+            <div class="quiz-illu">${ICON_MAIN}</div>
             <div class="quiz-progress-bar"><div class="quiz-progress-bar__fill" style="width: ${pct}%"></div></div>
           </div>
         </div>
