@@ -58,6 +58,16 @@
       var path = window.location.pathname;
       var search = window.location.search;
 
+      // Legacy PDF redirects: переименованные файлы должны открываться по старым ссылкам из рассылок
+      var pdfRedirects = {
+        '/files/kuda-vlozhit-1000.pdf': '/files/portfolio-1000.pdf',
+        '/files/kuda-investirovat-2026.pdf': '/files/market-overview-2026.pdf'
+      };
+      if (pdfRedirects[path]) {
+        window.location.replace(pdfRedirects[path] + search);
+        return;
+      }
+
       // Check if this is a /tg/ redirect
       var tgMatch = path.match(/^\/tg\/([^\/\?]+)/);
 
