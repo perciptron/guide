@@ -164,9 +164,10 @@
     }
 
     .cta {
-      display: inline-flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: center; justify-content: center;
       gap: 0.65rem;
-      padding: 1.1rem 1.25rem 1.1rem 1.5rem;
+      position: relative;
+      padding: 1.1rem 3.75rem;
       background: var(--green); color: #fff;
       border: none; border-radius: var(--radius);
       font-family: 'DM Sans', sans-serif;
@@ -184,8 +185,10 @@
       background: rgba(0,0,0,0.18);
       display: inline-flex; align-items: center; justify-content: center;
       transition: transform 0.25s ease;
+      position: absolute; right: 1.25rem; top: 50%;
+      transform: translateY(-50%);
     }
-    .cta:hover .cta__arrow { transform: translateX(3px); }
+    .cta:hover .cta__arrow { transform: translateY(-50%) translateX(3px); }
 
     .intro__meta {
       display: flex; align-items: center; justify-content: center;
@@ -234,6 +237,19 @@
     }
     .option:hover { border-color: var(--green); background: rgba(17,177,106,0.04); }
     .option:active { transform: scale(0.995); }
+    .option.is-selected {
+      border-color: var(--green) !important;
+      background: rgba(17,177,106,0.12) !important;
+      opacity: 1 !important;
+    }
+    .option.is-selected .option__radio {
+      background: var(--green); border-color: var(--green); position: relative;
+    }
+    .option.is-selected .option__radio::after {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5L6.5 12L13 5' stroke='white' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / 14px;
+    }
+    .option.is-faded { opacity: 0.4; pointer-events: none; }
     .option__text { flex: 1; }
     .option__radio {
       flex-shrink: 0; width: 22px; height: 22px;
@@ -392,9 +408,10 @@
     .section__text strong { font-weight: 600; color: #fff; }
 
     .result__cta {
-      display: inline-flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: center; justify-content: center;
       gap: 0.65rem;
-      padding: 1.1rem 1.25rem 1.1rem 1.5rem;
+      position: relative;
+      padding: 1.1rem 3.75rem;
       color: #fff; border: none; border-radius: var(--radius);
       font-family: 'DM Sans', sans-serif;
       font-size: 1rem; font-weight: 600;
@@ -413,8 +430,10 @@
       background: rgba(0,0,0,0.25);
       display: inline-flex; align-items: center; justify-content: center;
       transition: transform 0.25s ease;
+      position: absolute; right: 1.25rem; top: 50%;
+      transform: translateY(-50%);
     }
-    .result__cta:hover .result__cta__arrow { transform: translateX(3px); }
+    .result__cta:hover .result__cta__arrow { transform: translateY(-50%) translateX(3px); }
 
     .result__restart {
       display: flex; align-items: center; justify-content: center;
@@ -430,6 +449,104 @@
     }
     .result__restart:hover { color: #fff; }
     .result__restart svg { width: 14px; height: 14px; }
+
+    /* === STICKY CTA + SHARE === */
+    .result__sticky {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      padding: 1rem 1.5rem 1.25rem;
+      background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.82) 100%);
+      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+      z-index: 100;
+      animation: rise 0.5s cubic-bezier(.2,.8,.2,1) both 0.4s;
+    }
+    .result__sticky-inner {
+      max-width: 480px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 0.5rem;
+    }
+    body[data-screen="result"] .stage { padding-bottom: 11rem; }
+
+    .result__share {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.10); color: #fff;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: var(--radius);
+      padding: 0.75rem 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem; font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .result__share:hover { background: rgba(255,255,255,0.18); }
+    .result__share svg { width: 16px; height: 16px; }
+
+    /* === SHARE MODAL === */
+    .share-overlay {
+      position: fixed; inset: 0; z-index: 1100;
+      background: rgba(0,0,0,0.6);
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem; opacity: 0; visibility: hidden;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+    }
+    .share-overlay.active { opacity: 1; visibility: visible; }
+    .share-modal {
+      background: #fff; border-radius: 18px;
+      padding: 1.75rem 1.5rem 1.5rem;
+      max-width: 380px; width: 100%; position: relative;
+      transform: translateY(12px) scale(0.98);
+      transition: transform 0.3s cubic-bezier(.2,.8,.2,1);
+      color: var(--ink);
+    }
+    .share-overlay.active .share-modal { transform: translateY(0) scale(1); }
+    .share-modal__close {
+      position: absolute; top: 0.75rem; right: 0.75rem;
+      width: 32px; height: 32px;
+      background: rgba(0,0,0,0.04); border: none; border-radius: 50%;
+      color: var(--text); cursor: pointer; font-size: 1.1rem;
+    }
+    .share-modal__title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 500; font-size: 1.2rem;
+      letter-spacing: -0.02em; margin-bottom: 1.25rem;
+    }
+    .share-options { display: flex; flex-direction: column; gap: 0.5rem; }
+    .share-opt {
+      display: flex; align-items: center; gap: 0.7rem;
+      background: #f5f4ef;
+      border: 1px solid rgba(20,23,26,0.06);
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      text-decoration: none; color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.93rem; font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s ease;
+      width: 100%; text-align: left;
+    }
+    .share-opt:hover { background: #ecebe5; }
+    .share-opt__icon {
+      width: 36px; height: 36px;
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; color: #fff;
+    }
+    .share-opt__icon svg { width: 18px; height: 18px; }
+    .share-opt--tg .share-opt__icon { background: #2AABEE; }
+    .share-opt--vk .share-opt__icon { background: #0077FF; }
+    .share-opt--copy .share-opt__icon { background: var(--ink); }
+
+    /* === TOAST === */
+    .toast {
+      position: fixed; bottom: 8.5rem;
+      left: 50%; transform: translateX(-50%) translateY(20px);
+      background: #14171a; color: #fff;
+      padding: 0.65rem 1.25rem;
+      border-radius: 100px;
+      font-size: 0.85rem; z-index: 2000;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
     /* === FOOTER === */
     .footer {
@@ -593,6 +710,16 @@
     </div>
   </div>
 
+  <div class="share-overlay" id="shareOverlay" onclick="closeShareOutside(event)">
+    <div class="share-modal">
+      <button class="share-modal__close" onclick="closeShare()">&times;</button>
+      <h3 class="share-modal__title">Поделиться результатом</h3>
+      <div class="share-options" id="shareOptions"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
   <script>
     /* === ANALYTICS === */
     const YM_ID = null; // TODO: подставить ID Яндекс.Метрики
@@ -617,7 +744,11 @@
       alert: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
       arrowRight: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`,
       restart: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>`,
-      lock: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>`
+      lock: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>`,
+      share: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>`,
+      telegram: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.6 15.6L9.4 19c.4 0 .6-.2.8-.4l2-1.9 4.1 3c.7.4 1.3.2 1.5-.7l2.8-13c.2-1-.4-1.5-1.1-1.2L3 7.8c-1 .4-1 1-.2 1.3l4.3 1.3 10-6.3c.5-.3.9-.1.6.2L9.6 15.6z"/></svg>`,
+      vk: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.7 18c-6.4 0-9.4-3.9-9.5-10.3h3.4c.1 4.4 2 6.1 3.5 6.5V7.7h3.2v4.7c1.5-.2 3-1.9 3.6-4.7h3.2c-.4 2.5-1.8 4.5-3.4 5.7 1.5 1 3.4 2.7 4 5.4h-3.5c-.5-1.9-1.8-3.4-3.9-3.6V18h-.6z"/></svg>`,
+      copy: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`
     };
 
     /* === QUIZ DATA === */
@@ -629,8 +760,8 @@
         sub: 'Ответьте на 8 коротких вопросов — и узнайте, насколько ваш капитал устойчив к кризисам, инфляции и неожиданным ситуациям.',
         bullets: [
           '8 вопросов · около 3 минут',
-          'Оценка устойчивости капитала',
-          'Конкретные рекомендации'
+          'Главные риски для ваших денег',
+          'Что улучшить в первую очередь'
         ],
         cta: 'Начать квиз',
         meta: ['Бесплатно', '3 мин', 'Анонимно']
@@ -874,6 +1005,7 @@
       const total = state.answers.reduce((s, a) => s + a.score, 0);
       const maxScore = QUIZ.questions.reduce((s, q) => s + Math.max(...q.options.map(o => o.s)), 0);
       document.body.dataset.tone = r.tone;
+      setTimeout(initSalebotForm, 80);
 
       const badgeText = r.badge || `Ваш результат`;
       const scoreBlock = isStop
@@ -900,14 +1032,22 @@
               </div>
             `).join('')}
           </div>
-          <button class="result__cta" onclick="openResultModal()">
-            <span>${r.cta}</span>
-            <span class="result__cta__arrow">${ICONS.arrowDown}</span>
-          </button>
           <button class="result__restart" onclick="restart()">
             ${ICONS.restart} Пройти ещё раз
           </button>
         </section>
+        <div class="result__sticky">
+          <div class="result__sticky-inner">
+            <button class="result__cta" onclick="openResultModal()">
+              <span>${r.cta}</span>
+              <span class="result__cta__arrow">${ICONS.arrowDown}</span>
+            </button>
+            <button class="result__share" onclick="openShare()">
+              ${ICONS.share}
+              <span>Поделиться результатом</span>
+            </button>
+          </div>
+        </div>
       `;
     }
 
@@ -930,18 +1070,26 @@
       track('quiz_start', { quiz: QUIZ.key });
       render();
     }
+    let isTransitioning = false;
     function selectAnswer(i) {
+      if (isTransitioning) return;
+      isTransitioning = true;
       const opt = QUIZ.questions[state.currentQ].options[i];
       state.answers[state.currentQ] = { score: opt.s, stop: !!opt.stop };
-      track('quiz_q_' + (state.currentQ + 1), { quiz: QUIZ.key, answer: i });
-      if (state.currentQ < QUIZ.questions.length - 1) {
-        state.currentQ++;
-        render();
-      } else {
-        state.screen = 'result';
-        track('quiz_complete', { quiz: QUIZ.key, result: resultKey() });
-        render();
-      }
+      const opts = document.querySelectorAll('.option');
+      opts.forEach((b, j) => { if (j === i) b.classList.add('is-selected'); else b.classList.add('is-faded'); });
+      setTimeout(() => {
+        isTransitioning = false;
+        track('quiz_q_' + (state.currentQ + 1), { quiz: QUIZ.key, answer: i });
+        if (state.currentQ < QUIZ.questions.length - 1) {
+          state.currentQ++;
+          render();
+        } else {
+          state.screen = 'result';
+          track('quiz_complete', { quiz: QUIZ.key, result: resultKey() });
+          render();
+        }
+      }, 450);
     }
     function goBack() {
       if (state.screen === 'question' && state.currentQ > 0) {
@@ -961,6 +1109,18 @@
     }
 
     /* === MODAL === */
+    function initSalebotForm() {
+      if (window._salebotInited) return;
+      const block = document.querySelector('.form_integration_block');
+      if (!block) return;
+      const p = QUIZ.product;
+      if (window.FormIntegration) {
+        FormIntegration.init({ project_id: p.project_id, guid: p.guid });
+        window._salebotInited = true;
+      } else {
+        setTimeout(initSalebotForm, 500);
+      }
+    }
     function openResultModal() {
       const r = computeResult();
       track('quiz_cta_click', { quiz: QUIZ.key, result: resultKey() });
@@ -968,12 +1128,7 @@
         window.location.href = r.link;
         return;
       }
-      const p = QUIZ.product;
-      const block = document.querySelector('.form_integration_block');
-      block.innerHTML = '';
-      if (window.FormIntegration) {
-        FormIntegration.init({ project_id: p.project_id, guid: p.guid });
-      }
+      initSalebotForm();
       document.getElementById('modalOverlay').classList.add('active');
       document.body.style.overflow = 'hidden';
       track('quiz_modal_open', { quiz: QUIZ.key, result: resultKey() });
@@ -983,7 +1138,63 @@
       document.body.style.overflow = '';
     }
     function closeModalOutside(e) { if (e.target === e.currentTarget) closeModal(); }
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { closeModal(); closeShare(); }
+    });
+
+    /* === SHARE === */
+    function shareText() {
+      const r = computeResult();
+      const tmp = document.createElement('div');
+      tmp.innerHTML = r.name;
+      const cleanName = tmp.textContent.trim();
+      return `Я прошёл(а) квиз FIN-RA и узнал(а), насколько защищены мои деньги: «${cleanName}». А ты? Пройди короткий тест за 3 минуты:`;
+    }
+    function openShare() {
+      const url = window.location.origin + window.location.pathname;
+      const text = shareText();
+      track('quiz_share_click', { quiz: QUIZ.key });
+      if (navigator.share) {
+        navigator.share({ title: 'FIN-RA — Насколько защищены ваши деньги?', text, url }).catch(() => {});
+        return;
+      }
+      const tg = `tg://msg_url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
+      const vk = `https://vk.com/share.php?url=${encodeURIComponent(url)}&title=${encodeURIComponent(text)}`;
+      document.getElementById('shareOptions').innerHTML = `
+        <a class="share-opt share-opt--tg" href="${tg}">
+          <span class="share-opt__icon">${ICONS.telegram}</span><span>Telegram</span>
+        </a>
+        <a class="share-opt share-opt--vk" href="${vk}" target="_blank" rel="noopener">
+          <span class="share-opt__icon">${ICONS.vk}</span><span>VKontakte</span>
+        </a>
+        <button class="share-opt share-opt--copy" onclick="copyShareLink()">
+          <span class="share-opt__icon">${ICONS.copy}</span><span>Скопировать ссылку</span>
+        </button>
+      `;
+      document.getElementById('shareOverlay').classList.add('active');
+    }
+    function closeShare() { document.getElementById('shareOverlay').classList.remove('active'); }
+    function closeShareOutside(e) { if (e.target === e.currentTarget) closeShare(); }
+    function copyShareLink() {
+      const url = window.location.origin + window.location.pathname;
+      const text = shareText() + ' ' + url;
+      const done = () => { showToast('Ссылка скопирована'); closeShare(); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(() => {});
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta);
+        ta.select(); document.execCommand('copy'); ta.remove();
+        done();
+      }
+    }
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => t.classList.remove('show'), 1800);
+    }
 
     track('quiz_open', { quiz: QUIZ.key });
     render();
