@@ -765,13 +765,11 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    /* === ANALYTICS === */
-    const YM_ID = null; // TODO: подставить ID Яндекс.Метрики
+    /* === ANALYTICS (Google Tag Manager dataLayer) === */
     function track(event, params) {
       try {
-        if (typeof ym === 'function' && YM_ID) {
-          ym(YM_ID, 'reachGoal', event, params || {});
-        }
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(Object.assign({ event: event }, params || {}));
       } catch (e) {}
       if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
         console.log('[track]', event, params || {});

@@ -1133,6 +1133,17 @@
       `;
     }
 
+    /* === ANALYTICS (Google Tag Manager dataLayer) === */
+    function track(event, params) {
+      try {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(Object.assign({ event: event }, params || {}));
+      } catch (e) {}
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        console.log('[track]', event, params || {});
+      }
+    }
+
     /* === LOGIC === */
     function computeResult() {
       const counts = {};
@@ -1151,6 +1162,7 @@
       state.screen = 'question';
       state.currentQ = 0;
       state.answers = [];
+      track('quiz_start', { quiz: 'investor' });
       render();
     }
     let isTransitioning = false;
@@ -1169,11 +1181,13 @@
 
       setTimeout(() => {
         isTransitioning = false;
+        track('quiz_q_' + (state.currentQ + 1), { quiz: 'investor', answer: i });
         if (state.currentQ < QUIZ.questions.length - 1) {
           state.currentQ++;
           render();
         } else {
           state.screen = 'result';
+          track('quiz_complete', { quiz: 'investor', result: computeResult() });
           render();
         }
       }, 450);
@@ -1214,9 +1228,11 @@
       }
     }
     function openResultModal() {
+      track('quiz_cta_click', { quiz: 'investor', result: computeResult() });
       initSalebotForm();
       document.getElementById('modalOverlay').classList.add('active');
       document.body.style.overflow = 'hidden';
+      track('quiz_modal_open', { quiz: 'investor', result: computeResult() });
     }
     function closeModal() {
       document.getElementById('modalOverlay').classList.remove('active');
@@ -1234,6 +1250,7 @@
       return `Мой инвестиционный тип — ${p.full}, ${p.role}. А кто ты: Баффет, Гейтс, Маск, Кийосаки или Трамп? Пройди короткий квиз и узнай свой тип инвестора:`;
     }
     function openShare() {
+      track('quiz_share_click', { quiz: 'investor', result: computeResult() });
       const url = window.location.origin + window.location.pathname;
       const text = shareText();
       if (navigator.share) {
@@ -1281,6 +1298,7 @@
       window._toastTimer = setTimeout(() => t.classList.remove('show'), 1800);
     }
 
+    track('quiz_open', { quiz: 'investor' });
     render();
   </script>
   <script src="/tg-intercept.js" defer></script>
