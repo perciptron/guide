@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NL7D8CF');</script>
+  <!-- End Google Tag Manager -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Финансовый квиз FIN-RA — узнайте, где утекают ваши деньги. 7 вопросов, персональный результат и бесплатные рекомендации.">
+  <meta name="theme-color" content="#0d1117">
+  <meta property="og:title" content="Где вы теряете деньги прямо сейчас? — FIN-RA">
+  <meta property="og:description" content="Пройдите 7 вопросов и узнайте свою главную зону потерь.">
+  <meta property="og:url" content="https://guides.fin-ra.pro/quiz-money-gate/">
+  <link rel="icon" href="/favicon.ico">
+  <title>FIN-RA — Где вы теряете деньги? · прототип</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --ink: #14171a;
+      --text: #4a5058;
+      --text-muted: #8c8f94;
+      --hairline: rgba(20,23,26,0.08);
+      --green: #11b16a;
+      --radius: 14px;
+
+      --t-red: #e0464d;
+      --t-red-bg: linear-gradient(180deg, #3d0e14 0%, #260609 100%);
+      --t-orange: #e07a2a;
+      --t-orange-bg: linear-gradient(180deg, #3d2410 0%, #1f1206 100%);
+      --t-gold: #e0a83b;
+      --t-gold-bg: linear-gradient(180deg, #3d2f0a 0%, #1f1805 100%);
+      --t-blue: #3da7e0;
+      --t-blue-bg: linear-gradient(180deg, #0a2e3d 0%, #051a26 100%);
+      --t-green: #11b16a;
+      --t-green-bg: linear-gradient(180deg, #0a3d2b 0%, #052619 100%);
+    }
+
+    html { font-size: 16px; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100dvh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      display: flex; flex-direction: column;
+      transition: background 0.5s ease;
+    }
+
+    body[data-screen="intro"] {
+      background: radial-gradient(ellipse at top, #1a1f2e 0%, #0d1117 60%, #050507 100%);
+      color: #fff;
+    }
+    body[data-screen="question"] {
+      background: #f5f4ef; color: var(--ink);
+    }
+    body[data-screen="result"][data-tone="red"]    { background: var(--t-red-bg);    color: #fff; }
+    body[data-screen="result"][data-tone="orange"] { background: var(--t-orange-bg); color: #fff; }
+    body[data-screen="result"][data-tone="gold"]   { background: var(--t-gold-bg);   color: #fff; }
+    body[data-screen="result"][data-tone="blue"]   { background: var(--t-blue-bg);   color: #fff; }
+    body[data-screen="result"][data-tone="green"]  { background: var(--t-green-bg);  color: #fff; }
+
+    /* === TOPBAR === */
+    .topbar {
+      padding: 1.25rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      position: relative; z-index: 2;
+    }
+    .topbar__brand {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      filter: brightness(0) invert(1);
+      opacity: 0.95;
+    }
+    body[data-screen="question"] .topbar__brand { filter: none; opacity: 1; }
+    .topbar__brand img { height: 18px; }
+    .topbar__sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem; letter-spacing: 0.08em;
+      text-transform: uppercase; opacity: 0.65; line-height: 1.2;
+    }
+    .topbar__back {
+      background: rgba(20,23,26,0.06); border: none;
+      width: 36px; height: 36px; border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 0.15s ease;
+      color: var(--ink);
+    }
+    .topbar__back:hover { background: rgba(20,23,26,0.10); }
+    .topbar__counter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem; letter-spacing: 0.06em;
+      color: var(--text);
+    }
+    .topbar__counter strong { color: var(--ink); }
+
+    .stage { flex: 1; display: flex; flex-direction: column; padding: 0 1.5rem 2rem; }
+
+    /* === INTRO === */
+    .intro {
+      max-width: 480px; width: 100%; margin: 0 auto;
+      animation: rise 0.7s cubic-bezier(.2,.8,.2,1) both;
+    }
+    .intro__heading {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 500; font-size: clamp(1.85rem, 6.5vw, 2.4rem);
+      line-height: 1.08; letter-spacing: -0.035em;
+      margin-bottom: 0.85rem; text-wrap: balance;
+    }
+    .intro__heading .accent { color: var(--green); }
+    .intro__sub {
+      font-size: 0.95rem; line-height: 1.55;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 2rem; max-width: 420px;
+    }
+
+    .hero-medal {
+      width: clamp(180px, 50vw, 220px);
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,0.10), rgba(0,0,0,0.35)),
+        linear-gradient(160deg, #2a3037 0%, #14171a 100%);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0.5rem auto 2rem;
+      position: relative;
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.12) inset,
+        0 0 0 1px rgba(255,255,255,0.06) inset,
+        0 24px 56px -8px rgba(0,0,0,0.6),
+        0 0 0 24px rgba(17,177,106,0.05),
+        0 0 0 56px rgba(17,177,106,0.02);
+      animation: medalFloat 6s ease-in-out infinite;
+    }
+    .hero-medal::after {
+      content: '';
+      position: absolute; inset: -2px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 50% 100%, rgba(17,177,106,0.25), transparent 65%);
+      filter: blur(20px);
+      z-index: -1;
+    }
+    .hero-medal > svg { width: 60%; height: 60%; color: rgba(255,255,255,0.92); }
+
+    @keyframes medalFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .hero-orbit {
+      position: absolute;
+      inset: -18% -14%;
+      pointer-events: none;
+      animation: medalFloat 7s ease-in-out infinite reverse;
+    }
+    .hero-orbit__icon {
+      position: absolute;
+      width: clamp(38px, 11vw, 50px);
+      height: clamp(38px, 11vw, 50px);
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(17,177,106,0.18), rgba(17,177,106,0.06) 70%, rgba(0,0,0,0.4));
+      border: 1px solid rgba(17,177,106,0.32);
+      display: flex; align-items: center; justify-content: center;
+      color: #11b16a;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.04) inset,
+        0 0 22px -4px rgba(17,177,106,0.55),
+        0 6px 14px -4px rgba(0,0,0,0.55);
+      animation: orbitFloat 4.5s ease-in-out infinite;
+    }
+    .hero-orbit__icon svg { width: 52%; height: 52%; }
+    .hero-orbit__icon:nth-child(1) { top: 6%;  left: 8%;   animation-delay: 0s; }
+    .hero-orbit__icon:nth-child(2) { top: 4%;  right: 8%;  animation-delay: 0.35s; }
+    .hero-orbit__icon:nth-child(3) { top: 44%; left: -2%;  animation-delay: 0.7s; }
+    .hero-orbit__icon:nth-child(4) { top: 42%; right: -2%; animation-delay: 1.05s; }
+    .hero-orbit__icon:nth-child(5) { bottom: 6%; left: 12%;  animation-delay: 1.4s; }
+    .hero-orbit__icon:nth-child(6) { bottom: 4%; right: 12%; animation-delay: 1.75s; }
+    @keyframes orbitFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .bullets {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 0.65rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .bullets li {
+      display: flex; align-items: center; gap: 0.65rem;
+      font-size: 0.95rem; color: rgba(255,255,255,0.92);
+    }
+    .bullets li::before {
+      content: ''; flex-shrink: 0;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(17,177,106,0.18);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cpath d='M8.5 14L5.7 11.2l0.85-0.85L8.5 12.7l6.45-6.45 0.85 0.85z' fill='%2311b16a'/%3E%3C/svg%3E");
+      background-size: cover;
+    }
+
+    .cta {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.65rem;
+      position: relative;
+      padding: 1.1rem 3.75rem;
+      background: var(--green); color: #fff;
+      border: none; border-radius: var(--radius);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem; font-weight: 600;
+      cursor: pointer; width: 100%;
+      transition: transform 0.2s, filter 0.2s;
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.18) inset,
+        0 10px 28px -8px rgba(17,177,106,0.55),
+        0 4px 12px -4px rgba(17,177,106,0.4);
+    }
+    .cta:hover { transform: translateY(-2px); filter: brightness(1.05); }
+    .cta__arrow {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(0,0,0,0.18);
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: transform 0.25s ease;
+      position: absolute;
+      right: 1.25rem; top: 50%;
+      transform: translateY(-50%);
+    }
+    .cta:hover .cta__arrow { transform: translateY(-50%) translateX(3px); }
+
+    .intro__meta {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.85rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem; letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.45);
+      margin-top: 1.5rem;
+    }
+    .intro__meta span::before { content: '· '; color: rgba(255,255,255,0.3); margin-right: 0.15rem; }
+    .intro__meta span:first-child::before { display: none; }
+
+    /* === QUESTION === */
+    .question-screen {
+      max-width: 520px; width: 100%; margin: 0 auto;
+      animation: rise 0.5s cubic-bezier(.2,.8,.2,1) both;
+    }
+    .progress {
+      height: 3px; background: rgba(20,23,26,0.08);
+      border-radius: 3px; overflow: hidden; margin-bottom: 1.75rem;
+    }
+    .progress__fill {
+      height: 100%; background: var(--green);
+      border-radius: 3px;
+      transition: width 0.4s cubic-bezier(.2,.8,.2,1);
+    }
+    .question__title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 500; font-size: clamp(1.35rem, 4.5vw, 1.7rem);
+      line-height: 1.22; letter-spacing: -0.02em;
+      color: var(--ink); margin-bottom: 1.5rem; text-wrap: balance;
+    }
+    .options { display: flex; flex-direction: column; gap: 0.6rem; }
+    .option {
+      display: flex; align-items: center; gap: 0.75rem;
+      text-align: left;
+      background: #fff;
+      border: 1px solid rgba(20,23,26,0.08);
+      border-radius: var(--radius);
+      padding: 0.9rem 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem; font-weight: 400;
+      color: var(--ink); cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
+      line-height: 1.4;
+    }
+    .option:hover { border-color: var(--green); background: rgba(17,177,106,0.04); }
+    .option:active { transform: scale(0.995); }
+    .option.is-selected {
+      border-color: var(--green) !important;
+      background: rgba(17,177,106,0.12) !important;
+      opacity: 1 !important;
+    }
+    .option.is-selected .option__radio {
+      background: var(--green); border-color: var(--green); position: relative;
+    }
+    .option.is-selected .option__radio::after {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5L6.5 12L13 5' stroke='white' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / 14px;
+    }
+    .option.is-faded { opacity: 0.4; pointer-events: none; }
+    .option__text { flex: 1; }
+    .option__radio {
+      flex-shrink: 0; width: 22px; height: 22px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(20,23,26,0.14);
+      transition: border-color 0.15s ease;
+    }
+    .option:hover .option__radio { border-color: var(--green); }
+
+    .question__hint {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.4rem;
+      margin-top: 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--text-muted);
+    }
+    .question__hint svg { width: 11px; height: 11px; opacity: 0.7; }
+
+    /* === RESULT === */
+    .result {
+      max-width: 480px; width: 100%; margin: 0 auto;
+      animation: rise 0.6s cubic-bezier(.2,.8,.2,1) both;
+    }
+    .result__badge {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      padding: 0.4rem 0.85rem;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 100px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #fff;
+      margin-bottom: 1.5rem;
+    }
+    .result__badge::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: currentColor;
+    }
+    body[data-tone="red"]    .result__badge::before { color: var(--t-red); }
+    body[data-tone="orange"] .result__badge::before { color: var(--t-orange); }
+    body[data-tone="gold"]   .result__badge::before { color: var(--t-gold); }
+    body[data-tone="blue"]   .result__badge::before { color: var(--t-blue); }
+    body[data-tone="green"]  .result__badge::before { color: var(--t-green); }
+
+    .result__medal {
+      width: clamp(200px, 56vw, 260px);
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,0.10), rgba(0,0,0,0.35)),
+        linear-gradient(160deg, rgba(255,255,255,0.06) 0%, rgba(0,0,0,0.2) 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 0.3rem;
+      margin: 0 auto 1.25rem;
+      position: relative;
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.14) inset,
+        0 0 0 1px rgba(255,255,255,0.06) inset,
+        0 24px 56px -8px rgba(0,0,0,0.65);
+      animation: rise 0.7s cubic-bezier(.2,.8,.2,1) both 0.1s;
+    }
+    .result__medal::after {
+      content: '';
+      position: absolute; inset: -3px;
+      border-radius: 50%;
+      filter: blur(24px); z-index: -1;
+    }
+    body[data-tone="red"]    .result__medal::after { background: radial-gradient(circle at 50% 100%, rgba(224,70,77,0.40), transparent 65%); }
+    body[data-tone="orange"] .result__medal::after { background: radial-gradient(circle at 50% 100%, rgba(224,122,42,0.40), transparent 65%); }
+    body[data-tone="gold"]   .result__medal::after { background: radial-gradient(circle at 50% 100%, rgba(224,168,59,0.40), transparent 65%); }
+    body[data-tone="blue"]   .result__medal::after { background: radial-gradient(circle at 50% 100%, rgba(61,167,224,0.40), transparent 65%); }
+    body[data-tone="green"]  .result__medal::after { background: radial-gradient(circle at 50% 100%, rgba(17,177,106,0.40), transparent 65%); }
+
+    .medal__icon { width: 64px; height: 64px; }
+    body[data-tone="red"]    .medal__icon { color: var(--t-red); }
+    body[data-tone="orange"] .medal__icon { color: var(--t-orange); }
+    body[data-tone="gold"]   .medal__icon { color: var(--t-gold); }
+    body[data-tone="blue"]   .medal__icon { color: var(--t-blue); }
+    body[data-tone="green"]  .medal__icon { color: var(--t-green); }
+
+    .medal__score {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: clamp(2.1rem, 6.5vw, 2.6rem);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: #fff;
+    }
+    .medal__score__sep, .medal__score__max {
+      color: rgba(255,255,255,0.42); font-weight: 400;
+    }
+    .medal__label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem; letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .result__name {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: clamp(1.95rem, 6.5vw, 2.4rem);
+      letter-spacing: -0.025em;
+      line-height: 1.08; text-align: center;
+      margin-bottom: 0.5rem; text-wrap: balance;
+    }
+    .result__role {
+      text-align: center; font-size: 0.95rem; font-weight: 500;
+      margin-bottom: 2.25rem; opacity: 0.92; line-height: 1.4;
+    }
+    body[data-tone="red"]    .result__role { color: var(--t-red); }
+    body[data-tone="orange"] .result__role { color: var(--t-orange); }
+    body[data-tone="gold"]   .result__role { color: var(--t-gold); }
+    body[data-tone="blue"]   .result__role { color: var(--t-blue); }
+    body[data-tone="green"]  .result__role { color: var(--t-green); }
+
+    .result__sections {
+      display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2rem;
+    }
+    .section {
+      display: flex; gap: 0.9rem;
+      animation: rise 0.5s cubic-bezier(.2,.8,.2,1) both;
+    }
+    .section:nth-child(1) { animation-delay: 0.20s; }
+    .section:nth-child(2) { animation-delay: 0.28s; }
+    .section:nth-child(3) { animation-delay: 0.36s; }
+    .section:nth-child(4) { animation-delay: 0.44s; }
+
+    .section__icon {
+      flex-shrink: 0; width: 38px; height: 38px;
+      border-radius: 10px;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .section__icon svg { width: 18px; height: 18px; }
+    body[data-tone="red"]    .section__icon { background: rgba(224,70,77,0.16); color: var(--t-red); }
+    body[data-tone="orange"] .section__icon { background: rgba(224,122,42,0.16); color: var(--t-orange); }
+    body[data-tone="gold"]   .section__icon { background: rgba(224,168,59,0.16); color: var(--t-gold); }
+    body[data-tone="blue"]   .section__icon { background: rgba(61,167,224,0.16); color: var(--t-blue); }
+    body[data-tone="green"]  .section__icon { background: rgba(17,177,106,0.16); color: var(--t-green); }
+
+    .section__body { flex: 1; }
+    .section__title {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600; font-size: 0.92rem; margin-bottom: 0.25rem;
+    }
+    body[data-tone="red"]    .section__title { color: var(--t-red); }
+    body[data-tone="orange"] .section__title { color: var(--t-orange); }
+    body[data-tone="gold"]   .section__title { color: var(--t-gold); }
+    body[data-tone="blue"]   .section__title { color: var(--t-blue); }
+    body[data-tone="green"]  .section__title { color: var(--t-green); }
+    .section__text {
+      font-size: 0.93rem; line-height: 1.5;
+      color: rgba(255,255,255,0.85);
+    }
+    .section__text strong { font-weight: 600; color: #fff; }
+
+    .result__cta {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.65rem;
+      position: relative;
+      padding: 1.1rem 3.75rem;
+      color: #fff; border: none; border-radius: var(--radius);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem; font-weight: 600;
+      cursor: pointer; width: 100%;
+      transition: transform 0.2s, filter 0.2s;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.18) inset, 0 12px 32px -8px rgba(0,0,0,0.55);
+    }
+    body[data-tone="red"]    .result__cta { background: var(--t-red);    box-shadow: 0 1px 0 rgba(255,255,255,0.18) inset, 0 12px 32px -8px rgba(224,70,77,0.5); }
+    body[data-tone="orange"] .result__cta { background: var(--t-orange); box-shadow: 0 1px 0 rgba(255,255,255,0.18) inset, 0 12px 32px -8px rgba(224,122,42,0.5); }
+    body[data-tone="gold"]   .result__cta { background: var(--t-gold);   box-shadow: 0 1px 0 rgba(255,255,255,0.18) inset, 0 12px 32px -8px rgba(224,168,59,0.5); }
+    body[data-tone="blue"]   .result__cta { background: var(--t-blue);   box-shadow: 0 1px 0 rgba(255,255,255,0.18) inset, 0 12px 32px -8px rgba(61,167,224,0.5); }
+    body[data-tone="green"]  .result__cta { background: var(--t-green);  box-shadow: 0 1px 0 rgba(255,255,255,0.18) inset, 0 12px 32px -8px rgba(17,177,106,0.5); }
+    .result__cta:hover { transform: translateY(-2px); filter: brightness(1.05); }
+    .result__cta__arrow {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(0,0,0,0.25);
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: transform 0.25s ease;
+      position: absolute; right: 1.25rem; top: 50%;
+      transform: translateY(-50%);
+    }
+    .result__cta:hover .result__cta__arrow { transform: translateY(-50%) translateX(3px); }
+
+    .result__restart {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.45rem;
+      background: none; border: none;
+      padding: 1.25rem 0 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem; letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      cursor: pointer; width: 100%;
+      transition: color 0.15s ease;
+    }
+    .result__restart:hover { color: #fff; }
+    .result__restart svg { width: 14px; height: 14px; }
+
+    /* === STICKY CTA + SHARE === */
+    .result__sticky {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      padding: 1rem 1.5rem 1.25rem;
+      background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.82) 100%);
+      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+      z-index: 100;
+      animation: rise 0.5s cubic-bezier(.2,.8,.2,1) both 0.4s;
+    }
+    .result__sticky-inner {
+      max-width: 480px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 0.5rem;
+    }
+    body[data-screen="result"] .stage { padding-bottom: 11rem; }
+
+    .result__share {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.10); color: #fff;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: var(--radius);
+      padding: 0.75rem 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem; font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .result__share:hover { background: rgba(255,255,255,0.18); }
+    .result__share svg { width: 16px; height: 16px; }
+
+    /* === SHARE MODAL === */
+    .share-overlay {
+      position: fixed; inset: 0; z-index: 1100;
+      background: rgba(0,0,0,0.6);
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem; opacity: 0; visibility: hidden;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+    }
+    .share-overlay.active { opacity: 1; visibility: visible; }
+    .share-modal {
+      background: #fff; border-radius: 18px;
+      padding: 1.75rem 1.5rem 1.5rem;
+      max-width: 380px; width: 100%; position: relative;
+      transform: translateY(12px) scale(0.98);
+      transition: transform 0.3s cubic-bezier(.2,.8,.2,1);
+      color: var(--ink);
+    }
+    .share-overlay.active .share-modal { transform: translateY(0) scale(1); }
+    .share-modal__close {
+      position: absolute; top: 0.75rem; right: 0.75rem;
+      width: 32px; height: 32px;
+      background: rgba(0,0,0,0.04); border: none; border-radius: 50%;
+      color: var(--text); cursor: pointer; font-size: 1.1rem;
+    }
+    .share-modal__title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 500; font-size: 1.2rem;
+      letter-spacing: -0.02em; margin-bottom: 1.25rem;
+    }
+    .share-options { display: flex; flex-direction: column; gap: 0.5rem; }
+    .share-opt {
+      display: flex; align-items: center; gap: 0.7rem;
+      background: #f5f4ef;
+      border: 1px solid rgba(20,23,26,0.06);
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      text-decoration: none; color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.93rem; font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s ease;
+      width: 100%; text-align: left;
+    }
+    .share-opt:hover { background: #ecebe5; }
+    .share-opt__icon {
+      width: 36px; height: 36px;
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; color: #fff;
+    }
+    .share-opt__icon svg { width: 18px; height: 18px; }
+    .share-opt--tg .share-opt__icon { background: #2AABEE; }
+    .share-opt--vk .share-opt__icon { background: #0077FF; }
+    .share-opt--copy .share-opt__icon { background: var(--ink); }
+
+    /* === TOAST === */
+    .toast {
+      position: fixed; bottom: 8.5rem;
+      left: 50%; transform: translateX(-50%) translateY(20px);
+      background: #14171a; color: #fff;
+      padding: 0.65rem 1.25rem;
+      border-radius: 100px;
+      font-size: 0.85rem; z-index: 2000;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* === FOOTER === */
+    .footer {
+      padding: 1rem 1.5rem 1.5rem;
+      text-align: center; font-size: 0.7rem;
+      letter-spacing: 0.04em; color: rgba(255,255,255,0.35);
+    }
+    body[data-screen="question"] .footer { color: var(--text-muted); }
+    .footer a { color: inherit; text-decoration: none; }
+
+    /* === MODAL === */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(0,0,0,0.65);
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem; opacity: 0; visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+    .modal {
+      background: #fff; border-radius: 20px; padding: 2.5rem 2rem 2rem;
+      max-width: 460px; width: 100%; position: relative;
+      transform: translateY(16px) scale(0.98);
+      transition: transform 0.35s cubic-bezier(.2,.8,.2,1);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+      color: var(--ink);
+    }
+    .modal-overlay.active .modal { transform: translateY(0) scale(1); }
+    .modal__close {
+      position: absolute; top: 1rem; right: 1rem;
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.04); border: none; border-radius: 50%;
+      color: var(--text); cursor: pointer; font-size: 1.2rem; z-index: 10;
+    }
+    .modal .form_integration_block { width: 100%; }
+    .modal .form_integration_block input[type="text"],
+    .modal .form_integration_block input[type="email"],
+    .modal .form_integration_block input[type="tel"],
+    .modal .form_integration_block textarea {
+      width: 100% !important; background: #f5f5f7 !important;
+      border: 1.5px solid transparent !important; border-radius: 12px !important;
+      padding: 0.75rem 1rem !important; font-family: 'DM Sans', sans-serif !important;
+      font-size: 0.95rem !important; outline: none !important; color: var(--ink) !important;
+    }
+    .modal .form_integration_block input:focus,
+    .modal .form_integration_block textarea:focus {
+      border-color: var(--green) !important; background: #fff !important;
+      box-shadow: 0 0 0 3px rgba(17,177,106,0.15) !important;
+    }
+    .modal .form_integration_block label {
+      color: var(--ink) !important; font-family: 'DM Sans', sans-serif !important;
+      font-size: 0.82rem !important; font-weight: 500 !important;
+      margin-bottom: 0.35rem !important; display: block !important;
+    }
+    .modal .form_integration_block .salebot_button img,
+    .modal .form_integration_block .salebot_button svg,
+    .modal .form_integration_block .salebot_button .mes_ident { display: none !important; }
+    .modal .form_integration_block .salebot_button {
+      width: 100% !important; padding: 0.7rem 1.5rem !important;
+      color: #fff !important; font-family: 'DM Sans', sans-serif !important;
+      font-size: 1rem !important; font-weight: 600 !important;
+      border: none !important; border-radius: 12px !important;
+      cursor: pointer !important; margin-bottom: 0.5rem !important;
+    }
+    .modal .form_integration_block .tg_link { background: #2AABEE !important; }
+    .modal .form_integration_block .tg_link:hover { background: #229ED9 !important; }
+    .modal .form_integration_block .vk_link { background: #0077FF !important; }
+    .modal .form_integration_block .vk_link:hover { background: #0066DD !important; }
+    .modal .form_integration_block .max_link { background: linear-gradient(90deg, #527CF2 0%, #9040C8 100%) !important; }
+    .modal .form_integration_block .max_link:hover { background: linear-gradient(90deg, #4870E0 0%, #8038B8 100%) !important; }
+    .modal .form_integration_block .custom_social_btn_container { height: auto !important; min-height: 0 !important; }
+    .modal .form_integration_block input[type="checkbox"] {
+      -webkit-appearance: none; appearance: none;
+      width: 44px !important; height: 24px !important; min-width: 44px;
+      background: #e5e5ea !important; border-radius: 12px !important;
+      border: none !important; position: relative; cursor: pointer;
+      padding: 0 !important; margin: 0 !important; vertical-align: middle;
+    }
+    .modal .form_integration_block input[type="checkbox"]::after {
+      content: ''; position: absolute; top: 2px; left: 2px;
+      width: 20px; height: 20px; background: #fff; border-radius: 50%;
+      transition: transform 0.2s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    }
+    .modal .form_integration_block input[type="checkbox"]::before { display: none !important; }
+    .modal .form_integration_block input[type="checkbox"]:checked { background: var(--green) !important; background-image: none !important; }
+    .modal .form_integration_block input[type="checkbox"]:checked::after { transform: translateX(20px); }
+    .modal .form_integration_block div:has(> input[type="checkbox"]),
+    .modal .form_integration_block label:has(> input[type="checkbox"]),
+    .modal .form_integration_block p:has(> input[type="checkbox"]) {
+      display: flex !important; align-items: center !important; gap: 0.625rem !important;
+    }
+    .modal .form_integration_block div:has(> input[type="checkbox"]) a,
+    .modal .form_integration_block div:has(> input[type="checkbox"]) label,
+    .modal .form_integration_block div:has(> input[type="checkbox"]) span,
+    .modal .form_integration_block label:has(> input[type="checkbox"]) span,
+    .modal .form_integration_block label:has(> input[type="checkbox"]) a {
+      flex: 1 !important; font-size: 0.75rem !important; line-height: 1.3 !important;
+      color: var(--text) !important; font-family: 'DM Sans', sans-serif !important;
+      font-style: normal !important; font-weight: 400 !important; text-decoration: none !important;
+    }
+    .modal .form_integration_block label:has(> input[type="checkbox"]) p,
+    .modal .form_integration_block .salebot-privacy__label-text p { margin: 0 !important; padding: 0 !important; }
+    .modal .form_integration_block .ml_quiz.quiz_checkbox,
+    .modal .form_integration_block .salebot-checkbox-field,
+    .modal .form_integration_block .ml_answers { padding: 0 !important; margin: 0 0 0.75rem 0 !important; }
+    .modal .form_integration_block .salebot-checkbox-field { margin-top: 0.75rem !important; font-size: 0 !important; }
+    .modal .form_integration_block .salebot-checkbox-field .salebot-checkbox { font-size: initial !important; }
+    .modal .form_integration_block .salebot-checkbox {
+      margin: 0 !important; padding: 0 !important;
+      display: flex !important; align-items: center !important; gap: 0 !important;
+    }
+    .modal .form_integration_block .salebot-checkbox > input[type="checkbox"] { margin-right: 0.625rem !important; }
+    .modal .form_integration_block .salebot-checkbox > span,
+    .modal .form_integration_block .salebot-checkbox > .salebot-privacy__label-text { margin-left: 0 !important; padding-left: 0 !important; }
+    .modal .form_integration_block .salebot-privacy__label-text {
+      padding: 0 !important; margin: 0 !important; flex: 1 !important; text-indent: 0 !important;
+    }
+    .modal .form_integration_block .salebot-privacy__label-text a,
+    .modal .form_integration_block .salebot-privacy__link {
+      padding: 0 !important; margin: 0 !important; text-indent: 0 !important;
+      font-size: 0.75rem !important; line-height: 1.3 !important;
+      color: var(--text) !important; font-family: 'DM Sans', sans-serif !important;
+      font-style: normal !important; font-weight: 400 !important; text-decoration: none !important;
+    }
+    .modal .form_integration_block .salebot-privacy__label { white-space: normal; }
+
+    /* === GATE (заблокированный результат) === */
+    body[data-screen="gate"] {
+      background: radial-gradient(ellipse at top, #1a1f2e 0%, #0d1117 60%, #050507 100%);
+      color: #fff;
+    }
+    .gate {
+      max-width: 460px; width: 100%; margin: 0 auto;
+      animation: rise 0.6s cubic-bezier(.2,.8,.2,1) both;
+    }
+    .gate-preview {
+      position: relative; overflow: hidden;
+      border-radius: 20px; padding: 1.85rem 1.5rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 1.5rem;
+    }
+    .gate-preview__blur {
+      filter: blur(7px); opacity: 0.45;
+      display: flex; flex-direction: column; align-items: center; gap: 1rem;
+      pointer-events: none; user-select: none;
+    }
+    .gate-preview__medal {
+      width: 92px; height: 92px; border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.3), rgba(17,177,106,0.35) 55%, rgba(0,0,0,0.4));
+    }
+    .gate-preview__bars { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 0.55rem; }
+    .gate-preview__bar { height: 12px; border-radius: 6px; background: rgba(255,255,255,0.28); }
+    .gate-preview__lock {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem;
+      background: rgba(13,17,23,0.2);
+    }
+    .gate-lock-badge {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      display: inline-flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 28px -8px rgba(0,0,0,0.6);
+    }
+    .gate-lock-badge svg { width: 26px; height: 26px; color: #fff; }
+    .gate-lock-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+    }
+    .gate-copy {
+      font-size: 1rem; line-height: 1.5; text-align: center;
+      color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; text-wrap: balance;
+    }
+    .gate-form { display: flex; flex-direction: column; gap: 0.6rem; }
+    .gate-form input {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 12px; padding: 0.9rem 1rem;
+      font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
+      color: #fff; outline: none;
+      transition: border-color .15s ease, background .15s ease, box-shadow .15s ease;
+    }
+    .gate-form input::placeholder { color: rgba(255,255,255,0.42); }
+    .gate-form input:focus {
+      border-color: var(--green); background: rgba(255,255,255,0.10);
+      box-shadow: 0 0 0 3px rgba(17,177,106,0.18);
+    }
+    .gate-submit {
+      margin-top: 0.45rem;
+      display: flex; align-items: center; justify-content: center; gap: 0.55rem;
+      padding: 1.05rem; width: 100%;
+      background: var(--green); color: #fff; border: none; border-radius: var(--radius);
+      font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600; cursor: pointer;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.18) inset, 0 10px 28px -8px rgba(17,177,106,0.55);
+      transition: transform .2s ease, filter .2s ease;
+    }
+    .gate-submit svg { width: 17px; height: 17px; }
+    .gate-submit:hover { transform: translateY(-2px); filter: brightness(1.05); }
+    .gate-hint {
+      margin-top: 1rem; text-align: center;
+      font-size: 0.75rem; line-height: 1.4; color: rgba(255,255,255,0.45);
+    }
+
+    /* === MESSENGER MODAL === */
+    .modal--msg { text-align: center; padding: 2.5rem 1.75rem 1.85rem; }
+    .msg-modal__title {
+      font-family: 'Outfit', sans-serif; font-weight: 500;
+      font-size: 1.45rem; letter-spacing: -0.02em; color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    .msg-modal__sub {
+      font-size: 0.9rem; line-height: 1.5; color: var(--text); margin-bottom: 1.5rem;
+    }
+    .msg-buttons { display: flex; flex-direction: column; gap: 0.6rem; }
+    .msg-btn {
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem; border: none; border-radius: 12px;
+      font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.98rem;
+      color: #fff; cursor: pointer; text-decoration: none;
+      transition: filter .15s ease, transform .15s ease;
+    }
+    .msg-btn:hover { filter: brightness(1.06); transform: translateY(-1px); }
+    .msg-btn--tg { background: #2AABEE; }
+    .msg-btn--max { background: linear-gradient(90deg, #527CF2 0%, #9040C8 100%); }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (min-width: 768px) {
+      .topbar { padding: 1.5rem 2rem; }
+      .stage { padding: 1.5rem 2rem 2.5rem; }
+      .intro { max-width: 540px; padding-top: 1rem; }
+      .intro__heading { font-size: 2.6rem; }
+      .hero-medal { width: 240px; }
+      .question-screen { max-width: 600px; padding-top: 1.5rem; }
+      .question__title { font-size: 1.85rem; }
+      .result { max-width: 560px; padding-top: 1rem; }
+      .result__medal { width: 280px; }
+      .medal__icon { width: 72px; height: 72px; }
+      .medal__score { font-size: 2.8rem; }
+      .result__name { font-size: 2.5rem; }
+    }
+    @media (min-width: 1100px) {
+      .intro__heading { font-size: 3.05rem; }
+    }
+  </style>
+</head>
+<body data-screen="intro">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NL7D8CF"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header class="topbar" id="topbar"></header>
+  <main class="stage" id="stage"></main>
+  <footer class="footer">&copy; <a href="https://fin-ra.ru/">FIN-RA</a> — Школа безопасных инвестиций</footer>
+
+  <!-- Прототип: выбор мессенджера ПОСЛЕ результата. В бою — кнопки Salebot со ссылками,
+       несущими уже собранные на gate-экране данные (повторно вводить не нужно). -->
+  <div class="modal-overlay" id="msgOverlay" onclick="closeMessengerOutside(event)">
+    <div class="modal modal--msg">
+      <button class="modal__close" onclick="closeMessengerModal()">&times;</button>
+      <h3 class="msg-modal__title">Остался последний шаг</h3>
+      <p class="msg-modal__sub">Выберите мессенджер — туда придёт обучение. Данные вводить не нужно, они уже у нас.</p>
+      <div class="msg-buttons">
+        <button class="msg-btn msg-btn--tg" onclick="demoMessenger('Telegram')">Telegram</button>
+        <button class="msg-btn msg-btn--max" onclick="demoMessenger('MAX')">MAX</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="share-overlay" id="shareOverlay" onclick="closeShareOutside(event)">
+    <div class="share-modal">
+      <button class="share-modal__close" onclick="closeShare()">&times;</button>
+      <h3 class="share-modal__title">Поделиться результатом</h3>
+      <div class="share-options" id="shareOptions"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    /* === ANALYTICS (Google Tag Manager dataLayer) === */
+    function track(event, params) {
+      try {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(Object.assign({ event: event }, params || {}));
+      } catch (e) {}
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        console.log('[track]', event, params || {});
+      }
+    }
+
+    /* === ICONS === */
+    const ICONS = {
+      back: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>`,
+      arrowDown: `<svg viewBox="0 0 16 16" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M3 8h9"/><polyline points="8 4 12 8 8 12"/></svg>`,
+      wallet: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="14" width="52" height="40" rx="6"/><path d="M6 22 H58"/><rect x="40" y="32" width="22" height="14" rx="3"/><circle cx="50" cy="39" r="2.5" fill="currentColor"/></svg>`,
+      cart: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>`,
+      coffee: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>`,
+      car: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17l-2-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2l-2 7"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 17h14"/></svg>`,
+      creditCard: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>`,
+      piggy: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h3v-2h6v2h3v-2c1.8-1.5 3-3 3-5 0-1-.3-2-1-3 .3-1.5 0-3-2-5z"/><circle cx="14" cy="11" r="0.5" fill="currentColor"/></svg>`,
+      barChart: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="3" y1="20" x2="21" y2="20"/></svg>`,
+      compass: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88"/></svg>`,
+      shield: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4z"/></svg>`,
+      alert: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
+      arrowRight: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`,
+      restart: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>`,
+      lock: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>`,
+      share: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>`,
+      telegram: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.6 15.6L9.4 19c.4 0 .6-.2.8-.4l2-1.9 4.1 3c.7.4 1.3.2 1.5-.7l2.8-13c.2-1-.4-1.5-1.1-1.2L3 7.8c-1 .4-1 1-.2 1.3l4.3 1.3 10-6.3c.5-.3.9-.1.6.2L9.6 15.6z"/></svg>`,
+      vk: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.7 18c-6.4 0-9.4-3.9-9.5-10.3h3.4c.1 4.4 2 6.1 3.5 6.5V7.7h3.2v4.7c1.5-.2 3-1.9 3.6-4.7h3.2c-.4 2.5-1.8 4.5-3.4 5.7 1.5 1 3.4 2.7 4 5.4h-3.5c-.5-1.9-1.8-3.4-3.9-3.6V18h-.6z"/></svg>`,
+      copy: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`
+    };
+
+    /* === QUIZ DATA === */
+    const QUIZ = {
+      key: 'money',
+      gateCopy: 'Мы нашли вашу главную зону потерь. Заполните форму и узнайте, куда именно утекают деньги — и как это исправить.',
+      meta: { count: 7, duration: '3 минуты' },
+      intro: {
+        heading: 'Где вы теряете деньги <span class="accent">прямо сейчас</span>?',
+        sub: 'Ответьте на 7 коротких вопросов и узнайте, где деньги могут уходить незаметно: в тратах, долгах или импульсивных решениях.',
+        bullets: [
+          '7 вопросов · около 3 минут',
+          'Покажем главную зону потерь',
+          'Бесплатные рекомендации'
+        ],
+        cta: 'Начать квиз',
+        meta: ['Бесплатно', '3 мин', 'Анонимно']
+      },
+      questions: [
+        {
+          q: 'Что обычно происходит с вашими деньгами после получения зарплаты?',
+          options: [
+            { t: 'Почти всё уходит на расходы', s: 0 },
+            { t: 'Иногда что-то остаётся, но заранее я это не планирую', s: 1 },
+            { t: 'Сначала откладываю часть дохода, а остальным распоряжаюсь свободно', s: 2 },
+            { t: 'Заранее распределяю доход: на расходы, накопления и будущие цели', s: 3 },
+            { t: 'Иногда приходится залезать в накопления или кредитку', s: 0, stop: true }
+          ]
+        },
+        {
+          q: 'Где сейчас находится основная часть ваших свободных денег?',
+          options: [
+            { t: 'На карте или обычном счёте', s: 1 },
+            { t: 'В наличных', s: 1 },
+            { t: 'На банковском вкладе', s: 2 },
+            { t: 'В недвижимости или другом крупном активе', s: 2 },
+            { t: 'В ценных бумагах, фондах или криптовалюте', s: 3 },
+            { t: 'Свободных денег пока нет', s: 0 }
+          ]
+        },
+        {
+          q: 'Как часто у вас бывают траты, о которых потом думаете: «можно было и не покупать»?',
+          options: [
+            { t: 'Почти каждый день', s: 0 },
+            { t: 'Несколько раз в неделю', s: 1 },
+            { t: 'Иногда, особенно на скидках или «по настроению»', s: 2 },
+            { t: 'Редко, обычно покупаю только по плану', s: 3 },
+            { t: 'Не знаю — такие траты не отслеживаю', s: 1 }
+          ]
+        },
+        {
+          q: 'Есть ли у вас долги или обязательные платежи, которые забирают часть дохода каждый месяц?',
+          options: [
+            { t: 'Да, ипотека', s: 2 },
+            { t: 'Да, потребительский кредит или автокредит', s: 1 },
+            { t: 'Да, кредитная карта, рассрочки или платежи частями', s: 1 },
+            { t: 'Да, микрозаймы или долги с высокими процентами', s: 0, stop: true },
+            { t: 'Нет, долгов сейчас нет', s: 3 },
+            { t: 'Долги есть, но я не знаю точную переплату', s: 0 }
+          ]
+        },
+        {
+          q: 'Если завтра появится крупный неожиданный расход, что вы сделаете?',
+          options: [
+            { t: 'Возьму кредит или воспользуюсь кредитной картой', s: 0 },
+            { t: 'Займу у близких', s: 0 },
+            { t: 'Потрачу почти все накопления', s: 1 },
+            { t: 'Использую финансовую подушку', s: 3 },
+            { t: 'Продам часть активов', s: 2 },
+            { t: 'Не знаю, буду решать по ситуации', s: 1 }
+          ]
+        },
+        {
+          q: 'Что вы обычно делаете, когда цены растут, рубль падает или новости становятся тревожными?',
+          options: [
+            { t: 'Начинаю переживать, но не понимаю, что делать', s: 0 },
+            { t: 'Читаю новости и жду, пока ситуация прояснится', s: 1 },
+            { t: 'Покупаю то, что сейчас активно обсуждают: валюту, золото, акции, крипту', s: 1 },
+            { t: 'Заранее держу часть капитала в разных инструментах', s: 3 },
+            { t: 'Почти не слежу за этим', s: 1 }
+          ]
+        },
+        {
+          q: 'Что сейчас больше всего мешает вам инвестировать системно?',
+          options: [
+            { t: 'Не вижу смысла — лучше тратить деньги на жизнь сейчас', s: 0 },
+            { t: 'Не понимаю, с чего начать', s: 1 },
+            { t: 'Боюсь потерять деньги', s: 1 },
+            { t: 'Думаю, что с моей суммой пока рано начинать', s: 1 },
+            { t: 'Уже пробовал(а), но результата не увидел(а)', s: 1 },
+            { t: 'Уже инвестирую, но хочу делать это увереннее', s: 3 }
+          ]
+        }
+      ],
+      results: {
+        stop: {
+          tone: 'red',
+          badge: 'Стоп-сигнал',
+          name: 'Деньги утекают <span class="accent">каждый месяц</span>',
+          role: 'Рекомендация: начать с финансового фундамента',
+          sections: [
+            { icon: 'compass', title: 'Ваш подход', text: 'Деньги могут теряться <strong>ещё до этапа инвестиций</strong>: в незаметных тратах, долгах, кредитках, отсутствии финансовой подушки или хаотичном распоряжении зарплатой.' },
+            { icon: 'shield', title: 'Сильная сторона', text: 'Вы уже <strong>задумались о своих финансах</strong> — а это первый шаг к контролю. Большинство людей не делает даже его.' },
+            { icon: 'alert', title: 'На что обратить внимание', text: 'Сейчас главное — <strong>не выбирать акции и фонды</strong>, а навести порядок в базовых финансах: понять, куда уходят деньги, и регулярно оставлять часть себе.' },
+            { icon: 'arrowRight', title: 'Следующий шаг', text: 'Начните с программы <strong>«Финансовый прорыв»</strong> — она помогает разобраться с основами личных финансов и подготовить почву для будущих накоплений и инвестиций.' }
+          ],
+          cta: 'Начать с финансового фундамента',
+          link: 'https://fin-ra.ru/courses/fin-breakthrough'
+        },
+        ranges: [
+          {
+            min: 0, max: 6,
+            tone: 'orange',
+            name: 'Деньги утекают <span class="accent">незаметно</span>',
+            role: 'Низкий контроль над финансами',
+            sections: [
+              { icon: 'compass', title: 'Ваш подход', text: 'Сейчас деньги могут теряться ещё <strong>до этапа накоплений</strong> — в повседневных расходах, незапланированных покупках, отсутствии подушки или решениях «по ситуации».' },
+              { icon: 'shield', title: 'Сильная сторона', text: 'Вы <strong>осознаёте проблему</strong> и пришли искать решение. Это серьёзная база для изменений.' },
+              { icon: 'alert', title: 'На что обратить внимание', text: 'Проблема не всегда в размере дохода, а в том, что <strong>у денег нет маршрута</strong>. Если не понимать, какую часть оставить себе, даже хорошая зарплата быстро растворяется.' },
+              { icon: 'arrowRight', title: 'Следующий шаг', text: 'В бесплатном обучении <strong>«Инвест-зарплата»</strong> вы увидите, как выстроить понятную систему для первых накоплений и инвестиций.' }
+            ],
+            cta: 'Получить бесплатное обучение'
+          },
+          {
+            min: 7, max: 12,
+            tone: 'gold',
+            name: 'Деньги есть, но <span class="accent">система слабая</span>',
+            role: 'Средний уровень управления финансами',
+            sections: [
+              { icon: 'compass', title: 'Ваш подход', text: 'У вас уже <strong>есть задел</strong>: деньги могут оставаться после расходов. Базовое управление работает, но без полной системы.' },
+              { icon: 'shield', title: 'Сильная сторона', text: 'Вы <strong>не живёте полностью «от зарплаты до зарплаты»</strong> и думаете о будущем. Это уверенная стартовая позиция.' },
+              { icon: 'alert', title: 'На что обратить внимание', text: 'Часть денег теряется из-за <strong>отсутствия системы</strong>: не всегда понятно, куда направлять накопления, и легко принимать решения под влиянием новостей или эмоций.' },
+              { icon: 'arrowRight', title: 'Следующий шаг', text: 'В бесплатном обучении <strong>«Инвест-зарплата»</strong> вы увидите, как начать инвестировать понятнее и увереннее, даже без опыта.' }
+            ],
+            cta: 'Получить бесплатное обучение'
+          },
+          {
+            min: 13, max: 17,
+            tone: 'blue',
+            name: 'Готовы к <span class="accent">системному инвестированию</span>',
+            role: 'Хороший уровень управления финансами',
+            sections: [
+              { icon: 'compass', title: 'Ваш подход', text: 'Вы <strong>не живёте от зарплаты до зарплаты</strong>, понимаете важность накоплений и стараетесь распоряжаться деньгами осознанно.' },
+              { icon: 'shield', title: 'Сильная сторона', text: 'Базовая <strong>финансовая дисциплина</strong> уже сформирована. Есть прочная основа для системного инвестирования.' },
+              { icon: 'alert', title: 'На что обратить внимание', text: 'Сейчас главное — не просто откладывать, а <strong>выстроить систему</strong>: как распределять свободные средства, какие инструменты использовать и как создавать дополнительный источник дохода.' },
+              { icon: 'arrowRight', title: 'Следующий шаг', text: 'В бесплатном обучении <strong>«Инвест-зарплата»</strong> увидите, как такая система работает на практике и с чего начать без лишней сложности.' }
+            ],
+            cta: 'Получить бесплатное обучение'
+          },
+          {
+            min: 18, max: 21,
+            tone: 'green',
+            name: 'Управляете деньгами <span class="accent">осознанно</span>',
+            role: 'Высокий уровень управления финансами',
+            sections: [
+              { icon: 'compass', title: 'Ваш подход', text: 'Вы <strong>уже неплохо управляете деньгами</strong>: часть дохода сохраняется, есть понимание активов, решения не выглядят хаотичными.' },
+              { icon: 'shield', title: 'Сильная сторона', text: 'У вас <strong>зрелое отношение к деньгам</strong> и понимание принципов накоплений. Хорошая основа, чтобы масштабироваться.' },
+              { icon: 'alert', title: 'На что обратить внимание', text: 'Даже опытные люди теряют деньги там, где не ожидают: <strong>перекос в один инструмент</strong>, деньги на вкладе, не обгоняющие инфляцию, устаревшая стратегия.' },
+              { icon: 'arrowRight', title: 'Следующий шаг', text: 'В бесплатном обучении <strong>«Инвест-зарплата»</strong> вы сможете сверить свой подход с системным и найти точки, где капитал может работать эффективнее.' }
+            ],
+            cta: 'Получить бесплатное обучение'
+          }
+        ]
+      },
+      product: { project_id: 317313, guid: 'zpreg' }
+    };
+
+    /* === STATE === */
+    const state = { screen: 'intro', currentQ: 0, answers: [] };
+    const topbar = document.getElementById('topbar');
+    const stage = document.getElementById('stage');
+
+    function render() {
+      document.body.dataset.screen = state.screen;
+      if (state.screen !== 'result') document.body.removeAttribute('data-tone');
+
+      topbar.innerHTML = renderTopbar();
+      if (state.screen === 'intro') stage.innerHTML = renderIntro();
+      else if (state.screen === 'question') stage.innerHTML = renderQuestion();
+      else if (state.screen === 'gate') stage.innerHTML = renderGate();
+      else if (state.screen === 'result') stage.innerHTML = renderResult();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderTopbar() {
+      if (state.screen === 'question') {
+        const num = state.currentQ + 1;
+        const total = QUIZ.questions.length;
+        return `
+          <button class="topbar__back" onclick="goBack()" aria-label="Назад">${ICONS.back}</button>
+          <span class="topbar__counter"><strong>${num}</strong> из ${total}</span>
+          <span style="width:36px;"></span>
+        `;
+      }
+      return `
+        <div class="topbar__brand">
+          <img src="/logo.png" alt="FIN-RA">
+          <span class="topbar__sub">Школа безопасных<br>инвестиций</span>
+        </div>
+      `;
+    }
+
+    function renderIntro() {
+      const i = QUIZ.intro;
+      return `
+        <section class="intro">
+          <h1 class="intro__heading">${i.heading}</h1>
+          <p class="intro__sub">${i.sub}</p>
+          <div class="hero-medal">
+            ${ICONS.wallet}
+            <div class="hero-orbit">
+              <div class="hero-orbit__icon">${ICONS.cart}</div>
+              <div class="hero-orbit__icon">${ICONS.coffee}</div>
+              <div class="hero-orbit__icon">${ICONS.car}</div>
+              <div class="hero-orbit__icon">${ICONS.creditCard}</div>
+              <div class="hero-orbit__icon">${ICONS.piggy}</div>
+              <div class="hero-orbit__icon">${ICONS.barChart}</div>
+            </div>
+          </div>
+          <ul class="bullets">
+            ${i.bullets.map(b => `<li>${b}</li>`).join('')}
+          </ul>
+          <button class="cta" onclick="startQuiz()">
+            <span>${i.cta}</span>
+            <span class="cta__arrow">${ICONS.arrowDown}</span>
+          </button>
+          <div class="intro__meta">
+            ${i.meta.map(m => `<span>${m}</span>`).join('')}
+          </div>
+        </section>
+      `;
+    }
+
+    function renderQuestion() {
+      const num = state.currentQ + 1;
+      const total = QUIZ.questions.length;
+      const pct = (num / total * 100).toFixed(0);
+      const q = QUIZ.questions[state.currentQ];
+      return `
+        <section class="question-screen">
+          <div class="progress"><div class="progress__fill" style="width: ${pct}%"></div></div>
+          <h2 class="question__title">${q.q}</h2>
+          <div class="options">
+            ${q.options.map((opt, i) => `
+              <button class="option" onclick="selectAnswer(${i})">
+                <span class="option__text">${opt.t}</span>
+                <span class="option__radio"></span>
+              </button>
+            `).join('')}
+          </div>
+          <p class="question__hint">${ICONS.lock} Выберите один вариант</p>
+        </section>
+      `;
+    }
+
+    function renderResult() {
+      const r = computeResult();
+      const isStop = !!r.link;
+      const total = state.answers.reduce((s, a) => s + a.score, 0);
+      const maxScore = QUIZ.questions.reduce((s, q) => s + Math.max(...q.options.map(o => o.s)), 0);
+      document.body.dataset.tone = r.tone;
+
+      const badgeText = r.badge || `Ваш результат`;
+      const scoreBlock = isStop
+        ? `<div class="medal__score">Стоп</div><div class="medal__label">Сигнал</div>`
+        : `<div class="medal__score">${total} <span class="medal__score__sep">/</span> <span class="medal__score__max">${maxScore}</span></div><div class="medal__label">баллов</div>`;
+
+      return `
+        <section class="result">
+          <div style="text-align:center;"><span class="result__badge">${badgeText}</span></div>
+          <div class="result__medal">
+            <div class="medal__icon">${ICONS.wallet}</div>
+            ${scoreBlock}
+          </div>
+          <h1 class="result__name">${r.name}</h1>
+          <p class="result__role">${r.role}</p>
+          <div class="result__sections">
+            ${r.sections.map(s => `
+              <div class="section">
+                <span class="section__icon">${ICONS[s.icon]}</span>
+                <div class="section__body">
+                  <div class="section__title">${s.title}</div>
+                  <p class="section__text">${s.text}</p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+          <button class="result__restart" onclick="restart()">
+            ${ICONS.restart} Пройти ещё раз
+          </button>
+        </section>
+        <div class="result__sticky">
+          <div class="result__sticky-inner">
+            <button class="result__cta" onclick="openResultModal()">
+              <span>${isStop ? r.cta : 'Войти в обучение'}</span>
+              <span class="result__cta__arrow">${ICONS.arrowDown}</span>
+            </button>
+            <button class="result__share" onclick="openShare()">
+              ${ICONS.share}
+              <span>Поделиться результатом</span>
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderGate() {
+      document.body.removeAttribute('data-tone');
+      return `
+        <section class="gate">
+          <div class="gate-preview">
+            <div class="gate-preview__blur" aria-hidden="true">
+              <div class="gate-preview__medal"></div>
+              <div class="gate-preview__bars">
+                <div class="gate-preview__bar" style="width:72%"></div>
+                <div class="gate-preview__bar" style="width:90%"></div>
+                <div class="gate-preview__bar" style="width:58%"></div>
+                <div class="gate-preview__bar" style="width:80%"></div>
+              </div>
+            </div>
+            <div class="gate-preview__lock">
+              <span class="gate-lock-badge">${ICONS.lock}</span>
+              <span class="gate-lock-label">Результат готов</span>
+            </div>
+          </div>
+          <p class="gate-copy">${QUIZ.gateCopy}</p>
+          <form class="gate-form" onsubmit="unlockResult(event)">
+            <input type="text"  name="name"  placeholder="Ваше имя" autocomplete="name" required>
+            <input type="tel"   name="phone" placeholder="Телефон" autocomplete="tel" required>
+            <input type="email" name="email" placeholder="Email" autocomplete="email" required>
+            <button type="submit" class="gate-submit">
+              ${ICONS.lock}<span>Узнать результат</span>
+            </button>
+          </form>
+          <p class="gate-hint">Контакты нужны только чтобы прислать результат — спам не отправляем.</p>
+        </section>
+      `;
+    }
+
+    /* === LOGIC === */
+    function computeResult() {
+      const hasStop = state.answers.some(a => a.stop);
+      if (hasStop) return QUIZ.results.stop;
+      const total = state.answers.reduce((s, a) => s + a.score, 0);
+      return QUIZ.results.ranges.find(r => total >= r.min && total <= r.max) || QUIZ.results.ranges[0];
+    }
+    function resultKey() {
+      const r = computeResult();
+      return r.tone + (r.min !== undefined ? `_${r.min}-${r.max}` : '_stop');
+    }
+
+    function startQuiz() {
+      state.screen = 'question';
+      state.currentQ = 0;
+      state.answers = [];
+      track('quiz_start', { quiz: QUIZ.key });
+      render();
+    }
+    let isTransitioning = false;
+    function selectAnswer(i) {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      const opt = QUIZ.questions[state.currentQ].options[i];
+      state.answers[state.currentQ] = { score: opt.s, stop: !!opt.stop };
+      const opts = document.querySelectorAll('.option');
+      opts.forEach((b, j) => { if (j === i) b.classList.add('is-selected'); else b.classList.add('is-faded'); });
+      setTimeout(() => {
+        isTransitioning = false;
+        track('quiz_q_' + (state.currentQ + 1), { quiz: QUIZ.key, answer: i });
+        if (state.currentQ < QUIZ.questions.length - 1) {
+          state.currentQ++;
+          render();
+        } else {
+          track('quiz_complete', { quiz: QUIZ.key, result: resultKey() });
+          if (computeResult().link) {
+            state.screen = 'result';            // стоп-сигнал: результат сразу, без формы
+          } else {
+            state.screen = 'gate';              // обычный результат: сначала ловим контакт
+            track('quiz_gate_view', { quiz: QUIZ.key, result: resultKey() });
+          }
+          render();
+        }
+      }, 450);
+    }
+    function goBack() {
+      if (state.screen === 'question' && state.currentQ > 0) {
+        state.currentQ--;
+        state.answers.pop();
+        render();
+      } else if (state.screen === 'question' && state.currentQ === 0) {
+        state.screen = 'intro';
+        render();
+      }
+    }
+    function restart() {
+      state.screen = 'intro';
+      state.currentQ = 0;
+      state.answers = [];
+      render();
+    }
+
+    /* === GATE: захват контакта перед результатом === */
+    function unlockResult(e) {
+      e.preventDefault();
+      const f = e.target;
+      const get = n => (f.querySelector('[name="' + n + '"]').value || '').trim();
+      const lead = { name: get('name'), phone: get('phone'), email: get('email') };
+      if (!lead.name || !lead.phone || !lead.email) return;
+
+      // ┌─ БОЕВОЕ ПОДКЛЮЧЕНИЕ SALEBOT ───────────────────────────────┐
+      // │ Здесь форма Salebot в режиме «опрос» сохраняет заявку       │
+      // │ (имя/телефон/email) ДО показа результата. В прототипе —     │
+      // │ просто запоминаем данные и открываем результат.             │
+      // └────────────────────────────────────────────────────────────┘
+      state.lead = lead;
+      track('quiz_lead_capture', { quiz: QUIZ.key, result: resultKey() });
+
+      state.screen = 'result';
+      render();
+    }
+
+    /* === MESSENGER MODAL: вход в обучение без повторного ввода === */
+    function openMessengerModal() {
+      document.getElementById('msgOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+      track('quiz_modal_open', { quiz: QUIZ.key, result: resultKey() });
+    }
+    function openResultModal() {
+      const r = computeResult();
+      track('quiz_cta_click', { quiz: QUIZ.key, result: resultKey() });
+      if (r.link) {                 // стоп-сигнал → Финансовый прорыв, без формы
+        window.location.href = r.link;
+        return;
+      }
+      openMessengerModal();         // контакт уже собран на gate → сразу мессенджеры
+    }
+    function closeMessengerModal() {
+      document.getElementById('msgOverlay').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    function closeMessengerOutside(e) { if (e.target === e.currentTarget) closeMessengerModal(); }
+
+    // Прототип: в бою кнопки ведут в бота со ссылками, несущими собранные данные
+    function demoMessenger(name) {
+      showToast('Прототип: здесь откроется ' + name + ' с уже заполненными данными');
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { closeMessengerModal(); closeShare(); }
+    });
+
+    /* === SHARE === */
+    function shareText() {
+      const r = computeResult();
+      // strip HTML from name
+      const tmp = document.createElement('div');
+      tmp.innerHTML = r.name;
+      const cleanName = tmp.textContent.trim();
+      return `Я прошёл(а) квиз FIN-RA и узнал(а), где деньги могут утекать незаметно: «${cleanName}». А ты? Пройди короткий тест за 3 минуты:`;
+    }
+    function openShare() {
+      const url = window.location.origin + window.location.pathname;
+      const text = shareText();
+      track('quiz_share_click', { quiz: QUIZ.key });
+      if (navigator.share) {
+        navigator.share({ title: 'FIN-RA — Где вы теряете деньги?', text, url }).catch(() => {});
+        return;
+      }
+      const tg = `tg://msg_url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
+      const vk = `https://vk.com/share.php?url=${encodeURIComponent(url)}&title=${encodeURIComponent(text)}`;
+      document.getElementById('shareOptions').innerHTML = `
+        <a class="share-opt share-opt--tg" href="${tg}">
+          <span class="share-opt__icon">${ICONS.telegram}</span><span>Telegram</span>
+        </a>
+        <a class="share-opt share-opt--vk" href="${vk}" target="_blank" rel="noopener">
+          <span class="share-opt__icon">${ICONS.vk}</span><span>VKontakte</span>
+        </a>
+        <button class="share-opt share-opt--copy" onclick="copyShareLink()">
+          <span class="share-opt__icon">${ICONS.copy}</span><span>Скопировать ссылку</span>
+        </button>
+      `;
+      document.getElementById('shareOverlay').classList.add('active');
+    }
+    function closeShare() { document.getElementById('shareOverlay').classList.remove('active'); }
+    function closeShareOutside(e) { if (e.target === e.currentTarget) closeShare(); }
+    function copyShareLink() {
+      const url = window.location.origin + window.location.pathname;
+      const text = shareText() + ' ' + url;
+      const done = () => { showToast('Ссылка скопирована'); closeShare(); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(() => {});
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta);
+        ta.select(); document.execCommand('copy'); ta.remove();
+        done();
+      }
+    }
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => t.classList.remove('show'), 1800);
+    }
+
+    track('quiz_open', { quiz: QUIZ.key });
+    render();
+  </script>
+</body>
+</html>
