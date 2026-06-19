@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ТОП-20 облигаций с ежемесячной выплатой купона — бесплатный PDF-гайд FIN-RA. Рублёвые и валютные выпуски, флоатеры, ссылки на Мосбиржу и пример портфеля.">
+  <meta name="theme-color" content="#ece9e1">
+  <title>FIN-RA — ТОП-20 облигаций с ежемесячной выплатой купона</title>
+
+  <link rel="icon" href="/favicon.ico">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://guides.fin-ra.pro/0626/">
+  <meta property="og:title" content="ТОП-20 облигаций с ежемесячной выплатой купона">
+  <meta property="og:description" content="Бесплатный PDF-гайд: 20 облигаций с ежемесячным купоном, ссылки на Мосбиржу и пример портфеля с почти ежедневным потоком выплат.">
+  <meta property="og:image" content="https://guides.fin-ra.pro/0626/%D0%BE%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ТОП-20 облигаций с ежемесячной выплатой купона">
+  <meta name="twitter:description" content="Бесплатный PDF-гайд: 20 облигаций с ежемесячным купоном, ссылки на Мосбиржу и пример портфеля.">
+  <meta name="twitter:image" content="https://guides.fin-ra.pro/0626/%D0%BE%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --green: #0f9d58;
+      --green-tint: rgba(15,157,88,0.08);
+      --bg: #ece9e1;
+      --paper: #fbfaf6;
+      --ink: #14171a;
+      --text-mid: #5a5f66;
+      --text-muted: #8c8f94;
+      --hairline: rgba(20,23,26,0.08);
+    }
+    html { font-size: 16px; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100dvh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar {
+      padding: 1.25rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .topbar__brand { display: inline-flex; align-items: center; gap: 0.75rem; }
+    .topbar__brand img { height: 22px; }
+    .topbar__divider { width: 1px; height: 14px; background: var(--hairline); }
+    .topbar__tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem; color: var(--text-mid);
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .topbar__label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem; color: var(--text-mid);
+      letter-spacing: 0.06em; text-transform: uppercase;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+    }
+    .topbar__label::before {
+      content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--green);
+    }
+
+    .stage {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem 1.5rem 2rem;
+    }
+
+    /* Single premium card containing everything */
+    .product-card {
+      background: var(--paper);
+      border-radius: 24px;
+      max-width: 1100px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      overflow: hidden;
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.6) inset,
+        0 1px 3px rgba(20,23,26,0.04),
+        0 30px 60px -20px rgba(20,23,26,0.18),
+        0 60px 100px -30px rgba(20,23,26,0.14);
+      animation: cardRise 0.9s cubic-bezier(.2,.8,.2,1) both;
+    }
+
+    /* LEFT — cover panel */
+    .product-card__cover {
+      background:
+        radial-gradient(120% 100% at 30% 20%, #f4f2eb 0%, #e8e5dc 70%, #ddd9cf 100%);
+      padding: 2.5rem 2rem;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      border-right: 1px solid var(--hairline);
+      overflow: hidden;
+      min-height: 580px;
+      perspective: 1400px;
+    }
+    .product-card__cover::before {
+      content: '';
+      position: absolute; inset: -2px;
+      background: radial-gradient(60% 50% at 50% 110%, rgba(15,157,88,0.10), transparent 70%);
+      pointer-events: none;
+      animation: glowPulse 6s ease-in-out infinite;
+    }
+    .cover-holder {
+      position: relative;
+      width: 100%;
+      max-width: 380px;
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(.2,.8,.2,1);
+      animation: coverFloat 7s ease-in-out infinite;
+      will-change: transform;
+    }
+    .product-card__cover:hover .cover-holder {
+      animation-play-state: paused;
+      transform:
+        translateY(var(--ty, 0))
+        rotateX(calc(var(--ry, 0) * 1deg))
+        rotateY(calc(var(--rx, 0) * 1deg));
+    }
+    .cover-holder img {
+      width: 100%; height: auto; display: block;
+      border-radius: 10px;
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.5) inset,
+        0 2px 4px rgba(20,23,26,0.06),
+        0 24px 50px -12px rgba(20,23,26,0.28),
+        0 50px 90px -20px rgba(20,23,26,0.24);
+      transition: box-shadow 0.5s ease;
+    }
+    .cover-holder:hover img {
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.5) inset,
+        0 2px 6px rgba(20,23,26,0.08),
+        0 36px 70px -14px rgba(20,23,26,0.34),
+        0 70px 120px -24px rgba(20,23,26,0.28);
+    }
+    .free-badge {
+      position: absolute;
+      top: -14px; right: -18px;
+      background: var(--green);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 100px;
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.005em;
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.25) inset,
+        0 10px 24px -4px rgba(15,157,88,0.5),
+        0 2px 6px rgba(15,157,88,0.25);
+      transform: translateZ(40px);
+      animation: badgePop 0.8s cubic-bezier(.34,1.56,.64,1) 0.6s both;
+    }
+    .free-badge::before {
+      content: '';
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #fff;
+      margin-right: 0.45rem;
+      vertical-align: middle;
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.25);
+      animation: dotPulse 2.4s ease-in-out infinite;
+    }
+
+    /* RIGHT — content */
+    .product-card__body {
+      padding: 3rem 2.75rem;
+      display: flex; flex-direction: column; gap: 1.5rem;
+    }
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; color: var(--text-mid);
+      letter-spacing: 0.06em; text-transform: uppercase;
+      display: inline-flex; align-items: center; gap: 0.6rem;
+    }
+    .eyebrow__num { color: var(--green); }
+    .eyebrow__sep { width: 1px; height: 11px; background: var(--hairline); }
+
+    .title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2rem, 4vw, 2.85rem);
+      font-weight: 500;
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+    }
+    .title .accent { color: var(--green); }
+
+    .desc {
+      font-size: 1rem; line-height: 1.55;
+      color: var(--text-mid);
+      max-width: 460px;
+    }
+
+    .bullets {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 0.7rem;
+      padding: 1rem 0;
+      border-top: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+    }
+    .bullets li {
+      display: flex; align-items: center; gap: 0.7rem;
+      font-size: 0.96rem; color: var(--ink);
+    }
+    .bullets li::before {
+      content: ''; flex-shrink: 0;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--green-tint);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6.5 10.3L4.4 8.2l0.8-0.8L6.5 8.7l4.3-4.3 0.8 0.8z' fill='%230f9d58'/%3E%3C/svg%3E");
+      background-size: cover;
+    }
+
+    .cta {
+      display: inline-flex; align-items: center; justify-content: space-between;
+      gap: 0.65rem;
+      padding: 1.1rem 1.4rem 1.1rem 1.6rem;
+      background: var(--ink); color: #fff;
+      border: none; border-radius: 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem; font-weight: 500;
+      cursor: pointer; width: 100%;
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: 0 10px 24px -10px rgba(20,23,26,0.5);
+    }
+    .cta:hover { background: #000; transform: translateY(-1px); }
+    .cta__arrow {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--green);
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: transform 0.25s ease;
+    }
+    .cta:hover .cta__arrow { transform: translateX(2px); }
+
+    .meta-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.9rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; color: var(--text-mid);
+      letter-spacing: 0.04em;
+    }
+    .meta-row span::before { content: '· '; color: var(--text-muted); margin-right: 0.15rem; }
+    .meta-row span:first-child::before { display: none; }
+
+    .footer {
+      padding: 1rem 2rem 1.5rem;
+      text-align: center; font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+    .footer a { color: var(--text-muted); text-decoration: none; }
+
+    /* === MODAL (same shared markup expected) === */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(20,23,26,0.5);
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem; opacity: 0; visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+    .modal {
+      background: #fff; border-radius: 20px; padding: 2.5rem;
+      max-width: 460px; width: 100%; position: relative;
+      transform: translateY(16px) scale(0.98);
+      transition: transform 0.35s cubic-bezier(.2,.8,.2,1);
+      box-shadow: 0 30px 80px rgba(20,23,26,0.22);
+    }
+    .modal-overlay.active .modal { transform: translateY(0) scale(1); }
+    .modal__close {
+      position: absolute; top: 1rem; right: 1rem;
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.04); border: none; border-radius: 50%;
+      color: var(--text-mid); cursor: pointer; font-size: 1.2rem;
+      z-index: 10;
+    }
+    .modal .form_integration_block { width: 90%; margin: 0 auto; }
+    .modal .form_integration_block input[type="text"],
+    .modal .form_integration_block input[type="email"],
+    .modal .form_integration_block input[type="tel"],
+    .modal .form_integration_block textarea {
+      width: 100% !important; background: #f5f5f7 !important;
+      border: 1.5px solid transparent !important; border-radius: 12px !important;
+      padding: 0.75rem 1rem !important; font-family: 'DM Sans', sans-serif !important;
+      font-size: 0.95rem !important; outline: none !important;
+    }
+    .modal .form_integration_block input:focus,
+    .modal .form_integration_block textarea:focus {
+      border-color: var(--green) !important; background: #fff !important;
+      box-shadow: 0 0 0 3px rgba(15,157,88,0.18) !important;
+    }
+    .modal .form_integration_block label {
+      color: var(--ink) !important; font-family: 'DM Sans', sans-serif !important;
+      font-size: 0.82rem !important; font-weight: 500 !important;
+      margin-bottom: 0.35rem !important; display: block !important;
+    }
+    .modal .form_integration_block .salebot_button img,
+    .modal .form_integration_block .salebot_button svg,
+    .modal .form_integration_block .salebot_button .mes_ident { display: none !important; }
+    .modal .form_integration_block .salebot_button {
+      width: 100% !important; padding: 0.6rem 1.5rem !important;
+      color: #fff !important; font-family: 'DM Sans', sans-serif !important;
+      font-size: 1rem !important; font-weight: 500 !important;
+      border: none !important; border-radius: 12px !important;
+      cursor: pointer !important; margin-bottom: 0.5rem !important;
+    }
+    .modal .form_integration_block .tg_link { background: #2AABEE !important; }
+    .modal .form_integration_block .tg_link:hover { background: #229ED9 !important; }
+    .modal .form_integration_block .vk_link { background: #0077FF !important; }
+    .modal .form_integration_block .vk_link:hover { background: #0066DD !important; }
+    .modal .form_integration_block .max_link { background: linear-gradient(90deg, #527CF2 0%, #9040C8 100%) !important; }
+    .modal .form_integration_block .max_link:hover { background: linear-gradient(90deg, #4870E0 0%, #8038B8 100%) !important; }
+    .modal .form_integration_block .custom_social_btn_container { height: auto !important; min-height: 0 !important; }
+    .modal .form_integration_block button[type="submit"],
+    .modal .form_integration_block input[type="submit"],
+    .modal .form_integration_block .btn,
+    .modal .form_integration_block .submit-btn {
+      width: 100% !important; padding: 0.6rem 1.5rem !important;
+      background: var(--ink) !important; color: #fff !important;
+      font-family: 'DM Sans', sans-serif !important;
+      font-size: 1rem !important; font-weight: 500 !important;
+      border: none !important; border-radius: 12px !important;
+      cursor: pointer !important;
+    }
+    .modal .form_integration_block button[type="submit"]:hover,
+    .modal .form_integration_block input[type="submit"]:hover,
+    .modal .form_integration_block .btn:hover,
+    .modal .form_integration_block .submit-btn:hover { background: #000 !important; }
+    .modal .form_integration_block input[type="checkbox"] {
+      -webkit-appearance: none; appearance: none;
+      width: 44px !important; height: 24px !important; min-width: 44px;
+      background: #e5e5ea !important; border-radius: 12px !important;
+      border: none !important; position: relative; cursor: pointer;
+      padding: 0 !important; margin: 0 !important; vertical-align: middle;
+    }
+    .modal .form_integration_block input[type="checkbox"]::after {
+      content: ''; position: absolute; top: 2px; left: 2px;
+      width: 20px; height: 20px; background: #fff; border-radius: 50%;
+      transition: transform 0.2s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    }
+    .modal .form_integration_block input[type="checkbox"]::before { display: none !important; }
+    .modal .form_integration_block input[type="checkbox"]:checked { background: var(--green) !important; background-image: none !important; }
+    .modal .form_integration_block input[type="checkbox"]:checked::after { transform: translateX(20px); }
+    .modal .form_integration_block div:has(> input[type="checkbox"]),
+    .modal .form_integration_block label:has(> input[type="checkbox"]),
+    .modal .form_integration_block p:has(> input[type="checkbox"]) {
+      display: flex !important; align-items: center !important; gap: 0.625rem !important;
+    }
+    .modal .form_integration_block div:has(> input[type="checkbox"]) a,
+    .modal .form_integration_block div:has(> input[type="checkbox"]) label,
+    .modal .form_integration_block div:has(> input[type="checkbox"]) span,
+    .modal .form_integration_block label:has(> input[type="checkbox"]) span,
+    .modal .form_integration_block label:has(> input[type="checkbox"]) a {
+      flex: 1 !important; font-size: 0.75rem !important; line-height: 1.3 !important;
+      color: var(--text-mid) !important; font-family: 'DM Sans', sans-serif !important;
+      font-style: normal !important; font-weight: 400 !important; text-decoration: none !important;
+    }
+    .modal .form_integration_block label:has(> input[type="checkbox"]) p,
+    .modal .form_integration_block .salebot-privacy__label-text p { margin: 0 !important; padding: 0 !important; }
+    .modal .form_integration_block .ml_quiz.quiz_checkbox,
+    .modal .form_integration_block .salebot-checkbox-field,
+    .modal .form_integration_block .ml_answers { padding: 0 !important; margin: 0 0 0.75rem 0 !important; }
+    .modal .form_integration_block .salebot-checkbox-field { margin-top: 0.75rem !important; font-size: 0 !important; }
+    .modal .form_integration_block .salebot-checkbox-field .salebot-checkbox { font-size: initial !important; }
+    .modal .form_integration_block .salebot-checkbox {
+      margin: 0 !important; padding: 0 !important;
+      display: flex !important; align-items: center !important; gap: 0 !important;
+    }
+    .modal .form_integration_block .salebot-checkbox > input[type="checkbox"] { margin-right: 0.625rem !important; }
+    .modal .form_integration_block .salebot-checkbox > span,
+    .modal .form_integration_block .salebot-checkbox > .salebot-privacy__label-text { margin-left: 0 !important; padding-left: 0 !important; }
+    .modal .form_integration_block .salebot-privacy__label-text {
+      padding: 0 !important; margin: 0 !important; flex: 1 !important; text-indent: 0 !important;
+    }
+    .modal .form_integration_block .salebot-privacy__label-text a,
+    .modal .form_integration_block .salebot-privacy__link {
+      padding: 0 !important; margin: 0 !important; text-indent: 0 !important;
+      font-size: 0.75rem !important; line-height: 1.3 !important;
+      color: var(--text-mid) !important; font-family: 'DM Sans', sans-serif !important;
+      font-style: normal !important; font-weight: 400 !important; text-decoration: none !important;
+    }
+    .modal .form_integration_block .salebot-privacy__label { white-space: normal; }
+
+    @keyframes cardRise {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes coverFloat {
+      0%, 100% { transform: translateY(0) rotateX(0) rotateY(0); }
+      50% { transform: translateY(-10px) rotateX(1.5deg) rotateY(-1deg); }
+    }
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+    @keyframes badgePop {
+      from { opacity: 0; transform: translateZ(40px) scale(0.6) rotate(-12deg); }
+      to { opacity: 1; transform: translateZ(40px) scale(1) rotate(0); }
+    }
+    @keyframes dotPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.5); }
+      50% { box-shadow: 0 0 0 6px rgba(255,255,255,0); }
+    }
+
+    /* === MOBILE === */
+    @media (max-width: 768px) {
+      .topbar { padding: 1rem 1.25rem; }
+      .topbar__tag, .topbar__divider { display: none; }
+      .stage { padding: 0.5rem 1rem 1.5rem; }
+
+      .product-card {
+        grid-template-columns: 1fr;
+        border-radius: 22px;
+        box-shadow:
+          0 1px 0 rgba(255,255,255,0.6) inset,
+          0 20px 40px -20px rgba(20,23,26,0.18);
+      }
+      .product-card__cover {
+        padding: 2.5rem 2rem 1.75rem;
+        border-right: none;
+        border-bottom: 1px solid var(--hairline);
+        min-height: 0;
+      }
+      .cover-holder { max-width: 200px; animation-duration: 6s; }
+      .free-badge { font-size: 0.7rem; padding: 0.35rem 0.75rem; top: -10px; right: -10px; }
+
+      .product-card__body { padding: 1.75rem 1.5rem 1.75rem; gap: 1.25rem; }
+      .title { font-size: clamp(1.7rem, 7vw, 2.2rem); text-wrap: balance; }
+      .desc { display: none; }
+      .bullets { padding: 0.9rem 0; }
+      .bullets li { font-size: 0.92rem; }
+      .meta-row { font-size: 0.62rem; flex-wrap: wrap; gap: 0.6rem; justify-content: center; }
+
+      .modal-overlay { align-items: flex-end; padding: 0; }
+      .modal { padding: 3rem 1rem 1.5rem; border-radius: 20px 20px 0 0; max-height: 92dvh; overflow-y: auto; margin: 0 6px; width: calc(100% - 12px); }
+      .modal__close { width: 32px; height: 32px; top: 0.75rem; right: 0.75rem; font-size: 1rem; z-index: 9999 !important; }
+      .modal .form_integration_block { width: 100% !important; }
+    }
+
+    @media (min-width: 1400px) {
+      .product-card { max-width: 1100px; }
+      .title { font-size: 3.1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__brand">
+      <img src="logo.png" alt="FIN-RA">
+      <span class="topbar__divider"></span>
+      <span class="topbar__tag">Школа безопасных инвестиций</span>
+    </div>
+    <span class="topbar__label">Подборка облигаций</span>
+  </header>
+
+  <main class="stage">
+    <article class="product-card">
+      <div class="product-card__cover">
+        <div class="cover-holder" onclick="openModal()" style="cursor:pointer;">
+          <span class="free-badge">Бесплатно</span>
+          <img src="обложка.png" width="860" height="1217" alt="Обложка гайда «ТОП-20 облигаций с ежемесячной выплатой купона»">
+        </div>
+      </div>
+
+      <div class="product-card__body">
+        <div class="eyebrow">
+          PDF-гайд&nbsp;·&nbsp;26 страниц
+        </div>
+
+        <h1 class="title">ТОП-20 облигаций с <span class="accent">ежемесячной</span> выплатой купона</h1>
+
+        <p class="desc">Куда инвестировать летом 2026: 20 облигаций с ежемесячным купоном — рублёвые и валютные, с фиксированной и плавающей ставкой. Со ссылками на Мосбиржу и примером портфеля.</p>
+
+        <ul class="bullets">
+          <li>20 облигаций в 5 категориях — от надёжных до доходных</li>
+          <li>Кликабельные ссылки на каждый выпуск на Мосбирже</li>
+          <li>Портфель с почти ежедневным потоком купонов</li>
+        </ul>
+
+        <button class="cta" onclick="openModal()">
+          <span>Забрать гайд бесплатно</span>
+          <span class="cta__arrow">
+            <svg viewBox="0 0 16 16" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" width="13" height="13"><path d="M8 3v9"/><polyline points="4 8 8 12 12 8"/></svg>
+          </span>
+        </button>
+
+        <div class="meta-row">
+          <span>PDF</span>
+          <span>26 стр.</span>
+          <span>20 мин</span>
+          <span>MAX</span>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">&copy; <a href="https://fin-ra.ru/">FIN-RA</a> — Школа безопасных инвестиций</footer>
+
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+    <div class="modal">
+      <button class="modal__close" onclick="closeModal()">&times;</button>
+      <script src='https://salebot.pro/js/form_scripts.js'></script>
+      <div class='form_integration_block'></div>
+      <script>
+        FormIntegration.init({ project_id: 317313, guid: 'fa1355b08d2ba1d2637671d7164aff9e' })
+      </script>
+    </div>
+  </div>
+
+  <script>
+    function openModal() { document.getElementById('modalOverlay').classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeModal() { document.getElementById('modalOverlay').classList.remove('active'); document.body.style.overflow = ''; }
+    function closeModalOutside(e) { if (e.target === e.currentTarget) closeModal(); }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    /* Cover parallax — desktop only */
+    (function () {
+      if (window.matchMedia('(max-width: 768px)').matches || window.matchMedia('(hover: none)').matches) return;
+      const panel = document.querySelector('.product-card__cover');
+      const holder = document.querySelector('.cover-holder');
+      if (!panel || !holder) return;
+      let raf = null;
+      panel.addEventListener('mousemove', (e) => {
+        const r = panel.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        if (raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          holder.style.setProperty('--rx', (px * 6).toFixed(2));
+          holder.style.setProperty('--ry', (-py * 5).toFixed(2));
+          holder.style.setProperty('--ty', (py * -6).toFixed(2) + 'px');
+        });
+      });
+      panel.addEventListener('mouseleave', () => {
+        holder.style.setProperty('--rx', 0);
+        holder.style.setProperty('--ry', 0);
+        holder.style.setProperty('--ty', '0px');
+      });
+    })();
+  </script>
+  <script src="/tg-intercept.js" defer></script>
+</body>
+</html>
