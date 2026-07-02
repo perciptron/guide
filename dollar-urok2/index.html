@@ -49,14 +49,15 @@ body{font-family:var(--fb); background:var(--bg); color:var(--ink);
 @keyframes rise{from{opacity:0; transform:translateY(22px)}to{opacity:1; transform:none}}
 
 /* cover */
-.cover{position:relative; background:radial-gradient(120% 120% at 30% 20%, #14493a, #0b3227 70%);
-  display:flex; align-items:center; justify-content:center; padding:2.5rem; min-height:340px}
-.free-badge{position:absolute; top:18px; left:18px; display:inline-flex; align-items:center; gap:7px;
+.cover{position:relative; background:#0b3227; display:flex; align-items:center; justify-content:center; min-height:340px; overflow:hidden; cursor:pointer}
+.cover .poster{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:60% 35%}
+.cover::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(9,30,24,.26),rgba(9,30,24,.5)); z-index:1}
+.free-badge{position:absolute; z-index:2; top:18px; left:18px; display:inline-flex; align-items:center; gap:7px;
   font-family:var(--fm); font-size:.66rem; text-transform:uppercase; letter-spacing:.06em; color:#fff;
   background:var(--green); padding:6px 12px; border-radius:100px; box-shadow:0 6px 16px -4px var(--green-glow)}
 .free-badge .dot{width:6px; height:6px; border-radius:50%; background:#fff; animation:pulse 1.8s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-.play{position:relative; width:96px; height:96px; border-radius:50%; background:rgba(255,255,255,.1);
+.play{position:relative; z-index:2; width:96px; height:96px; border-radius:50%; background:rgba(255,255,255,.1);
   border:1px solid rgba(255,255,255,.22); display:flex; align-items:center; justify-content:center; backdrop-filter:blur(4px)}
 .play::after{content:""; position:absolute; inset:0; border-radius:50%; border:1.5px solid rgba(255,255,255,.4); animation:ring 2.4s ease-out infinite}
 @keyframes ring{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.5);opacity:0}}
@@ -140,9 +141,9 @@ body{font-family:var(--fb); background:var(--bg); color:var(--ink);
 <main class="stage">
   <article class="card">
     <div class="cover" onclick="openModal()">
+      <img class="poster" src="poster.jpg" alt="Доллар по 70: разбор Дмитрия Толстякова" width="1672" height="941">
       <span class="free-badge"><span class="dot"></span>Бесплатно</span>
       <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-      <span class="cover__cap">Видео-разбор Дмитрия · около 6 минут</span>
     </div>
 
     <div class="body">
