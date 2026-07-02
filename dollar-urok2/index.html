@@ -115,6 +115,18 @@ body{font-family:var(--fb); background:var(--bg); color:var(--ink);
   font-family:var(--fd)!important; font-weight:600!important; font-size:.92rem!important; line-height:1.25!important; margin-bottom:.45rem!important; cursor:pointer!important}
 .salebot_button svg,.salebot_button img,.salebot_button .mes_ident{display:none!important}
 .tg_link{background:#2AABEE!important}.max_link{background:#0077FF!important}.vk_link{background:#0077FF!important}
+/* телефон: код страны + номер = единое поле одной высоты */
+.form_integration_block .phone_input_flex_container{display:flex!important; align-items:stretch!important; width:100%!important}
+.form_integration_block .select-mask{height:auto!important; min-height:0!important; border:none!important; box-shadow:none!important;
+  background:#f5f5f7!important; border-radius:12px 0 0 12px!important; margin:0!important}
+.form_integration_block .select-mask__trigger{height:100%!important; border:none!important; box-shadow:none!important;
+  background:transparent!important; display:flex!important; align-items:center!important; padding:0 .1rem 0 .6rem!important}
+.form_integration_block input.phone_input{border-radius:0 12px 12px 0!important; margin-bottom:0!important; flex:1 1 auto!important; width:auto!important}
+.form_integration_block .wh-form-field{margin-bottom:.6rem!important}
+/* чекбоксы: одинаковое выравнивание и отступ у обоих */
+.form_integration_block .salebot-checkbox{display:flex!important; align-items:center!important; gap:10px!important; margin:.45rem 0!important}
+.form_integration_block .salebot-checkbox input{margin:0!important; flex:0 0 auto!important}
+.form_integration_block .salebot-checkbox>span,.form_integration_block .salebot-checkbox>div{margin:0!important; padding:0!important}
 
 @media(max-width:640px){
   .card{max-width:440px}
