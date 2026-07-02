@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Бесплатный видео-разбор Дмитрия Толстякова: куда переложить деньги, пока рубль крепкий. Валютные облигации, золото, стейблкойны, сырьевые акции и чек-лист «Валютная подушка».">
+<meta name="theme-color" content="#ece9e1">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Рубль слабеет. Куда переложить деньги, чтобы они не обесценились?">
+<meta property="og:description" content="Бесплатный разбор: инструменты валютной подушки и что проверить до покупки. Плюс чек-лист одним списком.">
+<meta property="og:image" content="https://guides.fin-ra.pro/invest-salary-2026/speaker.png">
+<meta property="og:url" content="https://guides.fin-ra.pro/dollar-urok2/">
+<link rel="icon" href="/favicon.ico">
+<title>Куда переложить деньги, пока рубль крепкий | FIN-RA</title>
+<!--
+  ЛЕНДИНГ УРОК 2 «ИНСТРУМЕНТЫ» (валютная подушка). Одноэкранный, эталон 0526.
+  Видео отдаётся в боте после заполнения формы (Salebot FormIntegration в модалке).
+  ЗАМЕНИТЬ: project_id/guid формы Salebot (см. FormIntegration.init ниже) — как подготовишь.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
+<style>
+:root{
+  --green:#0f9d58; --green-dark:#0b7a43; --green-tint:rgba(15,157,88,.08); --green-glow:rgba(15,157,88,.16);
+  --bg:#ece9e1; --paper:#fbfaf6; --ink:#14171a; --text-mid:#5a5f66; --text-muted:#8c8f94;
+  --hairline:rgba(20,23,26,.08); --radius:24px;
+  --fd:'Outfit',sans-serif; --fb:'DM Sans',sans-serif; --fm:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{font-family:var(--fb); background:var(--bg); color:var(--ink);
+  -webkit-font-smoothing:antialiased; display:flex; flex-direction:column; min-height:100%}
+
+/* topbar */
+.topbar{display:flex; align-items:center; justify-content:space-between; padding:1.15rem 2rem; flex:none}
+.topbar__brand{display:flex; align-items:center; gap:.7rem}
+.topbar__brand img{height:24px; width:auto}
+.topbar__logo{font-family:var(--fd); font-weight:700; font-size:1.1rem; letter-spacing:-.02em}
+.topbar__divider{width:1px; height:18px; background:var(--hairline)}
+.topbar__tag{font-size:.82rem; color:var(--text-muted)}
+.topbar__label{font-family:var(--fm); font-size:.66rem; text-transform:uppercase; letter-spacing:.08em; color:var(--green)}
+
+/* stage */
+.stage{flex:1; display:flex; align-items:center; justify-content:center; padding:1rem 2rem 2rem}
+.card{width:100%; max-width:1040px; background:var(--paper); border-radius:var(--radius);
+  box-shadow:0 1px 2px rgba(20,23,26,.04), 0 12px 28px -12px rgba(20,23,26,.18), 0 40px 80px -40px rgba(20,23,26,.22);
+  display:grid; grid-template-columns:.92fr 1.08fr; overflow:hidden; animation:rise .8s cubic-bezier(.16,1,.3,1) both}
+@keyframes rise{from{opacity:0; transform:translateY(22px)}to{opacity:1; transform:none}}
+
+/* cover */
+.cover{position:relative; background:radial-gradient(120% 120% at 30% 20%, #14493a, #0b3227 70%);
+  display:flex; align-items:center; justify-content:center; padding:2.5rem; min-height:340px}
+.free-badge{position:absolute; top:18px; left:18px; display:inline-flex; align-items:center; gap:7px;
+  font-family:var(--fm); font-size:.66rem; text-transform:uppercase; letter-spacing:.06em; color:#fff;
+  background:var(--green); padding:6px 12px; border-radius:100px; box-shadow:0 6px 16px -4px var(--green-glow)}
+.free-badge .dot{width:6px; height:6px; border-radius:50%; background:#fff; animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.play{position:relative; width:96px; height:96px; border-radius:50%; background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.22); display:flex; align-items:center; justify-content:center; backdrop-filter:blur(4px)}
+.play::after{content:""; position:absolute; inset:0; border-radius:50%; border:1.5px solid rgba(255,255,255,.4); animation:ring 2.4s ease-out infinite}
+@keyframes ring{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.5);opacity:0}}
+.play svg{width:34px; height:34px; margin-left:5px; color:#fff}
+.cover__cap{position:absolute; bottom:20px; left:0; right:0; text-align:center; color:rgba(255,255,255,.72);
+  font-family:var(--fm); font-size:.68rem; letter-spacing:.04em}
+
+/* body */
+.body{padding:2.6rem 2.6rem 2.4rem; display:flex; flex-direction:column}
+.eyebrow{font-family:var(--fm); font-size:.66rem; text-transform:uppercase; letter-spacing:.08em; color:var(--green); margin-bottom:.9rem}
+.title{font-family:var(--fd); font-weight:500; font-size:clamp(1.7rem,2.5vw,2.35rem); line-height:1.08; letter-spacing:-.03em}
+.title .accent{color:var(--green)}
+.desc{color:var(--text-mid); font-size:1rem; line-height:1.5; margin-top:.9rem}
+.bullets{list-style:none; margin:1.3rem 0 0; display:flex; flex-direction:column}
+.bullets li{display:flex; align-items:flex-start; gap:.7rem; font-size:.95rem; color:var(--ink); padding:.6rem 0; border-top:1px solid var(--hairline)}
+.bullets li:first-child{border-top:none; padding-top:0}
+.bullets .chk{flex:none; width:18px; height:18px; margin-top:1px; border-radius:50%; background:var(--green-tint);
+  display:flex; align-items:center; justify-content:center}
+.bullets .chk svg{width:11px; height:11px; color:var(--green)}
+.expert{display:flex; align-items:center; gap:.6rem; margin-top:1.3rem; font-size:.82rem; color:var(--text-muted)}
+.expert img{width:32px; height:32px; border-radius:50%; object-fit:cover; object-position:top; border:1.5px solid var(--green)}
+.expert b{color:var(--ink); font-weight:600}
+.cta{margin-top:1.5rem; width:100%; display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  background:var(--ink); color:#fff; border:none; border-radius:14px; padding:1rem 1.1rem 1rem 1.4rem;
+  font-family:var(--fd); font-weight:600; font-size:1.02rem; cursor:pointer; transition:transform .2s, background .2s}
+.cta:hover{transform:translateY(-2px); background:#000}
+.cta__arrow{flex:none; width:30px; height:30px; border-radius:50%; background:var(--green); display:flex; align-items:center; justify-content:center}
+.cta__arrow svg{width:15px; height:15px; color:#fff}
+.meta{margin-top:1rem; font-family:var(--fm); font-size:.66rem; color:var(--text-muted); letter-spacing:.03em; display:flex; flex-wrap:wrap; gap:.5rem}
+.meta span:not(:last-child)::after{content:"·"; margin-left:.5rem; color:var(--hairline)}
+.proxy{margin-top:.8rem; font-size:.74rem; color:var(--text-muted); line-height:1.4}
+.proxy a{color:var(--green-dark)}
+
+/* footer */
+.footer{flex:none; text-align:center; padding:1rem 2rem 1.4rem; font-size:.7rem; color:var(--text-muted); line-height:1.5}
+.footer a{color:var(--text-mid); text-decoration:none}
+
+/* modal */
+.overlay{position:fixed; inset:0; z-index:100; background:rgba(20,23,26,.5); display:flex; align-items:center; justify-content:center; padding:1rem;
+  opacity:0; visibility:hidden; transition:.3s}
+.overlay.on{opacity:1; visibility:visible}
+.modal{background:#fff; border-radius:20px; max-width:460px; width:100%; padding:2.4rem 2rem; position:relative;
+  transform:translateY(16px) scale(.98); transition:.3s; box-shadow:0 24px 60px rgba(20,23,26,.2); max-height:92vh; overflow-y:auto}
+.overlay.on .modal{transform:none}
+.modal__x{position:absolute; top:.7rem; right:.7rem; width:36px; height:36px; border:none; border-radius:50%;
+  background:rgba(20,23,26,.06); color:var(--text-mid); font-size:1.3rem; cursor:pointer; z-index:9999}
+.modal__t{font-family:var(--fd); font-weight:600; font-size:1.2rem; text-align:center}
+.modal__s{font-size:.82rem; color:var(--text-muted); text-align:center; margin:.4rem 0 1.2rem; line-height:1.4}
+.form_integration_block input[type=text],.form_integration_block input[type=tel],.form_integration_block input[type=email]{
+  width:100%!important; background:#f5f5f7!important; border:1.5px solid transparent!important; border-radius:12px!important;
+  padding:.75rem 1rem!important; font-family:var(--fb)!important; font-size:16px!important; margin-bottom:.6rem!important; outline:none!important}
+.form_integration_block input:focus{border-color:var(--green)!important; background:#fff!important; box-shadow:0 0 0 3px var(--green-glow)!important}
+.salebot_button{width:100%!important; padding:1rem!important; color:#fff!important; border:none!important; border-radius:14px!important;
+  font-family:var(--fd)!important; font-weight:600!important; font-size:.95rem!important; margin-bottom:.5rem!important; cursor:pointer!important}
+.salebot_button svg,.salebot_button img,.salebot_button .mes_ident{display:none!important}
+.tg_link{background:#2AABEE!important}.max_link{background:#0077FF!important}.vk_link{background:#0077FF!important}
+
+@media(max-width:820px){
+  .card{grid-template-columns:1fr; max-width:460px}
+  .cover{min-height:150px; padding:1.5rem}
+  .play{width:64px;height:64px}.play svg{width:24px;height:24px}
+  .cover__cap{bottom:12px}
+  .body{padding:1.6rem}
+  .desc{display:none}
+  .title{font-size:1.55rem}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__brand">
+    <img src="/logo.png" alt="FIN-RA" onerror="this.style.display='none'">
+    <span class="topbar__logo">FIN-RA</span>
+    <span class="topbar__divider"></span>
+    <span class="topbar__tag">Школа безопасных инвестиций</span>
+  </div>
+  <span class="topbar__label">Бесплатный разбор</span>
+</header>
+
+<main class="stage">
+  <article class="card">
+    <div class="cover" onclick="openModal()">
+      <span class="free-badge"><span class="dot"></span>Бесплатно</span>
+      <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cover__cap">Видео-разбор Дмитрия · около 6 минут</span>
+    </div>
+
+    <div class="body">
+      <div class="eyebrow">Видео-разбор&nbsp;·&nbsp;6 минут</div>
+      <h1 class="title">Рубль слабеет. Куда <span class="accent">переложить деньги</span>, чтобы они не обесценились?</h1>
+      <p class="desc">Дмитрий Толстяков разбирает инструменты валютной подушки: что грамотные инвесторы делают, пока доллар держат внизу.</p>
+
+      <ul class="bullets">
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>Валютные и замещающие облигации, золото, стейблкойны, сырьевые акции</li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>По каждому Дмитрий говорит, что проверить до покупки</li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>Плюс чек-лист «Валютная подушка» одним списком</li>
+      </ul>
+
+      <div class="expert">
+        <img src="/invest-salary-2026/speaker.png" alt="Дмитрий Толстяков" width="200" height="200">
+        <span>Ведёт <b>Дмитрий Толстяков</b>, основатель FIN-RA</span>
+      </div>
+
+      <button class="cta" onclick="openModal()">
+        <span>Смотреть разбор бесплатно</span>
+        <span class="cta__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </button>
+
+      <div class="meta"><span>Видео</span><span>около 6 мин</span><span>Telegram / MAX</span></div>
+      <p class="proxy">Разбор придёт в Telegram или MAX сразу после регистрации. Проблемы с Telegram? <a href="tg://proxy?server=proxy2.fin-ra.pro&port=8443&secret=ee24e07bbc4b4290c4251d17c437b13e8670726f7879322e66696e2d72612e70726f">Подключите бесплатный прокси</a></p>
+    </div>
+  </article>
+</main>
+
+<footer class="footer">
+  ИП Толстяков Дмитрий Павлович · ОГРНИП 310784733300113 · <a href="https://fin-ra.ru/policy-dt" target="_blank" rel="noopener">Политика обработки данных</a><br>
+  Материалы носят образовательный характер и не являются индивидуальной инвестиционной рекомендацией.
+</footer>
+
+<div class="overlay" id="ov" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal__x" onclick="closeModal()">&times;</button>
+    <div class="modal__t">Куда идёт разбор?</div>
+    <p class="modal__s">Оставьте имя и выберите мессенджер. Разбор и чек-лист придут туда сразу.</p>
+    <script src="https://salebot.pro/js/form_scripts.js"></script>
+    <div class="form_integration_block"></div>
+    <!-- ЗАМЕНИ project_id и guid на форму урока 2 из Salebot -->
+    <script>try{FormIntegration.init({ project_id: 317313, guid: 'ЗАМЕНИ_GUID_UROK2' })}catch(e){}</script>
+  </div>
+</div>
+
+<script>
+function openModal(){document.getElementById('ov').classList.add('on');document.body.style.overflow='hidden'}
+function closeModal(){document.getElementById('ov').classList.remove('on');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+</script>
+<script src="/tg-intercept.js" defer></script>
+</body>
+</html>
