@@ -43,7 +43,7 @@ body{font-family:var(--fb); background:var(--bg); color:var(--ink);
 
 /* stage */
 .stage{flex:1; display:flex; align-items:center; justify-content:center; padding:1rem 2rem 2rem}
-.card{width:100%; max-width:600px; background:var(--paper); border-radius:var(--radius);
+.card{width:100%; max-width:540px; background:var(--paper); border-radius:var(--radius);
   box-shadow:0 1px 2px rgba(20,23,26,.04), 0 12px 28px -12px rgba(20,23,26,.18), 0 40px 80px -40px rgba(20,23,26,.22);
   display:flex; flex-direction:column; overflow:hidden; animation:rise .8s cubic-bezier(.16,1,.3,1) both}
 @keyframes rise{from{opacity:0; transform:translateY(22px)}to{opacity:1; transform:none}}
@@ -70,7 +70,7 @@ body{font-family:var(--fb); background:var(--bg); color:var(--ink);
 .eyebrow{font-family:var(--fm); font-size:.66rem; text-transform:uppercase; letter-spacing:.08em; color:var(--green); margin-bottom:.9rem}
 .title{font-family:var(--fd); font-weight:500; font-size:clamp(1.7rem,2.5vw,2.35rem); line-height:1.08; letter-spacing:-.03em}
 .title .accent{color:var(--green)}
-.desc{color:var(--text-mid); font-size:1rem; line-height:1.5; margin-top:.9rem}
+.desc{display:none; color:var(--text-mid); font-size:1rem; line-height:1.5; margin-top:.9rem}
 .bullets{list-style:none; margin:1.3rem 0 0; display:flex; flex-direction:column}
 .bullets li{display:flex; align-items:flex-start; gap:.7rem; font-size:.95rem; color:var(--ink); padding:.6rem 0; border-top:1px solid var(--hairline)}
 .bullets li:first-child{border-top:none; padding-top:0}
@@ -144,11 +144,6 @@ body{font-family:var(--fb); background:var(--bg); color:var(--ink);
         <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>По каждому Дмитрий говорит, что проверить до покупки</li>
         <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>Плюс чек-лист «Валютная подушка» одним списком</li>
       </ul>
-
-      <div class="expert">
-        <img src="/invest-salary-2026/speaker.png" alt="Дмитрий Толстяков" width="200" height="200">
-        <span>Ведёт <b>Дмитрий Толстяков</b>, основатель FIN-RA</span>
-      </div>
 
       <button class="cta" onclick="openModal()">
         <span>Смотреть разбор бесплатно</span>
