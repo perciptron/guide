@@ -49,15 +49,15 @@ body{font-family:var(--fb); background:var(--bg); color:var(--ink);
 @keyframes rise{from{opacity:0; transform:translateY(22px)}to{opacity:1; transform:none}}
 
 /* cover */
-.cover{position:relative; background:#0b3227; display:flex; align-items:center; justify-content:center; aspect-ratio:16/9; overflow:hidden; cursor:pointer}
-.cover .poster{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center}
-.cover::after{content:""; position:absolute; inset:0; background:radial-gradient(circle at 50% 48%, rgba(9,30,24,.36), transparent 60%); z-index:1}
+.cover{position:relative; background:#0b3227; overflow:hidden; cursor:pointer; line-height:0}
+.cover .poster{display:block; width:100%; height:auto}
+.cover::after{content:""; position:absolute; inset:0; background:radial-gradient(circle at 50% 48%, rgba(9,30,24,.32), transparent 62%); z-index:1; pointer-events:none}
 .free-badge{position:absolute; z-index:2; top:18px; right:18px; display:inline-flex; align-items:center; gap:7px;
   font-family:var(--fm); font-size:.66rem; text-transform:uppercase; letter-spacing:.06em; color:#fff;
   background:var(--green); padding:6px 12px; border-radius:100px; box-shadow:0 6px 16px -4px var(--green-glow)}
 .free-badge .dot{width:6px; height:6px; border-radius:50%; background:#fff; animation:pulse 1.8s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-.play{position:relative; z-index:2; width:96px; height:96px; border-radius:50%; background:rgba(255,255,255,.1);
+.play{position:absolute; z-index:2; top:50%; left:50%; transform:translate(-50%,-50%); width:92px; height:92px; border-radius:50%; background:rgba(255,255,255,.1);
   border:1px solid rgba(255,255,255,.22); display:flex; align-items:center; justify-content:center; backdrop-filter:blur(4px)}
 .play::after{content:""; position:absolute; inset:0; border-radius:50%; border:1.5px solid rgba(255,255,255,.4); animation:ring 2.4s ease-out infinite}
 @keyframes ring{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.5);opacity:0}}
@@ -99,7 +99,7 @@ body{font-family:var(--fb); background:var(--bg); color:var(--ink);
 .overlay{position:fixed; inset:0; z-index:100; background:rgba(20,23,26,.5); display:flex; align-items:center; justify-content:center; padding:1rem;
   opacity:0; visibility:hidden; transition:.3s}
 .overlay.on{opacity:1; visibility:visible}
-.modal{background:#fff; border-radius:20px; max-width:460px; width:100%; padding:2.4rem 2rem; position:relative;
+.modal{background:#fff; border-radius:20px; max-width:420px; width:100%; padding:2rem 1.5rem 1.6rem; position:relative;
   transform:translateY(16px) scale(.98); transition:.3s; box-shadow:0 24px 60px rgba(20,23,26,.2); max-height:92vh; overflow-y:auto}
 .overlay.on .modal{transform:none}
 .modal__x{position:absolute; top:.7rem; right:.7rem; width:36px; height:36px; border:none; border-radius:50%;
@@ -110,8 +110,9 @@ body{font-family:var(--fb); background:var(--bg); color:var(--ink);
   width:100%!important; background:#f5f5f7!important; border:1.5px solid transparent!important; border-radius:12px!important;
   padding:.75rem 1rem!important; font-family:var(--fb)!important; font-size:16px!important; margin-bottom:.6rem!important; outline:none!important}
 .form_integration_block input:focus{border-color:var(--green)!important; background:#fff!important; box-shadow:0 0 0 3px var(--green-glow)!important}
-.salebot_button{width:100%!important; padding:1rem!important; color:#fff!important; border:none!important; border-radius:14px!important;
-  font-family:var(--fd)!important; font-weight:600!important; font-size:.95rem!important; margin-bottom:.5rem!important; cursor:pointer!important}
+.custom_social_btn_container{height:auto!important; min-height:0!important}
+.salebot_button{width:100%!important; padding:.68rem 1rem!important; min-height:0!important; height:auto!important; color:#fff!important; border:none!important; border-radius:12px!important;
+  font-family:var(--fd)!important; font-weight:600!important; font-size:.92rem!important; line-height:1.25!important; margin-bottom:.45rem!important; cursor:pointer!important}
 .salebot_button svg,.salebot_button img,.salebot_button .mes_ident{display:none!important}
 .tg_link{background:#2AABEE!important}.max_link{background:#0077FF!important}.vk_link{background:#0077FF!important}
 
@@ -164,8 +165,6 @@ body{font-family:var(--fb); background:var(--bg); color:var(--ink);
 <div class="overlay" id="ov" onclick="if(event.target===this)closeModal()">
   <div class="modal">
     <button class="modal__x" onclick="closeModal()">&times;</button>
-    <div class="modal__t">Куда идёт разбор?</div>
-    <p class="modal__s">Оставьте имя и выберите мессенджер. Разбор и чек-лист придут туда сразу.</p>
     <script src="https://salebot.pro/js/form_scripts.js"></script>
     <div class="form_integration_block"></div>
     <script>try{FormIntegration.init({ project_id: 317313, guid: 'ab9449df94b9cf15077504af7e8d8255' })}catch(e){}</script>
