@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Доллар по 70. Запись эфира Дмитрия Толстякова | FIN-RA</title>
+<meta name="description" content="Заберите запись эфира: почему рубль скоро ослабнет даже при дорогой нефти и что грамотные инвесторы делают со своими деньгами. Плюс чек-лист «Валютная подушка».">
+<meta name="theme-color" content="#f4f9f6">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Доллар был по 70. Дмитрий предупреждал, что это ненадолго">
+<meta property="og:description" content="Запись эфира: почему рубль ослабнет даже при дорогой нефти и что делать со своими деньгами. Плюс чек-лист «Валютная подушка».">
+<meta property="og:image" content="https://guides.fin-ra.pro/invest-salary-2026/speaker.png">
+<meta property="og:url" content="https://guides.fin-ra.pro/dollar-urok1/">
+<link rel="icon" href="/favicon.ico">
+
+<!--
+  ЛЕНДИНГ УРОК 1 «ПРОГНОЗ» (FIN-RA). URL: guides.fin-ra.pro/dollar-urok1/
+  Видео urok-1-prognoz.mp4 (~9 мин) отдаётся в боте после регистрации.
+  ОСТАЛОСЬ: 1) форма на Salebot FormIntegration (GUID входа urok1_prognoz) + BOT_LINK;
+            2) реальные обезличенные отзывы (сейчас плейсхолдеры).
+  Фото Дмитрия и реквизиты ИП уже реальные.
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
+<noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
+
+<style>
+:root{
+  --bg:#f4f9f6; --ink:#0b241d; --text:#31473f; --muted:#6a827a;
+  --em:#0f9d6e; --em-d:#0a7a55; --em-l:#18c187; --em-ink:#063d2b;
+  --gold:#c88a2a; --gold-l:#f4e7cc;
+  --surface:#ffffff; --border:#e3ede8; --border-2:#d4e4dc;
+  --glass:rgba(255,255,255,.66);
+  --sh-sm:0 2px 8px rgba(11,36,29,.06);
+  --sh:0 18px 44px -18px rgba(11,36,29,.28);
+  --sh-lg:0 40px 90px -30px rgba(11,36,29,.35);
+  --grad:linear-gradient(135deg,#12b981 0%,#0a7a55 100%);
+  --grad-soft:linear-gradient(135deg,#e8f8f1,#dff3ea);
+  --ease:cubic-bezier(.4,0,.2,1);
+  --r:18px; --r-lg:26px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',system-ui,sans-serif; color:var(--text); background:var(--bg);
+  font-size:17px; line-height:1.62; -webkit-font-smoothing:antialiased; overflow-x:hidden}
+h1,h2,h3{color:var(--ink); font-weight:800; line-height:1.12; letter-spacing:-.02em}
+p{margin:0}
+a{color:inherit; text-decoration:none}
+.wrap{width:100%; max-width:1160px; margin:0 auto; padding:0 20px}
+.grad-text{background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent}
+
+/* ---- buttons ---- */
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; cursor:pointer;
+  font-family:inherit; font-weight:700; font-size:1.05rem; padding:16px 28px; border-radius:14px;
+  border:none; text-align:center; line-height:1.2; transition:transform .2s var(--ease), box-shadow .2s var(--ease), background .2s var(--ease)}
+.btn--primary{color:#fff; background:var(--grad); box-shadow:0 14px 30px -10px rgba(15,157,110,.6), inset 0 1px 0 rgba(255,255,255,.25)}
+.btn--primary:hover{transform:translateY(-2px); box-shadow:0 20px 40px -12px rgba(15,157,110,.7)}
+.btn--primary:active{transform:scale(.98)}
+.btn--ghost{background:var(--surface); color:var(--em-ink); border:1.5px solid var(--border-2); box-shadow:var(--sh-sm)}
+.btn--ghost:hover{border-color:var(--em); transform:translateY(-2px)}
+.btn--block{width:100%}
+.btn--lg{padding:18px 34px; font-size:1.1rem}
+.btn .glow{position:relative}
+
+/* ---- nav ---- */
+nav{position:fixed; top:0; left:0; right:0; z-index:60; transition:all .3s var(--ease)}
+nav .bar{display:flex; align-items:center; justify-content:space-between; height:64px}
+nav.scrolled{background:rgba(244,249,246,.82); backdrop-filter:blur(14px); border-bottom:1px solid var(--border)}
+.logo{font-weight:800; font-size:1.15rem; letter-spacing:-.02em; color:var(--ink); display:flex; align-items:center; gap:9px}
+.logo .dot{width:22px;height:22px;border-radius:7px;background:var(--grad);display:inline-block; box-shadow:var(--sh-sm)}
+.nav-cta{font-weight:700; font-size:.95rem; padding:10px 20px; border-radius:11px; background:var(--grad); color:#fff; box-shadow:var(--sh-sm)}
+
+/* ---- aurora bg ---- */
+.aurora{position:absolute; inset:0; overflow:hidden; z-index:0; pointer-events:none}
+.blob{position:absolute; border-radius:50%; filter:blur(70px); opacity:.5; animation:drift 20s var(--ease) infinite alternate}
+.blob.b1{width:520px;height:520px; background:#7ff0c4; top:-160px; right:-120px}
+.blob.b2{width:440px;height:440px; background:#bfe8ff; top:120px; left:-160px; animation-delay:-6s}
+.blob.b3{width:360px;height:360px; background:#f6dfa8; bottom:-140px; right:80px; animation-delay:-12s; opacity:.4}
+@keyframes drift{from{transform:translate(0,0) scale(1)} to{transform:translate(40px,50px) scale(1.12)}}
+
+/* ---- hero ---- */
+.hero{position:relative; padding:118px 0 70px}
+.hero .wrap{position:relative; z-index:2}
+.hero__grid{display:grid; grid-template-columns:1fr; gap:40px; align-items:center}
+.chip{display:inline-flex; align-items:center; gap:8px; font-size:.82rem; font-weight:700;
+  color:var(--em-d); background:rgba(255,255,255,.7); border:1px solid var(--border-2);
+  padding:8px 15px; border-radius:999px; box-shadow:var(--sh-sm); backdrop-filter:blur(6px)}
+.chip .pulse{width:8px;height:8px;border-radius:50%;background:var(--em); box-shadow:0 0 0 0 rgba(15,157,110,.5); animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(15,157,110,.5)}70%{box-shadow:0 0 0 10px rgba(15,157,110,0)}100%{box-shadow:0 0 0 0 rgba(15,157,110,0)}}
+.hero h1{font-size:clamp(2.1rem,6.2vw + .3rem,3.7rem); margin-top:22px}
+.hero__sub{font-size:1.16rem; color:var(--text); margin-top:22px; max-width:560px}
+.hero__cta{margin-top:30px; display:flex; flex-direction:column; gap:13px}
+.hero__trust{display:flex; gap:22px; margin-top:26px; flex-wrap:wrap}
+.hero__trust div{display:flex; flex-direction:column}
+.hero__trust b{font-size:1.5rem; font-weight:800; color:var(--ink); line-height:1}
+.hero__trust span{font-size:.82rem; color:var(--muted); margin-top:3px}
+
+/* market card visual */
+.market{position:relative}
+.market__card{background:var(--glass); backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,.8);
+  border-radius:var(--r-lg); padding:24px; box-shadow:var(--sh-lg)}
+.market__top{display:flex; align-items:center; justify-content:space-between; margin-bottom:6px}
+.market__pair{display:flex; align-items:center; gap:11px}
+.market__ic{width:42px;height:42px;border-radius:12px; background:var(--grad); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; box-shadow:var(--sh-sm)}
+.market__pair b{font-size:1.05rem; color:var(--ink); display:block}
+.market__pair span{font-size:.78rem; color:var(--muted)}
+.market__badge{display:inline-flex; align-items:center; gap:5px; font-size:.82rem; font-weight:700; color:#0a7a55; background:#dff5ec; padding:6px 11px; border-radius:9px}
+.market__chart{margin-top:8px}
+.market__foot{display:flex; align-items:center; gap:8px; margin-top:14px; font-size:.86rem; color:var(--muted)}
+.market__foot .fdot{width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.market__play{position:absolute; left:-14px; bottom:-18px; display:flex; align-items:center; gap:11px;
+  background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:11px 16px 11px 12px; box-shadow:var(--sh)}
+.play-btn{position:relative; width:44px;height:44px;border-radius:50%; background:var(--grad); display:flex; align-items:center; justify-content:center; color:#fff; flex:none}
+.play-btn::after{content:""; position:absolute; inset:0; border-radius:50%; border:2px solid var(--em); animation:ring 2.2s ease-out infinite}
+@keyframes ring{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.7);opacity:0}}
+.market__play small{display:block; font-size:.72rem; color:var(--muted)}
+.market__play b{font-size:.9rem; color:var(--ink)}
+
+/* chart draw animation */
+.chart-line{stroke-dasharray:600; stroke-dashoffset:600; animation:draw 1.8s var(--ease) .3s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.chart-dot{opacity:0; animation:dotin .4s ease 1.9s forwards}
+@keyframes dotin{to{opacity:1}}
+.chart-dot circle.halo{transform-origin:center; animation:halo 2s ease-in-out 2s infinite}
+@keyframes halo{0%,100%{r:6}50%{r:9}}
+
+/* ---- sections ---- */
+section{position:relative; padding:64px 0}
+.sec-head{text-align:center; max-width:660px; margin:0 auto 40px}
+.sec-head .chip{margin-bottom:16px}
+.sec-head h2{font-size:clamp(1.7rem,4vw + .3rem,2.5rem)}
+.sec-head p{margin-top:14px; color:var(--muted); font-size:1.05rem}
+
+/* gifts */
+.gifts__grid{display:grid; grid-template-columns:1fr; gap:20px; max-width:900px; margin:0 auto}
+.gift{position:relative; background:var(--surface); border:1px solid var(--border); border-radius:var(--r-lg);
+  padding:30px; box-shadow:var(--sh-sm); overflow:hidden; transition:transform .25s var(--ease), box-shadow .25s var(--ease)}
+.gift:hover{transform:translateY(-4px); box-shadow:var(--sh)}
+.gift::before{content:""; position:absolute; top:0; left:0; right:0; height:4px; background:var(--grad)}
+.gift--gold::before{background:linear-gradient(135deg,#e6b455,#c88a2a)}
+.gift__ic{width:58px;height:58px;border-radius:16px; display:flex; align-items:center; justify-content:center; margin-bottom:18px;
+  background:var(--grad-soft); color:var(--em-d)}
+.gift--gold .gift__ic{background:var(--gold-l); color:var(--gold)}
+.gift h3{font-size:1.28rem; margin-bottom:8px}
+.gift p{font-size:1rem; color:var(--text)}
+.gift .tag{position:absolute; top:26px; right:26px; font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em;
+  color:var(--gold); background:var(--gold-l); padding:5px 10px; border-radius:8px}
+
+/* inside */
+.inside{background:linear-gradient(180deg,#fff,var(--bg))}
+.inside__grid{display:grid; grid-template-columns:1fr; gap:36px; align-items:center; max-width:1000px; margin:0 auto}
+.inside__list{display:flex; flex-direction:column; gap:14px}
+.inside__item{display:flex; gap:15px; align-items:flex-start; background:var(--surface); border:1px solid var(--border);
+  border-radius:16px; padding:18px 20px; box-shadow:var(--sh-sm); transition:transform .2s var(--ease)}
+.inside__item:hover{transform:translateX(4px)}
+.inside__check{flex:none; width:30px;height:30px;border-radius:9px; background:var(--grad-soft); color:var(--em-d);
+  display:flex; align-items:center; justify-content:center; margin-top:1px}
+.inside__item p{font-size:1rem; color:var(--text)}
+.inside__aside{background:var(--ink); color:#dbe9e3; border-radius:var(--r-lg); padding:30px; box-shadow:var(--sh)}
+.inside__aside .q{font-size:1.12rem; line-height:1.55; color:#eef6f2}
+.inside__aside .q b{color:#fff}
+.inside__aside .who{display:flex; align-items:center; gap:12px; margin-top:22px; padding-top:20px; border-top:1px solid rgba(255,255,255,.14)}
+.inside__aside .mono{width:44px;height:44px;border-radius:12px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;flex:none}
+.inside__aside .who b{color:#fff; font-size:.98rem; display:block}
+.inside__aside .who span{color:#9fb8ae; font-size:.82rem}
+
+/* expert */
+.expert__grid{display:grid; grid-template-columns:1fr; gap:32px; align-items:center; max-width:1000px; margin:0 auto}
+.expert__photo{position:relative; aspect-ratio:4/5; border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--sh-lg);
+  background:linear-gradient(155deg,#0e5f47,#0f9d6e 55%,#18c187); display:flex; align-items:flex-end; justify-content:center}
+/* .expert__photo: градиент-подложка под фото Дмитрия (перекрывается <img>) */
+.expert__photo .mono{font-weight:800; font-size:2.6rem; color:rgba(255,255,255,.95); text-align:center; padding:30px; line-height:1.1}
+.expert__photo .tagpic{position:absolute; top:18px; left:18px; font-size:.72rem; color:rgba(255,255,255,.8); background:rgba(0,0,0,.18); padding:5px 11px; border-radius:8px; backdrop-filter:blur(4px)}
+.expert__badges{position:absolute; bottom:18px; left:18px; right:18px; display:flex; gap:10px}
+.expert__badges .b{flex:1; background:rgba(255,255,255,.16); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,.22); border-radius:12px; padding:10px; text-align:center; color:#fff}
+.expert__badges .b b{display:block; font-size:1.15rem; font-weight:800}
+.expert__badges .b span{font-size:.68rem; opacity:.85}
+.expert h2{font-size:clamp(1.6rem,3.4vw + .3rem,2.2rem); margin-bottom:16px}
+.expert__quote{margin-top:18px; padding:20px 22px; background:var(--grad-soft); border-radius:16px; border:1px solid var(--border-2); font-size:1rem; color:var(--em-ink)}
+
+/* reviews */
+.reviews__grid{display:grid; grid-template-columns:1fr; gap:20px; max-width:1000px; margin:0 auto}
+.review{background:var(--surface); border:1px solid var(--border); border-radius:var(--r-lg); padding:26px; box-shadow:var(--sh-sm); transition:transform .25s var(--ease), box-shadow .25s var(--ease)}
+.review:hover{transform:translateY(-4px); box-shadow:var(--sh)}
+.review__stars{color:var(--gold); letter-spacing:3px; margin-bottom:12px; font-size:1rem}
+.review p{font-size:1rem; color:var(--text)}
+.review__who{display:flex; align-items:center; gap:11px; margin-top:18px}
+.review__av{width:40px;height:40px;border-radius:50%; background:var(--grad-soft); color:var(--em-d); display:flex; align-items:center; justify-content:center; font-weight:800; flex:none}
+.review__who b{font-size:.92rem; color:var(--ink); display:block}
+.review__who span{font-size:.78rem; color:var(--muted)}
+
+/* form */
+.form-sec{position:relative}
+.form-sec .aurora .blob{opacity:.35}
+.formcard{position:relative; z-index:2; max-width:600px; margin:0 auto; background:var(--surface);
+  border:1px solid var(--border-2); border-radius:28px; padding:40px 34px; box-shadow:var(--sh-lg)}
+.formcard__badge{width:64px;height:64px;border-radius:18px; background:var(--grad); display:flex; align-items:center; justify-content:center; color:#fff; margin:0 auto 18px; box-shadow:0 12px 26px -8px rgba(15,157,110,.6)}
+.formcard h2{font-size:1.7rem; text-align:center}
+.formcard__sub{text-align:center; color:var(--muted); margin:12px 0 28px}
+.field{margin-bottom:18px}
+.field label{display:block; font-weight:700; font-size:.9rem; color:var(--ink); margin-bottom:8px}
+.field input{width:100%; height:54px; padding:0 18px; font-size:1.02rem; font-family:inherit; color:var(--ink);
+  background:var(--bg); border:1.5px solid var(--border-2); border-radius:14px; transition:border-color .16s var(--ease), box-shadow .16s var(--ease), background .16s}
+.field input::placeholder{color:#9fb0a8}
+.field input:focus{outline:none; border-color:var(--em); background:#fff; box-shadow:0 0 0 4px rgba(15,157,110,.14)}
+.field input.err{border-color:#d1493f; box-shadow:0 0 0 4px rgba(209,73,63,.12)}
+.field .msg{font-size:.82rem; color:#d1493f; margin-top:6px; display:none}
+.field .msg.show{display:block}
+.formcard__foot{font-size:.84rem; color:var(--muted); text-align:center; margin-top:16px; line-height:1.5}
+.formcard__foot a{color:var(--em-d); font-weight:600}
+.form-ok{display:none; text-align:center; padding:14px 0}
+.form-ok .ok-ic{width:70px;height:70px;margin:0 auto 18px;border-radius:50%;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center; box-shadow:0 14px 30px -8px rgba(15,157,110,.6)}
+.form-ok h3{font-size:1.5rem;margin-bottom:10px}
+
+/* footer */
+footer{background:var(--ink); color:#93aaa1; padding:44px 0; font-size:.86rem}
+footer a{color:#cfe0d9; text-decoration:underline}
+footer p{margin-bottom:8px; max-width:860px}
+.footer-logo{color:#fff; font-weight:800; font-size:1.1rem; margin-bottom:14px; display:flex; align-items:center; gap:9px}
+
+/* sticky mobile cta */
+.sticky-cta{position:fixed; left:0;right:0;bottom:0; z-index:70; padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+  background:rgba(244,249,246,.9); backdrop-filter:blur(12px); border-top:1px solid var(--border); transform:translateY(120%); transition:transform .3s var(--ease)}
+.sticky-cta.show{transform:translateY(0)}
+
+/* reveal */
+.reveal{opacity:0; transform:translateY(22px); transition:opacity .6s var(--ease), transform .6s var(--ease)}
+.reveal.vis{opacity:1; transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+
+@media(min-width:900px){
+  .hero{padding:150px 0 96px}
+  .hero__grid{grid-template-columns:1.08fr .92fr; gap:56px}
+  .hero__cta{flex-direction:row; align-items:center}
+  section{padding:96px 0}
+  .gifts__grid{grid-template-columns:1fr 1fr}
+  .inside__grid{grid-template-columns:1.25fr .75fr}
+  .expert__grid{grid-template-columns:.85fr 1.15fr; gap:48px}
+  .reviews__grid{grid-template-columns:repeat(3,1fr)}
+  .sticky-cta{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important; transition-duration:.01ms!important}
+  .reveal{opacity:1; transform:none}
+  .chart-line{stroke-dashoffset:0}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav"><div class="wrap bar">
+  <span class="logo"><span class="dot"></span>FIN-RA</span>
+  <a href="#reg" class="nav-cta">Забрать запись</a>
+</div></nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="aurora"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
+  <div class="wrap hero__grid">
+    <div>
+      <span class="chip reveal"><span class="pulse"></span>Запись эфира · Июнь 2026</span>
+      <h1 class="reveal d1">Доллар был по 70. Дмитрий предупреждал, что это <span class="grad-text">ненадолго</span></h1>
+      <p class="hero__sub reveal d2">Заберите запись эфира: почему рубль скоро ослабнет даже при дорогой нефти, до каких значений может дойти доллар и что грамотные инвесторы делают со своими деньгами, пока курс держится. Плюс чек-лист инструментов из эфира одним списком.</p>
+      <div class="hero__cta reveal d3">
+        <a href="#reg" class="btn btn--primary btn--lg">Смотреть запись бесплатно
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="hero__trust reveal d3">
+        <div><b data-count="15" data-suffix="+">0</b><span>лет в инвестициях</span></div>
+        <div><b data-count="100000" data-suffix="+" data-sep="1">0</b><span>учеников</span></div>
+        <div><b data-count="9" data-suffix=" мин">0</b><span>честного разбора</span></div>
+      </div>
+    </div>
+
+    <!-- market card visual -->
+    <div class="market reveal d2">
+      <div class="market__card">
+        <div class="market__top">
+          <div class="market__pair">
+            <span class="market__ic">$</span>
+            <span><b>Доллар · USD/RUB</b><span>что происходит с рублём</span></span>
+          </div>
+          <span class="market__badge">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 18 18 6M9 6h9v9"/></svg>
+            вверх
+          </span>
+        </div>
+        <div class="market__chart">
+          <svg viewBox="0 0 320 170" width="100%" height="auto" aria-hidden="true">
+            <defs>
+              <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#12b981" stop-opacity=".28"/>
+                <stop offset="1" stop-color="#12b981" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <line x1="0" y1="42" x2="320" y2="42" stroke="#eef3f0" stroke-width="1"/>
+            <line x1="0" y1="86" x2="320" y2="86" stroke="#eef3f0" stroke-width="1"/>
+            <line x1="0" y1="130" x2="320" y2="130" stroke="#eef3f0" stroke-width="1"/>
+            <path d="M6,118 L60,124 L110,110 L160,96 L210,78 L260,52 L314,26 L314,170 L6,170 Z" fill="url(#area)"/>
+            <path class="chart-line" d="M6,118 L60,124 L110,110 L160,96 L210,78 L260,52 L314,26" fill="none" stroke="#0f9d6e" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <g class="chart-dot"><circle class="halo" cx="314" cy="26" r="6" fill="#0f9d6e" opacity=".22"/><circle cx="314" cy="26" r="5" fill="#0f9d6e" stroke="#fff" stroke-width="2.5"/></g>
+            <text x="6" y="140" font-family="Manrope" font-size="12" font-weight="700" fill="#6a827a">70 ₽</text>
+            <text x="308" y="14" text-anchor="end" font-family="Manrope" font-size="11" font-weight="700" fill="#0a7a55">прогноз ↑</text>
+          </svg>
+        </div>
+        <div class="market__foot"><span class="fdot"></span>Прогноз Дмитрия: постепенное ослабление рубля</div>
+      </div>
+      <div class="market__play">
+        <span class="play-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+        <span><b>Запись эфира</b><small>около 9 минут</small></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- GIFTS -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="chip">Бесплатно за регистрацию</span><h2>Что вы получаете</h2></div>
+    <div class="gifts__grid">
+      <div class="gift reveal">
+        <div class="gift__ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m10 8 6 4-6 4V8Z" fill="currentColor" stroke="none"/></svg></div>
+        <h3>Разбор Дмитрия: что будет с рублём</h3>
+          <p>Около 9 минут. Почему крепкий рубль это ненадолго, до каких значений может дойти доллар и что это значит для ваших денег. Спокойно и на пальцах.</p>
+      </div>
+      <div class="gift gift--gold reveal d1">
+        <span class="tag">Подарок</span>
+        <div class="gift__ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></div>
+        <h3>Чек-лист «Валютная подушка»</h3>
+        <p>Шесть инструментов из эфира одним списком и что проверить по каждому до того, как вложить хоть рубль.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSIDE -->
+<section class="inside">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="chip">9 минут по делу</span><h2>Что вы поймёте из записи</h2></div>
+    <div class="inside__grid">
+      <div class="inside__list">
+        <div class="inside__item reveal"><span class="inside__check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><p>Почему крепкий рубль это ненадолго, даже если нефть будет стоить дорого</p></div>
+        <div class="inside__item reveal"><span class="inside__check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><p>Четыре причины, по которым рубль ослабнет: дефицит бюджета, импорт, снижение ставки, покупки Минфина</p></div>
+        <div class="inside__item reveal"><span class="inside__check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><p>Какой курс доллара закладывают аналитики к концу года и что это значит для ваших рублей</p></div>
+        <div class="inside__item reveal"><span class="inside__check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><p>Почему на этой ситуации легко потерять деньги, если лезть в неё без базы</p></div>
+        <div class="inside__item reveal"><span class="inside__check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><p>Что сделать в первую очередь, если ваши деньги сейчас лежат в рублях на вкладе</p></div>
+      </div>
+      <div class="inside__aside reveal d1">
+        <p class="q">«Это не сигнал бежать что-то срочно покупать. <b>Дмитрий в эфире прямо просит так не делать.</b> Это разбор, чтобы вы понимали, что происходит с вашими деньгами».</p>
+        <div class="who"><span class="mono">ДТ</span><span><b>Дмитрий Толстяков</b><span>из записи эфира</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERT -->
+<section>
+  <div class="wrap">
+    <div class="expert__grid">
+      <div class="expert__photo reveal">
+        <img src="/invest-salary-2026/speaker.png" alt="Дмитрий Толстяков, основатель FIN-RA" width="800" height="1200" style="width:100%;height:100%;object-fit:cover;object-position:top">
+        <div class="expert__badges">
+          <div class="b"><b>15+</b><span>лет в рынке</span></div>
+          <div class="b"><b>100k+</b><span>учеников</span></div>
+          <div class="b"><b>7+</b><span>лет учит</span></div>
+        </div>
+      </div>
+      <div class="reveal d1">
+        <span class="chip" style="margin-bottom:16px">Кто ведёт</span>
+        <h2>Эксперт, который не обещает процентов</h2>
+        <p>Больше 15 лет в инвестициях, больше 7 лет преподаёт, больше 100 000 учеников на платных и бесплатных программах. Финансовый советник, эксперт по инвестициям и семейным финансам.</p>
+        <div class="expert__quote">Дмитрий не зовёт спекулировать. В эфире он прямо говорит: «я никому не рекомендую использовать эту ситуацию для спекуляций», а свои инвестиции держит долгосрочными. Разбор построен на том, чтобы вы приняли решение своей головой, спокойно и без азарта.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS (ЗАМЕНИТЕ на реальные обезличенные отзывы) -->
+<section class="inside">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="chip">Отзывы учеников</span><h2>С чего начинали такие же, как вы</h2></div>
+    <div class="reviews__grid">
+      <div class="review reveal"><div class="review__stars">★★★★★</div><p>«Пришла полным гуманитарием, боялась даже приложение брокера открыть. За пару недель собрала первый портфель. Жалею об одном: что не начала раньше».</p><div class="review__who"><span class="review__av">М</span><span><b>Марина</b><span>ученица школы</span></span></div></div>
+      <div class="review reveal d1"><div class="review__stars">★★★★★</div><p>«Объясняют спокойно и по шагам, без давления и без обещаний золотых гор. Первый раз поняла, куда идут мои деньги».</p><div class="review__who"><span class="review__av">Е</span><span><b>Елена</b><span>ученица школы</span></span></div></div>
+      <div class="review reveal d2"><div class="review__stars">★★★★★</div><p>«Мне 58. Думала, поздно. Оказалось, в самый раз. Разобралась с облигациями, чего сама боялась годами».</p><div class="review__who"><span class="review__av">Т</span><span><b>Татьяна</b><span>ученица школы</span></span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-sec" id="reg">
+  <div class="aurora"><span class="blob b1"></span><span class="blob b3"></span></div>
+  <div class="wrap">
+    <div class="formcard reveal">
+      <div id="formInner">
+        <div class="formcard__badge"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m10 8 6 4-6 4V8Z" fill="currentColor" stroke="none"/><rect x="2" y="4" width="20" height="16" rx="3"/></svg></div>
+        <h2>Заберите запись и чек-лист</h2>
+        <p class="formcard__sub">Оставьте контакты. Запись и чек-лист придут в бот сразу после регистрации.</p>
+        <form id="regForm" novalidate>
+          <div class="field"><label for="name">Имя</label><input type="text" id="name" placeholder="Как к вам обращаться" autocomplete="given-name"><div class="msg" id="msg-name">Напишите, пожалуйста, имя</div></div>
+          <div class="field"><label for="phone">Телефон</label><input type="tel" id="phone" placeholder="+7 900 000 00 00" inputmode="tel" autocomplete="tel"><div class="msg" id="msg-phone">Проверьте номер телефона</div></div>
+          <div class="field"><label for="email">Email</label><input type="email" id="email" placeholder="you@example.ru" inputmode="email" autocomplete="email"><div class="msg" id="msg-email">Проверьте адрес почты</div></div>
+          <button type="submit" class="btn btn--primary btn--block btn--lg">Получить запись и чек-лист</button>
+          <p class="formcard__foot">Бесплатно, без спама. Пришлём только материалы из эфира и полезное по теме. Отправляя форму, вы соглашаетесь с <a href="https://fin-ra.ru/policy-dt" target="_blank" rel="noopener">политикой конфиденциальности</a>.</p>
+        </form>
+      </div>
+      <div class="form-ok" id="formOk">
+        <div class="ok-ic"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3>Готово! Переходим в бот</h3>
+        <p>Запись эфира и чек-лист уже там. Если бот не открылся сам, нажмите кнопку ниже.</p>
+        <p style="margin-top:20px"><a href="#" id="botLinkBtn" class="btn btn--primary">Открыть бот с записью</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-logo"><span class="logo dot" style="width:22px;height:22px;border-radius:7px"></span>FIN-RA</div>
+    <p>Индивидуальный предприниматель Толстяков Дмитрий Павлович. Юр. адрес: РФ, 191186, Санкт-Петербург, пл. Дворцовая, д. 4, кв. 84. ОГРНИП 310784733300113, ИНН 784100319408.</p>
+    <p>Лицензия от 20 января 2017 года № 2676, выданная Комитетом по образованию Правительства Санкт-Петербурга. Почта для связи: <a href="mailto:finracenter@fin-ra.ru">finracenter@fin-ra.ru</a>.</p>
+    <p><a href="https://fin-ra.ru/policy-dt" target="_blank" rel="noopener">Политика обработки персональных данных</a> · <a href="https://fin-ra.ru/terms-of-use" target="_blank" rel="noopener">Пользовательское соглашение</a> · <a href="https://fin-ra.ru/juristic-documents" target="_blank" rel="noopener">Правовая информация</a></p>
+    <p>Материалы носят образовательный характер и не являются индивидуальной инвестиционной рекомендацией. Инвестиции связаны с риском.</p>
+    <p style="margin-top:8px;opacity:.7">© 2016-2026 FIN-RA. Все права защищены.</p>
+  </div>
+</footer>
+
+<div class="sticky-cta" id="stickyCta"><a href="#reg" class="btn btn--primary btn--block">Забрать запись эфира</a></div>
+
+<script>
+// TODO(интеграция формы): ссылка бота Salebot, deep-link метки входа (?start=urok1_prognoz).
+// Пока пусто, форма показывает экран «Готово» без перехода. Подставим на шаге подключения Salebot-формы (GUID).
+const BOT_LINK = "";
+if (BOT_LINK) { document.getElementById('botLinkBtn').href = BOT_LINK; }
+else { document.getElementById('botLinkBtn').style.display = 'none'; }
+
+// nav scrolled
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20),{passive:true});
+
+// reveal on scroll (progressive enhancement)
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}})},{threshold:.12, rootMargin:'0px 0px -4% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+setTimeout(()=>document.querySelectorAll('.reveal:not(.vis)').forEach(e=>e.classList.add('vis')),1600);
+
+// count-up
+function animCount(el){
+  const target=+el.dataset.count, suf=el.dataset.suffix||'', sep=el.dataset.sep;
+  const dur=1400, t0=performance.now();
+  function step(t){
+    const p=Math.min((t-t0)/dur,1), ease=1-Math.pow(1-p,3);
+    let v=Math.round(target*ease);
+    let s=sep? v.toLocaleString('ru-RU') : v.toString();
+    el.textContent=s+suf;
+    if(p<1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+const cio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){animCount(e.target);cio.unobserve(e.target);}})},{threshold:.6});
+document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+
+// sticky mobile cta after hero
+const sticky=document.getElementById('stickyCta'), hero=document.querySelector('.hero');
+new IntersectionObserver((es)=>es.forEach(e=>sticky.classList.toggle('show',!e.isIntersecting)),{threshold:0}).observe(hero);
+
+// form
+function setErr(id,on){document.getElementById(id).classList.toggle('err',on);document.getElementById('msg-'+id).classList.toggle('show',on);}
+function digits(s){return (s.match(/\d/g)||[]).length;}
+document.getElementById('regForm').addEventListener('submit',function(ev){
+  ev.preventDefault();
+  const name=name0.value.trim(), phone=phone0.value.trim(), email=email0.value.trim();
+  let ok=true;
+  if(name.length<2){setErr('name',true);ok=false;}else setErr('name',false);
+  if(digits(phone)<10){setErr('phone',true);ok=false;}else setErr('phone',false);
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){setErr('email',true);ok=false;}else setErr('email',false);
+  if(!ok)return;
+  /* ЗАМЕНИТЕ: отправка в Salebot.
+     Страницы Salebot: используйте нативную секцию «Форма» (сама пишет клиента + метку iz_source=video_dollar70).
+     Своя страница: POST на вебхук Salebot, затем редирект в бота. */
+  // fetch('URL_ВЕБХУКА',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,phone,email,source:'video_dollar70'})});
+  document.getElementById('formInner').style.display='none';
+  document.getElementById('formOk').style.display='block';
+  document.getElementById('formOk').scrollIntoView({behavior:'smooth',block:'center'});
+  if (BOT_LINK) setTimeout(()=>{location.href=BOT_LINK;},1300);
+});
+var name0=document.getElementById('name'),phone0=document.getElementById('phone'),email0=document.getElementById('email');
+</script>
+<script src="/tg-intercept.js" defer></script>
+</body>
+</html>
