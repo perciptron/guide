@@ -50,7 +50,7 @@ body{font-family:var(--fb); background:var(--bg); color:var(--ink);
 
 /* cover */
 .cover{position:relative; background:#0b3227; display:flex; align-items:center; justify-content:center; min-height:340px; overflow:hidden; cursor:pointer}
-.cover .poster{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:60% 35%}
+.cover .poster{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 40%}
 .cover::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(9,30,24,.26),rgba(9,30,24,.5)); z-index:1}
 .free-badge{position:absolute; z-index:2; top:18px; left:18px; display:inline-flex; align-items:center; gap:7px;
   font-family:var(--fm); font-size:.66rem; text-transform:uppercase; letter-spacing:.06em; color:#fff;
@@ -128,20 +128,10 @@ body{font-family:var(--fb); background:var(--bg); color:var(--ink);
 </head>
 <body>
 
-<header class="topbar">
-  <div class="topbar__brand">
-    <img src="/logo.png" alt="FIN-RA" onerror="this.style.display='none'">
-    <span class="topbar__logo">FIN-RA</span>
-    <span class="topbar__divider"></span>
-    <span class="topbar__tag">Школа безопасных инвестиций</span>
-  </div>
-  <span class="topbar__label">Бесплатный разбор</span>
-</header>
-
 <main class="stage">
   <article class="card">
     <div class="cover" onclick="openModal()">
-      <img class="poster" src="poster.jpg" alt="Доллар по 70: разбор Дмитрия Толстякова" width="1672" height="941">
+      <img class="poster" src="poster.jpg" alt="Доллар по 70: разбор Дмитрия Толстякова" width="670" height="940">
       <span class="free-badge"><span class="dot"></span>Бесплатно</span>
       <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
     </div>
