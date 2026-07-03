@@ -25,5 +25,18 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
+      # Публикация с авто-ретраем: бэкенд Pages иногда отвечает "Deployment failed, try again later"
       - id: deployment
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+      - if: steps.deployment.outcome == 'failure'
+        run: echo "Попытка 1 не удалась — жду 60с и повторяю"; sleep 60
+      - id: deployment2
+        if: steps.deployment.outcome == 'failure'
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+      - if: steps.deployment.outcome == 'failure' && steps.deployment2.outcome == 'failure'
+        run: echo "Попытка 2 не удалась — жду 120с и повторяю"; sleep 120
+      - id: deployment3
+        if: steps.deployment.outcome == 'failure' && steps.deployment2.outcome == 'failure'
         uses: actions/deploy-pages@v4
