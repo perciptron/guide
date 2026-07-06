@@ -10,15 +10,15 @@
   <!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Бесплатное предобучение «Инвест-зарплата» — узнайте за 3 дня, как создать пассивный доход от 10 000 ₽/мес на акциях, облигациях, недвижимости и крипте.">
+  <meta name="description" content="Бесплатное предобучение «Инвест-зарплата»: как зарабатывать в нестабильные времена, создать пассивный доход и финансовую безопасность на любом рынке — облигации, недвижимость, криптовалюта. 3 вебинара, регистрация бесплатна.">
   <meta name="theme-color" content="#fbfbfb">
-  <meta property="og:title" content="Инвест-зарплата — Бесплатное предобучение от FIN-RA">
-  <meta property="og:description" content="3 бесплатных эфира: как новичку создать пассивный доход уже через месяц.">
+  <meta property="og:title" content="Инвест-зарплата — как зарабатывать в нестабильные времена | FIN-RA">
+  <meta property="og:description" content="Три бесплатных вебинара: как зарабатывать на том, что приносит деньги сейчас, создать пассивный доход и финансовую безопасность на всю жизнь.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://guides.fin-ra.pro/invest-salary-2026/">
   <meta property="og:image" content="speaker.png">
   <link rel="icon" href="/favicon.ico">
-  <title>Инвест-зарплата — Бесплатное предобучение | FIN-RA</title>
+  <title>Инвест-зарплата — бесплатное предобучение | FIN-RA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -230,9 +230,9 @@
 
     .hero__title {
       font-family: var(--font-display);
-      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
-      font-weight: 800; line-height: 1.04;
-      letter-spacing: -0.05em;
+      font-size: clamp(1.85rem, 3.3vw, 2.9rem);
+      font-weight: 800; line-height: 1.08;
+      letter-spacing: -0.04em;
       animation: fadeUp 0.6s ease 0.2s both;
     }
 
@@ -344,6 +344,16 @@
 
     .cta-note { font-size: 0.7rem; color: var(--text-muted); animation: fadeUp 0.6s ease 0.42s both; }
     .cta-btn--static { animation: none; }
+
+    .hero__trust {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem;
+      font-family: var(--font-display); font-size: 0.78rem; font-weight: 600;
+      color: var(--text-secondary); margin-top: 0.1rem;
+      animation: fadeUp 0.6s ease 0.44s both;
+    }
+    .hero__trust span:not(:last-child)::after { content: '·'; margin-left: 0.5rem; color: var(--text-muted); }
+    .hero__trust strong { color: var(--green); font-weight: 700; }
+    @media (max-width: 768px) { .hero__trust { justify-content: center; font-size: 0.72rem; } }
 
     /* Mobile speaker avatar */
     .speaker-mobile { display: none; }
@@ -762,6 +772,230 @@
     }
 
     /* ================================
+       2b. SEGMENTS (для кого — 5 сегментов)
+       ================================ */
+    .segment-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1rem; margin-top: 2rem;
+    }
+    .segment-card {
+      display: flex; flex-direction: column; gap: 0.55rem;
+      background: #fff; border: 1px solid var(--separator);
+      border-radius: var(--radius); padding: 1.5rem;
+      transition: all 0.25s ease;
+    }
+    .segment-card:hover { border-color: rgba(15,157,88,0.15); box-shadow: 0 8px 24px rgba(0,0,0,0.04); transform: translateY(-2px); }
+    .segment-card__label {
+      font-family: var(--font-display); font-size: 0.66rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.09em; color: var(--text-muted);
+    }
+    .segment-card__title { font-family: var(--font-display); font-size: 1.02rem; font-weight: 700; line-height: 1.25; }
+    .segment-card__text { font-size: 0.85rem; line-height: 1.5; color: var(--text-secondary); flex: 1; }
+    .segment-card__offer {
+      display: flex; align-items: flex-start; gap: 0.5rem;
+      margin-top: 0.35rem; padding-top: 0.85rem; border-top: 1px solid var(--separator);
+      font-family: var(--font-display); font-size: 0.9rem; font-weight: 600;
+      color: var(--green); line-height: 1.35;
+    }
+    .segment-card__offer svg { width: 16px; height: 16px; margin-top: 2px; flex-shrink: 0; }
+
+    .bridge-line {
+      max-width: 760px; margin: 2.5rem auto 0; text-align: center;
+      font-family: var(--font-display); font-size: clamp(1.05rem, 2.2vw, 1.45rem);
+      font-weight: 600; line-height: 1.4; letter-spacing: -0.02em;
+    }
+    .bridge-line em { font-style: normal; color: var(--green); }
+
+    /* ================================
+       3b. BROKEN (что перестало работать)
+       ================================ */
+    .broken-intro { font-size: 0.98rem; color: var(--text-secondary); margin: 0.4rem 0 1.75rem; max-width: 640px; line-height: 1.6; }
+    .broken-list { display: flex; flex-direction: column; gap: 0.7rem; max-width: 760px; }
+    .broken-item {
+      display: flex; align-items: flex-start; gap: 0.85rem;
+      background: #fff; border: 1px solid var(--separator);
+      border-radius: var(--radius-sm); padding: 0.95rem 1.2rem;
+      font-size: 0.92rem; line-height: 1.45; color: var(--text);
+    }
+    .broken-item__icon {
+      width: 26px; height: 26px; min-width: 26px; border-radius: 7px;
+      background: var(--bg-alt); display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted); margin-top: 1px;
+    }
+    .broken-item__icon svg { width: 15px; height: 15px; }
+
+    /* ================================
+       4b. CALLOUT (хочется переждать?)
+       ================================ */
+    .callout-section { padding: 3rem 0; }
+    .callout {
+      max-width: 780px; margin: 0 auto; padding: 1.9rem 2.1rem;
+      background: var(--green-subtle); border-left: 3px solid var(--green);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .callout p { font-family: var(--font-display); font-size: clamp(1.05rem, 2.3vw, 1.4rem); font-weight: 500; line-height: 1.45; letter-spacing: -0.02em; color: var(--text); }
+    .callout p em { font-style: normal; color: var(--green); font-weight: 700; }
+
+    /* ================================
+       5b. TOOLS (инструменты + цифры)
+       ================================ */
+    .tool-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2rem; }
+    .tool-card {
+      display: flex; flex-direction: column; gap: 0.75rem;
+      background: #fff; border: 1px solid var(--separator);
+      border-radius: var(--radius); padding: 1.75rem 1.5rem;
+      position: relative; overflow: hidden; transition: all 0.25s ease;
+    }
+    .tool-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: linear-gradient(90deg, var(--green), transparent);
+    }
+    .tool-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.05); transform: translateY(-2px); }
+    .tool-card__head { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+    .tool-card__icon { width: 42px; height: 42px; min-width: 42px; border-radius: 11px; background: var(--green-subtle); display: flex; align-items: center; justify-content: center; color: var(--green); }
+    .tool-card__icon svg { width: 22px; height: 22px; }
+    .tool-card__metric { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; color: var(--green); letter-spacing: -0.02em; white-space: nowrap; text-align: right; }
+    .tool-card__metric small { display: block; font-size: 0.58rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .tool-card__title { font-family: var(--font-display); font-size: 1.12rem; font-weight: 800; }
+    .tool-card__text { font-size: 0.86rem; line-height: 1.55; color: var(--text-secondary); }
+
+    .bridge-strong {
+      max-width: 840px; margin: 2.25rem auto 1.75rem; padding: 1.6rem 1.85rem;
+      background: var(--bg-alt); border-radius: var(--radius);
+      text-align: center; font-family: var(--font-display);
+      font-size: clamp(1.05rem, 2vw, 1.32rem); font-weight: 500; line-height: 1.5; letter-spacing: -0.02em; color: var(--text);
+    }
+    .bridge-strong em { font-style: normal; color: var(--green); font-weight: 700; }
+    .tools-cta-wrap { text-align: center; }
+
+    /* ================================
+       6b. RESULT (финансовая безопасность)
+       ================================ */
+    .result-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85rem 1.5rem; margin: 1.75rem 0; max-width: 920px; }
+    .result-item { display: flex; align-items: flex-start; gap: 0.7rem; font-size: 0.94rem; line-height: 1.45; color: var(--text); }
+    .result-item__check {
+      width: 22px; height: 22px; min-width: 22px; border-radius: 50%;
+      background: var(--green-subtle); color: var(--green);
+      display: flex; align-items: center; justify-content: center; margin-top: 1px;
+    }
+    .result-item__check svg { width: 13px; height: 13px; }
+    .result-note {
+      margin-top: 0.5rem; padding: 1.25rem 1.5rem; max-width: 780px;
+      background: var(--green-subtle); border: 1px solid rgba(15,157,88,0.12); border-radius: var(--radius);
+      font-size: 0.95rem; line-height: 1.5; color: var(--text);
+    }
+    .result-note strong { font-weight: 700; }
+
+    /* ================================
+       8b. WHY-FREE (почему бесплатно)
+       ================================ */
+    .why-free {
+      max-width: 740px; margin: 2rem auto 0; padding: 1.5rem 1.75rem;
+      background: #fff; border: 1px solid var(--separator);
+      border-radius: var(--radius);
+      display: flex; align-items: center; gap: 1.1rem;
+    }
+    .why-free__icon { width: 40px; height: 40px; min-width: 40px; border-radius: 50%; background: var(--green); color: #fff; display: flex; align-items: center; justify-content: center; }
+    .why-free__icon svg { width: 20px; height: 20px; }
+    .why-free__text { font-size: 0.92rem; line-height: 1.5; color: var(--text); }
+    .why-free__text strong { font-weight: 600; }
+
+    /* ================================
+       9b. REGALIA (регалии школы)
+       ================================ */
+    .regalia-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85rem; margin-top: 1.75rem; max-width: 920px; }
+    .regalia-item {
+      display: flex; align-items: flex-start; gap: 0.7rem;
+      background: #fff; border: 1px solid var(--separator); border-radius: var(--radius-sm);
+      padding: 1rem 1.15rem; font-size: 0.9rem; line-height: 1.4; color: var(--text);
+    }
+    .regalia-item__icon { width: 22px; height: 22px; min-width: 22px; border-radius: 50%; background: var(--green-subtle); color: var(--green); display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+    .regalia-item__icon svg { width: 13px; height: 13px; }
+
+    /* ================================
+       10b. EXPERTS (эксперты)
+       ================================ */
+    .expert-card {
+      display: flex; gap: 1.5rem; align-items: center;
+      background: #fff; border: 1px solid var(--separator); border-radius: var(--radius);
+      padding: 1.6rem 1.85rem; margin-top: 2rem; max-width: 840px;
+    }
+    .expert-card__photo {
+      width: 118px; height: 118px; min-width: 118px; border-radius: 16px;
+      object-fit: cover; object-position: top center; background: var(--bg-alt);
+    }
+    .expert-card__label {
+      font-family: var(--font-display); font-size: 0.62rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em; color: var(--green); margin-bottom: 0.35rem;
+    }
+    .expert-card__name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 800; margin-bottom: 0.35rem; }
+    .expert-card__bio { font-size: 0.88rem; line-height: 1.55; color: var(--text-secondary); }
+    .expert-team-note {
+      margin-top: 1.25rem; padding: 1.25rem 1.5rem; max-width: 840px;
+      background: var(--bg-alt); border-radius: var(--radius);
+      font-size: 0.92rem; line-height: 1.55; color: var(--text-secondary);
+    }
+    .expert-team-note strong { color: var(--text); font-weight: 600; }
+
+    /* ================================
+       11b. REVIEWS (отзывы)
+       ================================ */
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+    .review-card {
+      display: flex; flex-direction: column; gap: 0.9rem;
+      background: #fff; border: 1px solid var(--separator); border-radius: var(--radius); padding: 1.5rem;
+    }
+    .review-card__text { font-size: 0.9rem; line-height: 1.55; color: var(--text); flex: 1; }
+    .review-card__author { display: flex; align-items: center; gap: 0.7rem; }
+    .review-card__avatar {
+      width: 40px; height: 40px; min-width: 40px; border-radius: 50%;
+      background: var(--green-subtle); color: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-weight: 800; font-size: 0.9rem;
+    }
+    .review-card__name { font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; line-height: 1.2; }
+    .review-card__meta { font-size: 0.72rem; color: var(--text-muted); margin-top: 1px; }
+
+    /* ================================
+       RESPONSIVE — new blocks (tablet)
+       ================================ */
+    @media (max-width: 1024px) {
+      .segment-grid { grid-template-columns: repeat(2, 1fr); }
+      .tool-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ================================
+       RESPONSIVE — new blocks (mobile)
+       ================================ */
+    @media (max-width: 768px) {
+      .segment-grid { grid-template-columns: 1fr; gap: 0.6rem; }
+      .segment-card { padding: 1.25rem; }
+      .bridge-line { font-size: 1.1rem; margin-top: 1.75rem; }
+      .broken-intro { font-size: 0.9rem; }
+      .broken-item { font-size: 0.88rem; padding: 0.85rem 1rem; }
+      .callout-section { padding: 2rem 0; }
+      .callout { padding: 1.4rem 1.3rem; }
+
+      .tool-grid {
+        display: flex; gap: 0.85rem; overflow-x: auto;
+        scroll-snap-type: x mandatory; scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch; scrollbar-width: none;
+        margin: 2rem -1.25rem 0; padding: 0 1.25rem 0.5rem;
+      }
+      .tool-grid::-webkit-scrollbar { display: none; }
+      .tool-card { flex: 0 0 82%; scroll-snap-align: start; }
+      .bridge-strong { font-size: 1.05rem; padding: 1.3rem 1.4rem; }
+
+      .result-list { grid-template-columns: 1fr; gap: 0.7rem; }
+      .result-item { font-size: 0.9rem; }
+      .why-free { flex-direction: column; text-align: center; gap: 0.85rem; }
+      .regalia-list { grid-template-columns: 1fr; }
+      .expert-card { flex-direction: column; text-align: center; align-items: center; gap: 1rem; padding: 1.5rem 1.25rem; }
+      .reviews-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ================================
        RESPONSIVE — large screens
        ================================ */
     @media (min-width: 1600px) {
@@ -838,7 +1072,7 @@
 
       .hero__badge { display: none; }
 
-      .hero__title { font-size: clamp(2.4rem, 11vw, 3.2rem); line-height: 1.05; }
+      .hero__title { font-size: clamp(1.55rem, 6.4vw, 2.1rem); line-height: 1.14; }
       .hero__sub {
         font-size: 0.92rem; max-width: 100%; text-align: center;
         color: var(--text); font-weight: 500; line-height: 1.45;
@@ -927,9 +1161,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
 
-        <h1 class="hero__title"><em>Инвест-зарплата</em></h1>
+        <h1 class="hero__title">Зарабатывай на том, что приносит деньги&nbsp;прямо&nbsp;сейчас. Создай <em>финансовую защиту</em> на всю жизнь</h1>
 
-        <p class="hero__sub">За 3 дня разберётесь, как новичку получать пассивный доход от 10 000 ₽/мес на акциях, облигациях, недвижимости и крипте</p>
+        <p class="hero__sub">Три вебинара о том, как зарабатывать в нестабильные времена, создать пассивный доход и быть в финансовой безопасности — что бы ни случилось с экономикой, работой или бизнесом.</p>
 
         <div class="gift-row">
           <div class="gift-block">
@@ -951,6 +1185,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
 
         <button class="cta-btn" onclick="openModal()">Записаться бесплатно</button>
+        <div class="hero__trust">
+          <span>Вводные занятия</span>
+          <span>3 вебинара</span>
+          <span><strong>30 000+</strong>&nbsp;прошли предобучение</span>
+        </div>
       </div>
 
       <!-- Mobile speaker avatar -->
@@ -958,7 +1197,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <img src="speaker.png" alt="Дмитрий Толстяков" class="speaker-mobile__avatar" width="200" height="200">
         <div class="speaker-mobile__info">
           <div class="speaker-mobile__name">Дмитрий Толстяков</div>
-          <div class="speaker-mobile__role">Основатель FIN-RA · финансовый советник года · обучил 120 000+ человек</div>
+          <div class="speaker-mobile__role">Основатель FIN-RA · финансовый советник года · обучил 200 000+ человек</div>
         </div>
       </div>
 
@@ -972,70 +1211,192 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <div class="speaker-tag">
           <div class="speaker-tag__name">Дмитрий Толстяков</div>
-          <div class="speaker-tag__role">Основатель FIN-RA · обучил 120 000+ человек</div>
+          <div class="speaker-tag__role">Основатель FIN-RA · обучил 200 000+ человек</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== 2. PAIN POINTS (cards only, no header text about chair) ===== -->
+  <!-- ===== 2. ДЛЯ КОГО (5 сегментов) ===== -->
   <section class="section section--alt">
     <div class="container">
       <div class="section-label reveal">Для кого</div>
-      <h2 class="section-title reveal">Обучение для вас, <em>если</em></h2>
+      <h2 class="section-title reveal">Кому это <em>подойдёт</em></h2>
 
-      <div class="pain-grid stagger-grid">
-        <div class="pain-card reveal"><div class="pain-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="pain-card__title">Живёте от зарплаты до зарплаты</div><div class="pain-card__text">Всё уходит в расходы, ипотеку и кредиты. Хотите создать дополнительный источник дохода.</div></div>
-        <div class="pain-card reveal reveal-delay-1"><div class="pain-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div class="pain-card__title">Не знаете, куда вложить</div><div class="pain-card__text">Слышали про акции и крипту, но боитесь потерять деньги. Информации много — структуры нет.</div></div>
-        <div class="pain-card reveal reveal-delay-2"><div class="pain-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="pain-card__title">Хотите финансовую свободу</div><div class="pain-card__text">Не рассчитывать на пенсию 20 000 ₽, а создать капитал и пассивный доход на годы вперёд.</div></div>
+      <div class="segment-grid">
+        <div class="segment-card reveal">
+          <div class="segment-card__label">Наёмным сотрудникам</div>
+          <div class="segment-card__title">Стабильности в найме больше нет</div>
+          <div class="segment-card__text">Хорошую работу с каждым годом найти всё сложнее, а на пенсию не прожить. Зарплата — единственный источник, и он уязвим.</div>
+          <div class="segment-card__offer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span>Создай второй источник дохода, пока есть возможность</span></div>
+        </div>
+        <div class="segment-card reveal reveal-delay-1">
+          <div class="segment-card__label">Предпринимателям</div>
+          <div class="segment-card__title">Бизнес не вечен</div>
+          <div class="segment-card__text">Рынок штормит, дело может остановиться в любой момент — а обязательства останутся с вами.</div>
+          <div class="segment-card__offer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span>Построй пассивный бизнес, который работает без тебя</span></div>
+        </div>
+        <div class="segment-card reveal reveal-delay-2">
+          <div class="segment-card__label">Тем, кто держит деньги на депозитах</div>
+          <div class="segment-card__title">Депозит перестал спасать</div>
+          <div class="segment-card__text">Ставки падают, инфляция растёт, а доллар и недвижимость больше не дают гарантий. Деньги можно потерять, как в 98-м.</div>
+          <div class="segment-card__offer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span>Сохрани капитал и обгони инфляцию</span></div>
+        </div>
+        <div class="segment-card reveal reveal-delay-3">
+          <div class="segment-card__label">Женщинам</div>
+          <div class="segment-card__title">Своя финансовая опора</div>
+          <div class="segment-card__text">Единственная настоящая финансовая безопасность — это свои деньги, а не чьи-то обещания.</div>
+          <div class="segment-card__offer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span>Создай свой источник дохода, независимо ни от кого</span></div>
+        </div>
+        <div class="segment-card reveal reveal-delay-3">
+          <div class="segment-card__label">Мужчинам</div>
+          <div class="segment-card__title">Контроль, а не чужие советы</div>
+          <div class="segment-card__text">Важно самому разбираться в финансах и видеть возможности, а не слушать чужие «инвестидеи».</div>
+          <div class="segment-card__offer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span>Стань тем, кто контролирует свой доход</span></div>
+        </div>
+      </div>
+
+      <p class="bridge-line reveal">Один источник дохода — это риск. <em>Зарабатывать стало сложнее, а хранить — рискованнее.</em></p>
+    </div>
+  </section>
+
+  <!-- ===== 3. ЧТО ПЕРЕСТАЛО РАБОТАТЬ ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label reveal">Реальность рынка</div>
+      <h2 class="section-title reveal">Что перестало работать <em>в 2025–2026</em></h2>
+      <p class="broken-intro reveal">Привычные способы хранить и зарабатывать деньги дают сбой один за другим:</p>
+
+      <div class="broken-list">
+        <div class="broken-item reveal"><div class="broken-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 18l-9.5-9.5-5 5L1 6"/><path d="M17 18h6v-6"/></svg></div><span>Доллар не растёт, как раньше</span></div>
+        <div class="broken-item reveal"><div class="broken-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 18l-9.5-9.5-5 5L1 6"/><path d="M17 18h6v-6"/></svg></div><span>Акции российских компаний разочаровывают, а зарубежные недоступны</span></div>
+        <div class="broken-item reveal"><div class="broken-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 18l-9.5-9.5-5 5L1 6"/><path d="M17 18h6v-6"/></svg></div><span>Доходность недвижимости мизерная, а ипотека дорогая</span></div>
+        <div class="broken-item reveal"><div class="broken-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 18l-9.5-9.5-5 5L1 6"/><path d="M17 18h6v-6"/></svg></div><span>Банковские ставки постепенно падают</span></div>
+        <div class="broken-item reveal"><div class="broken-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 18l-9.5-9.5-5 5L1 6"/><path d="M17 18h6v-6"/></svg></div><span>Рынок криптовалют дважды обваливался за год</span></div>
       </div>
     </div>
   </section>
 
-  <!-- ===== 3. PROGRAM ===== -->
+  <!-- ===== 4. ВРЕЗКА «ХОЧЕТСЯ ПЕРЕЖДАТЬ?» ===== -->
+  <section class="callout-section section--alt">
+    <div class="container">
+      <div class="callout reveal">
+        <p>Хочется переждать? Но жизнь не ждёт, когда всё наладится. Она просто проходит — и вместе с ней уходят <em>возможности, которые появляются именно в кризис</em>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 5. ВОЗМОЖНОСТИ + 3 ИНСТРУМЕНТА ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label reveal">Возможности</div>
+      <h2 class="section-title reveal">На любом рынке есть возможности.<br><em>Большинство их не видит</em></h2>
+      <p class="broken-intro reveal">И на растущем, и на падающем рынке есть то, что работает. Кто это видит — зарабатывает сейчас и строит капитал на годы вперёд.</p>
+
+      <div class="tool-grid">
+        <div class="tool-card reveal">
+          <div class="tool-card__head">
+            <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 2h6l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div>
+            <div class="tool-card__metric">до 28%<small>годовых</small></div>
+          </div>
+          <div class="tool-card__title">Государственные облигации</div>
+          <div class="tool-card__text">Торгуются дёшево, пока ставка высокая. Купите сейчас — получайте фиксированный доход и заработайте на росте цены, когда ставка упадёт.</div>
+        </div>
+        <div class="tool-card reveal reveal-delay-1">
+          <div class="tool-card__head">
+            <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></div>
+            <div class="tool-card__metric">от 15 000 ₽<small>порог входа</small></div>
+          </div>
+          <div class="tool-card__title">Недвижимость</div>
+          <div class="tool-card__text">Wildberries, Ozon и Яндекс наращивают спрос на склады. Купите долю в фонде — получайте аренду каждый квартал и зарабатывайте на росте стоимости.</div>
+        </div>
+        <div class="tool-card reveal reveal-delay-2">
+          <div class="tool-card__head">
+            <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
+            <div class="tool-card__metric">10–20%<small>в долларах</small></div>
+          </div>
+          <div class="tool-card__title">Криптовалюта</div>
+          <div class="tool-card__text">Биткоин в просадке — исторически лучшая точка входа. Накапливайте актив и получайте 10–20% годовых в долларах на криптодепозитах.</div>
+        </div>
+      </div>
+
+      <p class="bridge-strong reveal">На обучении мы разбираем <em>устройство этих рынков</em> — чтобы вы сами видели возможности в любой фазе рынка, а не просто следовали советам.</p>
+
+      <div class="tools-cta-wrap reveal">
+        <button class="cta-btn cta-btn--static" onclick="openModal()">Получить рабочие стратегии</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 6. ФИНАНСОВАЯ БЕЗОПАСНОСТЬ НАВСЕГДА ===== -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-label reveal">Результат</div>
+      <h2 class="section-title reveal">Финансовая безопасность <em>навсегда</em></h2>
+      <p class="broken-intro reveal">Рынок падает, стоит или растёт — в каждом случае есть своя стратегия. Когда вы понимаете, что делать, — идёте к цели, что бы ни случилось:</p>
+
+      <div class="result-list">
+        <div class="result-item reveal"><div class="result-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><span>Есть источники пассивного дохода кроме работы и бизнеса</span></div>
+        <div class="result-item reveal"><div class="result-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><span>Если один источник исчезает — жизнь не останавливается</span></div>
+        <div class="result-item reveal"><div class="result-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><span>Накопления не обесцениваются — они работают и растут</span></div>
+        <div class="result-item reveal"><div class="result-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><span>Вы не зависите от других людей, работодателя, банка или государства</span></div>
+        <div class="result-item reveal"><div class="result-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><span>Можете позволить себе остановиться — и ничего не рухнет</span></div>
+      </div>
+
+      <div class="result-note reveal">Предобучение <strong>«Инвест-зарплата»</strong> — ваш первый шаг к финансовой безопасности и созданию капитала.</div>
+    </div>
+  </section>
+
+  <!-- ===== 7. ПРОГРАММА (3 вебинара) ===== -->
   <section class="section">
     <div class="container">
       <div class="section-label reveal">Программа</div>
-      <h2 class="section-title reveal">3 эфира, которые <em>изменят</em><br>ваш подход к деньгам</h2>
+      <h2 class="section-title reveal">3 вебинара, которые <em>изменят</em><br>ваш подход к деньгам</h2>
 
       <div class="program-grid">
         <div class="program-card reveal">
           <div class="program-card__accent"></div>
-          <div class="program-card__day"><span>Эфир 1 — Фондовый рынок</span><span class="program-card__date" id="pday1"></span></div>
-          <div class="program-card__title">Дивиденды как вторая зарплата</div>
+          <div class="program-card__day"><span>Вебинар 1 — Фондовый рынок</span><span class="program-card__date" id="pday1"></span></div>
+          <div class="program-card__title">Как зарабатывать на акциях и облигациях</div>
           <ul class="program-card__list">
-            <li>Как получать 100 000 ₽/мес на дивидендах</li>
-            <li>Правило 10%: как 5 000 ₽/мес превращаются в 300 млн</li>
-            <li>Какие акции покупать новичку</li>
-            <li>Купонная зарплата на облигациях</li>
+            <li>Что работает на фондовом рынке прямо сейчас</li>
+            <li>Как заработать на облигациях, пока ставка высокая</li>
+            <li>Как получать растущие дивиденды от акций</li>
+            <li>Как защитить деньги от обесценивания</li>
+            <li>Как валютные облигации страхуют от падения рубля</li>
           </ul>
         </div>
         <div class="program-card reveal reveal-delay-1">
           <div class="program-card__accent"></div>
-          <div class="program-card__day"><span>Эфир 2 — Криптовалюта</span><span class="program-card__date" id="pday2"></span></div>
-          <div class="program-card__title">Финансовый прорыв на крипте</div>
+          <div class="program-card__day"><span>Вебинар 2 — Криптовалюта</span><span class="program-card__date" id="pday2"></span></div>
+          <div class="program-card__title">Доход в долларах на крипте</div>
           <ul class="program-card__list">
-            <li>Почему крипторынок — трамплин для новичков</li>
-            <li>3 стратегии увеличения капитала к 2030</li>
-            <li>Как безопасно начать с 500 рублей</li>
-            <li>Тройная диверсификация</li>
+            <li>Что работает в крипте прямо сейчас</li>
+            <li>Как получать доход в долларах, когда биткоин падает</li>
+            <li>Как работают депозиты в криптовалюте</li>
+            <li>Что делать, если вы уже купили крипту, а она упала</li>
           </ul>
         </div>
         <div class="program-card reveal reveal-delay-2">
           <div class="program-card__accent"></div>
-          <div class="program-card__day"><span>Эфир 3 — Недвижимость</span><span class="program-card__date" id="pday3"></span></div>
-          <div class="program-card__title">Недвижимость без стартового капитала</div>
+          <div class="program-card__day"><span>Вебинар 3 — Недвижимость</span><span class="program-card__date" id="pday3"></span></div>
+          <div class="program-card__title">Недвижимость без покупки квартиры</div>
           <ul class="program-card__list">
-            <li>Кладовки с доходностью 15-20% годовых</li>
-            <li>Инвестиции в недвижимость от 1 000 ₽</li>
-            <li>Свежий кейс покупки в Москве</li>
-            <li>Презентация курса «Инвест-зарплата»</li>
+            <li>Как инвестировать в недвижимость без покупки квартиры</li>
+            <li>Как использовать растущий спрос на склады</li>
+            <li>Как купить долю в коммерческой недвижимости от 15 000 ₽</li>
+            <li>Как зарабатывать на кладовках</li>
           </ul>
         </div>
       </div>
 
       <div style="text-align:center;margin-top:2rem" class="reveal">
-        <button class="cta-btn cta-btn--static" onclick="openModal()">Занять место на эфирах</button>
+        <button class="cta-btn cta-btn--static" onclick="openModal()">Зарегистрироваться бесплатно</button>
+      </div>
+
+      <div class="why-free reveal">
+        <div class="why-free__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <div class="why-free__text">Это бесплатно, потому что <strong>ваше доверие важнее быстрой продажи</strong>. Сначала мы даём пользу. Решение продолжить обучение — за вами.</div>
       </div>
     </div>
   </section>
@@ -1087,12 +1448,83 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
-  <!-- ===== 5. FINAL CTA ===== -->
+  <!-- ===== 9. РЕГАЛИИ ШКОЛЫ ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label reveal">О школе</div>
+      <h2 class="section-title reveal">FIN-RA — школа безопасных инвестиций <em>с 2016 года</em></h2>
+      <p class="broken-intro reveal">С 2016 года FIN-RA уберегает инвесторов от убыточных решений и учит безопасно создавать капитал.</p>
+
+      <div class="regalia-list">
+        <div class="regalia-item reveal"><div class="regalia-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><span>Обучили более <strong>200 000</strong> человек безопасному инвестированию</span></div>
+        <div class="regalia-item reveal"><div class="regalia-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><span><strong>30 000+</strong> прошли предобучение «Инвест-зарплата»</span></div>
+        <div class="regalia-item reveal"><div class="regalia-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><span>Лучшая школа инвестиций по версии <strong>Private Money Forum</strong> 2019, 2021 и 2023</span></div>
+        <div class="regalia-item reveal"><div class="regalia-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><span>Образовательная лицензия <strong>Комитета по образованию Правительства Санкт-Петербурга</strong> (с 20.01.2017)</span></div>
+        <div class="regalia-item reveal"><div class="regalia-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><span><strong>300 000+</strong> читателей блога основателя</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 10. ЭКСПЕРТЫ ===== -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-label reveal">Эксперты</div>
+      <h2 class="section-title reveal">Кто ведёт <em>обучение</em></h2>
+
+      <div class="expert-card reveal">
+        <img src="speaker.png" alt="Дмитрий Толстяков — основатель FIN-RA" class="expert-card__photo" width="240" height="240" loading="lazy">
+        <div>
+          <div class="expert-card__label">Основатель школы</div>
+          <div class="expert-card__name">Дмитрий Толстяков</div>
+          <div class="expert-card__bio">Эксперт Национального центра финансовой грамотности, международный финансовый советник, Финансовый советник 2019 года по версии АМИКС. С 2016 года обучает безопасным инвестициям, автор блога для 300 000+ подписчиков.</div>
+        </div>
+      </div>
+
+      <div class="expert-team-note reveal">Вместе с Дмитрием обучение ведёт <strong>команда профильных экспертов</strong> по фондовому рынку, криптовалюте и недвижимости — практикующие инвесторы, которые разбирают каждый рынок на своих модулях.</div>
+    </div>
+  </section>
+
+  <!-- ===== 11. ОТЗЫВЫ ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label reveal">Отзывы</div>
+      <h2 class="section-title reveal">Что говорят <em>ученики</em></h2>
+
+      <div class="reviews-grid">
+        <div class="review-card reveal">
+          <div class="review-card__text">«За год собрала 21 кладовку и +1 млн ₽ за 10 месяцев. А начинала с нуля.»</div>
+          <div class="review-card__author"><div class="review-card__avatar">ТД</div><div><div class="review-card__name">Татьяна Дземановская</div><div class="review-card__meta">Краснодар · недвижимость</div></div></div>
+        </div>
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-card__text">«Вложил $3 000 в криптовалюту — за полгода стало $4 151. Раньше боялся даже подходить к ней.»</div>
+          <div class="review-card__author"><div class="review-card__avatar">А</div><div><div class="review-card__name">Александр</div><div class="review-card__meta">62 года · военный пенсионер</div></div></div>
+        </div>
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-card__text">«Не умела включать компьютер — а сама купила криптовалюту и накопила на первый взнос по ипотеке.»</div>
+          <div class="review-card__author"><div class="review-card__avatar">ЗГ</div><div><div class="review-card__name">Зоя Гусенко</div><div class="review-card__meta">67 лет · с нуля</div></div></div>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-card__text">«Три года держала паи в банке — доход ноль. После обучения открыла счёт и покупаю акции сама, даже по одной штуке.»</div>
+          <div class="review-card__author"><div class="review-card__avatar">А</div><div><div class="review-card__name">Анна</div><div class="review-card__meta">обожглась на банке</div></div></div>
+        </div>
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-card__text">«С нуля за полтора месяца — купоны уже около 15% моего дохода. Хватило на связь и подарки к Новому году.»</div>
+          <div class="review-card__author"><div class="review-card__avatar">АР</div><div><div class="review-card__name">Александр Рогов</div><div class="review-card__meta">студент · с нуля</div></div></div>
+        </div>
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-card__text">«Пришла после потери денег в сомнительных проектах. Решила платить не за опыт, а за знания — и не жалею.»</div>
+          <div class="review-card__author"><div class="review-card__avatar">СК</div><div><div class="review-card__name">Светлана Киселёва</div><div class="review-card__meta">начинала после потерь</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 12. ФИНАЛЬНЫЙ CTA ===== -->
   <section class="section final-cta">
     <div class="container">
-      <h2 class="section-title reveal">Отправьте деньги на&nbsp;работу <em>вместо&nbsp;себя</em></h2>
-      <p class="final-cta__sub reveal">3 бесплатных эфира. Конкретные инструменты. Первый пассивный доход уже через месяц.</p>
-      <button class="cta-btn reveal" onclick="openModal()">Записаться бесплатно</button>
+      <h2 class="section-title reveal">Мы не даём <em>волшебных кнопок</em></h2>
+      <p class="final-cta__sub reveal">Мы учим системному подходу к управлению финансовой жизнью. Готовы начать?</p>
+      <button class="cta-btn reveal" onclick="openModal()">Начать обучение</button>
     </div>
   </section>
 
@@ -1173,7 +1605,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var months = ['янв','фев','мар','апр','мая','июн','июл','авг','сен','окт','ноя','дек'];
       function msk() { return new Date(new Date().toLocaleString("en-US",{timeZone:"Europe/Moscow"})); }
       var now = msk(); var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-      var d1 = now.getHours() < 15 ? today : new Date(today.getTime() + 86400000);
+      var d1 = now.getHours() < 17 ? today : new Date(today.getTime() + 86400000);
       for (var i = 0; i < 3; i++) {
         var d = new Date(d1.getTime() + i * 86400000);
         var el = document.getElementById('day' + (i + 1));
