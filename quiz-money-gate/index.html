@@ -802,6 +802,26 @@
     }
     .gate-form-card .form_integration_block { width: 100%; }
 
+    /* --- GATE: светлая тема (в стиле сайта) + равные кнопки, порядок MAX·TG·VK --- */
+    body[data-screen="gate"] { background: #ece9e1; color: var(--ink); }
+    body[data-screen="gate"] .topbar__brand { filter: none; opacity: 1; }
+    body[data-screen="gate"] .footer { color: var(--text-muted); }
+    .gate-preview { background: #fbfaf6; border-color: var(--hairline); box-shadow: 0 1px 2px rgba(20,23,26,0.05); }
+    .gate-preview__medal { background: radial-gradient(circle at 35% 30%, rgba(17,177,106,0.22), rgba(20,23,26,0.10) 70%); }
+    .gate-preview__bar { background: rgba(20,23,26,0.12); }
+    .gate-preview__lock { background: rgba(251,250,246,0.38); }
+    .gate-lock-badge { background: #fff; border-color: var(--hairline); box-shadow: 0 10px 28px -10px rgba(20,23,26,0.35); }
+    .gate-lock-badge svg { color: var(--ink); }
+    .gate-lock-label { color: var(--text-muted); }
+    .gate-copy { color: var(--text); }
+    .gate-hint { color: var(--text-muted); }
+    .gate-form-card { background: #fbfaf6; border: 1px solid var(--hairline); box-shadow: 0 1px 2px rgba(20,23,26,0.05); }
+    .gate-form-card .form_integration_block .link_group { width: 100% !important; flex-direction: column !important; align-items: stretch !important; }
+    .gate-form-card .form_integration_block .salebot_button { width: 100% !important; white-space: nowrap !important; box-sizing: border-box !important; }
+    .gate-form-card .form_integration_block .max_link { order: 1 !important; }
+    .gate-form-card .form_integration_block .tg_link  { order: 2 !important; }
+    .gate-form-card .form_integration_block .vk_link  { order: 3 !important; }
+
     /* === MESSENGER MODAL === */
     .modal--msg { text-align: center; padding: 2.5rem 1.75rem 1.85rem; }
     .msg-modal__title {
