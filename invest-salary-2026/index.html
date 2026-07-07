@@ -738,8 +738,8 @@
     .modal .vk_link:hover { background: #0066DD !important; }
     .modal .tg_link { background: #2AABEE !important; color: #fff !important; }
     .modal .tg_link:hover { background: #229ED9 !important; }
-    .modal .max_link { background: #0077FF !important; color: #fff !important; }
-    .modal .max_link:hover { background: #0066DD !important; }
+    .modal .max_link { background: linear-gradient(90deg, #527CF2, #9040C8) !important; color: #fff !important; }
+    .modal .max_link:hover { background: linear-gradient(90deg, #4870E0, #8038B8) !important; }
 
     /* Checkbox toggle */
     .modal .form_integration_block input[type="checkbox"] {
@@ -956,6 +956,9 @@
     .review-card__name { font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; line-height: 1.2; }
     .review-card__meta { font-size: 0.72rem; color: var(--text-muted); margin-top: 1px; }
 
+    /* Carousel dots (видны только на мобиле) */
+    .carousel-dots { display: none; }
+
     /* ================================
        RESPONSIVE - new blocks (tablet)
        ================================ */
@@ -992,7 +995,21 @@
       .why-free { flex-direction: column; text-align: center; gap: 0.85rem; }
       .regalia-list { grid-template-columns: 1fr; }
       .expert-card { flex-direction: column; text-align: center; align-items: center; gap: 1rem; padding: 1.5rem 1.25rem; }
-      .reviews-grid { grid-template-columns: 1fr; }
+      .reviews-grid {
+        display: flex; gap: 0.85rem; overflow-x: auto;
+        scroll-snap-type: x mandatory; scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch; scrollbar-width: none;
+        margin: 2rem -1.25rem 0; padding: 0 1.25rem 0.5rem;
+      }
+      .reviews-grid::-webkit-scrollbar { display: none; }
+      .review-card { flex: 0 0 82%; scroll-snap-align: start; }
+
+      /* UX-фиксы аудита вёрстки 0707: dots каруселей + меньше движения */
+      .carousel-dots { display: flex; justify-content: center; gap: 6px; margin-top: 1.25rem; }
+      .carousel-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(0,0,0,0.18); transition: all 0.3s; }
+      .carousel-dot.active { background: var(--green); width: 20px; border-radius: 3px; }
+      .cta-btn::after { display: none; }
+      .cta-btn { animation: fadeUp 0.6s ease 0.38s both; }
     }
 
     /* ================================
@@ -1049,7 +1066,7 @@
       .float-card {
         display: block !important; z-index: 1 !important;
         box-shadow: none !important; height: auto !important;
-        animation: coverFloat 5s ease-in-out infinite !important;
+        animation: none !important;
       }
       .float-card img { height: auto !important; width: 100% !important; }
       .float-card--1 { width: 60px; top: 12%; bottom: auto; left: 10%; right: auto; transform: rotate(-5deg); animation-delay: 0s !important; }
@@ -1293,7 +1310,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2 class="section-title reveal">На любом рынке есть возможности.<br><em>Большинство их не видит</em></h2>
       <p class="broken-intro reveal">И на растущем, и на падающем рынке есть то, что работает. Кто это понимает, тот строит капитал на годы вперёд.</p>
 
-      <div class="tool-grid">
+      <div class="tool-grid" id="toolGrid">
         <div class="tool-card reveal">
           <div class="tool-card__head">
             <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 2h6l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div>
@@ -1319,6 +1336,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="tool-card__text">Биткоин в глубокой просадке. Как работают криптодепозиты и откуда берётся доход в долларах на падающем рынке, разбираем на вебинаре.</div>
         </div>
       </div>
+      <div class="carousel-dots" id="toolDots"><span class="carousel-dot active"></span><span class="carousel-dot"></span><span class="carousel-dot"></span></div>
 
       <p class="bridge-strong reveal">На обучении мы разбираем <em>устройство этих рынков</em>, чтобы вы видели возможности сами, в любой фазе рынка, и не зависели от чужих советов.</p>
 
@@ -1353,7 +1371,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="section-label reveal">Программа</div>
       <h2 class="section-title reveal">3 вебинара, которые <em>изменят</em><br>ваш подход к деньгам</h2>
 
-      <div class="program-grid">
+      <div class="program-grid" id="programGrid">
         <div class="program-card reveal">
           <div class="program-card__accent"></div>
           <div class="program-card__day"><span>Вебинар 1. Фондовый рынок</span><span class="program-card__date" id="pday1"></span></div>
@@ -1389,6 +1407,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </ul>
         </div>
       </div>
+      <div class="carousel-dots" id="programDots"><span class="carousel-dot active"></span><span class="carousel-dot"></span><span class="carousel-dot"></span></div>
 
       <div style="text-align:center;margin-top:2rem" class="reveal">
         <button class="cta-btn cta-btn--static" onclick="openModal()">Зарегистрироваться бесплатно</button>
@@ -1490,7 +1509,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="section-label reveal">Отзывы</div>
       <h2 class="section-title reveal">Что говорят <em>ученики</em></h2>
 
-      <div class="reviews-grid">
+      <div class="reviews-grid" id="reviewsGrid">
         <div class="review-card reveal">
           <div class="review-card__text">«За год собрала 21 кладовку и +1 млн ₽ за 10 месяцев. А начинала с нуля.»</div>
           <div class="review-card__author"><div class="review-card__avatar">ТД</div><div><div class="review-card__name">Татьяна Дземановская</div><div class="review-card__meta">Краснодар · недвижимость</div></div></div>
@@ -1516,6 +1535,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="review-card__author"><div class="review-card__avatar">СК</div><div><div class="review-card__name">Светлана Киселёва</div><div class="review-card__meta">начинала после потерь</div></div></div>
         </div>
       </div>
+      <div class="carousel-dots" id="reviewsDots"><span class="carousel-dot active"></span><span class="carousel-dot"></span><span class="carousel-dot"></span><span class="carousel-dot"></span><span class="carousel-dot"></span><span class="carousel-dot"></span></div>
     </div>
   </section>
 
@@ -1639,13 +1659,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       list.addEventListener('touchstart', function() { list.classList.remove('bonus-list--hint'); }, { once: true, passive: true });
     })();
 
-    // Sticky CTA
+    // Generic carousel dots (инструменты / программа / отзывы)
+    (function() {
+      function bindDots(gridId, dotsId) {
+        var list = document.getElementById(gridId);
+        var dots = document.querySelectorAll('#' + dotsId + ' .carousel-dot');
+        if (!list || !dots.length) return;
+        list.addEventListener('scroll', function() {
+          var first = list.children[0]; if (!first) return;
+          var itemW = first.offsetWidth + 14;
+          var idx = Math.min(dots.length - 1, Math.round(list.scrollLeft / itemW));
+          dots.forEach(function(d, i) { d.classList.toggle('active', i === idx); });
+        }, { passive: true });
+      }
+      bindDots('toolGrid', 'toolDots');
+      bindDots('programGrid', 'programDots');
+      bindDots('reviewsGrid', 'reviewsDots');
+    })();
+
+    // Sticky CTA — прячем, когда секционная кнопка или футер в кадре (без дублей зелёных кнопок)
     (function() {
       var sticky = document.getElementById('stickyCta'); if (!sticky) return;
       var heroH = document.querySelector('.hero').offsetHeight;
-      window.addEventListener('scroll', function() {
-        sticky.classList.toggle('visible', window.scrollY > heroH * 0.6);
-      }, { passive: true });
+      var blockers = [].slice.call(document.querySelectorAll('.cta-btn, .bonus-cta')).filter(function(b) { return !sticky.contains(b); });
+      var footer = document.querySelector('.footer');
+      if (footer) blockers.push(footer);
+      var visibleBlockers = new Set();
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) { if (e.isIntersecting) visibleBlockers.add(e.target); else visibleBlockers.delete(e.target); });
+        apply();
+      }, { rootMargin: '0px' });
+      blockers.forEach(function(b) { io.observe(b); });
+      function apply() {
+        sticky.classList.toggle('visible', window.scrollY > heroH * 0.6 && visibleBlockers.size === 0);
+      }
+      window.addEventListener('scroll', apply, { passive: true });
     })();
   </script>
 <script src="/tg-intercept.js" defer></script>
