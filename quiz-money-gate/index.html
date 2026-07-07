@@ -725,41 +725,35 @@
       animation: rise 0.6s cubic-bezier(.2,.8,.2,1) both;
     }
     .gate-preview {
-      position: relative; overflow: hidden;
-      border-radius: 20px; padding: 1.85rem 1.5rem;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      margin-bottom: 1.5rem;
+      overflow: hidden;
+      border-radius: 20px; padding: 1.4rem 1.35rem;
+      background: #fbfaf6;
+      border: 1px solid var(--hairline);
+      box-shadow: 0 1px 2px rgba(20,23,26,0.05);
+      margin-bottom: 1.3rem;
     }
-    .gate-preview__blur {
-      filter: blur(7px); opacity: 0.45;
-      display: flex; flex-direction: column; align-items: center; gap: 1rem;
-      pointer-events: none; user-select: none;
-    }
-    .gate-preview__medal {
-      width: 92px; height: 92px; border-radius: 50%;
-      background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.3), rgba(17,177,106,0.35) 55%, rgba(0,0,0,0.4));
-    }
-    .gate-preview__bars { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 0.55rem; }
-    .gate-preview__bar { height: 12px; border-radius: 6px; background: rgba(255,255,255,0.28); }
-    .gate-preview__lock {
-      position: absolute; inset: 0;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem;
-      background: rgba(13,17,23,0.2);
+    .gate-preview__top {
+      display: flex; align-items: center; gap: 0.7rem;
+      padding-bottom: 0.95rem; margin-bottom: 1.05rem;
+      border-bottom: 1px solid var(--hairline);
     }
     .gate-lock-badge {
-      width: 56px; height: 56px; border-radius: 50%;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.22);
+      width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+      background: #fff; border: 1px solid var(--hairline);
       display: inline-flex; align-items: center; justify-content: center;
-      box-shadow: 0 10px 28px -8px rgba(0,0,0,0.6);
+      box-shadow: 0 8px 22px -10px rgba(20,23,26,0.35);
     }
-    .gate-lock-badge svg { width: 26px; height: 26px; color: #fff; }
-    .gate-lock-label {
+    .gate-lock-badge svg { width: 21px; height: 21px; color: var(--ink); }
+    .gate-preview__title {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(255,255,255,0.9);
+      font-size: 0.9rem; letter-spacing: 0.09em; text-transform: uppercase;
+      font-weight: 500; color: var(--ink); line-height: 1.2;
     }
+    .gate-teasers { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+    .gate-teaser { display: flex; flex-direction: column; gap: 0.38rem; }
+    .gate-teaser__label { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.92rem; color: var(--ink); }
+    .gate-teaser__hidden { display: flex; flex-direction: column; gap: 6px; filter: blur(3px); opacity: 0.4; }
+    .gate-teaser__hidden i { display: block; height: 8px; border-radius: 4px; background: rgba(20,23,26,0.22); }
     .gate-copy {
       font-size: 1rem; line-height: 1.5; text-align: center;
       color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; text-wrap: balance;
@@ -806,13 +800,7 @@
     body[data-screen="gate"] { background: #ece9e1; color: var(--ink); }
     body[data-screen="gate"] .topbar__brand { filter: none; opacity: 1; }
     body[data-screen="gate"] .footer { color: var(--text-muted); }
-    .gate-preview { background: #fbfaf6; border-color: var(--hairline); box-shadow: 0 1px 2px rgba(20,23,26,0.05); }
-    .gate-preview__medal { background: radial-gradient(circle at 35% 30%, rgba(17,177,106,0.22), rgba(20,23,26,0.10) 70%); }
-    .gate-preview__bar { background: rgba(20,23,26,0.12); }
-    .gate-preview__lock { background: rgba(251,250,246,0.38); }
-    .gate-lock-badge { background: #fff; border-color: var(--hairline); box-shadow: 0 10px 28px -10px rgba(20,23,26,0.35); }
-    .gate-lock-badge svg { color: var(--ink); }
-    .gate-lock-label { color: var(--text-muted); }
+    /* превью результата — стили заданы выше (светлая тема) */
     .gate-copy { color: var(--text); }
     .gate-hint { color: var(--text-muted); }
     .gate-form-card { background: #fbfaf6; border: 1px solid var(--hairline); box-shadow: 0 1px 2px rgba(20,23,26,0.05); }
@@ -821,6 +809,9 @@
     .gate-form-card .form_integration_block .max_link { order: 1 !important; }
     .gate-form-card .form_integration_block .tg_link  { order: 2 !important; }
     .gate-form-card .form_integration_block .vk_link  { order: 3 !important; }
+    .gate-form-card .form_integration_block input[type="text"],
+    .gate-form-card .form_integration_block input[type="email"],
+    .gate-form-card .form_integration_block input[type="tel"] { padding-top: 0.6rem !important; padding-bottom: 0.6rem !important; }
 
     /* === MESSENGER MODAL === */
     .modal--msg { text-align: center; padding: 2.5rem 1.75rem 1.85rem; }
@@ -1235,19 +1226,16 @@
       return `
         <section class="gate">
           <div class="gate-preview">
-            <div class="gate-preview__blur" aria-hidden="true">
-              <div class="gate-preview__medal"></div>
-              <div class="gate-preview__bars">
-                <div class="gate-preview__bar" style="width:72%"></div>
-                <div class="gate-preview__bar" style="width:90%"></div>
-                <div class="gate-preview__bar" style="width:58%"></div>
-                <div class="gate-preview__bar" style="width:80%"></div>
-              </div>
-            </div>
-            <div class="gate-preview__lock">
+            <div class="gate-preview__top">
               <span class="gate-lock-badge">${ICONS.lock}</span>
-              <span class="gate-lock-label">Результат готов</span>
+              <span class="gate-preview__title">Ваш результат готов</span>
             </div>
+            <ul class="gate-teasers" aria-hidden="true">
+              <li class="gate-teaser"><span class="gate-teaser__label">🧭 Ваш подход</span><span class="gate-teaser__hidden"><i style="width:100%"></i><i style="width:62%"></i></span></li>
+              <li class="gate-teaser"><span class="gate-teaser__label">🛡 Сильная сторона</span><span class="gate-teaser__hidden"><i style="width:92%"></i><i style="width:48%"></i></span></li>
+              <li class="gate-teaser"><span class="gate-teaser__label">⚠️ На что обратить внимание</span><span class="gate-teaser__hidden"><i style="width:100%"></i><i style="width:70%"></i></span></li>
+              <li class="gate-teaser"><span class="gate-teaser__label">➡️ Следующий шаг</span><span class="gate-teaser__hidden"><i style="width:85%"></i><i style="width:40%"></i></span></li>
+            </ul>
           </div>
           <p class="gate-copy">${QUIZ.gateCopy}</p>
           <div class="gate-form-card">
