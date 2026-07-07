@@ -20,6 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src='https://salebot.pro/js/form_scripts.js'></script>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -622,97 +623,97 @@
       background: rgba(0,0,0,0.04); border: none; border-radius: 50%;
       color: var(--text); cursor: pointer; font-size: 1.2rem; z-index: 10;
     }
-    .modal .form_integration_block { width: 100%; }
-    .modal .form_integration_block input[type="text"],
-    .modal .form_integration_block input[type="email"],
-    .modal .form_integration_block input[type="tel"],
-    .modal .form_integration_block textarea {
+    .gate-form-card .form_integration_block { width: 100%; }
+    .gate-form-card .form_integration_block input[type="text"],
+    .gate-form-card .form_integration_block input[type="email"],
+    .gate-form-card .form_integration_block input[type="tel"],
+    .gate-form-card .form_integration_block textarea {
       width: 100% !important; background: #f5f5f7 !important;
       border: 1.5px solid transparent !important; border-radius: 12px !important;
       padding: 0.75rem 1rem !important; font-family: 'DM Sans', sans-serif !important;
       font-size: 0.95rem !important; outline: none !important; color: var(--ink) !important;
     }
-    .modal .form_integration_block input:focus,
-    .modal .form_integration_block textarea:focus {
+    .gate-form-card .form_integration_block input:focus,
+    .gate-form-card .form_integration_block textarea:focus {
       border-color: var(--green) !important; background: #fff !important;
       box-shadow: 0 0 0 3px rgba(17,177,106,0.15) !important;
     }
-    .modal .form_integration_block label {
+    .gate-form-card .form_integration_block label {
       color: var(--ink) !important; font-family: 'DM Sans', sans-serif !important;
       font-size: 0.82rem !important; font-weight: 500 !important;
       margin-bottom: 0.35rem !important; display: block !important;
     }
-    .modal .form_integration_block .salebot_button img,
-    .modal .form_integration_block .salebot_button svg,
-    .modal .form_integration_block .salebot_button .mes_ident { display: none !important; }
-    .modal .form_integration_block .salebot_button {
+    .gate-form-card .form_integration_block .salebot_button img,
+    .gate-form-card .form_integration_block .salebot_button svg,
+    .gate-form-card .form_integration_block .salebot_button .mes_ident { display: none !important; }
+    .gate-form-card .form_integration_block .salebot_button {
       width: 100% !important; padding: 0.7rem 1.5rem !important;
       color: #fff !important; font-family: 'DM Sans', sans-serif !important;
       font-size: 1rem !important; font-weight: 600 !important;
       border: none !important; border-radius: 12px !important;
       cursor: pointer !important; margin-bottom: 0.5rem !important;
     }
-    .modal .form_integration_block .tg_link { background: #2AABEE !important; }
-    .modal .form_integration_block .tg_link:hover { background: #229ED9 !important; }
-    .modal .form_integration_block .vk_link { background: #0077FF !important; }
-    .modal .form_integration_block .vk_link:hover { background: #0066DD !important; }
-    .modal .form_integration_block .max_link { background: linear-gradient(90deg, #527CF2 0%, #9040C8 100%) !important; }
-    .modal .form_integration_block .max_link:hover { background: linear-gradient(90deg, #4870E0 0%, #8038B8 100%) !important; }
-    .modal .form_integration_block .custom_social_btn_container { height: auto !important; min-height: 0 !important; }
-    .modal .form_integration_block input[type="checkbox"] {
+    .gate-form-card .form_integration_block .tg_link { background: #2AABEE !important; }
+    .gate-form-card .form_integration_block .tg_link:hover { background: #229ED9 !important; }
+    .gate-form-card .form_integration_block .vk_link { background: #0077FF !important; }
+    .gate-form-card .form_integration_block .vk_link:hover { background: #0066DD !important; }
+    .gate-form-card .form_integration_block .max_link { background: linear-gradient(90deg, #527CF2 0%, #9040C8 100%) !important; }
+    .gate-form-card .form_integration_block .max_link:hover { background: linear-gradient(90deg, #4870E0 0%, #8038B8 100%) !important; }
+    .gate-form-card .form_integration_block .custom_social_btn_container { height: auto !important; min-height: 0 !important; }
+    .gate-form-card .form_integration_block input[type="checkbox"] {
       -webkit-appearance: none; appearance: none;
       width: 44px !important; height: 24px !important; min-width: 44px;
       background: #e5e5ea !important; border-radius: 12px !important;
       border: none !important; position: relative; cursor: pointer;
       padding: 0 !important; margin: 0 !important; vertical-align: middle;
     }
-    .modal .form_integration_block input[type="checkbox"]::after {
+    .gate-form-card .form_integration_block input[type="checkbox"]::after {
       content: ''; position: absolute; top: 2px; left: 2px;
       width: 20px; height: 20px; background: #fff; border-radius: 50%;
       transition: transform 0.2s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.15);
     }
-    .modal .form_integration_block input[type="checkbox"]::before { display: none !important; }
-    .modal .form_integration_block input[type="checkbox"]:checked { background: var(--green) !important; background-image: none !important; }
-    .modal .form_integration_block input[type="checkbox"]:checked::after { transform: translateX(20px); }
-    .modal .form_integration_block div:has(> input[type="checkbox"]),
-    .modal .form_integration_block label:has(> input[type="checkbox"]),
-    .modal .form_integration_block p:has(> input[type="checkbox"]) {
+    .gate-form-card .form_integration_block input[type="checkbox"]::before { display: none !important; }
+    .gate-form-card .form_integration_block input[type="checkbox"]:checked { background: var(--green) !important; background-image: none !important; }
+    .gate-form-card .form_integration_block input[type="checkbox"]:checked::after { transform: translateX(20px); }
+    .gate-form-card .form_integration_block div:has(> input[type="checkbox"]),
+    .gate-form-card .form_integration_block label:has(> input[type="checkbox"]),
+    .gate-form-card .form_integration_block p:has(> input[type="checkbox"]) {
       display: flex !important; align-items: center !important; gap: 0.625rem !important;
     }
-    .modal .form_integration_block div:has(> input[type="checkbox"]) a,
-    .modal .form_integration_block div:has(> input[type="checkbox"]) label,
-    .modal .form_integration_block div:has(> input[type="checkbox"]) span,
-    .modal .form_integration_block label:has(> input[type="checkbox"]) span,
-    .modal .form_integration_block label:has(> input[type="checkbox"]) a {
+    .gate-form-card .form_integration_block div:has(> input[type="checkbox"]) a,
+    .gate-form-card .form_integration_block div:has(> input[type="checkbox"]) label,
+    .gate-form-card .form_integration_block div:has(> input[type="checkbox"]) span,
+    .gate-form-card .form_integration_block label:has(> input[type="checkbox"]) span,
+    .gate-form-card .form_integration_block label:has(> input[type="checkbox"]) a {
       flex: 1 !important; font-size: 0.75rem !important; line-height: 1.3 !important;
       color: var(--text) !important; font-family: 'DM Sans', sans-serif !important;
       font-style: normal !important; font-weight: 400 !important; text-decoration: none !important;
     }
-    .modal .form_integration_block label:has(> input[type="checkbox"]) p,
-    .modal .form_integration_block .salebot-privacy__label-text p { margin: 0 !important; padding: 0 !important; }
-    .modal .form_integration_block .ml_quiz.quiz_checkbox,
-    .modal .form_integration_block .salebot-checkbox-field,
-    .modal .form_integration_block .ml_answers { padding: 0 !important; margin: 0 0 0.75rem 0 !important; }
-    .modal .form_integration_block .salebot-checkbox-field { margin-top: 0.75rem !important; font-size: 0 !important; }
-    .modal .form_integration_block .salebot-checkbox-field .salebot-checkbox { font-size: initial !important; }
-    .modal .form_integration_block .salebot-checkbox {
+    .gate-form-card .form_integration_block label:has(> input[type="checkbox"]) p,
+    .gate-form-card .form_integration_block .salebot-privacy__label-text p { margin: 0 !important; padding: 0 !important; }
+    .gate-form-card .form_integration_block .ml_quiz.quiz_checkbox,
+    .gate-form-card .form_integration_block .salebot-checkbox-field,
+    .gate-form-card .form_integration_block .ml_answers { padding: 0 !important; margin: 0 0 0.75rem 0 !important; }
+    .gate-form-card .form_integration_block .salebot-checkbox-field { margin-top: 0.75rem !important; font-size: 0 !important; }
+    .gate-form-card .form_integration_block .salebot-checkbox-field .salebot-checkbox { font-size: initial !important; }
+    .gate-form-card .form_integration_block .salebot-checkbox {
       margin: 0 !important; padding: 0 !important;
       display: flex !important; align-items: center !important; gap: 0 !important;
     }
-    .modal .form_integration_block .salebot-checkbox > input[type="checkbox"] { margin-right: 0.625rem !important; }
-    .modal .form_integration_block .salebot-checkbox > span,
-    .modal .form_integration_block .salebot-checkbox > .salebot-privacy__label-text { margin-left: 0 !important; padding-left: 0 !important; }
-    .modal .form_integration_block .salebot-privacy__label-text {
+    .gate-form-card .form_integration_block .salebot-checkbox > input[type="checkbox"] { margin-right: 0.625rem !important; }
+    .gate-form-card .form_integration_block .salebot-checkbox > span,
+    .gate-form-card .form_integration_block .salebot-checkbox > .salebot-privacy__label-text { margin-left: 0 !important; padding-left: 0 !important; }
+    .gate-form-card .form_integration_block .salebot-privacy__label-text {
       padding: 0 !important; margin: 0 !important; flex: 1 !important; text-indent: 0 !important;
     }
-    .modal .form_integration_block .salebot-privacy__label-text a,
-    .modal .form_integration_block .salebot-privacy__link {
+    .gate-form-card .form_integration_block .salebot-privacy__label-text a,
+    .gate-form-card .form_integration_block .salebot-privacy__link {
       padding: 0 !important; margin: 0 !important; text-indent: 0 !important;
       font-size: 0.75rem !important; line-height: 1.3 !important;
       color: var(--text) !important; font-family: 'DM Sans', sans-serif !important;
       font-style: normal !important; font-weight: 400 !important; text-decoration: none !important;
     }
-    .modal .form_integration_block .salebot-privacy__label { white-space: normal; }
+    .gate-form-card .form_integration_block .salebot-privacy__label { white-space: normal; }
 
     /* === GATE (заблокированный результат) === */
     body[data-screen="gate"] {
@@ -793,6 +794,13 @@
       margin-top: 1rem; text-align: center;
       font-size: 0.75rem; line-height: 1.4; color: rgba(255,255,255,0.45);
     }
+    .gate-form-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.5rem 1.35rem 1.35rem;
+      box-shadow: 0 22px 55px -24px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.18);
+    }
+    .gate-form-card .form_integration_block { width: 100%; }
 
     /* === MESSENGER MODAL === */
     .modal--msg { text-align: center; padding: 2.5rem 1.75rem 1.85rem; }
@@ -849,19 +857,9 @@
   <main class="stage" id="stage"></main>
   <footer class="footer">&copy; <a href="https://fin-ra.ru/">FIN-RA</a> — Школа безопасных инвестиций</footer>
 
-  <!-- Прототип: выбор мессенджера ПОСЛЕ результата. В бою — кнопки Salebot со ссылками,
-       несущими уже собранные на gate-экране данные (повторно вводить не нужно). -->
-  <div class="modal-overlay" id="msgOverlay" onclick="closeMessengerOutside(event)">
-    <div class="modal modal--msg">
-      <button class="modal__close" onclick="closeMessengerModal()">&times;</button>
-      <h3 class="msg-modal__title">Остался последний шаг</h3>
-      <p class="msg-modal__sub">Выберите мессенджер — туда придёт обучение. Данные вводить не нужно, они уже у нас.</p>
-      <div class="msg-buttons">
-        <button class="msg-btn msg-btn--tg" onclick="demoMessenger('Telegram')">Telegram</button>
-        <button class="msg-btn msg-btn--max" onclick="demoMessenger('MAX')">MAX</button>
-      </div>
-    </div>
-  </div>
+  <!-- Модель «результат в боте»: мессенджеры — это кнопки формы Salebot на gate-экране,
+       поэтому отдельная модалка мессенджеров не нужна. -->
+
 
   <div class="share-overlay" id="shareOverlay" onclick="closeShareOutside(event)">
     <div class="share-modal">
@@ -1070,7 +1068,7 @@
           }
         ]
       },
-      product: { project_id: 317313, guid: 'zpreg' }
+      product: { project_id: 317313, guid: '46924d143c9a3f39fdd9c90d6aea7e12' }
     };
 
     /* === STATE === */
@@ -1085,7 +1083,7 @@
       topbar.innerHTML = renderTopbar();
       if (state.screen === 'intro') stage.innerHTML = renderIntro();
       else if (state.screen === 'question') stage.innerHTML = renderQuestion();
-      else if (state.screen === 'gate') stage.innerHTML = renderGate();
+      else if (state.screen === 'gate') { stage.innerHTML = renderGate(); prepareGateForm(); }
       else if (state.screen === 'result') stage.innerHTML = renderResult();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -1232,15 +1230,10 @@
             </div>
           </div>
           <p class="gate-copy">${QUIZ.gateCopy}</p>
-          <form class="gate-form" onsubmit="unlockResult(event)">
-            <input type="text"  name="name"  placeholder="Ваше имя" autocomplete="name" required>
-            <input type="tel"   name="phone" placeholder="Телефон" autocomplete="tel" required>
-            <input type="email" name="email" placeholder="Email" autocomplete="email" required>
-            <button type="submit" class="gate-submit">
-              ${ICONS.lock}<span>Узнать результат</span>
-            </button>
-          </form>
-          <p class="gate-hint">Контакты нужны только чтобы прислать результат — спам не отправляем.</p>
+          <div class="gate-form-card">
+            <div class="form_integration_block"></div>
+          </div>
+          <p class="gate-hint">Заполните форму и выберите мессенджер — туда придёт результат и разбор.</p>
         </section>
       `;
     }
@@ -1307,54 +1300,40 @@
       render();
     }
 
-    /* === GATE: захват контакта перед результатом === */
-    function unlockResult(e) {
-      e.preventDefault();
-      const f = e.target;
-      const get = n => (f.querySelector('[name="' + n + '"]').value || '').trim();
-      const lead = { name: get('name'), phone: get('phone'), email: get('email') };
-      if (!lead.name || !lead.phone || !lead.email) return;
-
-      // ┌─ БОЕВОЕ ПОДКЛЮЧЕНИЕ SALEBOT ───────────────────────────────┐
-      // │ Здесь форма Salebot в режиме «опрос» сохраняет заявку       │
-      // │ (имя/телефон/email) ДО показа результата. В прототипе —     │
-      // │ просто запоминаем данные и открываем результат.             │
-      // └────────────────────────────────────────────────────────────┘
-      state.lead = lead;
-      track('quiz_lead_capture', { quiz: QUIZ.key, result: resultKey() });
-
-      state.screen = 'result';
-      render();
+    /* === GATE: форма Salebot + передача баллов в бота === */
+    // Кладём баллы в адрес страницы ПЕРЕД инициализацией формы: скрипт Salebot
+    // дописывает location.search к запросу form_view, поэтому score/stop уезжают
+    // в бота и становятся переменными клиента (их читает калькулятор бота).
+    function prepareGateForm() {
+      const total = state.answers.reduce((s, a) => s + a.score, 0);
+      const isStop = state.answers.some(a => a.stop);
+      const qs = '?score=' + total + '&stop=' + (isStop ? 1 : 0);
+      try { history.replaceState(null, '', location.pathname + qs); } catch (e) {}
+      initSalebotForm();
+    }
+    function initSalebotForm() {
+      if (window._salebotInited) return;
+      const block = document.querySelector('.form_integration_block');
+      if (!block) return;
+      const p = QUIZ.product;
+      if (window.FormIntegration) {
+        FormIntegration.init({ project_id: p.project_id, guid: p.guid });
+        window._salebotInited = true;
+        track('quiz_gate_form_ready', { quiz: QUIZ.key });
+      } else {
+        setTimeout(initSalebotForm, 400);
+      }
     }
 
-    /* === MESSENGER MODAL: вход в обучение без повторного ввода === */
-    function openMessengerModal() {
-      document.getElementById('msgOverlay').classList.add('active');
-      document.body.style.overflow = 'hidden';
-      track('quiz_modal_open', { quiz: QUIZ.key, result: resultKey() });
-    }
+    /* Стоп-сигнал: результат показывается на странице, кнопка ведёт на Финансовый прорыв */
     function openResultModal() {
       const r = computeResult();
       track('quiz_cta_click', { quiz: QUIZ.key, result: resultKey() });
-      if (r.link) {                 // стоп-сигнал → Финансовый прорыв, без формы
-        window.location.href = r.link;
-        return;
-      }
-      openMessengerModal();         // контакт уже собран на gate → сразу мессенджеры
-    }
-    function closeMessengerModal() {
-      document.getElementById('msgOverlay').classList.remove('active');
-      document.body.style.overflow = '';
-    }
-    function closeMessengerOutside(e) { if (e.target === e.currentTarget) closeMessengerModal(); }
-
-    // Прототип: в бою кнопки ведут в бота со ссылками, несущими собранные данные
-    function demoMessenger(name) {
-      showToast('Прототип: здесь откроется ' + name + ' с уже заполненными данными');
+      if (r.link) { window.location.href = r.link; }
     }
 
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') { closeMessengerModal(); closeShare(); }
+      if (e.key === 'Escape') closeShare();
     });
 
     /* === SHARE === */
@@ -1415,5 +1394,6 @@
     track('quiz_open', { quiz: QUIZ.key });
     render();
   </script>
+  <script src="/tg-intercept.js" defer></script>
 </body>
 </html>
