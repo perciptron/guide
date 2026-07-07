@@ -1328,9 +1328,21 @@
         FormIntegration.init({ project_id: p.project_id, guid: p.guid });
         window._salebotInited = true;
         track('quiz_gate_form_ready', { quiz: QUIZ.key });
+        precheckConsents();
       } else {
         setTimeout(initSalebotForm, 400);
       }
+    }
+    // Заранее проставляем галочки согласий (решение владельца, юр. риск принят).
+    // Имитируем реальный клик, чтобы валидация Salebot тоже засчитала согласие.
+    function precheckConsents(tries) {
+      tries = tries || 0;
+      const boxes = document.querySelectorAll('.form_integration_block input[type="checkbox"]');
+      if (boxes.length) {
+        boxes.forEach(function (cb) { if (!cb.checked) cb.click(); });
+        return;
+      }
+      if (tries < 25) setTimeout(function () { precheckConsents(tries + 1); }, 250);
     }
 
     /* Стоп-сигнал: результат показывается на странице, кнопка ведёт на Финансовый прорыв */
