@@ -468,12 +468,13 @@
       font-family: var(--font-display); font-size: 0.6rem;
       font-weight: 700; text-transform: uppercase;
       letter-spacing: 0.1em; color: var(--green); margin-bottom: 0.6rem;
-      display: flex; justify-content: space-between; align-items: center;
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem;
     }
     .program-card__date {
       font-size: 0.58rem; font-weight: 700; color: #fff;
       background: var(--green); border-radius: 100px;
-      padding: 0.2rem 0.55rem; text-transform: none; letter-spacing: 0;
+      padding: 0.25rem 0.6rem; text-transform: none; letter-spacing: 0;
+      white-space: nowrap; flex-shrink: 0;
     }
     .program-card__title {
       font-family: var(--font-display); font-size: 1.05rem;
