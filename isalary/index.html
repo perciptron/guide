@@ -748,7 +748,7 @@
     .modal .form_integration_block input[type="checkbox"] {
       -webkit-appearance: none; appearance: none;
       width: 44px !important; height: 24px !important; min-width: 44px;
-      background: #d4d4d0 !important; border-radius: 12px !important;
+      background: #d4d4d0 !important; background-image: none !important; border-radius: 12px !important;
       border: none !important; position: relative; cursor: pointer;
       transition: background 0.2s !important; padding: 0 !important; margin: 0 !important;
     }
@@ -757,7 +757,12 @@
       width: 20px; height: 20px; background: #fff; border-radius: 50%;
       transition: transform 0.25s; box-shadow: 0 1px 4px rgba(0,0,0,0.15);
     }
-    .modal .form_integration_block input[type="checkbox"]:checked { background: var(--green) !important; }
+    .modal .form_integration_block input[type="checkbox"]:checked,
+    .modal .form_integration_block input.personal_privacy_input:checked,
+    .modal .form_integration_block .salebot-checkbox > input[type="checkbox"]:checked {
+      background: #0f9d58 !important; background-color: #0f9d58 !important;
+      background-image: none !important; box-shadow: none !important;
+    }
     .modal .form_integration_block input[type="checkbox"]::before { display: none !important; }
     .modal .form_integration_block input[type="checkbox"]:checked::after { transform: translateX(20px); }
 
@@ -1812,9 +1817,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <script>
-    function openModal() { document.getElementById('modalOverlay').classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function openModal() { document.getElementById('modalOverlay').classList.add('active'); document.body.style.overflow = 'hidden'; precheckConsents(); }
     function closeModal() { document.getElementById('modalOverlay').classList.remove('active'); document.body.style.overflow = ''; }
     function closeModalOutside(e) { if (e.target === e.currentTarget) closeModal(); }
+
+    // Заранее проставляем галочки согласий (решение владельца). Реальный клик — чтобы Salebot засчитал согласие.
+    function precheckConsents(tries) {
+      tries = tries || 0;
+      var boxes = document.querySelectorAll('.modal .form_integration_block input[type="checkbox"]');
+      if (boxes.length) { boxes.forEach(function (cb) { if (!cb.checked) cb.click(); }); return; }
+      if (tries < 40) setTimeout(function () { precheckConsents(tries + 1); }, 250);
+    }
+    precheckConsents();
 
     // Видеоотзывы: если у карточки задан data-video — открываем лайтбокс, иначе ведём на регистрацию
     function openVideo(el) {
