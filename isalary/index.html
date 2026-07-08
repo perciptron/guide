@@ -732,9 +732,10 @@
     .modal .salebot_button .mes_ident { display: none !important; }
     .modal .custom_social_btn_container { height: auto !important; min-height: 0 !important; }
     .modal .salebot_button {
+      width: 100% !important;
       font-family: var(--font-display) !important; font-weight: 600 !important;
       font-size: 0.95rem !important; border-radius: var(--radius) !important;
-      padding: 1rem 2rem !important; margin-bottom: 0.5rem !important;
+      padding: 0.7rem 1.5rem !important; margin-bottom: 0.5rem !important;
     }
     .modal .vk_link { background: #0077FF !important; color: #fff !important; }
     .modal .vk_link:hover { background: #0066DD !important; }
@@ -772,6 +773,33 @@
     .modal .form_integration_block label:has(> input[type="checkbox"]) a {
       flex: 1 !important; font-size: 0.68rem !important; line-height: 1.3 !important; color: #999 !important;
     }
+
+    /* Новая разметка согласий Salebot — иначе блок «раздувает» форму (референс: quiz-money-gate) */
+    .modal .form_integration_block label:has(> input[type="checkbox"]) p,
+    .modal .form_integration_block .salebot-privacy__label-text p { margin: 0 !important; padding: 0 !important; }
+    .modal .form_integration_block .ml_quiz.quiz_checkbox,
+    .modal .form_integration_block .salebot-checkbox-field,
+    .modal .form_integration_block .ml_answers { padding: 0 !important; margin: 0 0 0.6rem 0 !important; }
+    .modal .form_integration_block .salebot-checkbox-field { margin-top: 0.6rem !important; font-size: 0 !important; }
+    .modal .form_integration_block .salebot-checkbox-field .salebot-checkbox { font-size: initial !important; }
+    .modal .form_integration_block .salebot-checkbox {
+      margin: 0 !important; padding: 0 !important;
+      display: flex !important; align-items: center !important; gap: 0 !important;
+    }
+    .modal .form_integration_block .salebot-checkbox > input[type="checkbox"] { margin-right: 0.625rem !important; }
+    .modal .form_integration_block .salebot-checkbox > span,
+    .modal .form_integration_block .salebot-checkbox > .salebot-privacy__label-text { margin-left: 0 !important; padding-left: 0 !important; }
+    .modal .form_integration_block .salebot-privacy__label-text {
+      padding: 0 !important; margin: 0 !important; flex: 1 !important; text-indent: 0 !important;
+    }
+    .modal .form_integration_block .salebot-privacy__label-text a,
+    .modal .form_integration_block .salebot-privacy__link {
+      padding: 0 !important; margin: 0 !important; text-indent: 0 !important;
+      font-size: 0.68rem !important; line-height: 1.3 !important;
+      color: #999 !important; font-family: var(--font-body) !important;
+      font-style: normal !important; font-weight: 400 !important; text-decoration: none !important;
+    }
+    .modal .form_integration_block .salebot-privacy__label { white-space: normal; }
 
     /* ================================
        2b. SEGMENTS (для кого - 5 сегментов)
@@ -1771,7 +1799,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="modal__sub">Заполните форму&nbsp;— пришлём ссылку на эфиры и стратегию</div>
       <script src='https://salebot.pro/js/form_scripts.js'></script>
       <div class='form_integration_block'></div>
-      <script>FormIntegration.init({ project_id: 317313, guid: 'zpreg' })</script>
+      <script>FormIntegration.init({ project_id: 317313, guid: '9adb4552388bf0b240d3e7b2010e65b9' })</script>
     </div>
   </div>
 
