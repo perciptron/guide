@@ -744,11 +744,17 @@
     .modal .max_link { background: linear-gradient(90deg, #527CF2, #9040C8) !important; color: #fff !important; }
     .modal .max_link:hover { background: linear-gradient(90deg, #4870E0, #8038B8) !important; }
 
+    /* Порядок кнопок мессенджеров: MAX → TG → VK */
+    .modal .form_integration_block .link_group { display: flex !important; flex-direction: column !important; }
+    .modal .form_integration_block .max_link { order: 1 !important; }
+    .modal .form_integration_block .tg_link { order: 2 !important; }
+    .modal .form_integration_block .vk_link { order: 3 !important; }
+
     /* Checkbox toggle */
     .modal .form_integration_block input[type="checkbox"] {
       -webkit-appearance: none; appearance: none;
       width: 44px !important; height: 24px !important; min-width: 44px;
-      background: #d4d4d0 !important; background-image: none !important; border-radius: 12px !important;
+      background: #d4d4d0 !important; border-radius: 12px !important;
       border: none !important; position: relative; cursor: pointer;
       transition: background 0.2s !important; padding: 0 !important; margin: 0 !important;
     }
@@ -757,12 +763,7 @@
       width: 20px; height: 20px; background: #fff; border-radius: 50%;
       transition: transform 0.25s; box-shadow: 0 1px 4px rgba(0,0,0,0.15);
     }
-    .modal .form_integration_block input[type="checkbox"]:checked,
-    .modal .form_integration_block input.personal_privacy_input:checked,
-    .modal .form_integration_block .salebot-checkbox > input[type="checkbox"]:checked {
-      background: #0f9d58 !important; background-color: #0f9d58 !important;
-      background-image: none !important; box-shadow: none !important;
-    }
+    .modal .form_integration_block input[type="checkbox"]:checked { background: var(--green) !important; }
     .modal .form_integration_block input[type="checkbox"]::before { display: none !important; }
     .modal .form_integration_block input[type="checkbox"]:checked::after { transform: translateX(20px); }
 
