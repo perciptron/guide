@@ -75,7 +75,7 @@
 
 Вместо двух колонок hero — единая `.product-card` с двумя зонами:
 - **`.product-card__cover`** (слева): радиальный градиент фон, обложка, free-badge
-- **`.product-card__body`** (справа): eyebrow → title → desc → bullets → CTA → meta-row → proxy
+- **`.product-card__body`** (справа): eyebrow → title → desc → bullets → CTA → meta-row
 
 ### Элементы
 - **Topbar** — лого + разделитель + tagline слева, label справа. Без border-bottom
@@ -86,7 +86,6 @@
 - **Буллеты** — 16×16 круг с `--green-tint` фоном и зелёным чекмарком, разделители hairline
 - **CTA** — тёмная плоская (`--ink`), занимает всю ширину body, с зелёным circular arrow внутри (28px)
 - **Meta-row** — JetBrains Mono, через разделители «·»: `PDF · 36 стр. · 25 мин · Telegram / MAX`
-- **Proxy** — мелкий текст с info-иконкой, ссылка с underline через `--hairline`
 - **Cover** — обложка PDF с 4-уровневыми тенями, parallax-tilt при hover
 - **Модалка** — чистый белый `#fff`, overlay `rgba(20,23,26,0.5)` без blur, `border-radius: 20px`, `max-width: 460px`
 - **Кнопка закрытия модалки** — круглая 36px (32px на мобилке), `z-index: 9999`, `padding-top: 3rem` у `.modal` на мобилке
@@ -115,7 +114,7 @@
 
 ### Адаптив
 - **768px** — мобилка: одна колонка, обложка сверху (маленькая 160px), sticky CTA внизу, модалка = bottom-sheet
-  - **Скрывать `.hero__desc`** на мобилке — сразу заголовок → буллеты → proxy-hint → CTA
+  - **Скрывать `.hero__desc`** на мобилке — сразу заголовок → буллеты → CTA
   - Кнопка закрытия модалки минимум 44×44 (Apple touch target)
 - **1400px+** — увеличение шрифтов, gap, обложки до 380px
 - **1800px+** — дальнейшее масштабирование до 420px обложка
@@ -158,7 +157,6 @@
       <div class="meta-row">
         <span>PDF</span><span>36 стр.</span><span>25 мин</span><span>Telegram / MAX</span>
       </div>
-      <p class="proxy"><span>Проблемы с Telegram? <a href="tg://proxy?...">Подключите прокси</a></span></p>
     </div>
   </article>
 </main>
@@ -197,9 +195,8 @@
 2. **H1** — заголовок с акцентом на зелёный span
 3. **hero__desc** — описание, 2-3 строки. **Скрыто на мобилке** (`display: none`)
 4. **hero__bullets** — 3 буллета с чекмарками
-5. **proxy-hint** — pill-плашка с ссылкой на прокси
-6. **cta-btn** — основная кнопка «Забрать гайд бесплатно»
-7. **cta-hint** — мелкий текст «Гайд придёт в Telegram или MAX»
+5. **cta-btn** — основная кнопка «Забрать гайд бесплатно»
+6. **cta-hint** — мелкий текст «Гайд придёт в Telegram или MAX»
 
 ## Лид-воронка
 
@@ -316,10 +313,3 @@ Salebot → $.ajax → ответ с t.me/bot?start=xxx
 - [ ] Подключить `<script src="/tg-intercept.js"></script>` перед `</body>`
 - [ ] Проверить что в футере появляется версия скрипта (сейчас v4)
 - [ ] Протестировать заполнение формы без VPN
-
-### TG-прокси для пользователей
-На лендингах добавлять ссылку на бесплатный MTProxy:
-```
-tg://proxy?server=proxy2.fin-ra.pro&port=8443&secret=ee24e07bbc4b4290c4251d17c437b13e8670726f7879322e66696e2d72612e70726f
-```
-Текст: «Проблемы с Telegram? Подключите бесплатный прокси»
