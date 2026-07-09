@@ -888,7 +888,7 @@
     .callout__title {
       font-family: var(--font-display);
       font-size: clamp(1.6rem, 3.2vw, 2.2rem); font-weight: 800;
-      line-height: 1.1; letter-spacing: -0.03em;
+      line-height: 1.1; letter-spacing: -0.03em; text-align: center;
       color: #4bb377; margin-bottom: 0.7rem;
     }
     .callout p { font-family: var(--font-display); font-size: clamp(1.02rem, 2.1vw, 1.28rem); font-weight: 500; line-height: 1.5; letter-spacing: -0.01em; color: rgba(255,255,255,0.82); }
@@ -1020,6 +1020,33 @@
     .review-card__name { font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; line-height: 1.2; }
     .review-card__meta { font-size: 0.72rem; color: var(--text-muted); margin-top: 1px; }
 
+    /* Отзывы с площадок (Яндекс, Otzyvru, Yell, VK, Telegram) */
+    .reviews-platforms-head {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(1.3rem, 3vw, 2rem); line-height: 1.2;
+      letter-spacing: -0.02em; text-align: center;
+      margin: 2.75rem auto 1.75rem; max-width: 780px;
+    }
+    .reviews-platforms-head em { font-style: normal; color: var(--green); }
+    .platforms-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; max-width: 1040px; margin: 0 auto; }
+    .platform-card {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; gap: 0.4rem;
+      background: #fff; border: 1px solid var(--separator); border-radius: var(--radius);
+      padding: 1.5rem 1rem; transition: all 0.25s ease;
+    }
+    .platform-card:hover { box-shadow: 0 10px 26px rgba(0,0,0,0.06); transform: translateY(-2px); }
+    .platform-card__logo {
+      width: 46px; height: 46px; border-radius: 13px; margin-bottom: 0.35rem;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-weight: 800; font-size: 1.1rem; color: #fff;
+    }
+    .platform-card__logo svg { width: 24px; height: 24px; }
+    .platform-card__name { font-family: var(--font-display); font-weight: 700; font-size: 0.92rem; color: var(--text); }
+    .platform-card__stars { color: #ffb300; font-size: 0.9rem; letter-spacing: 1px; line-height: 1; }
+    .platform-card__rating { font-family: var(--font-display); font-weight: 800; font-size: 1.35rem; letter-spacing: -0.02em; color: var(--text); }
+    .platform-card__count { font-size: 0.8rem; color: var(--text-secondary); }
+
     /* Carousel dots (видны только на мобиле) */
     .carousel-dots { display: none; }
 
@@ -1030,6 +1057,7 @@
       .segment-grid { grid-template-columns: repeat(2, 1fr); }
       .tool-grid { grid-template-columns: 1fr; }
       .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+      .platforms-grid { grid-template-columns: repeat(3, 1fr); }
     }
 
     /* ================================
@@ -1289,6 +1317,22 @@
       content: ''; position: absolute; left: 0; top: 0.5em;
       width: 5px; height: 5px; border-radius: 50%; background: var(--green);
     }
+    /* Выделенный главный эксперт — Дмитрий Толстяков (лицо школы) */
+    .experts-featured { margin-top: 2rem; }
+    .exp-card--featured { flex-direction: row; align-items: stretch; }
+    .exp-card--featured .exp-card__photo-wrap { width: 340px; min-width: 340px; aspect-ratio: auto; }
+    .exp-card--featured .exp-card__body { flex: 1; padding: 2rem 2.25rem; justify-content: center; }
+    .exp-featured__badge {
+      display: inline-flex; align-self: flex-start; align-items: center; gap: 0.35rem;
+      background: var(--green-subtle); color: var(--green);
+      font-family: var(--font-display); font-weight: 700; font-size: 0.68rem;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      padding: 0.32rem 0.75rem; border-radius: 100px; margin-bottom: 0.7rem;
+    }
+    .exp-card--featured .exp-card__name { font-size: 1.55rem; }
+    .exp-card--featured .exp-card__role { font-size: 0.72rem; margin: 0.35rem 0 0.9rem; }
+    .exp-card--featured .exp-card__list { display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem 1.75rem; }
+    .exp-card--featured .exp-card__list li { font-size: 0.98rem; }
 
     /* Экран 10 — Видеоотзывы */
     .vreviews {
@@ -1369,6 +1413,15 @@
       .vreviews::-webkit-scrollbar { display: none; }
       .vcard { flex: 0 0 62%; scroll-snap-align: start; }
       .vlightbox__close { top: -44px; }
+      /* Выделенный эксперт — стопкой на мобилке */
+      .exp-card--featured { flex-direction: column; }
+      .exp-card--featured .exp-card__photo-wrap { width: 100%; min-width: 0; aspect-ratio: 4 / 3; }
+      .exp-card--featured .exp-card__body { padding: 1.4rem 1.35rem; }
+      .exp-card--featured .exp-card__name { font-size: 1.3rem; }
+      .exp-card--featured .exp-card__list { grid-template-columns: 1fr; }
+      /* Площадки-отзывы: 2 в ряд на мобилке */
+      .platforms-grid { grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+      .platform-card { padding: 1.1rem 0.9rem; }
     }
   </style>
 </head>
@@ -1651,11 +1704,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="section-label reveal">Эксперты</div>
       <h2 class="section-title reveal">Наши <em>эксперты</em></h2>
 
-      <div class="experts-grid">
-        <!-- Фото сверху. У Толстякова реальное фото; остальным подставьте <img class="exp-card__photo" src="..."> вместо блока .exp-card__ph, когда будут фото. -->
-        <div class="exp-card reveal">
+      <div class="experts-featured">
+        <div class="exp-card exp-card--featured reveal">
           <div class="exp-card__photo-wrap"><img class="exp-card__photo" src="tolstyakov.jpg" alt="Дмитрий Толстяков, основатель FIN-RA" width="700" height="700" loading="lazy"></div>
           <div class="exp-card__body">
+            <span class="exp-featured__badge">★ Главный эксперт и лицо школы</span>
             <div class="exp-card__name">Дмитрий Толстяков</div>
             <div class="exp-card__role">Основатель FIN-RA</div>
             <ul class="exp-card__list">
@@ -1667,6 +1720,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </ul>
           </div>
         </div>
+      </div>
+
+      <div class="experts-grid">
         <div class="exp-card reveal reveal-delay-1">
           <div class="exp-card__photo-wrap"><img class="exp-card__photo" src="rodionov.jpg" alt="Дмитрий Родионов" width="700" height="700" loading="lazy"></div>
           <div class="exp-card__body">
@@ -1748,34 +1804,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </button>
       </div>
 
-      <div class="reviews-subhead reveal">И ещё сотни письменных историй</div>
-      <div class="reviews-grid" id="reviewsGrid">
-        <div class="review-card reveal">
-          <div class="review-card__text">«За год собрала 21 кладовку и +1 млн ₽ за 10 месяцев. А начинала с нуля.»</div>
-          <div class="review-card__author"><div class="review-card__avatar">ТД</div><div><div class="review-card__name">Татьяна Дземановская</div><div class="review-card__meta">Краснодар · недвижимость</div></div></div>
+      <div class="reviews-platforms-head reveal">Более <em>22&nbsp;000</em> реальных отзывов от наших студентов</div>
+      <div class="platforms-grid">
+        <div class="platform-card reveal">
+          <div class="platform-card__logo" style="background:#FC3F1D">Я</div>
+          <div class="platform-card__name">Яндекс&nbsp;Карты</div>
+          <div class="platform-card__stars">★★★★★</div>
+          <div class="platform-card__rating">5,0</div>
+          <div class="platform-card__count">230+ отзывов</div>
         </div>
-        <div class="review-card reveal reveal-delay-1">
-          <div class="review-card__text">«Вложил $3 000 в криптовалюту, за полгода стало $4 151. Раньше боялся даже подходить к ней.»</div>
-          <div class="review-card__author"><div class="review-card__avatar">А</div><div><div class="review-card__name">Александр</div><div class="review-card__meta">62 года · военный пенсионер</div></div></div>
+        <div class="platform-card reveal reveal-delay-1">
+          <div class="platform-card__logo" style="background:#8E44AD">O</div>
+          <div class="platform-card__name">Otzyvru</div>
+          <div class="platform-card__stars">★★★★★</div>
+          <div class="platform-card__rating">4,9</div>
+          <div class="platform-card__count">700+ отзывов</div>
         </div>
-        <div class="review-card reveal reveal-delay-2">
-          <div class="review-card__text">«Не умела включать компьютер, а потом сама купила криптовалюту и накопила на первый взнос по ипотеке.»</div>
-          <div class="review-card__author"><div class="review-card__avatar">ЗГ</div><div><div class="review-card__name">Зоя Гусенко</div><div class="review-card__meta">67 лет · с нуля</div></div></div>
+        <div class="platform-card reveal reveal-delay-2">
+          <div class="platform-card__logo" style="background:#FFB800;color:#1d1d1f">Y</div>
+          <div class="platform-card__name">Yell.ru</div>
+          <div class="platform-card__stars">★★★★★</div>
+          <div class="platform-card__rating">4,9</div>
+          <div class="platform-card__count">230+ отзывов</div>
         </div>
-        <div class="review-card reveal">
-          <div class="review-card__text">«Три года держала паи в банке, доход ноль. После обучения открыла счёт и покупаю акции сама, даже по одной штуке.»</div>
-          <div class="review-card__author"><div class="review-card__avatar">А</div><div><div class="review-card__name">Анна</div><div class="review-card__meta">обожглась на банке</div></div></div>
+        <div class="platform-card reveal reveal-delay-2">
+          <div class="platform-card__logo" style="background:#0077FF">VK</div>
+          <div class="platform-card__name">ВКонтакте</div>
+          <div class="platform-card__rating">14&nbsp;000+</div>
+          <div class="platform-card__count">отзывов</div>
         </div>
-        <div class="review-card reveal reveal-delay-1">
-          <div class="review-card__text">«С нуля за полтора месяца: купоны уже около 15% моего дохода. Хватило на связь и подарки к Новому году.»</div>
-          <div class="review-card__author"><div class="review-card__avatar">АР</div><div><div class="review-card__name">Александр Рогов</div><div class="review-card__meta">студент · с нуля</div></div></div>
-        </div>
-        <div class="review-card reveal reveal-delay-2">
-          <div class="review-card__text">«Пришла после потери денег в сомнительных проектах. Платить дальше за свой опыт не хотелось, решила платить за знания. И не жалею.»</div>
-          <div class="review-card__author"><div class="review-card__avatar">СК</div><div><div class="review-card__name">Светлана Киселёва</div><div class="review-card__meta">начинала после потерь</div></div></div>
+        <div class="platform-card reveal reveal-delay-3">
+          <div class="platform-card__logo" style="background:#2AABEE"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></div>
+          <div class="platform-card__name">Telegram</div>
+          <div class="platform-card__rating">7&nbsp;000+</div>
+          <div class="platform-card__count">отзывов</div>
         </div>
       </div>
-      <div class="carousel-dots" id="reviewsDots"><span class="carousel-dot active"></span><span class="carousel-dot"></span><span class="carousel-dot"></span><span class="carousel-dot"></span><span class="carousel-dot"></span><span class="carousel-dot"></span></div>
     </div>
   </section>
 
