@@ -58,6 +58,13 @@
     .section { padding: 5rem 0; }
     .section--alt { background: var(--bg-alt); }
 
+    /* ПК: блоки секции выравниваем колонкой по центру (текст внутри остаётся слева) */
+    @media (min-width: 769px) {
+      .section--centered > .container > * {
+        max-width: 900px; margin-left: auto; margin-right: auto;
+      }
+    }
+
     .section-label {
       font-family: var(--font-display);
       font-size: 0.7rem;
@@ -231,7 +238,7 @@
 
     .hero__title {
       font-family: var(--font-display);
-      font-size: clamp(1.85rem, 3.3vw, 2.9rem);
+      font-size: clamp(1.6rem, 3.15vw, 2.9rem);
       font-weight: 800; line-height: 1.08;
       letter-spacing: -0.04em; text-wrap: balance;
       animation: fadeUp 0.6s ease 0.2s both;
@@ -484,7 +491,7 @@
     .program-card__list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
     .program-card__list li {
       display: flex; align-items: flex-start; gap: 0.5rem;
-      font-size: 0.98rem; line-height: 1.45; color: var(--text-secondary);
+      font-size: 1.02rem; line-height: 1.45; color: var(--text-secondary);
     }
     .program-card__list li::before {
       content: ''; width: 5px; height: 5px; min-width: 5px;
@@ -597,10 +604,21 @@
        ================================ */
     .final-cta { text-align: center; padding: 4rem 0 3rem; position: relative; background: var(--bg-alt); }
     .final-cta::before { display: none; }
-    .final-cta .section-title { max-width: 600px; margin: 0 auto 0.75rem; }
-    .final-cta__sub { font-size: 0.95rem; color: var(--text-secondary); max-width: 460px; margin: 0 auto 1.5rem; line-height: 1.55; }
+    .final-cta__card {
+      max-width: 900px; margin: 0 auto; padding: 3rem 2.5rem 2.75rem;
+      background: #18231d; border-radius: 20px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+    }
+    .final-cta .section-title {
+      color: #fff; max-width: none; margin: 0 auto 1rem;
+      font-size: clamp(1.5rem, 3vw, 2.4rem);
+    }
+    .final-cta .section-title em { color: #4bb377; }
+    .final-cta__sub { font-size: 1.1rem; color: rgba(255,255,255,0.72); max-width: 580px; margin: 0 auto 0.6rem; line-height: 1.55; }
+    .final-cta__ask { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; color: #fff; margin: 0 auto 1.6rem; }
     .final-cta .cta-btn { animation: none; margin: 0 auto; }
     .final-cta .cta-note { animation: none; margin-top: 0.6rem; }
+    @media (max-width: 768px) { .final-cta__card { padding: 2rem 1.25rem 1.75rem; border-radius: 16px; } }
 
     /* Timer */
     .timer-inline {
@@ -825,8 +843,8 @@
       font-family: var(--font-display); font-size: 0.66rem; font-weight: 700;
       text-transform: uppercase; letter-spacing: 0.09em; color: var(--text-muted);
     }
-    .segment-card__title { font-family: var(--font-display); font-size: 1.02rem; font-weight: 700; line-height: 1.25; }
-    .segment-card__text { font-size: 0.94rem; line-height: 1.5; color: var(--text-secondary); flex: 1; }
+    .segment-card__title { font-family: var(--font-display); font-size: 1.12rem; font-weight: 700; line-height: 1.25; }
+    .segment-card__text { font-size: 1.02rem; line-height: 1.5; color: var(--text-secondary); flex: 1; }
     .segment-card__offer {
       display: flex; align-items: flex-start; gap: 0.5rem;
       margin-top: 0.35rem; padding-top: 0.85rem; border-top: 1px solid var(--separator);
@@ -845,7 +863,7 @@
     /* ================================
        3b. BROKEN (что перестало работать)
        ================================ */
-    .broken-intro { font-size: 1.1rem; color: #333338; margin: 0.4rem 0 1.75rem; max-width: 680px; line-height: 1.6; }
+    .broken-intro { font-size: 1.15rem; font-weight: 500; color: #2f2f34; margin: 0.4rem 0 1.75rem; max-width: 680px; line-height: 1.6; }
     /* Верхняя врезка секции — тёмная, как «Хочется переждать» */
     .market-note {
       max-width: 760px; margin: 0.5rem 0 1.9rem;
@@ -916,8 +934,8 @@
     .tool-card:nth-child(3) .tool-card__icon { background: linear-gradient(135deg, #f0913f, #d76a1f); box-shadow: 0 8px 20px rgba(215,106,31,0.26); }
     .tool-card__metric { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; color: var(--green); letter-spacing: -0.02em; white-space: nowrap; text-align: right; }
     .tool-card__metric small { display: block; font-size: 0.58rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
-    .tool-card__title { font-family: var(--font-display); font-size: 1.18rem; font-weight: 800; }
-    .tool-card__text { font-size: 1rem; line-height: 1.55; color: var(--text-secondary); }
+    .tool-card__title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; }
+    .tool-card__text { font-size: 1.05rem; line-height: 1.55; color: var(--text-secondary); }
 
     .bridge-strong {
       max-width: 840px; margin: 2.25rem auto 1.75rem; padding: 1.6rem 1.85rem;
@@ -932,7 +950,7 @@
        6b. RESULT (финансовая безопасность)
        ================================ */
     .result-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85rem 1.5rem; margin: 1.75rem 0; max-width: 920px; }
-    .result-item { display: flex; align-items: flex-start; gap: 0.7rem; font-size: 1.02rem; line-height: 1.45; color: var(--text); }
+    .result-item { display: flex; align-items: flex-start; gap: 0.7rem; font-size: 1.08rem; line-height: 1.45; color: var(--text); }
     .result-item__check {
       width: 22px; height: 22px; min-width: 22px; border-radius: 50%;
       background: var(--green-subtle); color: var(--green);
@@ -1028,20 +1046,38 @@
       margin: 2.75rem auto 1.75rem; max-width: 780px;
     }
     .reviews-platforms-head em { font-style: normal; color: var(--green); }
-    .platforms-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; max-width: 1040px; margin: 0 auto; }
+    .platforms-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; max-width: 1200px; margin: 0 auto; }
     .platform-card {
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; gap: 0.4rem;
+      display: flex; flex-direction: column; align-items: stretch;
+      text-align: center; overflow: hidden;
       background: #fff; border: 1px solid var(--separator); border-radius: var(--radius);
-      padding: 1.5rem 1rem; transition: all 0.25s ease;
+      padding: 0; transition: all 0.25s ease;
     }
     .platform-card:hover { box-shadow: 0 10px 26px rgba(0,0,0,0.06); transform: translateY(-2px); }
-    .platform-card__logo {
-      width: 46px; height: 46px; border-radius: 13px; margin-bottom: 0.35rem;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-display); font-weight: 800; font-size: 1.1rem; color: #fff;
+    /* Скриншот реальных отзывов — соцдоказательство, клик открывает полный */
+    .platform-card__shot {
+      display: block; width: 100%; aspect-ratio: 4 / 3;
+      border: 0; padding: 0; margin: 0; background: var(--bg-alt);
+      position: relative; overflow: hidden; cursor: zoom-in;
+      border-bottom: 1px solid var(--separator);
     }
-    .platform-card__logo svg { width: 24px; height: 24px; }
+    .platform-card__shot img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+    .platform-card__shot::after {
+      content: 'Смотреть отзывы'; position: absolute; left: 0; right: 0; bottom: 0;
+      padding: 0.75rem 0.4rem 0.45rem;
+      font-family: var(--font-display); font-size: 0.66rem; font-weight: 700; color: #fff;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      opacity: 0; transition: opacity 0.25s;
+    }
+    .platform-card__shot:hover::after, .platform-card__shot:focus-visible::after { opacity: 1; }
+    .platform-card__shot:focus-visible { outline: 2px solid var(--green); outline-offset: -2px; }
+    .platform-card__info { display: flex; flex-direction: column; align-items: center; gap: 0.35rem; padding: 1rem 0.85rem 1.15rem; }
+    .platform-card__logo {
+      width: 40px; height: 40px; border-radius: 11px; margin-bottom: 0.2rem;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-weight: 800; font-size: 1rem; color: #fff;
+    }
+    .platform-card__logo svg { width: 21px; height: 21px; }
     .platform-card__name { font-family: var(--font-display); font-weight: 700; font-size: 0.92rem; color: var(--text); }
     .platform-card__stars { color: #ffb300; font-size: 0.9rem; letter-spacing: 1px; line-height: 1; }
     .platform-card__rating { font-family: var(--font-display); font-weight: 800; font-size: 1.35rem; letter-spacing: -0.02em; color: var(--text); }
@@ -1190,8 +1226,8 @@
       .gift-info { align-items: flex-start; flex: 1; min-width: 0; }
       .timer-box { margin: 0; }
       .gift-row { width: 100%; }
-      .pain-card__text { font-size: 0.88rem; }
-      .program-card__list li { font-size: 0.88rem; }
+      .pain-card__text { font-size: 0.95rem; }
+      .program-card__list li { font-size: 0.98rem; }
 
       .cta-btn { width: 100%; justify-content: center; font-size: 0.95rem; padding: 0.85rem 1.5rem; }
 
@@ -1320,19 +1356,20 @@
     /* Выделенный главный эксперт — Дмитрий Толстяков (лицо школы) */
     .experts-featured { margin-top: 2rem; }
     .exp-card--featured { flex-direction: row; align-items: stretch; }
-    .exp-card--featured .exp-card__photo-wrap { width: 340px; min-width: 340px; aspect-ratio: auto; }
-    .exp-card--featured .exp-card__body { flex: 1; padding: 2rem 2.25rem; justify-content: center; }
+    /* Фото Дмитрия ≈1,5× шире карточек остальных экспертов (~367px) */
+    .exp-card--featured .exp-card__photo-wrap { width: 560px; min-width: 560px; aspect-ratio: 1 / 1; }
+    .exp-card--featured .exp-card__body { flex: 1; padding: 2.25rem 2.5rem; justify-content: center; }
     .exp-featured__badge {
       display: inline-flex; align-self: flex-start; align-items: center; gap: 0.35rem;
       background: var(--green-subtle); color: var(--green);
-      font-family: var(--font-display); font-weight: 700; font-size: 0.68rem;
+      font-family: var(--font-display); font-weight: 700; font-size: 0.72rem;
       text-transform: uppercase; letter-spacing: 0.06em;
-      padding: 0.32rem 0.75rem; border-radius: 100px; margin-bottom: 0.7rem;
+      padding: 0.35rem 0.8rem; border-radius: 100px; margin-bottom: 0.85rem;
     }
-    .exp-card--featured .exp-card__name { font-size: 1.55rem; }
-    .exp-card--featured .exp-card__role { font-size: 0.72rem; margin: 0.35rem 0 0.9rem; }
-    .exp-card--featured .exp-card__list { display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem 1.75rem; }
-    .exp-card--featured .exp-card__list li { font-size: 0.98rem; }
+    .exp-card--featured .exp-card__name { font-size: 1.85rem; }
+    .exp-card--featured .exp-card__role { font-size: 0.8rem; margin: 0.4rem 0 1.1rem; }
+    .exp-card--featured .exp-card__list { gap: 0.65rem; }
+    .exp-card--featured .exp-card__list li { font-size: 1.05rem; line-height: 1.45; padding-left: 1.15rem; }
 
     /* Экран 10 — Видеоотзывы */
     .vreviews {
@@ -1397,6 +1434,28 @@
     }
     .vlightbox__close:hover { background: rgba(255,255,255,0.28); }
 
+    /* Лайтбокс для скриншотов отзывов */
+    .imglightbox {
+      position: fixed; inset: 0; z-index: 1100;
+      background: rgba(0,0,0,0.85); display: flex;
+      align-items: center; justify-content: center; padding: 1.5rem;
+      opacity: 0; visibility: hidden; transition: all 0.3s;
+      overflow-y: auto;
+    }
+    .imglightbox.active { opacity: 1; visibility: visible; }
+    .imglightbox__inner { position: relative; margin: auto; }
+    .imglightbox__inner img {
+      display: block; max-width: min(92vw, 880px); max-height: 86vh;
+      width: auto; height: auto; border-radius: 12px; background: #fff;
+    }
+    .imglightbox__close {
+      position: absolute; top: -46px; right: 0;
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(255,255,255,0.15); color: #fff; border: none;
+      font-size: 1.4rem; cursor: pointer; line-height: 1;
+    }
+    .imglightbox__close:hover { background: rgba(255,255,255,0.28); }
+
     /* Адаптив новых блоков */
     @media (max-width: 1024px) {
       .vreviews { grid-template-columns: repeat(3, 1fr); }
@@ -1418,10 +1477,11 @@
       .exp-card--featured .exp-card__photo-wrap { width: 100%; min-width: 0; aspect-ratio: 4 / 3; }
       .exp-card--featured .exp-card__body { padding: 1.4rem 1.35rem; }
       .exp-card--featured .exp-card__name { font-size: 1.3rem; }
-      .exp-card--featured .exp-card__list { grid-template-columns: 1fr; }
+      .exp-card--featured .exp-card__list li { font-size: 0.98rem; }
       /* Площадки-отзывы: 2 в ряд на мобилке */
       .platforms-grid { grid-template-columns: 1fr 1fr; gap: 0.7rem; }
-      .platform-card { padding: 1.1rem 0.9rem; }
+      .platform-card__info { padding: 0.85rem 0.6rem 1rem; }
+      .platform-card__shot::after { content: none; }
     }
   </style>
 </head>
@@ -1517,7 +1577,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </section>
 
   <!-- ===== 3. ЧТО ПЕРЕСТАЛО РАБОТАТЬ ===== -->
-  <section class="section">
+  <section class="section section--centered">
     <div class="container">
       <div class="section-label reveal">Реальность рынка</div>
       <div class="market-note reveal">
@@ -1592,7 +1652,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </section>
 
   <!-- ===== 6. ФИНАНСОВАЯ БЕЗОПАСНОСТЬ НАВСЕГДА ===== -->
-  <section class="section section--alt">
+  <section class="section section--alt section--centered">
     <div class="container">
       <div class="section-label reveal">Результат</div>
       <h2 class="section-title reveal">Финансовая безопасность <em>навсегда</em></h2>
@@ -1675,7 +1735,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </section>
 
   <!-- ===== 9. РЕГАЛИИ ШКОЛЫ ===== -->
-  <section class="section">
+  <section class="section section--centered">
     <div class="container">
       <div class="section-label reveal">О школе</div>
       <h2 class="section-title reveal">FIN-RA&nbsp;— школа <em>безопасных инвестиций</em></h2>
@@ -1807,37 +1867,62 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="reviews-platforms-head reveal">Более <em>22&nbsp;000</em> реальных отзывов от наших студентов</div>
       <div class="platforms-grid">
         <div class="platform-card reveal">
-          <div class="platform-card__logo" style="background:#FC3F1D">Я</div>
-          <div class="platform-card__name">Яндекс&nbsp;Карты</div>
-          <div class="platform-card__stars">★★★★★</div>
-          <div class="platform-card__rating">5,0</div>
-          <div class="platform-card__count">230+ отзывов</div>
+          <button class="platform-card__shot" onclick="openImg('rev-yandex.jpg','Отзывы о FIN-RA на Яндекс Картах')" aria-label="Открыть скриншот отзывов на Яндекс Картах">
+            <img src="rev-yandex.jpg" alt="Скриншот отзывов о FIN-RA на Яндекс Картах" width="1063" height="1244" loading="lazy">
+          </button>
+          <div class="platform-card__info">
+            <div class="platform-card__logo" style="background:#FC3F1D">Я</div>
+            <div class="platform-card__name">Яндекс&nbsp;Карты</div>
+            <div class="platform-card__stars">★★★★★</div>
+            <div class="platform-card__rating">5,0</div>
+            <div class="platform-card__count">230+ отзывов</div>
+          </div>
         </div>
         <div class="platform-card reveal reveal-delay-1">
-          <div class="platform-card__logo" style="background:#8E44AD">O</div>
-          <div class="platform-card__name">Otzyvru</div>
-          <div class="platform-card__stars">★★★★★</div>
-          <div class="platform-card__rating">4,9</div>
-          <div class="platform-card__count">700+ отзывов</div>
+          <button class="platform-card__shot" onclick="openImg('rev-otzyvru.jpg','Отзывы о FIN-RA на Otzyvru')" aria-label="Открыть скриншот отзывов на Otzyvru">
+            <img src="rev-otzyvru.jpg" alt="Скриншот отзывов о FIN-RA на Otzyvru" width="1406" height="1833" loading="lazy">
+          </button>
+          <div class="platform-card__info">
+            <div class="platform-card__logo" style="background:#8E44AD">O</div>
+            <div class="platform-card__name">Otzyvru</div>
+            <div class="platform-card__stars">★★★★★</div>
+            <div class="platform-card__rating">4,9</div>
+            <div class="platform-card__count">700+ отзывов</div>
+          </div>
         </div>
         <div class="platform-card reveal reveal-delay-2">
-          <div class="platform-card__logo" style="background:#FFB800;color:#1d1d1f">Y</div>
-          <div class="platform-card__name">Yell.ru</div>
-          <div class="platform-card__stars">★★★★★</div>
-          <div class="platform-card__rating">4,9</div>
-          <div class="platform-card__count">230+ отзывов</div>
+          <button class="platform-card__shot" onclick="openImg('rev-yell.jpg','Отзывы о FIN-RA на Yell.ru')" aria-label="Открыть скриншот отзывов на Yell.ru">
+            <img src="rev-yell.jpg" alt="Скриншот отзывов о FIN-RA на Yell.ru" width="919" height="1156" loading="lazy">
+          </button>
+          <div class="platform-card__info">
+            <div class="platform-card__logo" style="background:#FFB800;color:#1d1d1f">Y</div>
+            <div class="platform-card__name">Yell.ru</div>
+            <div class="platform-card__stars">★★★★★</div>
+            <div class="platform-card__rating">4,9</div>
+            <div class="platform-card__count">230+ отзывов</div>
+          </div>
         </div>
         <div class="platform-card reveal reveal-delay-2">
-          <div class="platform-card__logo" style="background:#0077FF">VK</div>
-          <div class="platform-card__name">ВКонтакте</div>
-          <div class="platform-card__rating">14&nbsp;000+</div>
-          <div class="platform-card__count">отзывов</div>
+          <button class="platform-card__shot" onclick="openImg('rev-vk.jpg','Отзывы о FIN-RA во ВКонтакте')" aria-label="Открыть скриншот отзывов во ВКонтакте">
+            <img src="rev-vk.jpg" alt="Скриншот отзывов о FIN-RA во ВКонтакте" width="1175" height="1380" loading="lazy">
+          </button>
+          <div class="platform-card__info">
+            <div class="platform-card__logo" style="background:#0077FF">VK</div>
+            <div class="platform-card__name">ВКонтакте</div>
+            <div class="platform-card__rating">14&nbsp;000+</div>
+            <div class="platform-card__count">отзывов</div>
+          </div>
         </div>
         <div class="platform-card reveal reveal-delay-3">
-          <div class="platform-card__logo" style="background:#2AABEE"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></div>
-          <div class="platform-card__name">Telegram</div>
-          <div class="platform-card__rating">7&nbsp;000+</div>
-          <div class="platform-card__count">отзывов</div>
+          <button class="platform-card__shot" onclick="openImg('rev-tg.jpg','Отзывы о FIN-RA в Telegram')" aria-label="Открыть скриншот отзывов в Telegram">
+            <img src="rev-tg.jpg" alt="Скриншот отзывов о FIN-RA в Telegram" width="1488" height="1843" loading="lazy">
+          </button>
+          <div class="platform-card__info">
+            <div class="platform-card__logo" style="background:#2AABEE"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></div>
+            <div class="platform-card__name">Telegram</div>
+            <div class="platform-card__rating">7&nbsp;000+</div>
+            <div class="platform-card__count">отзывов</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1846,11 +1931,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- ===== 12. ФИНАЛЬНЫЙ CTA ===== -->
   <section class="section final-cta">
     <div class="container">
-      <h2 class="section-title reveal">Мы не даём <em>волшебных кнопок</em></h2>
-      <p class="final-cta__sub reveal">Мы учим системному подходу к управлению финансовой жизнью. Готовы начать?</p>
-      <button class="cta-btn reveal" onclick="openModal()">Начать обучение
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </button>
+      <div class="final-cta__card reveal">
+        <h2 class="section-title">Мы не даём <em>волшебных кнопок</em></h2>
+        <p class="final-cta__sub">Мы учим системному подходу к управлению финансовой жизнью.</p>
+        <p class="final-cta__ask">Готовы начать?</p>
+        <button class="cta-btn" onclick="openModal()">Начать обучение
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
     </div>
   </section>
 
@@ -1891,6 +1979,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <!-- Видео-лайтбокс -->
+  <div class="imglightbox" id="imgLightbox" onclick="closeImg(event)">
+    <div class="imglightbox__inner">
+      <button class="imglightbox__close" onclick="closeImg()" aria-label="Закрыть">&times;</button>
+      <img id="imgLightboxImg" src="" alt="">
+    </div>
+  </div>
+
   <div class="vlightbox" id="vlightbox" onclick="closeVideo(event)">
     <div class="vlightbox__inner">
       <button class="vlightbox__close" onclick="closeVideo()" aria-label="Закрыть">&times;</button>
@@ -1931,7 +2026,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       document.getElementById('vlightboxBody').innerHTML = '';
       document.body.style.overflow = '';
     }
-    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { closeModal(); closeVideo(); } });
+    function openImg(src, alt) {
+      var img = document.getElementById('imgLightboxImg');
+      img.src = src; img.alt = alt || '';
+      document.getElementById('imgLightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeImg(e) {
+      if (e && e.target !== e.currentTarget) return;
+      document.getElementById('imgLightbox').classList.remove('active');
+      document.getElementById('imgLightboxImg').src = '';
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { closeModal(); closeVideo(); closeImg(); } });
 
     // Scroll reveal
     (function() {
