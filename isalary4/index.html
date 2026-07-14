@@ -1536,10 +1536,12 @@
       /* студийный фон — радиальный «свет» за фигурой, тянется к правому краю, мягко тает влево к тексту */
       .hero--bleed::before {
         content: ''; position: absolute; top: 0; right: 0; bottom: 0; z-index: 0; pointer-events: none;
-        width: 72vw;
-        background: radial-gradient(118% 88% at 70% 28%, #eef0f2 0%, #e3e5e8 46%, #d1d4d9 100%);
-        -webkit-mask-image: linear-gradient(94deg, transparent 0, transparent 6%, #000 32%);
-                mask-image: linear-gradient(94deg, transparent 0, transparent 6%, #000 32%);
+        width: 84vw;
+        background:
+          radial-gradient(44% 48% at 60% 30%, rgba(240,242,244,.45) 0%, rgba(240,242,244,0) 72%),
+          linear-gradient(108deg, #e7eaed 0%, #d8dce1 32%, #c4c8ce 64%, #b4b9c0 100%);
+        -webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent 16%, #000 46%);
+                mask-image: linear-gradient(90deg, transparent 0%, transparent 16%, #000 46%);
       }
       .hero--bleed .hero__nav, .hero--bleed .hero__body { position: relative; z-index: 1; }
       .hero--bleed .hero__body { align-items: center; grid-template-columns: 1.02fr 0.98fr; }
