@@ -1489,6 +1489,17 @@
 
     /* ==================== Новый герой (варианты 1-4) ==================== */
     .hero--v .hero__body { align-items: center; }
+
+    /* Герой — на общей сетке сайта (как .container), иначе заголовок уезжает левее секций */
+    .hero--v .hero__nav,
+    .hero--v .hero__body {
+      width: 100%; max-width: 1200px; margin-left: auto; margin-right: auto;
+      padding-left: 32px; padding-right: 32px;
+    }
+    @media (min-width: 1600px) {
+      .hero--v .hero__nav,
+      .hero--v .hero__body { max-width: 1400px; padding-left: 32px; padding-right: 32px; }
+    }
     .vmedia { position: relative; overflow: hidden; }
     .vmedia--grey  { background: linear-gradient(157deg, #e4e5e8 0%, #c7c9cd 100%); }
     .vmedia--green { background: linear-gradient(157deg, #315245 0%, #1e3a2f 100%); }
@@ -1528,7 +1539,7 @@
     .vplate--dark .vplate__dot { background: #4bd089; }
 
     /* карточные варианты — чуть шире колонка под фото */
-    .hero--card .hero__body { grid-template-columns: 1.05fr 0.95fr; }
+    .hero--card .hero__body { grid-template-columns: 1fr 1fr; }
 
     /* ГРАДИЕНТ full-bleed: студийный серый до края окна, человек крупный и близко к тексту */
     @media (min-width: 769px) {
@@ -1544,10 +1555,10 @@
                 mask-image: linear-gradient(90deg, transparent 0%, transparent 16%, #000 46%);
       }
       .hero--bleed .hero__nav, .hero--bleed .hero__body { position: relative; z-index: 1; }
-      .hero--bleed .hero__body { align-items: center; grid-template-columns: 1.02fr 0.98fr; }
+      .hero--bleed .hero__body { align-items: center; grid-template-columns: 1fr 1fr; padding-bottom: 0; }
       .hero--bleed .hero__left { align-self: center; }
       .hero--bleed .hero__right {
-        position: relative; align-self: stretch; left: -4vw;
+        position: relative; align-self: stretch; left: 0;
         display: flex; align-items: flex-end; justify-content: center;
       }
       .vmedia--bleed { display: contents; background: none; }
