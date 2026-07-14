@@ -1503,6 +1503,8 @@
       width: 100%; max-width: 470px; aspect-ratio: 5 / 6;
       border-radius: 30px; box-shadow: 0 34px 74px rgba(0,0,0,.14), 0 0 0 1px rgba(0,0,0,.03);
     }
+    /* зелёная карточка — фото со сложенными руками почти квадратное, рамка под него (иначе много зелёного сверху) */
+    .vmedia--card.vmedia--green { max-width: 520px; aspect-ratio: 88 / 79; }
 
     /* Плашка с именем */
     .vplate {
@@ -1523,8 +1525,8 @@
     .vplate__dot   { width: 7px; height: 7px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
     .vplate--dark .vplate__dot { background: #4bd089; }
 
-    /* FULL-BLEED: десктоп — медиа абсолютно внутри правой колонки, правый край тянем за окно */
-    @media (min-width: 1200px) {
+    /* FULL-BLEED: десктоп/ноутбук — медиа абсолютно внутри правой колонки, правый край тянем за окно */
+    @media (min-width: 1000px) {
       .hero--bleed .hero__body { align-items: stretch; grid-template-columns: 1.05fr 0.95fr; }
       .hero--bleed .hero__left { align-self: center; }
       .hero--bleed .hero__right { position: relative; align-self: stretch; min-height: 600px; display: block; }
@@ -1543,7 +1545,7 @@
     }
 
     /* FULL-BLEED: планшет — как контейнерная карточка справа */
-    @media (min-width: 769px) and (max-width: 1199px) {
+    @media (min-width: 769px) and (max-width: 999px) {
       .hero--bleed .hero__right { display: flex; justify-content: flex-end; }
       .vmedia--bleed {
         width: 100%; max-width: 440px; aspect-ratio: 4 / 5;
@@ -1563,6 +1565,7 @@
         aspect-ratio: 4 / 5; border-radius: 24px; min-height: 0;
       }
       .vmedia--bleed { background: linear-gradient(157deg, #e6e7ea 0%, #cfd1d5 100%); }
+      .vmedia--card.vmedia--green { max-width: 340px; }
       .vmedia__photo { left: 50%; transform: translateX(-50%); height: 100%; }
       .hero--card .vplate, .hero--bleed .vplate { left: 14px; right: 14px; max-width: none; bottom: 14px; }
       .hero--bleed .vplate__role { white-space: normal; }
