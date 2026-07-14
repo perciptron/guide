@@ -1527,23 +1527,29 @@
     .vplate__dot   { width: 7px; height: 7px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
     .vplate--dark .vplate__dot { background: #4bd089; }
 
-    /* ГРАДИЕНТ (плавный переход в фон, без рамки) — вариативность, фото компактно рядом с текстом */
-    .hero--card .hero__body, .hero--bleed .hero__body { grid-template-columns: 1.05fr 0.95fr; }
+    /* карточные варианты — чуть шире колонка под фото */
+    .hero--card .hero__body { grid-template-columns: 1.05fr 0.95fr; }
+
+    /* ГРАДИЕНТ full-bleed: серый уходит к правому краю окна, человек крупный рядом с текстом */
     @media (min-width: 769px) {
-      .hero--bleed .hero__right { display: flex; justify-content: flex-end; align-items: center; }
-      .vmedia--bleed {
-        width: 100%; max-width: 600px; aspect-ratio: 6 / 7; border-radius: 0;
-        background: radial-gradient(125% 82% at 61% 40%, #c9ccd0 0%, #dcdee1 38%, #eef0f1 64%, #fbfbfb 82%);
+      .hero--bleed { position: relative; overflow: hidden; }
+      .hero--bleed::before {
+        content: ''; position: absolute; top: 0; right: 0; bottom: 0; z-index: 0; pointer-events: none;
+        width: 60vw;
+        background: linear-gradient(103deg, rgba(251,251,251,0) 0%, #ecedef 34%, #d9dcdf 100%);
       }
+      .hero--bleed .hero__nav, .hero--bleed .hero__body { position: relative; z-index: 1; }
+      .hero--bleed .hero__body { align-items: stretch; grid-template-columns: 1fr 1fr; }
+      .hero--bleed .hero__left { align-self: center; }
+      .hero--bleed .hero__right { position: relative; align-self: stretch; min-height: 580px; display: block; }
+      .vmedia--bleed { position: static; background: none; overflow: visible; }
       .vmedia--bleed .vmedia__photo {
-        height: 100%;
-        -webkit-mask-image: linear-gradient(to bottom, #000 86%, transparent 100%);
-        mask-image: linear-gradient(to bottom, #000 86%, transparent 100%);
+        position: absolute; bottom: 0; right: 0; left: auto; transform: none;
+        height: 104%; width: auto; max-width: none;
       }
-      .hero--bleed .vplate { left: 50%; right: auto; transform: translateX(-50%); bottom: 8%; max-width: 90%; }
+      .hero--bleed .vplate { left: auto; right: 0; bottom: 9%; transform: none; max-width: 400px; }
       .hero--bleed .vplate__role { white-space: nowrap; }
     }
-    @media (min-width: 1600px) { .vmedia--bleed { max-width: 660px; } }
 
     /* Мобилка — всё стопкой */
     @media (max-width: 768px) {
