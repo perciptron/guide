@@ -1505,7 +1505,8 @@
     }
     @media (min-width: 1600px) { .vmedia--card { max-width: 560px; } }
     /* зелёная карточка — фото со сложенными руками почти квадратное, рамка под него (иначе много зелёного сверху) */
-    .vmedia--card.vmedia--green { max-width: 520px; aspect-ratio: 88 / 79; }
+    .vmedia--card.vmedia--green { max-width: 580px; aspect-ratio: 88 / 79; }
+    @media (min-width: 1600px) { .vmedia--card.vmedia--green { max-width: 640px; } }
 
     /* Плашка с именем */
     .vplate {
@@ -1526,35 +1527,23 @@
     .vplate__dot   { width: 7px; height: 7px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
     .vplate--dark .vplate__dot { background: #4bd089; }
 
-    /* FULL-BLEED: десктоп/ноутбук — медиа абсолютно внутри правой колонки, правый край тянем за окно */
-    @media (min-width: 1000px) {
-      .hero--bleed .hero__body { align-items: stretch; grid-template-columns: 1.05fr 0.95fr; }
-      .hero--bleed .hero__left { align-self: center; }
-      .hero--bleed .hero__right { position: relative; align-self: stretch; min-height: 600px; display: block; }
+    /* ГРАДИЕНТ (плавный переход в фон, без рамки) — вариативность, фото компактно рядом с текстом */
+    .hero--card .hero__body, .hero--bleed .hero__body { grid-template-columns: 1.05fr 0.95fr; }
+    @media (min-width: 769px) {
+      .hero--bleed .hero__right { display: flex; justify-content: flex-end; align-items: center; }
       .vmedia--bleed {
-        position: absolute; top: 0; bottom: 0; left: 0;
-        right: min(-48px, calc(652px - 50vw));   /* правый край медиа = ровно край окна (контейнер 1400, паддинг 48) */
-        background: linear-gradient(90deg, #fbfbfb 0%, #fbfbfb 14%, #eaecee 52%, #d6d9dc 100%);
+        width: 100%; max-width: 600px; aspect-ratio: 6 / 7; border-radius: 0;
+        background: radial-gradient(125% 82% at 61% 40%, #c9ccd0 0%, #dcdee1 38%, #eef0f1 64%, #fbfbfb 82%);
       }
-      .vmedia--bleed .vmedia__photo { left: auto; transform: none; right: clamp(30px, 7vw, 140px); height: 96%; }
-      .hero--bleed .vplate { right: clamp(24px, 5vw, 110px); max-width: 400px; }
+      .vmedia--bleed .vmedia__photo {
+        height: 100%;
+        -webkit-mask-image: linear-gradient(to bottom, #000 86%, transparent 100%);
+        mask-image: linear-gradient(to bottom, #000 86%, transparent 100%);
+      }
+      .hero--bleed .vplate { left: 50%; right: auto; transform: translateX(-50%); bottom: 8%; max-width: 90%; }
       .hero--bleed .vplate__role { white-space: nowrap; }
     }
-    /* на очень широких экранах контейнер 1600 + паддинг 64 */
-    @media (min-width: 1600px) {
-      .vmedia--bleed { right: calc(736px - 50vw); }
-    }
-
-    /* FULL-BLEED: планшет — как контейнерная карточка справа */
-    @media (min-width: 769px) and (max-width: 999px) {
-      .hero--bleed .hero__right { display: flex; justify-content: flex-end; }
-      .vmedia--bleed {
-        width: 100%; max-width: 440px; aspect-ratio: 4 / 5;
-        border-radius: 26px; box-shadow: 0 30px 64px rgba(0,0,0,.13);
-        background: linear-gradient(157deg, #e6e7ea 0%, #cfd1d5 100%);
-      }
-      .hero--bleed .vplate { left: 18px; right: 18px; }
-    }
+    @media (min-width: 1600px) { .vmedia--bleed { max-width: 660px; } }
 
     /* Мобилка — всё стопкой */
     @media (max-width: 768px) {
@@ -1580,7 +1569,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
   <!-- ===== 1. HERO ===== -->
-  <section class="hero hero--v hero--card">
+  <section class="hero hero--v hero--bleed">
     <nav class="hero__nav">
       <img src="/isalary/logo.png" alt="FIN-RA — школа безопасных инвестиций" class="hero__logo" width="87" height="44">
       <div class="hero__nav-right">
@@ -1608,7 +1597,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="hero__right">
-        <div class="vmedia vmedia--card vmedia--grey">
+        <div class="vmedia vmedia--bleed vmedia--grey">
           <img class="vmedia__photo" src="/isalary/h2.png" alt="Дмитрий Толстяков, основатель FIN-RA" width="884" height="1133">
           <div class="vplate vplate--light">
             <div class="vplate__name">Дмитрий Толстяков</div>
