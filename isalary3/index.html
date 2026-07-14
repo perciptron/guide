@@ -1530,24 +1530,31 @@
     /* карточные варианты — чуть шире колонка под фото */
     .hero--card .hero__body { grid-template-columns: 1.05fr 0.95fr; }
 
-    /* ГРАДИЕНТ full-bleed: серый уходит к правому краю окна, человек крупный рядом с текстом */
+    /* ГРАДИЕНТ full-bleed: студийный серый до края окна, человек крупный и близко к тексту */
     @media (min-width: 769px) {
       .hero--bleed { position: relative; overflow: hidden; }
+      /* студийный фон — радиальный «свет» за фигурой, тянется к правому краю, мягко тает влево к тексту */
       .hero--bleed::before {
         content: ''; position: absolute; top: 0; right: 0; bottom: 0; z-index: 0; pointer-events: none;
-        width: 60vw;
-        background: linear-gradient(103deg, rgba(251,251,251,0) 0%, #ecedef 34%, #d9dcdf 100%);
+        width: 72vw;
+        background: radial-gradient(118% 88% at 70% 28%, #eef0f2 0%, #e3e5e8 46%, #d1d4d9 100%);
+        -webkit-mask-image: linear-gradient(94deg, transparent 0, transparent 6%, #000 32%);
+                mask-image: linear-gradient(94deg, transparent 0, transparent 6%, #000 32%);
       }
       .hero--bleed .hero__nav, .hero--bleed .hero__body { position: relative; z-index: 1; }
-      .hero--bleed .hero__body { align-items: stretch; grid-template-columns: 1fr 1fr; }
+      .hero--bleed .hero__body { align-items: center; grid-template-columns: 1.02fr 0.98fr; }
       .hero--bleed .hero__left { align-self: center; }
-      .hero--bleed .hero__right { position: relative; align-self: stretch; min-height: 580px; display: block; }
-      .vmedia--bleed { position: static; background: none; overflow: visible; }
-      .vmedia--bleed .vmedia__photo {
-        position: absolute; bottom: 0; right: 0; left: auto; transform: none;
-        height: 104%; width: auto; max-width: none;
+      .hero--bleed .hero__right {
+        position: relative; align-self: stretch; left: -4vw;
+        display: flex; align-items: flex-end; justify-content: center;
       }
-      .hero--bleed .vplate { left: auto; right: 0; bottom: 9%; transform: none; max-width: 400px; }
+      .vmedia--bleed { display: contents; background: none; }
+      .vmedia--bleed .vmedia__photo {
+        position: relative; bottom: 0; left: auto; right: auto; transform: none;
+        height: clamp(540px, 80vh, 720px); width: auto; max-width: none; align-self: flex-end;
+        filter: drop-shadow(-14px 20px 34px rgba(55,60,68,.17));
+      }
+      .hero--bleed .vplate { position: absolute; left: auto; right: 4%; bottom: 10%; transform: none; max-width: 370px; }
       .hero--bleed .vplate__role { white-space: nowrap; }
     }
 
