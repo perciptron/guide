@@ -1497,12 +1497,13 @@
       height: 100%; width: auto; max-width: none;
     }
 
-    /* режим КАРТОЧКА */
+    /* режим КАРТОЧКА — фото компактно рядом с текстом, без растекания к краю окна */
     .hero--card .hero__right { display: flex; justify-content: flex-end; }
     .vmedia--card {
-      width: 100%; max-width: 470px; aspect-ratio: 5 / 6;
+      width: 100%; max-width: 520px; aspect-ratio: 5 / 6;
       border-radius: 30px; box-shadow: 0 34px 74px rgba(0,0,0,.14), 0 0 0 1px rgba(0,0,0,.03);
     }
+    @media (min-width: 1600px) { .vmedia--card { max-width: 560px; } }
     /* зелёная карточка — фото со сложенными руками почти квадратное, рамка под него (иначе много зелёного сверху) */
     .vmedia--card.vmedia--green { max-width: 520px; aspect-ratio: 88 / 79; }
 

@@ -1497,12 +1497,13 @@
       height: 100%; width: auto; max-width: none;
     }
 
-    /* режим КАРТОЧКА */
+    /* режим КАРТОЧКА — фото компактно рядом с текстом, без растекания к краю окна */
     .hero--card .hero__right { display: flex; justify-content: flex-end; }
     .vmedia--card {
-      width: 100%; max-width: 470px; aspect-ratio: 5 / 6;
+      width: 100%; max-width: 520px; aspect-ratio: 5 / 6;
       border-radius: 30px; box-shadow: 0 34px 74px rgba(0,0,0,.14), 0 0 0 1px rgba(0,0,0,.03);
     }
+    @media (min-width: 1600px) { .vmedia--card { max-width: 560px; } }
     /* зелёная карточка — фото со сложенными руками почти квадратное, рамка под него (иначе много зелёного сверху) */
     .vmedia--card.vmedia--green { max-width: 520px; aspect-ratio: 88 / 79; }
 
@@ -1579,7 +1580,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
   <!-- ===== 1. HERO ===== -->
-  <section class="hero hero--v hero--bleed">
+  <section class="hero hero--v hero--card">
     <nav class="hero__nav">
       <img src="/isalary/logo.png" alt="FIN-RA — школа безопасных инвестиций" class="hero__logo" width="87" height="44">
       <div class="hero__nav-right">
@@ -1607,7 +1608,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="hero__right">
-        <div class="vmedia vmedia--bleed vmedia--grey">
+        <div class="vmedia vmedia--card vmedia--grey">
           <img class="vmedia__photo" src="/isalary/h2.png" alt="Дмитрий Толстяков, основатель FIN-RA" width="884" height="1133">
           <div class="vplate vplate--light">
             <div class="vplate__name">Дмитрий Толстяков</div>
