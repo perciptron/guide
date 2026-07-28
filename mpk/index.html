@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Бесплатный практикум «Моя первая крипта» — старт 13 августа. Разберём с нуля: как устроена криптовалюта, как безопасно купить первую монету и не потерять деньги на ошибках новичка.">
+  <meta name="description" content="Бесплатный практикум «Моя первая крипта». Старт 13 августа. Разберём с нуля: как устроена криптовалюта, как безопасно купить первую монету и не потерять деньги на ошибках новичка.">
   <meta name="theme-color" content="#ece9e1">
-  <meta property="og:title" content="Моя первая крипта — бесплатный практикум | FIN-RA">
+  <meta property="og:title" content="Моя первая крипта: бесплатный практикум | FIN-RA">
   <meta property="og:description" content="Старт 13 августа. Онлайн, бесплатно. Разберём с нуля: как устроена криптовалюта, как безопасно купить первую монету и не потерять деньги.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://guides.fin-ra.pro/mpk/">
   <meta property="og:image" content="https://guides.fin-ra.pro/mpk/logo.png">
   <link rel="icon" href="/favicon.ico">
-  <title>FIN-RA — Практикум «Моя первая крипта»</title>
+  <title>Практикум «Моя первая крипта» | FIN-RA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -84,7 +84,7 @@
       animation: cardRise 0.9s cubic-bezier(.2,.8,.2,1) both;
     }
 
-    /* LEFT — date pass panel */
+    /* LEFT: date pass panel */
     .product-card__cover {
       background:
         radial-gradient(120% 100% at 30% 20%, #f4f2eb 0%, #e8e5dc 70%, #ddd9cf 100%);
@@ -219,7 +219,7 @@
       animation: dotPulse 2.4s ease-in-out infinite;
     }
 
-    /* RIGHT — content */
+    /* RIGHT: content */
     .product-card__body {
       padding: 3rem 2.75rem;
       display: flex; flex-direction: column; gap: 1.5rem;
@@ -287,6 +287,12 @@
     }
     .cta:hover .cta__arrow { transform: translateX(2px); }
 
+    .cta-block { display: flex; flex-direction: column; gap: 0.6rem; }
+    .cta-hint {
+      font-size: 0.82rem; line-height: 1.4;
+      color: var(--text-mid); text-align: center;
+    }
+
     .meta-row {
       display: flex; align-items: center; justify-content: center;
       gap: 0.9rem;
@@ -298,11 +304,17 @@
     .meta-row span:first-child::before { display: none; }
 
     .footer {
-      padding: 1rem 2rem 1.5rem;
+      padding: 1rem 2rem 1.75rem;
       text-align: center; font-size: 0.72rem;
-      color: var(--text-muted);
+      line-height: 1.65; color: var(--text-muted);
+      max-width: 900px; margin: 0 auto;
     }
-    .footer a { color: var(--text-muted); text-decoration: none; }
+    .footer a {
+      color: var(--text-muted);
+      text-decoration: underline; text-decoration-color: rgba(20,23,26,0.2);
+      text-underline-offset: 2px;
+    }
+    .footer a:hover { text-decoration-color: var(--green); }
 
     /* === MODAL === */
     .modal-overlay {
@@ -544,29 +556,35 @@
         <p class="desc">Практикум для тех, кто хочет разобраться в криптовалюте с нуля: как она устроена, как безопасно купить первую монету и не потерять деньги на ошибках новичка.</p>
 
         <ul class="bullets">
-          <li>Что такое криптовалюта — простыми словами</li>
+          <li>Криптовалюта простыми словами</li>
           <li>Как безопасно купить первую монету</li>
           <li>Ошибки новичков и как их не повторить</li>
         </ul>
 
-        <button class="cta" onclick="openModal()">
-          <span>Зарегистрироваться бесплатно</span>
-          <span class="cta__arrow">
-            <svg viewBox="0 0 16 16" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M3 8h9"/><polyline points="8 4 12 8 8 12"/></svg>
-          </span>
-        </button>
+        <div class="cta-block">
+          <button class="cta" onclick="openModal()">
+            <span>Зарегистрироваться бесплатно</span>
+            <span class="cta__arrow">
+              <svg viewBox="0 0 16 16" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M3 8h9"/><polyline points="8 4 12 8 8 12"/></svg>
+            </span>
+          </button>
+          <p class="cta-hint">Регистрация открыта. Доступ придёт 13 августа в Telegram или MAX.</p>
+        </div>
 
         <div class="meta-row">
           <span>Онлайн</span>
           <span>13 августа</span>
           <span>Бесплатно</span>
-          <span>Telegram / MAX</span>
         </div>
       </div>
     </article>
   </main>
 
-  <footer class="footer">&copy; <a href="https://fin-ra.ru/">FIN-RA</a> — Школа безопасных инвестиций</footer>
+  <footer class="footer">
+    <a href="https://fin-ra.ru/">FIN-RA</a>, школа безопасных инвестиций. ИП Толстяков Дмитрий Павлович, ОГРНИП 310784733300113, ИНН 784100319408.<br>
+    <a href="https://fin-ra.ru/policy-dt" target="_blank" rel="noopener">Политика обработки персональных данных</a> · <a href="https://fin-ra.ru/juristic-documents" target="_blank" rel="noopener">Правовая информация</a><br>
+    Материалы носят образовательный характер и не являются индивидуальной инвестиционной рекомендацией.
+  </footer>
 
   <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
     <div class="modal">
@@ -585,7 +603,7 @@
     function closeModalOutside(e) { if (e.target === e.currentTarget) closeModal(); }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-    /* Pass parallax — desktop only */
+    /* Pass parallax: desktop only */
     (function () {
       if (window.matchMedia('(max-width: 768px)').matches || window.matchMedia('(hover: none)').matches) return;
       const panel = document.querySelector('.product-card__cover');
