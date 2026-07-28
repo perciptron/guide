@@ -175,6 +175,13 @@
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
   </style>
+  <!-- Форма Salebot грузится цепочкой с 4 доменов, прогреваем соединения заранее -->
+  <link rel="preconnect" href="https://salebot.pro" crossorigin>
+  <link rel="preconnect" href="https://chatter.salebot.pro" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="dns-prefetch" href="https://salebot.pro">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 </head>
 <body>
 <div class="page">
@@ -259,5 +266,6 @@
 
 </div>
 <script src="/tg-intercept.js" defer></script>
+<script src="/salebot-guard.js" defer></script>
 </body>
 </html>

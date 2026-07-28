@@ -771,6 +771,13 @@
       .portrait--musk { width: 122px; height: 148px; }
     }
   </style>
+  <!-- Форма Salebot грузится цепочкой с 4 доменов, прогреваем соединения заранее -->
+  <link rel="preconnect" href="https://salebot.pro" crossorigin>
+  <link rel="preconnect" href="https://chatter.salebot.pro" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="dns-prefetch" href="https://salebot.pro">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 </head>
 <body data-screen="intro">
   <!-- Google Tag Manager (noscript) -->
@@ -1302,5 +1309,6 @@
     render();
   </script>
   <script src="/tg-intercept.js" defer></script>
+  <script src="/salebot-guard.js" defer></script>
 </body>
 </html>

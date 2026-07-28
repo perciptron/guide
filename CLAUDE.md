@@ -276,6 +276,62 @@ npx serve -l 3000
 - Формы стилизованы через CSS `!important` (переопределение Salebot-стилей)
 - При дублировании — обязательно сменить Salebot GUID
 - **Обязательно подключать `tg-intercept.js`** на каждом лендинге с Salebot-формой
+- **Обязательно подключать `salebot-guard.js`** на каждом лендинге с Salebot-формой (см. ниже)
+- **Обязательно ставить `preconnect`** к `salebot.pro`, `chatter.salebot.pro`, `ajax.googleapis.com`, `cdnjs.cloudflare.com`
+
+## Пустая модалка вместо формы — salebot-guard.js
+
+**Симптом:** человек жмёт CTA, открывается пустая белая шторка с одним крестиком. Формы нет и не появится. Найдено 2026-07-28 на `/mpk/` по скриншоту с мобильного.
+
+### Причина
+
+Форма не лежит на нашей странице. `FormIntegration.init` тянет её **цепочкой из 9 последовательных запросов к 4 доменам**, каждый следующий стартует по `onload` предыдущего:
+
+```
+salebot.pro/js/form_scripts.js
+  → ajax.googleapis.com/.../jquery.min.js
+    → salebot.pro/js/emojis.js
+      → cdnjs.cloudflare.com/.../jquery.easing.min.js
+        → salebot.pro/js/calendarCreator.js
+          → cdnjs.cloudflare.com/.../swiper.min.js
+            → cdnjs.cloudflare.com/.../swiper.min.css
+              → salebot.pro/css/form_integration.css
+                → XHR salebot.pro/projects/<id>/form_view/<guid>   ← сама форма
+```
+
+В коде Salebot **нет ни одного обработчика ошибок и ни одного таймаута**. Одно недошедшее звено (слабая мобильная связь, блокировщик рекламы, DNS-фильтр, замедление Cloudflare) останавливает цепочку навсегда: блок остаётся пустым, человек ничего не понимает и уходит. Даже на хорошем канале форма появляется примерно через 2 секунды после старта страницы.
+
+### Решение
+
+Файл `/salebot-guard.js` (v1) — подключать на **каждом** лендинге с Salebot-формой, рядом с `tg-intercept.js`:
+```html
+<script src="/tg-intercept.js" defer></script>
+<script src="/salebot-guard.js" defer></script>
+```
+
+Плюс `preconnect` в `<head>`, чтобы прогреть соединения до старта цепочки:
+```html
+<link rel="preconnect" href="https://salebot.pro" crossorigin>
+<link rel="preconnect" href="https://chatter.salebot.pro" crossorigin>
+<link rel="preconnect" href="https://ajax.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+```
+
+### Как работает
+
+1. Находит все `.form_integration_block` и вставляет перед каждым блок состояния
+2. Пока формы нет — крутится индикатор с текстом «Загружаем форму»
+3. Через 7 секунд повторяет `init`, при необходимости заново подгружая `form_scripts.js`
+4. Через 18 секунд показывает «Форма не загрузилась» и кнопку «Попробовать снова»
+5. **Таймер тикает только пока блок реально виден на экране.** Закрытая модалка и отложенная форма квиза не ловят ложную ошибку
+6. Конфиг для повтора скрипт сам вытаскивает регуляркой из инлайн-скрипта страницы — правки разметки не нужны
+7. Цвет текста подбирается по реальному фону под блоком: работает и на светлых лендингах, и на тёмных, и на белой карточке внутри тёмной страницы
+
+### Чего делать нельзя
+
+- **Не полагаться на то, что форма загрузится.** Любая новая посадка с Salebot без `salebot-guard.js` = пустые модалки у части аудитории
+- **Не вешать свой лоадер поверх** — он уже есть в guard, второй будет мешать
+- Повторный `FormIntegration.init` уводит их внутренний счётчик на следующий `.form_integration_block`. Guard обходит это, проставляя единственному блоку `id="form_integration_block"` — их код по этому id находит тот же элемент
 
 ## Обход блокировки t.me — tg-intercept.js
 

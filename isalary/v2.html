@@ -1498,6 +1498,13 @@
       .vbadge__name,.vbadge__sep{display:none}
     }
   </style>
+  <!-- Форма Salebot грузится цепочкой с 4 доменов, прогреваем соединения заранее -->
+  <link rel="preconnect" href="https://salebot.pro" crossorigin>
+  <link rel="preconnect" href="https://chatter.salebot.pro" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="dns-prefetch" href="https://salebot.pro">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -2092,6 +2099,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     })();
   </script>
 <script src="/tg-intercept.js" defer></script>
+<script src="/salebot-guard.js" defer></script>
 
   <div class="vbadge"><span class="vbadge__name">Вариант 2 — тёмный жакет, крупный план</span><span class="vbadge__sep" style="opacity:.5">|</span><a href="v1.html" class="">V1</a><a href="v2.html" class="on">V2</a><a href="v4.html" class="">V4</a><a href="v5.html" class="">V5</a><a href="v6.html" class="">V6</a><a href="./" style="opacity:.7">текущий</a></div>
 </body>
