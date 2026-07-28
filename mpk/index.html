@@ -15,6 +15,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Форма Salebot грузится цепочкой с 4 доменов, прогреваем соединения заранее -->
+  <link rel="preconnect" href="https://salebot.pro" crossorigin>
+  <link rel="preconnect" href="https://chatter.salebot.pro" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="dns-prefetch" href="https://salebot.pro">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
@@ -341,6 +348,35 @@
       color: var(--text-mid); cursor: pointer; font-size: 1.2rem;
       z-index: 10;
     }
+    /* Состояние загрузки формы Salebot */
+    .form-state {
+      display: none;
+      padding: 1.5rem 0.5rem 0.5rem;
+      text-align: center;
+    }
+    .form-state.is-visible { display: block; }
+    .form-state__spinner {
+      width: 26px; height: 26px; margin: 0 auto 0.9rem;
+      border: 2.5px solid var(--green-tint);
+      border-top-color: var(--green);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    .form-state.is-error .form-state__spinner { display: none; }
+    .form-state__text {
+      font-size: 0.9rem; line-height: 1.5; color: var(--text-mid);
+    }
+    .form-state__retry {
+      margin-top: 1rem; width: 100%;
+      padding: 0.8rem 1.5rem;
+      background: var(--ink); color: #fff;
+      border: none; border-radius: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem; font-weight: 500; cursor: pointer;
+    }
+    .form-state__retry:hover { background: #000; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
     .modal .form_integration_block { width: 90%; margin: 0 auto; }
     .modal .form_integration_block input[type="text"],
     .modal .form_integration_block input[type="email"],
@@ -589,10 +625,22 @@
   <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
     <div class="modal">
       <button class="modal__close" onclick="closeModal()" aria-label="Закрыть">&times;</button>
+      <div class="form-state" id="formState">
+        <div class="form-state__spinner"></div>
+        <p class="form-state__text" id="formStateText">Загружаем форму регистрации.</p>
+      </div>
       <script src='https://salebot.pro/js/form_scripts.js'></script>
-      <div class='form_integration_block'></div>
+      <div class='form_integration_block' id='form_integration_block'></div>
       <script>
-        FormIntegration.init({ project_id: 317313, guid: '95c0f7d075db7c2c9c09428e2353de98' })
+        /* Salebot тянет форму цепочкой из 9 запросов к salebot.pro, googleapis и cdnjs.
+           Если хоть одно звено не дойдёт, его скрипт молча останавливается и блок
+           остаётся пустым. Поэтому init обёрнут, а ниже стоит наблюдатель с повтором. */
+        var SB_CFG = { project_id: 317313, guid: '95c0f7d075db7c2c9c09428e2353de98' };
+        function sbInit() {
+          if (!window.FormIntegration) return false;
+          try { FormIntegration.init(SB_CFG); return true; } catch (e) { return false; }
+        }
+        sbInit();
       </script>
     </div>
   </div>
@@ -602,6 +650,50 @@
     function closeModal() { document.getElementById('modalOverlay').classList.remove('active'); document.body.style.overflow = ''; }
     function closeModalOutside(e) { if (e.target === e.currentTarget) closeModal(); }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    /* Наблюдатель за формой: показывает загрузку, повторяет попытку, в крайнем
+       случае объясняет человеку что произошло вместо пустой белой шторки */
+    (function () {
+      var box = document.getElementById('form_integration_block');
+      var state = document.getElementById('formState');
+      var text = document.getElementById('formStateText');
+      if (!box || !state || !text) return;
+
+      var started = Date.now();
+      var retried = false;
+
+      function ready() { return !!box.querySelector('input, button, .salebot_button'); }
+
+      function retry() {
+        if (typeof sbInit === 'function' && sbInit()) return;
+        var s = document.createElement('script');
+        s.src = 'https://salebot.pro/js/form_scripts.js';
+        s.onload = function () { if (typeof sbInit === 'function') sbInit(); };
+        document.head.appendChild(s);
+      }
+
+      function fail() {
+        state.classList.add('is-error');
+        text.textContent = 'Форма не загрузилась. Обычно мешает медленный интернет или блокировщик рекламы.';
+        var btn = document.createElement('button');
+        btn.className = 'form-state__retry';
+        btn.textContent = 'Попробовать снова';
+        btn.onclick = function () { location.reload(); };
+        state.appendChild(btn);
+      }
+
+      var timer = setInterval(function () {
+        if (ready()) { clearInterval(timer); state.classList.remove('is-visible'); return; }
+        state.classList.add('is-visible');
+        var passed = Date.now() - started;
+        if (passed > 7000 && !retried) {
+          retried = true;
+          text.textContent = 'Соединение медленное, пробуем ещё раз.';
+          retry();
+        }
+        if (passed > 18000) { clearInterval(timer); fail(); }
+      }, 400);
+    })();
 
     /* Pass parallax: desktop only */
     (function () {
