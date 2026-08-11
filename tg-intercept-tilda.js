@@ -1,8 +1,11 @@
 /**
- * TG Link Interceptor for Tilda v1
+ * TG Link Interceptor for Tilda v2
  *
  * Перехватывает все переходы на t.me и подменяет на промежуточную страницу
  * guides.fin-ra.pro/tg/ — которая открывает Telegram через deep link (tg://)
+ *
+ * v2: чинит мёртвые кнопки формы Salebot во встроенном браузере Telegram.
+ *     Подробности — в комментарии к пункту 4 ниже.
  *
  * Установка в Tilda:
  *   Настройки сайта → Ещё → HTML-код для вставки внутрь HEAD
@@ -90,11 +93,56 @@
     return true;
   }
 
-  // 4. Перехват fetch — Tilda может использовать fetch вместо jQuery
+  // 4. Перехват fetch — Tilda использует fetch, и на нём же сидит новая форма
+  //    Salebot (sb_form.js), которая шлёт POST на s.salebot.pro/mini_landing/…
+  //
+  //    ПОЧЕМУ ЭТО ВАЖНО. sb_form.js считает страницу «Telegram Mini App», если
+  //    в окне есть window.TelegramWebviewProxy или webkit.messageHandlers
+  //    .TelegramWebviewProxy. Встроенный браузер Telegram подставляет этот мост
+  //    в ЛЮБУЮ открытую страницу — то есть срабатывает ложно. Дальше в submitBot:
+  //      • на POST вешается AbortController с таймаутом 5 секунд;
+  //      • после успешного ответа вместо перехода по redirect_to вызывается
+  //        _closeTgWebApp() — «закрыть мини-приложение». Внутри обычного
+  //        встроенного браузера закрывать нечего, вызов уходит в пустоту,
+  //        и submitBot выходит ДО строки window.location.href = redirect_to.
+  //    Итог для человека: жмёшь «Продолжить в TG» — не происходит вообще ничего,
+  //    ни перехода, ни ошибки. Кнопка выглядит мёртвой.
+  //
+  //    Здесь мы забираем управление: снимаем 5-секундный таймаут и сами уводим
+  //    на ссылку бота, которую вернул Salebot.
+  var BOT_SUBMIT = /salebot\.pro\/mini_landing\//;
+  var navigated = false;
+
+  function goToBot(url) {
+    if (!url || navigated) return;
+    navigated = true;
+    window.location.href = rewrite(url) || url;
+  }
+
   var _fetch = window.fetch;
   if (_fetch) {
     window.fetch = function(input, init) {
-      return _fetch.apply(window, arguments).then(function(response) {
+      var url = typeof input === 'string' ? input : (input && input.url) || '';
+      var method = ((init && init.method) || (input && input.method) || 'GET').toUpperCase();
+      var isBotSubmit = method === 'POST' && BOT_SUBMIT.test(url);
+
+      // Снимаем abort-таймаут Salebot: на медленной мобильной сети отправка
+      // формы не успевает уложиться в 5 секунд и молча отваливается
+      if (isBotSubmit && init && init.signal) {
+        var opts = {};
+        for (var k in init) opts[k] = init[k];
+        opts.signal = undefined;
+        init = opts;
+      }
+
+      return _fetch.call(window, input, init).then(function(response) {
+        // Сами доводим человека до бота — Salebot этого не сделает
+        if (isBotSubmit && response.ok) {
+          response.clone().json().then(function(data) {
+            goToBot(data && data.redirect_to);
+          })['catch'](function() {});
+        }
+
         var ct = response.headers.get('content-type') || '';
         if (ct.indexOf('json') !== -1 || ct.indexOf('text') !== -1) {
           return response.clone().text().then(function(text) {
