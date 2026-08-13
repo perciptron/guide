@@ -1,0 +1,2194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NL7D8CF');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Бесплатное предобучение «Инвест-зарплата»: как зарабатывать в нестабильные времена, создать пассивный доход и финансовую безопасность на любом рынке: облигации, недвижимость, криптовалюта. 3 эфира, регистрация бесплатна.">
+  <meta name="theme-color" content="#fbfbfb">
+  <meta property="og:title" content="Инвест-зарплата: как зарабатывать в нестабильные времена | FIN-RA">
+  <meta property="og:description" content="Три бесплатных эфира: как зарабатывать на том, что приносит деньги сейчас, создать пассивный доход и финансовую безопасность на всю жизнь.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://guides.fin-ra.pro/isalary3o">
+  <meta property="og:image" content="/isalary/h4.png">
+  <link rel="icon" href="/favicon.ico">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://guides.fin-ra.pro/isalary3o">
+  <title>Инвест-зарплата: бесплатное предобучение | FIN-RA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green: #0f9d58;
+      --green-dark: #0b7a43;
+      --green-glow: rgba(15,157,88,0.15);
+      --green-subtle: rgba(15,157,88,0.06);
+      --bg: #fbfbfb;
+      --bg-alt: #f5f5f7;
+      --text: #1d1d1f;
+      --text-secondary: #4d4d52;
+      --text-muted: #8a8a90;
+      --separator: rgba(0,0,0,0.06);
+      --radius: 14px;
+      --radius-sm: 10px;
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* === UTILITY === */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 5rem 0; }
+    .section--alt { background: var(--bg-alt); }
+
+    /* ПК: блоки секции выравниваем колонкой по центру (текст внутри остаётся слева) */
+    @media (min-width: 769px) {
+      .section--centered > .container > * {
+        max-width: 900px; margin-left: auto; margin-right: auto;
+      }
+    }
+
+    .section-label {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--green);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-label::before {
+      content: ''; display: inline-block;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--green); margin-right: 0.5rem;
+      vertical-align: middle;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-title em { font-style: normal; color: var(--green); }
+
+    /* === ANIMATIONS === */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes ctaGlow {
+      0%, 100% { box-shadow: 0 4px 16px var(--green-glow); }
+      50% { box-shadow: 0 8px 32px rgba(15,157,88,0.3); }
+    }
+    @keyframes shimmer {
+      0% { transform: translateX(-100%) rotate(15deg); }
+      30%, 100% { transform: translateX(100%) rotate(15deg); }
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; } 50% { opacity: 0.4; }
+    }
+    @keyframes coverFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    @keyframes iconPop {
+      0% { transform: scale(0.5); opacity: 0; }
+      60% { transform: scale(1.15); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes slideDown {
+      0% { transform: translateY(-30%); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes avatarIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    /* Stagger children in grids */
+    .stagger-grid .reveal:nth-child(1) { transition-delay: 0s; }
+    .stagger-grid .reveal:nth-child(2) { transition-delay: 0.08s; }
+    .stagger-grid .reveal:nth-child(3) { transition-delay: 0.16s; }
+
+    /* Icon pop on reveal */
+    .pain-card.visible .pain-card__icon {
+      animation: iconPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+    .pain-card:nth-child(2).visible .pain-card__icon { animation-delay: 0.08s; }
+    .pain-card:nth-child(3).visible .pain-card__icon { animation-delay: 0.16s; }
+
+    /* Timer digits - no animation, just update */
+    .timer-num, .timer-inline__num {
+      display: inline-block;
+    }
+
+    /* Avatar entrance */
+    .speaker-mobile__avatar { animation: avatarIn 0.5s ease 0.3s both; }
+
+    /* Bonus card hover lift (desktop) */
+    .bonus-item { transition: transform 0.25s ease, box-shadow 0.25s ease; will-change: transform; }
+    .bonus-item:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.18); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* ================================
+       1. HERO
+       ================================ */
+    .hero {
+      display: flex; flex-direction: column;
+      position: relative; overflow: clip;
+    }
+
+    .hero__nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 2.5rem; z-index: 10;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .hero__logo-text {
+      font-family: var(--font-display); font-size: 1.4rem;
+      font-weight: 800; color: var(--text); letter-spacing: -0.03em;
+    }
+    .hero__logo { height: clamp(38px, 6vw, 46px); width: auto; display: block; }
+
+    .hero__nav-right {
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+
+    .live-dot {
+      width: 7px; height: 7px; background: var(--green);
+      border-radius: 50%; box-shadow: 0 0 0 3px var(--green-glow);
+    }
+
+    .hero__nav-label {
+      font-family: var(--font-display); font-size: 0.7rem;
+      font-weight: 600; color: var(--text-secondary);
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+
+    .hero__body {
+      display: grid; grid-template-columns: 1.15fr 0.85fr;
+      align-items: center; max-width: 1400px; width: 100%;
+      margin: 0 auto; padding: 2rem 3rem 3rem; z-index: 2;
+    }
+
+    .hero__left { display: flex; flex-direction: column; gap: 1rem; padding-right: 2rem; }
+
+    /* Dates */
+    .dates-row { display: flex; gap: 0.35rem; animation: fadeUp 0.5s ease 0.1s both; }
+
+    .date-chip {
+      display: flex; align-items: center; gap: 0.4rem;
+      padding: 0.4rem 0.85rem; background: #fff;
+      border: 1px solid var(--separator); border-radius: 8px;
+      font-family: var(--font-body); font-size: 0.78rem;
+      font-weight: 600; color: var(--text);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .date-chip__time { color: var(--green); font-weight: 700; font-size: 0.7rem; }
+    .date-chip svg { width: 12px; height: 12px; color: var(--green); flex-shrink: 0; }
+
+    .hero__badge {
+      display: inline-flex; width: fit-content;
+      color: var(--green); font-family: var(--font-display);
+      font-size: 0.65rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      animation: fadeUp 0.5s ease 0.15s both;
+    }
+    .hero__badge::before {
+      content: ''; display: inline-block;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--green); margin-right: 0.5rem;
+      align-self: center;
+    }
+
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3.15vw, 2.9rem);
+      font-weight: 800; line-height: 1.08;
+      letter-spacing: -0.04em; text-wrap: balance;
+      animation: fadeUp 0.6s ease 0.2s both;
+    }
+
+    .hero__title em {
+      font-style: normal; color: var(--green);
+    }
+
+    .hero__sub {
+      font-size: 1.2rem; line-height: 1.55;
+      color: #38383b; font-weight: 500; max-width: 520px;
+      animation: fadeUp 0.6s ease 0.28s both;
+    }
+    .hero__sub strong { color: var(--text); font-weight: 600; }
+
+    /* Gift + Timer */
+    .gift-row {
+      display: flex; flex-direction: column; gap: 0.75rem;
+      animation: fadeUp 0.6s ease 0.32s both;
+      max-width: 500px;
+    }
+    .gift-text {
+      font-size: 0.92rem; line-height: 1.5; color: var(--text-secondary);
+    }
+    .gift-text strong { color: var(--text); }
+
+    /* Gift strip between hero and content */
+    .gift-strip {
+      background: var(--bg-alt); padding: 1rem 0;
+      border-top: 1px solid var(--separator); border-bottom: 1px solid var(--separator);
+    }
+    .gift-strip__inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+      display: flex; align-items: center; gap: 0.85rem; justify-content: center;
+    }
+    .gift-strip__text { font-size: 0.88rem; color: var(--text-secondary); }
+    .gift-strip__text strong { color: var(--text); }
+    .gift-strip .gift-book { width: 48px; flex-shrink: 0; }
+
+    @media (max-width: 768px) {
+      .gift-strip__inner { padding: 0 1.25rem; }
+      .gift-strip .gift-book { width: 40px; }
+      .gift-strip__text { font-size: 0.82rem; }
+    }
+
+    .gift-block {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 1.25rem; background: var(--bg-alt); border-radius: 14px;
+      max-width: 100%;
+    }
+    .gift-book {
+      flex-shrink: 0; width: 80px;
+      perspective: 600px;
+    }
+    .gift-book__img {
+      width: 100%; height: auto; display: block;
+      border-radius: 4px;
+      box-shadow:
+        6px 6px 18px rgba(0,0,0,0.15),
+        2px 2px 6px rgba(0,0,0,0.08);
+      transform: rotateY(-12deg);
+      transition: transform 0.3s ease;
+    }
+    .gift-book:hover .gift-book__img { transform: rotateY(0deg); }
+    .gift-info { display: flex; flex-direction: column; gap: 0.5rem; }
+    .timer-box {
+      display: inline-flex; align-items: center; gap: 0.6rem; width: fit-content;
+      background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.15);
+      border-radius: var(--radius-sm); padding: 0.35rem 0.85rem;
+    }
+    .timer-box__label {
+      font-family: var(--font-display); font-size: 0.65rem; font-weight: 700;
+      color: #dc2626; text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .timer-digits { display: flex; align-items: center; gap: 0.1rem; }
+    .timer-num {
+      font-family: var(--font-display); font-size: 1.3rem; font-weight: 800;
+      color: var(--text); min-width: 1.6rem; text-align: center;
+    }
+    .timer-sep {
+      font-family: var(--font-display); font-size: 1rem; font-weight: 800;
+      color: #dc2626; animation: blink 1s ease-in-out infinite;
+    }
+
+    /* CTA */
+    .cta-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      padding: 1.35rem 4.5rem; background: var(--green); color: #fff;
+      font-family: var(--font-display); font-size: 1.3rem; font-weight: 600;
+      border: none; border-radius: var(--radius); cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: 0 4px 16px var(--green-glow); width: fit-content;
+      animation: fadeUp 0.6s ease 0.38s both, ctaGlow 4s ease-in-out 2s infinite;
+      position: relative; overflow: hidden;
+    }
+    .cta-btn::after {
+      content: ''; position: absolute; top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
+      animation: shimmer 5s ease-in-out infinite;
+    }
+    .cta-btn:hover {
+      transform: translateY(-2px); background: var(--green-dark);
+      box-shadow: 0 8px 32px rgba(15,157,88,0.25);
+      animation-play-state: paused;
+    }
+    .cta-btn:active { transform: translateY(0); }
+    .cta-btn:focus-visible, .bonus-cta:focus-visible, .modal-close:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+    .cta-btn svg { width: 18px; height: 18px; }
+
+    .cta-note { font-size: 0.7rem; color: var(--text-muted); animation: fadeUp 0.6s ease 0.42s both; }
+    .cta-btn--static { animation: none; }
+
+    .hero__trust {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem;
+      font-family: var(--font-display); font-size: 0.78rem; font-weight: 600;
+      color: var(--text-secondary); margin-top: 0.1rem;
+      animation: fadeUp 0.6s ease 0.44s both;
+    }
+    .hero__trust span:not(:last-child)::after { content: '·'; margin-left: 0.5rem; color: var(--text-muted); }
+    .hero__trust strong { color: var(--green); font-weight: 700; }
+    @media (max-width: 768px) { .hero__trust { justify-content: center; font-size: 0.72rem; } }
+
+    /* Mobile speaker avatar */
+    .speaker-mobile { display: none; }
+    @media (max-width: 768px) {
+      .speaker-mobile {
+        display: flex; align-items: center; gap: 0.75rem;
+        padding: 0.75rem 1.25rem; animation: fadeUp 0.5s ease 0.45s both;
+      }
+      .speaker-mobile__avatar {
+        width: 52px; height: 52px; min-width: 52px;
+        border-radius: 50%; object-fit: cover; object-position: top;
+        border: 2px solid var(--green);
+        box-shadow: 0 4px 12px rgba(15,157,88,0.15);
+      }
+      .speaker-mobile__name {
+        font-family: var(--font-display); font-size: 0.82rem; font-weight: 700;
+      }
+      .speaker-mobile__role {
+        font-size: 0.68rem; color: var(--text-secondary); line-height: 1.3;
+      }
+    }
+
+    /* Speaker area */
+    .hero__right {
+      position: relative; display: flex;
+      justify-content: center; align-items: flex-end;
+      align-self: end; animation: fadeUp 0.8s ease 0.3s both;
+    }
+
+    .speaker-img {
+      max-height: 78vh; width: auto; max-width: 100%;
+      object-fit: contain; object-position: bottom;
+      z-index: 3; position: relative;
+      mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+    }
+
+    /* Float cards */
+    .float-card {
+      position: absolute; border-radius: 10px;
+      box-shadow: 0 14px 35px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.04);
+      overflow: hidden;
+      animation: coverFloat 5s ease-in-out infinite;
+    }
+    .float-card:hover { animation-play-state: paused; transform: scale(1.05); transition: transform 0.3s; }
+    .float-card img { display: block; height: 100%; width: auto; }
+
+    .float-card--1 { height: 210px; top: 5%; right: -5%; transform: rotate(8deg); animation-delay: 0s; }
+    .float-card--2 { height: 200px; top: 58%; right: -10%; transform: rotate(-5deg); animation-delay: 0.3s; }
+    .float-card--3 { height: 195px; bottom: 5%; left: -10%; right: auto; transform: rotate(-4deg); animation-delay: 0.6s; z-index: -1; }
+    .float-card--4 { height: 185px; top: 18%; left: -5%; transform: rotate(-7deg); animation-delay: 0.9s; }
+
+    /* Speaker tag */
+    .speaker-tag {
+      position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      background: rgba(255,255,255,0.9); backdrop-filter: blur(16px);
+      border: 1px solid var(--separator); border-radius: 12px;
+      padding: 0.5rem 1.2rem; z-index: 6; text-align: center; white-space: nowrap;
+      animation: fadeUp 0.6s ease 0.5s both;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+    .speaker-tag__name { font-family: var(--font-display); font-size: 0.85rem; font-weight: 800; }
+    .speaker-tag__role { font-size: 0.6rem; color: var(--text-muted); }
+
+    /* ================================
+       2. PAIN POINTS (cards only)
+       ================================ */
+    .pain-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1rem; margin-top: 2rem;
+    }
+
+    .pain-card {
+      background: #fff; border: 1px solid var(--separator);
+      border-radius: var(--radius); padding: 1.5rem;
+      transition: all 0.25s ease;
+    }
+    .pain-card:hover { border-color: rgba(15,157,88,0.15); box-shadow: 0 8px 24px rgba(0,0,0,0.04); transform: translateY(-2px); }
+
+    .pain-card__icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--green-subtle); display: flex;
+      align-items: center; justify-content: center;
+      color: var(--green); margin-bottom: 0.75rem;
+    }
+
+    .pain-card__title { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.35rem; }
+    .pain-card__text { font-size: 0.92rem; line-height: 1.5; color: var(--text-secondary); }
+
+    /* ================================
+       3. PROGRAM
+       ================================ */
+    .program-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem; margin-top: 2rem;
+    }
+
+    .program-card {
+      background: #fff; border: 1px solid var(--separator);
+      border-radius: var(--radius); padding: 1.75rem 1.5rem;
+      position: relative; overflow: hidden;
+      transition: all 0.25s ease;
+    }
+    .program-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.04); transform: translateY(-2px); }
+
+    .program-card__accent {
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: linear-gradient(90deg, var(--green), transparent);
+    }
+
+    .program-card__day {
+      font-family: var(--font-display); font-size: 0.6rem;
+      font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--green); margin-bottom: 0.6rem;
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem;
+    }
+    .program-card__date {
+      font-size: 0.58rem; font-weight: 700; color: #fff;
+      background: var(--green); border-radius: 100px;
+      padding: 0.25rem 0.6rem; text-transform: none; letter-spacing: 0;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .program-card__title {
+      font-family: var(--font-display); font-size: 1.15rem;
+      font-weight: 800; line-height: 1.2; margin-bottom: 0.85rem;
+    }
+    .program-card__list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .program-card__list li {
+      display: flex; align-items: flex-start; gap: 0.5rem;
+      font-size: 1.02rem; line-height: 1.45; color: var(--text-secondary);
+    }
+    .program-card__list li::before {
+      content: ''; width: 5px; height: 5px; min-width: 5px;
+      border-radius: 50%; background: var(--green); margin-top: 0.35rem;
+    }
+
+    /* ================================
+       4. BONUSES
+       ================================ */
+    /* ================================
+       4. BONUSES - dark block like old site
+       ================================ */
+    .bonus-section {
+      background: #1a1a1a; color: #fff;
+      padding: 3.5rem 0; overflow: hidden;
+    }
+    .bonus-container {
+      max-width: 1100px; margin: 0 auto;
+      padding: 0 2rem; text-align: center;
+    }
+    .bonus-heading {
+      font-family: var(--font-display); font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 800; line-height: 1.2; letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+    }
+    .bonus-list {
+      display: flex; gap: 1.25rem;
+      overflow-x: auto; overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      padding: 0.5rem 0 1.5rem;
+      margin: 0 -2rem 2rem;
+      padding-left: 2rem; padding-right: 2rem;
+      scrollbar-width: none;
+    }
+    .bonus-list::-webkit-scrollbar { display: none; }
+    .bonus-item {
+      flex: 0 0 min(85%, 320px);
+      scroll-snap-align: start;
+      border-radius: 20px; overflow: hidden;
+      color: var(--text); text-align: left;
+      position: relative;
+      background: #fff;
+    }
+    .bonus-item__img-wrap {
+      position: relative; overflow: hidden;
+      aspect-ratio: 16/10;
+    }
+    .bonus-item__img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: left center; display: block;
+    }
+    .bonus-item__text { padding: 1.15rem 1.25rem 1.25rem; }
+    .bonus-item__title {
+      font-family: var(--font-display); font-size: 0.95rem; font-weight: 700;
+      line-height: 1.35; color: var(--text);
+    }
+    /* Scroll dots */
+    .bonus-dots {
+      display: flex; justify-content: center; gap: 6px;
+      margin-bottom: 1.5rem;
+    }
+    .bonus-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(255,255,255,0.25); transition: all 0.3s;
+    }
+    .bonus-dot.active {
+      background: var(--green); width: 20px; border-radius: 3px;
+    }
+    .bonus-cta {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 0.5rem; padding: 1rem 3rem;
+      background: var(--green); color: #fff;
+      font-family: var(--font-display); font-size: 1rem; font-weight: 700;
+      border: none; border-radius: 12px;
+      cursor: pointer; transition: all 0.25s;
+      box-shadow: 0 4px 16px rgba(15,157,88,0.3);
+    }
+    .bonus-cta:hover {
+      background: var(--green-dark);
+      box-shadow: 0 8px 24px rgba(15,157,88,0.4);
+      transform: translateY(-2px);
+    }
+    /* Scroll hint animation */
+    @keyframes scrollHint {
+      0%, 100% { transform: translateX(0); }
+      40% { transform: translateX(-30px); }
+      60% { transform: translateX(0); }
+    }
+    .bonus-list--hint { animation: scrollHint 1.2s ease 1.5s 1; }
+
+    @media (max-width: 768px) {
+      .bonus-section { padding: 2.5rem 0; }
+      .bonus-container { padding: 0 1.25rem; }
+      .bonus-heading { font-size: 1.3rem; margin-bottom: 1.5rem; }
+      .bonus-list { margin: 0 -1.25rem 1.5rem; padding-left: 1.25rem; padding-right: 1.25rem; gap: 0.85rem; }
+      .bonus-item { flex: 0 0 78%; }
+      .bonus-item__text { padding: 1rem 1.15rem; }
+      .bonus-item__title { font-size: 0.88rem; }
+      .bonus-cta { width: 100%; padding: 0.9rem; }
+    }
+    @media (min-width: 769px) {
+      .bonus-item { flex: 0 0 calc(33.333% - 0.85rem); }
+      .bonus-list { overflow: visible; flex-wrap: nowrap; }
+    }
+
+    /* ================================
+       6. FINAL CTA
+       ================================ */
+    .final-cta { text-align: center; padding: 4rem 0 3rem; position: relative; background: var(--bg-alt); }
+    .final-cta::before { display: none; }
+    .final-cta__card {
+      max-width: 900px; margin: 0 auto; padding: 3rem 2.5rem 2.75rem;
+      background: #18231d; border-radius: 20px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+    }
+    .final-cta .section-title {
+      color: #fff; max-width: none; margin: 0 auto 1rem;
+      font-size: clamp(1.5rem, 3vw, 2.4rem);
+    }
+    .final-cta .section-title em { color: #4bb377; }
+    .final-cta__sub { font-size: 1.1rem; color: rgba(255,255,255,0.72); max-width: 580px; margin: 0 auto 0.6rem; line-height: 1.55; }
+    .final-cta__ask { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; color: #fff; margin: 0 auto 1.6rem; }
+    .final-cta .cta-btn { animation: none; margin: 0 auto; }
+    .final-cta .cta-note { animation: none; margin-top: 0.6rem; }
+    @media (max-width: 768px) { .final-cta__card { padding: 2rem 1.25rem 1.75rem; border-radius: 16px; } }
+
+    /* Timer */
+    .timer-inline {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.15);
+      border-radius: var(--radius-sm); padding: 0.35rem 0.8rem; margin-bottom: 1rem;
+    }
+    .timer-inline__label {
+      font-family: var(--font-display); font-size: 0.55rem; font-weight: 700;
+      color: #dc2626; text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .timer-inline__num {
+      font-family: var(--font-display); font-size: 1.3rem; font-weight: 800;
+      color: var(--text); min-width: 1.6rem; text-align: center;
+    }
+    .timer-inline__sep {
+      font-family: var(--font-display); font-size: 1rem; font-weight: 800;
+      color: #dc2626; animation: blink 1s ease-in-out infinite;
+    }
+
+    /* ================================
+       FOOTER
+       ================================ */
+    .footer {
+      padding: 2.5rem 2rem 1.5rem;
+      font-size: 0.8rem; color: var(--text-muted);
+      border-top: 1px solid var(--separator);
+      line-height: 1.5;
+    }
+    .footer a { color: var(--text-secondary); text-decoration: none; }
+    .footer a:hover { color: var(--green); }
+    .footer__inner {
+      display: grid; grid-template-columns: 1.2fr 1fr 0.8fr;
+      gap: 2rem; max-width: 1100px; margin: 0 auto 1.5rem;
+    }
+    .footer__col { display: flex; flex-direction: column; gap: 0.35rem; }
+    .footer__col p { margin: 0; }
+    .footer__bottom {
+      text-align: center; padding-top: 1rem;
+      border-top: 1px solid var(--separator);
+      font-size: 0.65rem;
+    }
+    @media (max-width: 768px) {
+      .footer__inner { grid-template-columns: 1fr; gap: 1.25rem; }
+      .footer { padding: 2rem 1.25rem 6rem; }
+    }
+
+    /* ================================
+       MODAL
+       ================================ */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(0,0,0,0.4); display: flex;
+      align-items: center; justify-content: center; padding: 1rem;
+      opacity: 0; visibility: hidden; transition: all 0.35s;
+    }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+
+    .modal {
+      background: #fff; border-radius: 20px; padding: 2.5rem;
+      max-width: 460px; width: 100%; position: relative;
+      transform: translateY(24px) scale(0.96); transition: transform 0.35s;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.12);
+    }
+    .modal-overlay.active .modal { transform: translateY(0) scale(1); }
+
+    .modal__close {
+      position: absolute; top: 1rem; right: 1rem;
+      width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.04); border: 1px solid var(--separator);
+      border-radius: 50%; color: #999; cursor: pointer; font-size: 1.1rem; transition: all 0.2s;
+    }
+    .modal__close:hover { background: rgba(0,0,0,0.08); color: #333; }
+
+    .modal__title {
+      font-family: var(--font-display); font-size: 1.3rem;
+      font-weight: 800; margin-bottom: 0.3rem; text-align: center;
+    }
+    .modal__sub {
+      font-size: 0.8rem; color: var(--text-secondary);
+      text-align: center; margin-bottom: 1.25rem; line-height: 1.4;
+    }
+    @media (max-width: 768px) {
+      .modal__title { font-size: 1.1rem; margin-bottom: 0.15rem; }
+      .modal__sub { font-size: 0.72rem; margin-bottom: 0.75rem; }
+    }
+
+    /* Salebot form */
+    .modal .form_integration_block { width: 90%; margin: 0 auto; }
+    .modal .form_integration_block input[type="text"],
+    .modal .form_integration_block input[type="email"],
+    .modal .form_integration_block input[type="tel"],
+    .modal .form_integration_block input[type="number"],
+    .modal .form_integration_block textarea,
+    .modal .form_integration_block select {
+      width: 100% !important; background: var(--bg-alt) !important;
+      border: 1.5px solid rgba(0,0,0,0.07) !important; border-radius: var(--radius-sm) !important;
+      padding: 0.75rem 1rem !important; color: var(--text) !important;
+      font-family: var(--font-body) !important; font-size: 16px !important;
+      outline: none !important; transition: all 0.2s !important;
+    }
+    .modal .form_integration_block input:focus,
+    .modal .form_integration_block textarea:focus {
+      border-color: var(--green) !important; background: #fff !important;
+      box-shadow: 0 0 0 3px var(--green-glow) !important;
+    }
+    .modal .form_integration_block input::placeholder,
+    .modal .form_integration_block textarea::placeholder { color: rgba(0,0,0,0.25) !important; }
+    .modal .form_integration_block label {
+      color: var(--text) !important; font-family: var(--font-display) !important;
+      font-size: 0.78rem !important; font-weight: 700 !important;
+      margin-bottom: 0.3rem !important; display: block !important;
+    }
+    .modal .form_integration_block button[type="submit"],
+    .modal .form_integration_block input[type="submit"],
+    .modal .form_integration_block .btn,
+    .modal .form_integration_block .submit-btn {
+      width: 100% !important; padding: 0.875rem 1.5rem !important;
+      background: var(--green) !important; color: #fff !important;
+      font-family: var(--font-display) !important; font-size: 1rem !important;
+      font-weight: 700 !important; border: none !important;
+      border-radius: var(--radius) !important; cursor: pointer !important;
+      transition: all 0.25s !important; box-shadow: 0 4px 16px var(--green-glow) !important;
+    }
+    .modal .form_integration_block button[type="submit"]:hover { background: var(--green-dark) !important; }
+
+    /* Salebot messenger buttons */
+    .modal .salebot_button svg, .modal .salebot_button img,
+    .modal .salebot_button .mes_ident { display: none !important; }
+    .modal .custom_social_btn_container { height: auto !important; min-height: 0 !important; }
+    .modal .salebot_button {
+      width: 100% !important;
+      font-family: var(--font-display) !important; font-weight: 600 !important;
+      font-size: 0.95rem !important; border-radius: var(--radius) !important;
+      padding: 0.7rem 1.5rem !important; margin-bottom: 0.5rem !important;
+    }
+    .modal .vk_link { background: #0077FF !important; color: #fff !important; }
+    .modal .vk_link:hover { background: #0066DD !important; }
+    .modal .tg_link { background: #2AABEE !important; color: #fff !important; }
+    .modal .tg_link:hover { background: #229ED9 !important; }
+    .modal .max_link { background: linear-gradient(90deg, #527CF2, #9040C8) !important; color: #fff !important; }
+    .modal .max_link:hover { background: linear-gradient(90deg, #4870E0, #8038B8) !important; }
+
+    /* Порядок кнопок мессенджеров: MAX → TG → VK */
+    .modal .form_integration_block .link_group { display: flex !important; flex-direction: column !important; }
+    .modal .form_integration_block .max_link { order: 1 !important; }
+    .modal .form_integration_block .tg_link { order: 2 !important; }
+    .modal .form_integration_block .vk_link { order: 3 !important; }
+
+    /* Checkbox toggle */
+    .modal .form_integration_block input[type="checkbox"] {
+      -webkit-appearance: none; appearance: none;
+      width: 44px !important; height: 24px !important; min-width: 44px;
+      background: #d4d4d0 !important; border-radius: 12px !important;
+      border: none !important; position: relative; cursor: pointer;
+      transition: background 0.2s !important; padding: 0 !important; margin: 0 !important;
+    }
+    .modal .form_integration_block input[type="checkbox"]::after {
+      content: ''; position: absolute; top: 2px; left: 2px;
+      width: 20px; height: 20px; background: #fff; border-radius: 50%;
+      transition: transform 0.25s; box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+    }
+    .modal .form_integration_block input[type="checkbox"]:checked { background: var(--green) !important; }
+    .modal .form_integration_block input[type="checkbox"]::before { display: none !important; }
+    .modal .form_integration_block input[type="checkbox"]:checked::after { transform: translateX(20px); }
+
+    .modal .form_integration_block div:has(> input[type="checkbox"]),
+    .modal .form_integration_block label:has(> input[type="checkbox"]),
+    .modal .form_integration_block p:has(> input[type="checkbox"]) {
+      display: flex !important; align-items: center !important; gap: 0.625rem !important;
+    }
+    .modal .form_integration_block div:has(> input[type="checkbox"]) a,
+    .modal .form_integration_block div:has(> input[type="checkbox"]) label,
+    .modal .form_integration_block div:has(> input[type="checkbox"]) span,
+    .modal .form_integration_block label:has(> input[type="checkbox"]) span,
+    .modal .form_integration_block label:has(> input[type="checkbox"]) a {
+      flex: 1 !important; font-size: 0.68rem !important; line-height: 1.3 !important; color: #999 !important;
+    }
+
+    /* Новая разметка согласий Salebot — иначе блок «раздувает» форму (референс: quiz-money-gate) */
+    .modal .form_integration_block label:has(> input[type="checkbox"]) p,
+    .modal .form_integration_block .salebot-privacy__label-text p { margin: 0 !important; padding: 0 !important; }
+    .modal .form_integration_block .ml_quiz.quiz_checkbox,
+    .modal .form_integration_block .salebot-checkbox-field,
+    .modal .form_integration_block .ml_answers { padding: 0 !important; margin: 0 0 0.6rem 0 !important; }
+    .modal .form_integration_block .salebot-checkbox-field { margin-top: 0.6rem !important; font-size: 0 !important; }
+    .modal .form_integration_block .salebot-checkbox-field .salebot-checkbox { font-size: initial !important; }
+    .modal .form_integration_block .salebot-checkbox {
+      margin: 0 !important; padding: 0 !important;
+      display: flex !important; align-items: center !important; gap: 0 !important;
+    }
+    .modal .form_integration_block .salebot-checkbox > input[type="checkbox"] { margin-right: 0.625rem !important; }
+    .modal .form_integration_block .salebot-checkbox > span,
+    .modal .form_integration_block .salebot-checkbox > .salebot-privacy__label-text { margin-left: 0 !important; padding-left: 0 !important; }
+    .modal .form_integration_block .salebot-privacy__label-text {
+      padding: 0 !important; margin: 0 !important; flex: 1 !important; text-indent: 0 !important;
+    }
+    .modal .form_integration_block .salebot-privacy__label-text a,
+    .modal .form_integration_block .salebot-privacy__link {
+      padding: 0 !important; margin: 0 !important; text-indent: 0 !important;
+      font-size: 0.68rem !important; line-height: 1.3 !important;
+      color: #999 !important; font-family: var(--font-body) !important;
+      font-style: normal !important; font-weight: 400 !important; text-decoration: none !important;
+    }
+    .modal .form_integration_block .salebot-privacy__label { white-space: normal; }
+
+    /* ================================
+       2b. SEGMENTS (для кого - 5 сегментов)
+       ================================ */
+    .segment-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1rem; margin-top: 2rem;
+    }
+    .segment-card {
+      display: flex; flex-direction: column; gap: 0.55rem;
+      background: #fff; border: 1px solid var(--separator);
+      border-radius: var(--radius); padding: 1.5rem;
+      transition: all 0.25s ease;
+    }
+    .segment-card:hover { border-color: rgba(15,157,88,0.15); box-shadow: 0 8px 24px rgba(0,0,0,0.04); transform: translateY(-2px); }
+    .segment-card__label {
+      font-family: var(--font-display); font-size: 0.66rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.09em; color: var(--text-muted);
+    }
+    .segment-card__title { font-family: var(--font-display); font-size: 1.12rem; font-weight: 700; line-height: 1.25; }
+    .segment-card__text { font-size: 1.02rem; line-height: 1.5; color: var(--text-secondary); flex: 1; }
+    .segment-card__offer {
+      display: flex; align-items: flex-start; gap: 0.5rem;
+      margin-top: 0.35rem; padding-top: 0.85rem; border-top: 1px solid var(--separator);
+      font-family: var(--font-display); font-size: 0.9rem; font-weight: 600;
+      color: var(--green); line-height: 1.35;
+    }
+    .segment-card__offer svg { width: 16px; height: 16px; margin-top: 2px; flex-shrink: 0; }
+
+    .bridge-line {
+      max-width: 760px; margin: 2.5rem auto 0; text-align: center;
+      font-family: var(--font-display); font-size: clamp(1.05rem, 2.2vw, 1.45rem);
+      font-weight: 600; line-height: 1.4; letter-spacing: -0.02em;
+    }
+    .bridge-line em { font-style: normal; color: var(--green); }
+
+    /* ================================
+       3b. BROKEN (что перестало работать)
+       ================================ */
+    .broken-intro { font-size: 1.15rem; font-weight: 500; color: #2f2f34; margin: 0.4rem 0 1.75rem; max-width: 680px; line-height: 1.6; }
+    /* Верхняя врезка секции — тёмная, как «Хочется переждать» */
+    .market-note {
+      max-width: 760px; margin: 0.5rem 0 1.9rem;
+      padding: 1.5rem 2rem; background: #18231d;
+      border-left: 4px solid var(--green);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.15);
+    }
+    .market-note p {
+      font-family: var(--font-display); font-weight: 600;
+      font-size: clamp(1.05rem, 2vw, 1.35rem); line-height: 1.45;
+      letter-spacing: -0.01em; color: rgba(255,255,255,0.85); text-align: center;
+    }
+    .market-note em { font-style: normal; color: #4bb377; font-weight: 700; }
+    /* Подзаголовок над списком — крупнее и темнее */
+    .broken-lead { font-size: 1.18rem; font-weight: 600; color: var(--text); max-width: 720px; margin: 0.4rem 0 1.5rem; line-height: 1.5; }
+    .broken-list { display: flex; flex-direction: column; gap: 0.7rem; max-width: 760px; }
+    .broken-item {
+      display: flex; align-items: flex-start; gap: 0.85rem;
+      background: #fff; border: 1px solid var(--separator);
+      border-radius: var(--radius-sm); padding: 1rem 1.3rem;
+      font-size: 1.02rem; font-weight: 500; line-height: 1.45; color: var(--text);
+    }
+    .broken-item__icon {
+      width: 26px; height: 26px; min-width: 26px; border-radius: 7px;
+      background: rgba(220,38,38,0.09); display: flex; align-items: center; justify-content: center;
+      color: #dc2626; margin-top: 1px;
+    }
+    .broken-item__icon svg { width: 15px; height: 15px; }
+
+    /* ================================
+       4b. CALLOUT (хочется переждать?)
+       ================================ */
+    .callout-section { padding: 3rem 0; }
+    .callout {
+      max-width: 780px; margin: 0 auto; padding: 2.1rem 2.3rem;
+      background: #18231d; border-radius: var(--radius);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+    }
+    .callout__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3.2vw, 2.2rem); font-weight: 800;
+      line-height: 1.1; letter-spacing: -0.03em; text-align: center;
+      color: #4bb377; margin-bottom: 0.7rem;
+    }
+    .callout p { font-family: var(--font-display); font-size: clamp(1.02rem, 2.1vw, 1.28rem); font-weight: 500; line-height: 1.5; letter-spacing: -0.01em; color: rgba(255,255,255,0.82); }
+    .callout p em { font-style: normal; color: #4bb377; font-weight: 700; }
+
+    /* ================================
+       5b. TOOLS (инструменты + цифры)
+       ================================ */
+    .tool-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2rem; }
+    .tool-card {
+      display: flex; flex-direction: column; gap: 0.75rem;
+      background: #fff; border: 1px solid var(--separator);
+      border-radius: var(--radius); padding: 1.75rem 1.5rem;
+      position: relative; overflow: hidden; transition: all 0.25s ease;
+    }
+    .tool-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: linear-gradient(90deg, var(--green), transparent);
+    }
+    .tool-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.05); transform: translateY(-2px); }
+    .tool-card__head { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+    .tool-card__icon { width: 60px; height: 60px; min-width: 60px; border-radius: 15px; background: linear-gradient(135deg, #12b56a, #0b7a43); display: flex; align-items: center; justify-content: center; color: #fff; box-shadow: 0 8px 20px rgba(15,157,88,0.28); }
+    .tool-card__icon svg { width: 30px; height: 30px; }
+    .tool-card:nth-child(2) .tool-card__icon { background: linear-gradient(135deg, #4f8bff, #2f5fd0); box-shadow: 0 8px 20px rgba(47,95,208,0.26); }
+    .tool-card:nth-child(3) .tool-card__icon { background: linear-gradient(135deg, #f0913f, #d76a1f); box-shadow: 0 8px 20px rgba(215,106,31,0.26); }
+    .tool-card__metric { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; color: var(--green); letter-spacing: -0.02em; white-space: nowrap; text-align: right; }
+    .tool-card__metric small { display: block; font-size: 0.58rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .tool-card__title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; }
+    .tool-card__text { font-size: 1.05rem; line-height: 1.55; color: var(--text-secondary); }
+
+    .bridge-strong {
+      max-width: 840px; margin: 2.25rem auto 1.75rem; padding: 1.6rem 1.85rem;
+      background: var(--bg-alt); border-radius: var(--radius);
+      text-align: center; font-family: var(--font-display);
+      font-size: clamp(1.05rem, 2vw, 1.32rem); font-weight: 500; line-height: 1.5; letter-spacing: -0.02em; color: var(--text);
+    }
+    .bridge-strong em { font-style: normal; color: var(--green); font-weight: 700; }
+    .tools-cta-wrap { text-align: center; }
+
+    /* ================================
+       6b. RESULT (финансовая безопасность)
+       ================================ */
+    .result-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85rem 1.5rem; margin: 1.75rem 0; max-width: 920px; }
+    .result-item { display: flex; align-items: flex-start; gap: 0.7rem; font-size: 1.08rem; line-height: 1.45; color: var(--text); }
+    .result-item__check {
+      width: 22px; height: 22px; min-width: 22px; border-radius: 50%;
+      background: var(--green-subtle); color: var(--green);
+      display: flex; align-items: center; justify-content: center; margin-top: 1px;
+    }
+    .result-item__check svg { width: 13px; height: 13px; }
+    .result-note {
+      margin-top: 0.75rem; padding: 1.5rem 2rem; max-width: 900px;
+      background: #18231d; border-radius: var(--radius);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.15);
+      font-family: var(--font-display); font-weight: 600;
+      font-size: clamp(1.02rem, 2vw, 1.3rem); line-height: 1.45;
+      color: rgba(255,255,255,0.85); text-align: center;
+    }
+    .result-note strong { color: #fff; font-weight: 700; }
+    .result-note em { font-style: normal; color: #4bb377; font-weight: 700; }
+
+    /* ================================
+       8b. WHY-FREE (почему бесплатно)
+       ================================ */
+    .why-free {
+      max-width: 740px; margin: 2rem auto 0; padding: 1.5rem 1.75rem;
+      background: #fff; border: 1px solid var(--separator);
+      border-radius: var(--radius);
+      display: flex; align-items: center; gap: 1.1rem;
+    }
+    .why-free__icon { width: 40px; height: 40px; min-width: 40px; border-radius: 50%; background: var(--green); color: #fff; display: flex; align-items: center; justify-content: center; }
+    .why-free__icon svg { width: 20px; height: 20px; }
+    .why-free__text { font-size: 0.92rem; line-height: 1.5; color: var(--text); }
+    .why-free__text strong { font-weight: 600; }
+
+    /* ================================
+       9b. REGALIA (регалии школы)
+       ================================ */
+    .regalia-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85rem; margin-top: 1.75rem; max-width: 920px; }
+    .regalia-item {
+      display: flex; align-items: flex-start; gap: 0.7rem;
+      background: #fff; border: 1px solid var(--separator); border-radius: var(--radius-sm);
+      padding: 1.05rem 1.2rem; font-size: 1rem; line-height: 1.45; color: var(--text);
+    }
+    .regalia-item__icon { width: 22px; height: 22px; min-width: 22px; border-radius: 50%; background: var(--green-subtle); color: var(--green); display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+    .regalia-item__icon svg { width: 13px; height: 13px; }
+
+    /* ================================
+       10b. EXPERTS (эксперты)
+       ================================ */
+    .expert-card {
+      display: flex; gap: 1.5rem; align-items: center;
+      background: #fff; border: 1px solid var(--separator); border-radius: var(--radius);
+      padding: 1.6rem 1.85rem; margin-top: 2rem; max-width: 840px;
+    }
+    .expert-card__photo {
+      width: 118px; height: 118px; min-width: 118px; border-radius: 16px;
+      object-fit: cover; object-position: top center; background: var(--bg-alt);
+    }
+    .expert-card__label {
+      font-family: var(--font-display); font-size: 0.62rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em; color: var(--green); margin-bottom: 0.35rem;
+    }
+    .expert-card__name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 800; margin-bottom: 0.35rem; }
+    .expert-card__bio { font-size: 0.94rem; line-height: 1.55; color: var(--text-secondary); }
+    .expert-team-note {
+      margin-top: 1.25rem; padding: 1.25rem 1.5rem; max-width: 840px;
+      background: var(--bg-alt); border-radius: var(--radius);
+      font-size: 0.92rem; line-height: 1.55; color: var(--text-secondary);
+    }
+    .expert-team-note strong { color: var(--text); font-weight: 600; }
+
+    /* ================================
+       11b. REVIEWS (отзывы)
+       ================================ */
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+    .review-card {
+      display: flex; flex-direction: column; gap: 0.9rem;
+      background: #fff; border: 1px solid var(--separator); border-radius: var(--radius); padding: 1.5rem;
+    }
+    .review-card__text { font-size: 0.95rem; line-height: 1.55; color: var(--text); flex: 1; }
+    .review-card__author { display: flex; align-items: center; gap: 0.7rem; }
+    .review-card__avatar {
+      width: 40px; height: 40px; min-width: 40px; border-radius: 50%;
+      background: var(--green-subtle); color: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-weight: 800; font-size: 0.9rem;
+    }
+    .review-card__name { font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; line-height: 1.2; }
+    .review-card__meta { font-size: 0.72rem; color: var(--text-muted); margin-top: 1px; }
+
+    /* Отзывы с площадок (Яндекс, Otzyvru, Yell, VK, Telegram) */
+    .reviews-platforms-head {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(1.3rem, 3vw, 2rem); line-height: 1.2;
+      letter-spacing: -0.02em; text-align: center;
+      margin: 2.75rem auto 1.75rem; max-width: 780px;
+    }
+    .reviews-platforms-head em { font-style: normal; color: var(--green); }
+    .platforms-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; max-width: 1200px; margin: 0 auto; }
+    .platform-card {
+      display: flex; flex-direction: column; align-items: stretch;
+      text-align: center; overflow: hidden;
+      background: #fff; border: 1px solid var(--separator); border-radius: var(--radius);
+      padding: 0; transition: all 0.25s ease;
+    }
+    .platform-card:hover { box-shadow: 0 10px 26px rgba(0,0,0,0.06); transform: translateY(-2px); }
+    /* Скриншот реальных отзывов — соцдоказательство, клик открывает полный */
+    .platform-card__shot {
+      display: block; width: 100%; aspect-ratio: 4 / 3;
+      border: 0; padding: 0; margin: 0; background: var(--bg-alt);
+      position: relative; overflow: hidden; cursor: zoom-in;
+      border-bottom: 1px solid var(--separator);
+    }
+    .platform-card__shot img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+    .platform-card__shot::after {
+      content: 'Смотреть отзывы'; position: absolute; left: 0; right: 0; bottom: 0;
+      padding: 0.75rem 0.4rem 0.45rem;
+      font-family: var(--font-display); font-size: 0.66rem; font-weight: 700; color: #fff;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      opacity: 0; transition: opacity 0.25s;
+    }
+    .platform-card__shot:hover::after, .platform-card__shot:focus-visible::after { opacity: 1; }
+    .platform-card__shot:focus-visible { outline: 2px solid var(--green); outline-offset: -2px; }
+    .platform-card__info { display: flex; flex-direction: column; align-items: center; gap: 0.35rem; padding: 1rem 0.85rem 1.15rem; }
+    .platform-card__logo {
+      width: 40px; height: 40px; border-radius: 11px; margin-bottom: 0.2rem;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-weight: 800; font-size: 1rem; color: #fff;
+    }
+    .platform-card__logo svg { width: 21px; height: 21px; }
+    .platform-card__name { font-family: var(--font-display); font-weight: 700; font-size: 0.92rem; color: var(--text); }
+    .platform-card__stars { color: #ffb300; font-size: 0.9rem; letter-spacing: 1px; line-height: 1; }
+    .platform-card__rating { font-family: var(--font-display); font-weight: 800; font-size: 1.35rem; letter-spacing: -0.02em; color: var(--text); }
+    .platform-card__count { font-size: 0.8rem; color: var(--text-secondary); }
+
+    /* Carousel dots (видны только на мобиле) */
+    .carousel-dots { display: none; }
+
+    /* ================================
+       RESPONSIVE - new blocks (tablet)
+       ================================ */
+    @media (max-width: 1024px) {
+      .segment-grid { grid-template-columns: repeat(2, 1fr); }
+      .tool-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+      .platforms-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* ================================
+       RESPONSIVE - new blocks (mobile)
+       ================================ */
+    @media (max-width: 768px) {
+      .segment-grid { grid-template-columns: 1fr; gap: 0.6rem; }
+      .segment-card { padding: 1.25rem; }
+      .bridge-line { font-size: 1.1rem; margin-top: 1.75rem; }
+      .broken-intro { font-size: 1rem; }
+      .broken-lead { font-size: 1.05rem; }
+      .market-note { padding: 1.25rem 1.3rem; }
+      .broken-item { font-size: 0.95rem; padding: 0.9rem 1.1rem; }
+      .callout-section { padding: 2rem 0; }
+      .callout { padding: 1.4rem 1.3rem; }
+
+      .tool-grid { display: flex; flex-direction: column; gap: 0.85rem; margin-top: 1.5rem; }
+      .tool-card { flex: none; }
+      .bridge-strong { font-size: 1.05rem; padding: 1.3rem 1.4rem; }
+
+      .result-list { grid-template-columns: 1fr; gap: 0.7rem; }
+      .result-item { font-size: 0.98rem; }
+      .why-free { flex-direction: column; text-align: center; gap: 0.85rem; }
+      .regalia-list { grid-template-columns: 1fr; }
+      .expert-card { flex-direction: column; text-align: center; align-items: center; gap: 1rem; padding: 1.5rem 1.25rem; }
+      .reviews-grid {
+        display: flex; gap: 0.85rem; overflow-x: auto;
+        scroll-snap-type: x mandatory; scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch; scrollbar-width: none;
+        margin: 2rem -1.25rem 0; padding: 0 1.25rem 0.5rem;
+      }
+      .reviews-grid::-webkit-scrollbar { display: none; }
+      .review-card { flex: 0 0 82%; scroll-snap-align: start; }
+
+      /* UX-фиксы аудита вёрстки 0707: dots каруселей + меньше движения */
+      .carousel-dots { display: flex; justify-content: center; gap: 6px; margin-top: 1.25rem; }
+      /* Инструменты и программа теперь стопкой — точки-карусели не нужны */
+      #toolDots, #programDots { display: none; }
+      .carousel-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(0,0,0,0.18); transition: all 0.3s; }
+      .carousel-dot.active { background: var(--green); width: 20px; border-radius: 3px; }
+      .cta-btn::after { display: none; }
+      .cta-btn { animation: fadeUp 0.6s ease 0.38s both; }
+    }
+
+    /* ================================
+       RESPONSIVE - large screens
+       ================================ */
+    @media (min-width: 1600px) {
+      .hero__body { max-width: 1600px; padding: 0 4rem 2rem; }
+      .hero__title { font-size: 3.5rem; }
+      .hero__sub { font-size: 1.3rem; }
+      .container { max-width: 1400px; }
+      .float-card--1 { height: 260px; }
+      .float-card--2 { height: 250px; }
+      .float-card--3 { height: 245px; }
+      .float-card--4 { height: 235px; }
+    }
+
+    /* ================================
+       RESPONSIVE - tablet
+       ================================ */
+    @media (max-width: 1024px) {
+      .pain-grid { grid-template-columns: repeat(2, 1fr); }
+      .program-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ================================
+       RESPONSIVE - mobile
+       ================================ */
+    @media (max-width: 768px) {
+      .section { padding: 2rem 0; }
+      .container { padding: 0 1.25rem; }
+      .hero__nav { padding: 1rem 1.25rem; justify-content: center; }
+      .hero__nav-right { display: none; }
+
+      .hero__body { grid-template-columns: 1fr; padding: 0 1.25rem 0; }
+      .hero__left { order: 1; gap: 0.85rem; padding-right: 0; text-align: left; align-items: stretch; }
+      .hero__title { text-align: center; }
+
+      /* Show speaker on mobile - full width below CTA */
+      .hero__right {
+        display: flex; order: 2;
+        position: relative; width: calc(100% + 2.5rem);
+        margin: 0.5rem -1.25rem 0; justify-content: center;
+        align-items: flex-end; min-height: 280px;
+        overflow: hidden;
+      }
+      .speaker-img {
+        max-height: 320px; width: auto; max-width: 65%;
+        display: block; object-fit: contain; object-position: bottom;
+        mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+        filter: none;
+      }
+      .speaker-img { z-index: 5 !important; }
+      .float-card {
+        display: block !important; z-index: 1 !important;
+        box-shadow: none !important; height: auto !important;
+        animation: none !important;
+      }
+      .float-card img { height: auto !important; width: 100% !important; }
+      .float-card--1 { width: 60px; top: 12%; bottom: auto; left: 10%; right: auto; transform: rotate(-5deg); animation-delay: 0s !important; }
+      .float-card--2 { width: 60px; top: 12%; bottom: auto; right: 10%; left: auto; transform: rotate(5deg); animation-delay: 1.2s !important; }
+      .float-card--3 { width: 60px; bottom: 22%; top: auto; right: 10%; left: auto; transform: rotate(-4deg); animation-delay: 2.4s !important; }
+      .float-card--4 { width: 60px; bottom: 5%; top: auto; left: 10%; right: auto; transform: rotate(4deg); animation-delay: 3.6s !important; }
+      .speaker-tag { display: none; }
+
+      /* Hide small avatar - speaker is now full image */
+      .speaker-mobile { display: none !important; }
+
+      .dates-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.4rem; width: 100%; }
+      .date-chip {
+        flex-direction: column; justify-content: center; align-items: center;
+        padding: 0.5rem 0.25rem; gap: 0.1rem;
+        font-size: 0.9rem; font-weight: 700;
+      }
+      .date-chip__time { font-size: 0.7rem; font-weight: 600; }
+      .date-chip svg { display: none; }
+
+      .hero__badge { display: none; }
+
+      /* 6vw держит заголовок в 4 строки на всех мобильных ширинах (320-600px) */
+      .hero__title { font-size: clamp(1.15rem, 6vw, 2.1rem); line-height: 1.14; }
+      .hero__sub {
+        font-size: 0.92rem; max-width: 100%; text-align: center;
+        color: var(--text); font-weight: 500; line-height: 1.45;
+      }
+      .gift-block { flex-direction: row; align-items: center; width: 100%; padding: 1rem; background: var(--bg-alt); border-radius: 14px; gap: 0.85rem; }
+      .gift-book { width: 85px; flex-shrink: 0; }
+      .gift-text { font-size: 0.85rem; text-align: left; }
+      .gift-info { align-items: flex-start; flex: 1; min-width: 0; }
+      .timer-box { margin: 0; }
+      .gift-row { width: 100%; }
+      .pain-card__text { font-size: 0.95rem; }
+      .program-card__list li { font-size: 0.98rem; }
+
+      .cta-btn { width: 100%; justify-content: center; font-size: 0.95rem; padding: 0.85rem 1.5rem; }
+
+      .pain-grid { grid-template-columns: 1fr; gap: 0.6rem; }
+      .pain-card { padding: 1.25rem; }
+
+      .program-grid { display: flex; flex-direction: column; gap: 0.85rem; }
+      .program-card { flex: none; }
+
+      .modal-overlay { align-items: flex-end; padding: 0; }
+      .modal {
+        padding: 1.5rem 1.25rem calc(env(safe-area-inset-bottom, 0px) + 1rem);
+        border-radius: 20px 20px 0 0; max-height: 92dvh; overflow-y: auto;
+        margin: 0 6px; width: calc(100% - 12px);
+      }
+      .modal__close { width: 30px; height: 30px; top: 0.75rem; right: 0.75rem; }
+      .modal .form_integration_block { width: 100% !important; }
+
+    }
+
+    /* Sticky CTA mobile */
+    .sticky-cta {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      padding: 0.75rem 1.25rem calc(env(safe-area-inset-bottom, 0px) + 0.75rem);
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(16px);
+      border-top: 1px solid var(--separator); z-index: 100;
+      transform: translateY(100%); transition: transform 0.3s ease;
+    }
+    .sticky-cta.visible { transform: translateY(0); }
+    .sticky-cta .cta-btn { width: 100%; padding: 0.85rem; font-size: 0.9rem; animation: none; }
+    @media (max-width: 768px) { .sticky-cta { display: block; } }
+
+    /* ================================
+       NEW BLOCKS (ТЗ isalary)
+       ================================ */
+    /* Дисклеймер инструментов (курсив) */
+    .tools-note {
+      max-width: 820px; margin: 2rem auto 1.75rem;
+      font-style: italic; text-align: center;
+      font-size: clamp(1.05rem, 1.9vw, 1.22rem); line-height: 1.55;
+      color: #35353a;
+    }
+
+    /* Экран 2 — иконки сегментов */
+    .seg-ico {
+      width: 52px; height: 52px; border-radius: 14px; margin-bottom: 0.15rem;
+      display: flex; align-items: center; justify-content: center; color: #fff;
+      background: linear-gradient(135deg, #12b56a, #0b7a43);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.10);
+    }
+    .seg-ico svg { width: 26px; height: 26px; }
+    /* Единый цвет иконок — чтобы не оттягивали внимание с текста */
+    .seg-ico[data-hue] { background: linear-gradient(135deg, #12b56a, #0b7a43); }
+
+    /* О школе — фото команды */
+    .school-photo { margin: 2.25rem auto 0; max-width: 600px; }
+    .school-photo img {
+      width: 100%; height: auto; display: block;
+      border-radius: 18px; border: 1px solid var(--separator);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+    }
+    .school-photo__cap {
+      display: block; text-align: center; margin-top: 0.7rem;
+      font-family: var(--font-display); font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted);
+    }
+
+    /* Экран 7 — Регистрация */
+    .reg { text-align: center; }
+    .reg-card {
+      max-width: 640px; margin: 0 auto;
+      display: flex; flex-direction: column; align-items: center; gap: 1.1rem;
+    }
+    .reg-card__label {
+      font-family: var(--font-display); font-size: 0.7rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.12em; color: var(--green);
+    }
+    .reg-card__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800;
+      line-height: 1.18; letter-spacing: -0.03em;
+    }
+    .reg .why-free { margin: 0.25rem auto 0; text-align: left; }
+
+    /* Экран 9 — Эксперты (4 карточки: фото сверху + буллиты) */
+    .experts-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.1rem; margin-top: 2rem;
+    }
+    .exp-card {
+      display: flex; flex-direction: column;
+      background: #fff; border: 1px solid var(--separator);
+      border-radius: 18px; overflow: hidden;
+      transition: all 0.25s ease;
+    }
+    .exp-card:hover { box-shadow: 0 14px 34px rgba(0,0,0,0.08); transform: translateY(-3px); }
+    .exp-card__photo-wrap {
+      position: relative; width: 100%; aspect-ratio: 1 / 1;
+      background: var(--bg-alt); overflow: hidden;
+    }
+    .exp-card__photo { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+    .exp-card__ph {
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-weight: 800; font-size: 3rem;
+      color: #fff; background: linear-gradient(135deg, #12b56a, #0b7a43);
+    }
+    .exp-card__ph[data-hue="1"] { background: linear-gradient(135deg, #4f8bff, #2f5fd0); }
+    .exp-card__ph[data-hue="2"] { background: linear-gradient(135deg, #a06be6, #6f39c0); }
+    .exp-card__ph[data-hue="3"] { background: linear-gradient(135deg, #f0913f, #d76a1f); }
+    .exp-card__body { padding: 1.15rem 1.25rem 1.35rem; display: flex; flex-direction: column; }
+    .exp-card__name { font-family: var(--font-display); font-size: 1.05rem; font-weight: 800; line-height: 1.2; }
+    .exp-card__role {
+      font-family: var(--font-display); font-size: 0.66rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em; color: var(--green);
+      margin: 0.3rem 0 0.7rem;
+    }
+    .exp-card__list { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+    .exp-card__list li {
+      position: relative; padding-left: 1rem;
+      font-size: 0.9rem; line-height: 1.4; color: var(--text-secondary);
+    }
+    .exp-card__list li::before {
+      content: ''; position: absolute; left: 0; top: 0.5em;
+      width: 5px; height: 5px; border-radius: 50%; background: var(--green);
+    }
+    /* Выделенный главный эксперт — Дмитрий Толстяков (лицо школы) */
+    .experts-featured { margin-top: 2rem; }
+    .exp-card--featured { flex-direction: row; align-items: stretch; }
+    /* Фото Дмитрия ≈1,5× шире карточек остальных экспертов (~367px) */
+    .exp-card--featured .exp-card__photo-wrap { width: 560px; min-width: 560px; aspect-ratio: 1 / 1; }
+    .exp-card--featured .exp-card__body { flex: 1; padding: 2.25rem 2.5rem; justify-content: center; }
+    .exp-featured__badge {
+      display: inline-flex; align-self: flex-start; align-items: center; gap: 0.35rem;
+      background: var(--green-subtle); color: var(--green);
+      font-family: var(--font-display); font-weight: 700; font-size: 0.72rem;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      padding: 0.35rem 0.8rem; border-radius: 100px; margin-bottom: 0.85rem;
+    }
+    .exp-card--featured .exp-card__name { font-size: 1.85rem; }
+    .exp-card--featured .exp-card__role { font-size: 0.8rem; margin: 0.4rem 0 1.1rem; }
+    .exp-card--featured .exp-card__list { gap: 0.65rem; }
+    .exp-card--featured .exp-card__list li { font-size: 1.05rem; line-height: 1.45; padding-left: 1.15rem; }
+
+    /* Экран 10 — Видеоотзывы */
+    .vreviews {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1rem; margin-top: 2rem;
+    }
+    .vcard {
+      display: flex; flex-direction: column; text-align: left;
+      margin: 0; padding: 0; color: var(--text);
+      background: #fff; border: 1px solid var(--separator);
+      border-radius: 18px; overflow: hidden;
+      font-family: inherit; cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .vcard:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.12); }
+    .vcard:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+    .vcard__poster {
+      position: relative; display: block; aspect-ratio: 3 / 4;
+      overflow: hidden; background: #dfe6e2;
+    }
+    .vcard__poster img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+    .vcard__play {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 56px; height: 56px; border-radius: 50%;
+      background: rgba(255,255,255,0.92); color: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+    .vcard__play svg { width: 24px; height: 24px; margin-left: 2px; }
+    .vcard:hover .vcard__play { transform: translate(-50%, -50%) scale(1.08); background: #fff; }
+    .vcard__meta { padding: 0.95rem 1.05rem 1.15rem; display: flex; flex-direction: column; gap: 0.35rem; }
+    .vcard__name { font-family: var(--font-display); font-size: 0.92rem; font-weight: 800; color: var(--text); }
+    .vcard__quote { font-size: 0.9rem; line-height: 1.45; color: var(--text-secondary); font-style: italic; }
+
+    .reviews-subhead {
+      margin: 2.5rem 0 0; font-family: var(--font-display);
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--text-muted);
+    }
+
+    /* Видео-лайтбокс */
+    .vlightbox {
+      position: fixed; inset: 0; z-index: 1100;
+      background: rgba(0,0,0,0.8); display: flex;
+      align-items: center; justify-content: center; padding: 1rem;
+      opacity: 0; visibility: hidden; transition: all 0.3s;
+    }
+    .vlightbox.active { opacity: 1; visibility: visible; }
+    .vlightbox__inner { position: relative; }
+    .vlightbox__body {
+      position: relative; height: min(84vh, 720px); aspect-ratio: 9 / 16;
+      max-width: 92vw; background: #000; border-radius: 14px; overflow: hidden;
+    }
+    .vlightbox__body iframe, .vlightbox__body video { width: 100%; height: 100%; border: 0; display: block; }
+    .vlightbox__close {
+      position: absolute; top: -46px; right: 0;
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(255,255,255,0.15); color: #fff; border: none;
+      font-size: 1.4rem; cursor: pointer; line-height: 1;
+    }
+    .vlightbox__close:hover { background: rgba(255,255,255,0.28); }
+
+    /* Лайтбокс для скриншотов отзывов */
+    .imglightbox {
+      position: fixed; inset: 0; z-index: 1100;
+      background: rgba(0,0,0,0.85); display: flex;
+      align-items: center; justify-content: center; padding: 1.5rem;
+      opacity: 0; visibility: hidden; transition: all 0.3s;
+      overflow-y: auto;
+    }
+    .imglightbox.active { opacity: 1; visibility: visible; }
+    .imglightbox__inner { position: relative; margin: auto; }
+    .imglightbox__inner img {
+      display: block; max-width: min(92vw, 880px); max-height: 86vh;
+      width: auto; height: auto; border-radius: 12px; background: #fff;
+    }
+    .imglightbox__close {
+      position: absolute; top: -46px; right: 0;
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(255,255,255,0.15); color: #fff; border: none;
+      font-size: 1.4rem; cursor: pointer; line-height: 1;
+    }
+    .imglightbox__close:hover { background: rgba(255,255,255,0.28); }
+
+    /* Адаптив новых блоков */
+    @media (max-width: 1024px) {
+      .vreviews { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .reg-card__title { font-size: 1.35rem; }
+      .reg .why-free { text-align: center; }
+      .vreviews {
+        display: flex; gap: 0.85rem; overflow-x: auto;
+        scroll-snap-type: x mandatory; scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch; scrollbar-width: none;
+        margin: 2rem -1.25rem 0; padding: 0 1.25rem 0.5rem;
+      }
+      .vreviews::-webkit-scrollbar { display: none; }
+      .vcard { flex: 0 0 62%; scroll-snap-align: start; }
+      .vlightbox__close { top: -44px; }
+      /* Выделенный эксперт — стопкой на мобилке */
+      .exp-card--featured { flex-direction: column; }
+      .exp-card--featured .exp-card__photo-wrap { width: 100%; min-width: 0; aspect-ratio: 4 / 3; }
+      .exp-card--featured .exp-card__body { padding: 1.4rem 1.35rem; }
+      .exp-card--featured .exp-card__name { font-size: 1.3rem; }
+      .exp-card--featured .exp-card__list li { font-size: 0.98rem; }
+      /* Площадки-отзывы: 2 в ряд на мобилке */
+      .platforms-grid { grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+      .platform-card__info { padding: 0.85rem 0.6rem 1rem; }
+      .platform-card__shot::after { content: none; }
+    }
+
+    /* ==================== Новый герой (варианты 1-4) ==================== */
+    .hero--v .hero__body { align-items: center; }
+
+    /* Герой — на общей сетке сайта (как .container), иначе заголовок уезжает левее секций */
+    .hero--v .hero__nav,
+    .hero--v .hero__body {
+      width: 100%; max-width: 1200px; margin-left: auto; margin-right: auto;
+      padding-left: 32px; padding-right: 32px;
+    }
+    @media (min-width: 1600px) {
+      .hero--v .hero__nav,
+      .hero--v .hero__body { max-width: 1400px; padding-left: 32px; padding-right: 32px; }
+    }
+    .vmedia { position: relative; overflow: hidden; }
+    .vmedia--grey  { background: linear-gradient(157deg, #e4e5e8 0%, #c7c9cd 100%); }
+    .vmedia--green { background: linear-gradient(157deg, #315245 0%, #1e3a2f 100%); }
+    .vmedia__photo {
+      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      height: 100%; width: auto; max-width: none;
+    }
+
+    /* режим КАРТОЧКА — фото компактно рядом с текстом, без растекания к краю окна */
+    .hero--card .hero__right { display: flex; justify-content: flex-end; }
+    .vmedia--card {
+      width: 100%; max-width: 520px; aspect-ratio: 5 / 6;
+      border-radius: 30px; box-shadow: 0 34px 74px rgba(0,0,0,.14), 0 0 0 1px rgba(0,0,0,.03);
+    }
+    @media (min-width: 1600px) { .vmedia--card { max-width: 560px; } }
+    /* зелёная карточка — фото со сложенными руками почти квадратное, рамка под него (иначе много зелёного сверху) */
+    .vmedia--card.vmedia--green { max-width: 580px; aspect-ratio: 88 / 79; }
+    @media (min-width: 1600px) { .vmedia--card.vmedia--green { max-width: 640px; } }
+
+    /* Плашка с именем */
+    .vplate {
+      position: absolute; bottom: 22px; z-index: 4;
+      border-radius: 16px; padding: 0.7rem 1.05rem;
+      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+      box-shadow: 0 12px 34px rgba(0,0,0,.14);
+    }
+    .hero--card .vplate { left: 20px; right: 20px; }
+    .vplate--light { background: rgba(255,255,255,.86); }
+    .vplate--dark  { background: rgba(17,32,26,.58); border: 1px solid rgba(255,255,255,.14); }
+    .vplate__name  { font-family: var(--font-display); font-weight: 800; font-size: 1.05rem; line-height: 1.15; }
+    .vplate--light .vplate__name { color: #14171a; }
+    .vplate--dark  .vplate__name { color: #fff; }
+    .vplate__role  { font-size: 0.75rem; margin-top: 3px; display: flex; align-items: center; gap: 6px; line-height: 1.25; }
+    .vplate--light .vplate__role { color: #5a5f66; }
+    .vplate--dark  .vplate__role { color: rgba(255,255,255,.82); }
+    .vplate__dot   { width: 7px; height: 7px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+    .vplate--dark .vplate__dot { background: #4bd089; }
+
+    /* карточные варианты — чуть шире колонка под фото */
+    .hero--card .hero__body { grid-template-columns: 1fr 1fr; }
+
+    /* ГРАДИЕНТ full-bleed: студийный серый до края окна, человек крупный и близко к тексту */
+    @media (min-width: 769px) {
+      .hero--bleed { position: relative; overflow: hidden; }
+      /* студийный фон — радиальный «свет» за фигурой, тянется к правому краю, мягко тает влево к тексту */
+      .hero--bleed::before {
+        content: ''; position: absolute; top: 0; right: 0; bottom: 0; z-index: 0; pointer-events: none;
+        width: 84vw;
+        background:
+          radial-gradient(44% 48% at 60% 30%, rgba(240,242,244,.45) 0%, rgba(240,242,244,0) 72%),
+          linear-gradient(108deg, #e7eaed 0%, #d8dce1 32%, #c4c8ce 64%, #b4b9c0 100%);
+        -webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent 16%, #000 46%);
+                mask-image: linear-gradient(90deg, transparent 0%, transparent 16%, #000 46%);
+      }
+      .hero--bleed .hero__nav, .hero--bleed .hero__body { position: relative; z-index: 1; }
+      .hero--bleed .hero__body { align-items: center; grid-template-columns: 1fr 1fr; padding-bottom: 0; }
+      .hero--bleed .hero__left { align-self: center; }
+      .hero--bleed .hero__right {
+        position: relative; align-self: stretch; left: 0;
+        display: flex; align-items: flex-end; justify-content: center;
+      }
+      .vmedia--bleed { display: contents; background: none; }
+      .vmedia--bleed .vmedia__photo {
+        position: relative; bottom: 0; left: auto; right: auto; transform: none;
+        height: clamp(540px, 80vh, 720px); width: auto; max-width: none; align-self: flex-end;
+        filter: drop-shadow(-14px 20px 34px rgba(55,60,68,.17));
+      }
+      .hero--bleed .vplate { position: absolute; left: auto; right: 4%; bottom: 10%; transform: none; max-width: 370px; }
+      .hero--bleed .vplate__role { white-space: nowrap; }
+    }
+
+    /* Мобилка — всё стопкой */
+    @media (max-width: 768px) {
+      .hero--v .hero__body { grid-template-columns: 1fr; }
+      .hero--v .hero__right { order: 2; display: block; position: static; width: 100%; margin: 1.1rem 0 0; }
+      .hero--bleed { min-height: 0; }
+      .vmedia--card, .vmedia--bleed {
+        position: relative; inset: auto; width: 100%; max-width: 330px; margin: 0 auto;
+        aspect-ratio: 4 / 5; border-radius: 24px; min-height: 0;
+      }
+      .vmedia--bleed { background: linear-gradient(157deg, #e6e7ea 0%, #cfd1d5 100%); }
+      .vmedia--card.vmedia--green { max-width: 340px; }
+      .vmedia__photo { left: 50%; transform: translateX(-50%); height: 100%; }
+      .hero--card .vplate, .hero--bleed .vplate { left: 14px; right: 14px; max-width: none; bottom: 14px; }
+      .hero--bleed .vplate__role { white-space: normal; }
+    }
+  </style>
+  <!-- Форма Salebot грузится цепочкой с 4 доменов, прогреваем соединения заранее -->
+  <link rel="preconnect" href="https://salebot.pro" crossorigin>
+  <link rel="preconnect" href="https://chatter.salebot.pro" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="dns-prefetch" href="https://salebot.pro">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NL7D8CF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <!-- ===== 1. HERO ===== -->
+  <section class="hero hero--v hero--bleed">
+    <nav class="hero__nav">
+      <img src="/isalary/logo.png" alt="FIN-RA — школа безопасных инвестиций" class="hero__logo" width="87" height="44">
+      <div class="hero__nav-right">
+        <div class="live-dot"></div>
+        <span class="hero__nav-label">Набор открыт</span>
+      </div>
+    </nav>
+
+    <div class="hero__body">
+      <div class="hero__left">
+        <div class="hero__badge">Бесплатное предобучение · Онлайн</div>
+
+        <h1 class="hero__title">Научитесь зарабатывать на любом рынке&nbsp;— растущем или падающем. Создайте <em>финансовую&nbsp;защиту</em> на всю жизнь.</h1>
+
+        <p class="hero__sub">Три эфира о том, как зарабатывать в нестабильные времена, создать пассивный доход и быть в финансовой безопасности&nbsp;— что бы ни случилось с экономикой, работой или бизнесом.</p>
+
+        <button class="cta-btn" onclick="openModal()">Принять участие
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <div class="hero__trust">
+          <span>Вводные занятия</span>
+          <span>3 эфира</span>
+          <span><strong>40 000+</strong>&nbsp;участников с 2019 года</span>
+        </div>
+      </div>
+
+      <div class="hero__right">
+        <div class="vmedia vmedia--bleed vmedia--grey">
+          <img class="vmedia__photo" src="/isalary/h4.png" alt="Дмитрий Толстяков, основатель FIN-RA" width="675" height="1150">
+          <div class="vplate vplate--light">
+            <div class="vplate__name">Дмитрий Толстяков</div>
+            <div class="vplate__role"><span class="vplate__dot"></span>Основатель FIN-RA · Школа обучила 200&nbsp;000+&nbsp;человек</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 2. ДЛЯ КОГО (5 сегментов) ===== -->
+  <section class="section section--alt">
+    <div class="container">
+      <h2 class="section-title reveal">Для кого это <em>обучение?</em></h2>
+
+      <div class="segment-grid">
+        <div class="segment-card reveal">
+          <div class="seg-ico" data-hue="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5.5A2.5 2.5 0 0 1 10.5 3h3A2.5 2.5 0 0 1 16 5.5V7"/><path d="M3 12h18"/></svg></div>
+          <div class="segment-card__title">Для наёмных сотрудников</div>
+          <div class="segment-card__text">которые понимают, что стабильности в найме нет, найти хорошую работу с каждым годом всё сложнее, а на пенсию&nbsp;— не прожить.</div>
+          <div class="segment-card__offer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span>Создайте второй источник дохода, пока есть возможность</span></div>
+        </div>
+        <div class="segment-card reveal reveal-delay-1">
+          <div class="seg-ico" data-hue="2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
+          <div class="segment-card__title">Для предпринимателей</div>
+          <div class="segment-card__text">которые понимают, что рынок штормит и бизнес может остановиться в любой момент&nbsp;— а обязательства останутся.</div>
+          <div class="segment-card__offer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span>Создайте пассивный доход, независимый от бизнеса</span></div>
+        </div>
+        <div class="segment-card reveal reveal-delay-2">
+          <div class="seg-ico" data-hue="3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3L4 8h16z"/><path d="M4 10h16"/><path d="M6 10v10M10 10v10M14 10v10M18 10v10"/><line x1="3" y1="21" x2="21" y2="21"/></svg></div>
+          <div class="segment-card__title">Для тех, кто размещает деньги на депозитах</div>
+          <div class="segment-card__text">Ставки по вкладам снижаются, инфляция растёт, в стране перебои с топливом, а доллар и недвижимость больше не дают гарантий. Привычные инструменты перестали работать, а деньги можно потерять как в 1998 году.</div>
+          <div class="segment-card__offer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span>Сохраните капитал и обгоните инфляцию</span></div>
+        </div>
+        <div class="segment-card reveal reveal-delay-3">
+          <div class="seg-ico" data-hue="4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="5"/><line x1="12" y1="13" x2="12" y2="21"/><line x1="9" y1="18" x2="15" y2="18"/></svg></div>
+          <div class="segment-card__title">Для женщин</div>
+          <div class="segment-card__text">которые понимают: настоящая финансовая безопасность&nbsp;— это свои деньги. Декрет, перерыв в карьере, зависимость от чужого дохода&nbsp;— всё это делает вас уязвимой.</div>
+          <div class="segment-card__offer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span>Создайте свой источник дохода&nbsp;— независимо ни от кого</span></div>
+        </div>
+        <div class="segment-card reveal reveal-delay-3">
+          <div class="seg-ico" data-hue="5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="14" r="6"/><line x1="14.5" y1="9.5" x2="21" y2="3"/><polyline points="15 3 21 3 21 9"/></svg></div>
+          <div class="segment-card__title">Для мужчин</div>
+          <div class="segment-card__text">которым важно самим разбираться в финансах и видеть возможности, а не слушать чужие «инвестидеи».</div>
+          <div class="segment-card__offer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span>Станьте тем, кто контролирует свой доход</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 3. ЧТО ПЕРЕСТАЛО РАБОТАТЬ ===== -->
+  <section class="section section--centered">
+    <div class="container">
+      <div class="market-note reveal">
+        <p>Вы понимаете, что <em>один источник дохода&nbsp;— это риск</em>. Зарабатывать стало сложнее, а хранить&nbsp;— более рискованно.</p>
+      </div>
+      <h2 class="section-title reveal">Что перестало работать <em>в&nbsp;2025–2026?</em></h2>
+      <p class="broken-lead reveal">Привычные способы хранить и приумножать деньги перестали работать:</p>
+
+      <div class="broken-list">
+        <div class="broken-item reveal"><div class="broken-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 18l-9.5-9.5-5 5L1 6"/><path d="M17 18h6v-6"/></svg></div><span>Доллар не растёт как раньше</span></div>
+        <div class="broken-item reveal"><div class="broken-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 18l-9.5-9.5-5 5L1 6"/><path d="M17 18h6v-6"/></svg></div><span>Акции российских компаний в последнее время разочаровывают, а зарубежные недоступны</span></div>
+        <div class="broken-item reveal"><div class="broken-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 18l-9.5-9.5-5 5L1 6"/><path d="M17 18h6v-6"/></svg></div><span>Доходность недвижимости мизерная, а ипотека&nbsp;— дорогая</span></div>
+        <div class="broken-item reveal"><div class="broken-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 18l-9.5-9.5-5 5L1 6"/><path d="M17 18h6v-6"/></svg></div><span>Банковские ставки постепенно падают</span></div>
+        <div class="broken-item reveal"><div class="broken-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 18l-9.5-9.5-5 5L1 6"/><path d="M17 18h6v-6"/></svg></div><span>Рынок криптовалют дважды обвалился за год</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. ВРЕЗКА «ХОЧЕТСЯ ПЕРЕЖДАТЬ?» ===== -->
+  <section class="callout-section section--alt">
+    <div class="container">
+      <div class="callout reveal">
+        <h3 class="callout__title">Хочется переждать?</h3>
+        <p>Но жизнь не ждёт, когда всё наладится. Она просто проходит, и вместе с ней уходят <em>возможности</em>, о которых вы не знаете. Которые появляются именно в такие периоды.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 5. ВОЗМОЖНОСТИ + 3 ИНСТРУМЕНТА ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label reveal">Возможности</div>
+      <h2 class="section-title reveal">На любом рынке есть <em>свои возможности</em>. Большинство их не видит</h2>
+      <p class="broken-intro reveal">И на растущем, и на падающем рынке есть то, что работает. Кто это видит&nbsp;— зарабатывает сейчас и строит капитал на годы вперёд.</p>
+
+      <div class="tool-grid" id="toolGrid">
+        <div class="tool-card reveal">
+          <div class="tool-card__head">
+            <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 2h6l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div>
+            <div class="tool-card__metric">до 28%<small>годовых</small></div>
+          </div>
+          <div class="tool-card__title">Государственные облигации</div>
+          <div class="tool-card__text">Облигации сейчас стоят дёшево из-за высокой ставки. Купив их сейчас, можно зафиксировать высокую доходность&nbsp;— до 28% годовых в зависимости от выпуска и срока. А когда ставку снизят, вырастет и цена самих облигаций.</div>
+        </div>
+        <div class="tool-card reveal reveal-delay-1">
+          <div class="tool-card__head">
+            <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></div>
+            <div class="tool-card__metric">от 1 000 ₽<small>порог входа</small></div>
+          </div>
+          <div class="tool-card__title">Недвижимость</div>
+          <div class="tool-card__text">Wildberries, Ozon, Яндекс увеличивают спрос на склады. Можно приобрести долю в фонде на недвижимость от 1 000 рублей и получать аренду каждый квартал, а также прибыль на росте стоимости.</div>
+        </div>
+        <div class="tool-card reveal reveal-delay-2">
+          <div class="tool-card__head">
+            <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
+            <div class="tool-card__metric">10–20%<small>в долларах</small></div>
+          </div>
+          <div class="tool-card__title">Криптовалюта</div>
+          <div class="tool-card__text">Биткоин в просадке&nbsp;— исторически лучшая точка входа. Можно накапливать актив, а также получать 10–20% годовых в долларах на криптоинструментах.</div>
+        </div>
+      </div>
+      <div class="carousel-dots" id="toolDots"><span class="carousel-dot active"></span><span class="carousel-dot"></span><span class="carousel-dot"></span></div>
+
+      <p class="tools-note reveal">На обучении мы разбираем устройство этих рынков&nbsp;— чтобы вы сами могли видеть возможности в любой фазе рынка, а не просто следовать советам.</p>
+
+      <div class="tools-cta-wrap reveal">
+        <button class="cta-btn cta-btn--static" onclick="openModal()">Получить рабочие стратегии
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 6. ФИНАНСОВАЯ БЕЗОПАСНОСТЬ НАВСЕГДА ===== -->
+  <section class="section section--alt section--centered">
+    <div class="container">
+      <div class="section-label reveal">Результат</div>
+      <h2 class="section-title reveal">Финансовая безопасность <em>навсегда</em></h2>
+      <p class="broken-intro reveal">Рынок падает, стоит или растёт&nbsp;— в каждом случае есть своя стратегия. Когда знаете, что делать&nbsp;— идёте к цели, что бы ни случилось:</p>
+
+      <div class="result-list">
+        <div class="result-item reveal"><div class="result-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><span>Есть источники пассивного дохода кроме работы или бизнеса</span></div>
+        <div class="result-item reveal"><div class="result-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><span>Если один источник исчезает&nbsp;— жизнь не останавливается</span></div>
+        <div class="result-item reveal"><div class="result-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><span>Накопления не обесцениваются&nbsp;— они работают и растут</span></div>
+        <div class="result-item reveal"><div class="result-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><span>Вы не зависите от других людей, работодателя, банка или государства</span></div>
+        <div class="result-item reveal"><div class="result-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><span>Вы можете позволить себе остановиться&nbsp;— и ничего не рухнет</span></div>
+      </div>
+
+      <div class="result-note reveal">Предобучение <strong>«Инвест-зарплата»</strong>&nbsp;— ваш первый шаг к <em>финансовой безопасности</em> и <em>созданию капитала</em>.</div>
+    </div>
+  </section>
+
+  <!-- ===== 7. ПРОГРАММА (3 вебинара) ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label reveal">Программа</div>
+      <h2 class="section-title reveal">3 эфира о том, что <em>работает</em><br>на каждом рынке прямо сейчас</h2>
+
+      <div class="program-grid" id="programGrid">
+        <div class="program-card reveal">
+          <div class="program-card__accent"></div>
+          <div class="program-card__day"><span>Эфир 1</span></div>
+          <div class="program-card__title">Фондовый рынок</div>
+          <ul class="program-card__list">
+            <li>Что работает на фондовом рынке прямо сейчас?</li>
+            <li>Как заработать на облигациях, пока ставка высокая?</li>
+            <li>Как получать растущие дивиденды от акций?</li>
+            <li>Как защитить деньги от обесценивания?</li>
+            <li>Как валютные облигации страхуют от падения рубля?</li>
+          </ul>
+        </div>
+        <div class="program-card reveal reveal-delay-1">
+          <div class="program-card__accent"></div>
+          <div class="program-card__day"><span>Эфир 2</span></div>
+          <div class="program-card__title">Криптовалюта</div>
+          <ul class="program-card__list">
+            <li>Что работает в крипте прямо сейчас?</li>
+            <li>Как получать доход в долларах, когда биткоин падает?</li>
+            <li>Как работают депозиты в криптовалюте?</li>
+            <li>Что делать, если вы уже купили крипту, а она упала?</li>
+          </ul>
+        </div>
+        <div class="program-card reveal reveal-delay-2">
+          <div class="program-card__accent"></div>
+          <div class="program-card__day"><span>Эфир 3</span></div>
+          <div class="program-card__title">Недвижимость</div>
+          <ul class="program-card__list">
+            <li>Как инвестировать в недвижимость без покупки квартиры?</li>
+            <li>Как использовать растущий спрос на складские помещения и получать доход?</li>
+            <li>Как купить долю в коммерческой недвижимости от 1 000 рублей?</li>
+            <li>Как зарабатывать на кладовках?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="carousel-dots" id="programDots"><span class="carousel-dot active"></span><span class="carousel-dot"></span><span class="carousel-dot"></span></div>
+
+    </div>
+  </section>
+
+  <!-- ===== 7. РЕГИСТРАЦИЯ ===== -->
+  <section class="section reg">
+    <div class="container">
+      <div class="reg-card reveal">
+        <div class="reg-card__label">Регистрация</div>
+        <h2 class="reg-card__title">Зарегистрируйтесь на предобучение «Инвест-зарплата» и&nbsp;получите стратегию создания капитала</h2>
+        <button class="cta-btn cta-btn--static" onclick="openModal()">Зарегистрироваться бесплатно
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <div class="why-free">
+          <div class="why-free__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <div class="why-free__text">Это бесплатно, потому что <strong>ваше доверие важнее быстрой продажи</strong>. Сначала мы даём пользу. Решение продолжить обучение&nbsp;— за вами.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 9. РЕГАЛИИ ШКОЛЫ ===== -->
+  <section class="section section--centered">
+    <div class="container">
+      <div class="section-label reveal">О школе</div>
+      <h2 class="section-title reveal">FIN-RA&nbsp;— школа <em>безопасных инвестиций</em></h2>
+      <p class="broken-intro reveal">С 2017 года FIN-RA уберегает инвесторов от убыточных решений и учит безопасно создавать капитал&nbsp;— надёжно, системно и без лишнего риска.</p>
+
+      <div class="regalia-list">
+        <div class="regalia-item reveal"><div class="regalia-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><span>Обучили более <strong>200 000</strong> человек с 2017 года</span></div>
+        <div class="regalia-item reveal"><div class="regalia-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><span><strong>40 000+</strong> участников прошли предобучение «Инвест-зарплата»</span></div>
+        <div class="regalia-item reveal"><div class="regalia-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><span>Лучшая школа в области инвестиций по версии <strong>Private Money Forum</strong> 2019, 2021, 2023</span></div>
+        <div class="regalia-item reveal"><div class="regalia-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><span>Самая популярная онлайн-школа по инвестициям в РФ по версии <strong>Discovery Research Group</strong></span></div>
+        <div class="regalia-item reveal"><div class="regalia-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><span>Образовательная лицензия с 2017 года, программа одобрена <strong>Министерством образования</strong></span></div>
+        <div class="regalia-item reveal"><div class="regalia-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><span>Право выдавать дипломы международного образца <strong>Mini MBA</strong></span></div>
+      </div>
+
+      <!-- Фото команды: положите файл team.jpg в папку isalary/. Пока файла нет — блок автоскрывается (onerror). -->
+      <figure class="school-photo reveal">
+        <img src="/isalary/team.jpg" alt="Команда и эксперты школы FIN-RA" width="1100" height="620" loading="lazy" onerror="this.closest('.school-photo').remove()">
+        <figcaption class="school-photo__cap">Команда и эксперты FIN-RA</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== 10. ЭКСПЕРТЫ ===== -->
+  <section class="section section--alt">
+    <div class="container">
+      <h2 class="section-title reveal">Наши <em>эксперты</em></h2>
+
+      <div class="experts-featured">
+        <div class="exp-card exp-card--featured reveal">
+          <div class="exp-card__photo-wrap"><img class="exp-card__photo" src="/isalary/tolstyakov.jpg" alt="Дмитрий Толстяков, основатель FIN-RA" width="700" height="700" loading="lazy"></div>
+          <div class="exp-card__body">
+            <span class="exp-featured__badge">★ Главный эксперт и лицо школы</span>
+            <div class="exp-card__name">Дмитрий Толстяков</div>
+            <div class="exp-card__role">Основатель FIN-RA</div>
+            <ul class="exp-card__list">
+              <li>Финансовый советник 2019 года по версии «Амикс»</li>
+              <li>Член Национальной ассоциации специалистов финансового планирования</li>
+              <li>Обучил более 120 000 человек с 2017 года</li>
+              <li>Повышение квалификации в University of Pennsylvania и New York University</li>
+              <li>Финразборы с Ксенией Собчак (1,2 млн) и Ириной Хакамадой (755 тыс)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="experts-grid">
+        <div class="exp-card reveal reveal-delay-1">
+          <div class="exp-card__photo-wrap"><img class="exp-card__photo" src="/isalary/rodionov.jpg" alt="Дмитрий Родионов" width="700" height="700" loading="lazy"></div>
+          <div class="exp-card__body">
+            <div class="exp-card__name">Дмитрий Родионов</div>
+            <div class="exp-card__role">Фондовый рынок, недвижимость</div>
+            <ul class="exp-card__list">
+              <li>Дипломированный экономист, частный инвестор с 2013 года</li>
+              <li>Автор и куратор курсов школы</li>
+              <li>Помогает выстроить портфель и личный финансовый план</li>
+              <li>Объясняет сложные темы простыми словами</li>
+            </ul>
+          </div>
+        </div>
+        <div class="exp-card reveal reveal-delay-2">
+          <div class="exp-card__photo-wrap"><img class="exp-card__photo" src="/isalary/nasreddinov.jpg" alt="Руслан Насреддинов" width="700" height="700" loading="lazy"></div>
+          <div class="exp-card__body">
+            <div class="exp-card__name">Руслан Насреддинов</div>
+            <div class="exp-card__role">Криптовалюта, агрессивные стратегии</div>
+            <ul class="exp-card__list">
+              <li>Частный инвестор с 10-летним опытом на зарубежных и крипторынках</li>
+              <li>Mini-MBA по индексному инвестированию и портфельному планированию</li>
+              <li>Ведёт курсы по криптовалюте и зарубежным инвестициям</li>
+              <li>Объективно оценивает риски агрессивных стратегий</li>
+            </ul>
+          </div>
+        </div>
+        <div class="exp-card reveal reveal-delay-3">
+          <div class="exp-card__photo-wrap"><img class="exp-card__photo" src="/isalary/koshkina.jpg" alt="Анна Кошкина" width="700" height="700" loading="lazy"></div>
+          <div class="exp-card__body">
+            <div class="exp-card__name">Анна Кошкина</div>
+            <div class="exp-card__role">Фондовый рынок, криптовалюта</div>
+            <ul class="exp-card__list">
+              <li>Независимый финансовый советник, куратор школы с 2023 года</li>
+              <li>Mini-MBA в области управления активами</li>
+              <li>Сопровождает по всем программам школы</li>
+              <li>Помогает оценить структуру активов, риски и стратегию</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 11. ОТЗЫВЫ ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label reveal">Отзывы</div>
+      <h2 class="section-title reveal">80% учеников называют это <em>лучшим онлайн-обучением</em></h2>
+
+      <!-- Видеоотзывы Kinescope: превью — локальные постеры vrevN.jpg, воспроизведение — embed по data-video (клик → лайтбокс). -->
+      <div class="vreviews" id="vreviews">
+        <button class="vcard reveal" data-video="https://kinescope.io/v4J9CQtcpnom9TtrfbMkFP" onclick="openVideo(this)" aria-label="Видеоотзыв: Наталья, 39 лет">
+          <span class="vcard__poster"><img src="/isalary/vrev1.jpg" alt="" width="478" height="854" loading="lazy"><span class="vcard__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
+          <span class="vcard__meta"><span class="vcard__name">Наталья, 39 лет</span><span class="vcard__quote">«Поддержка кураторов и экспертов&nbsp;— на высшем уровне»</span></span>
+        </button>
+        <button class="vcard reveal" data-video="https://kinescope.io/kXaHwvZyXtHPvp2bRuPRXs" onclick="openVideo(this)" aria-label="Видеоотзыв: Александр, 65 лет">
+          <span class="vcard__poster"><img src="/isalary/vrev2.jpg" alt="" width="478" height="854" loading="lazy"><span class="vcard__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
+          <span class="vcard__meta"><span class="vcard__name">Александр, 65 лет</span><span class="vcard__quote">«Очень откликается философия Дмитрия Толстякова»</span></span>
+        </button>
+        <button class="vcard reveal" data-video="https://kinescope.io/q1PtoWbTJdhTqCcDtjxnvi" onclick="openVideo(this)" aria-label="Видеоотзыв: Наталья, 40 лет">
+          <span class="vcard__poster"><img src="/isalary/vrev3.jpg" alt="" width="478" height="854" loading="lazy"><span class="vcard__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
+          <span class="vcard__meta"><span class="vcard__name">Наталья, 40 лет</span><span class="vcard__quote">«Если следовать инструкциям&nbsp;— всё получается»</span></span>
+        </button>
+        <button class="vcard reveal" data-video="https://kinescope.io/3F1J8bqfBYuwhsFUjWdTe5" onclick="openVideo(this)" aria-label="Видеоотзыв: Александр, 32 года">
+          <span class="vcard__poster"><img src="/isalary/vrev4.jpg" alt="" width="478" height="854" loading="lazy"><span class="vcard__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
+          <span class="vcard__meta"><span class="vcard__name">Александр, 32 года</span><span class="vcard__quote">«Прошёл разные программы и останавливаться не планирую»</span></span>
+        </button>
+        <button class="vcard reveal" data-video="https://kinescope.io/8YTg1RbgVtdLd4AaiEbwga" onclick="openVideo(this)" aria-label="Видеоотзыв: Наталья, 44 года">
+          <span class="vcard__poster"><img src="/isalary/vrev5.jpg" alt="" width="478" height="854" loading="lazy"><span class="vcard__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
+          <span class="vcard__meta"><span class="vcard__name">Наталья, 44 года</span><span class="vcard__quote">«Очень нравится формат обучения»</span></span>
+        </button>
+        <button class="vcard reveal" data-video="https://kinescope.io/0zj7yhnBED3FdX5TwPhgzy" onclick="openVideo(this)" aria-label="Видеоотзыв: Светлана, 33 года">
+          <span class="vcard__poster"><img src="/isalary/vrev6.jpg" alt="" width="478" height="854" loading="lazy"><span class="vcard__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
+          <span class="vcard__meta"><span class="vcard__name">Светлана, 33 года</span><span class="vcard__quote">«Курс максимально выверен в методологии и теории»</span></span>
+        </button>
+        <button class="vcard reveal" data-video="https://kinescope.io/gDGRqEu53LPLKvSmSbRnWg" onclick="openVideo(this)" aria-label="Видеоотзыв: Елена, 62 года">
+          <span class="vcard__poster"><img src="/isalary/vrev7.jpg" alt="" width="478" height="854" loading="lazy"><span class="vcard__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
+          <span class="vcard__meta"><span class="vcard__name">Елена, 62 года</span><span class="vcard__quote">«Школа помогает людям жить лучше и увеличивать свой доход»</span></span>
+        </button>
+      </div>
+
+      <div class="reviews-platforms-head reveal">Более <em>22&nbsp;000</em> реальных отзывов от наших студентов</div>
+      <div class="platforms-grid">
+        <div class="platform-card reveal">
+          <button class="platform-card__shot" onclick="openImg('rev-yandex.jpg','Отзывы о FIN-RA на Яндекс Картах')" aria-label="Открыть скриншот отзывов на Яндекс Картах">
+            <img src="/isalary/rev-yandex.jpg" alt="Скриншот отзывов о FIN-RA на Яндекс Картах" width="709" height="1221" loading="lazy">
+          </button>
+          <div class="platform-card__info">
+            <div class="platform-card__logo" style="background:#FC3F1D">Я</div>
+            <div class="platform-card__name">Яндекс&nbsp;Карты</div>
+            <div class="platform-card__stars">★★★★★</div>
+            <div class="platform-card__rating">5,0</div>
+            <div class="platform-card__count">300+ отзывов</div>
+          </div>
+        </div>
+        <div class="platform-card reveal reveal-delay-1">
+          <button class="platform-card__shot" onclick="openImg('rev-otzyvru.jpg','Отзывы о FIN-RA на Otzyvru')" aria-label="Открыть скриншот отзывов на Otzyvru">
+            <img src="/isalary/rev-otzyvru.jpg" alt="Скриншот отзывов о FIN-RA на Otzyvru" width="709" height="1022" loading="lazy">
+          </button>
+          <div class="platform-card__info">
+            <div class="platform-card__logo" style="background:#8E44AD">O</div>
+            <div class="platform-card__name">Otzyvru</div>
+            <div class="platform-card__stars">★★★★★</div>
+            <div class="platform-card__rating">4,9</div>
+            <div class="platform-card__count">730+ отзывов</div>
+          </div>
+        </div>
+        <div class="platform-card reveal reveal-delay-2">
+          <button class="platform-card__shot" onclick="openImg('rev-yell.jpg','Отзывы о FIN-RA на Yell.ru')" aria-label="Открыть скриншот отзывов на Yell.ru">
+            <img src="/isalary/rev-yell.jpg" alt="Скриншот отзывов о FIN-RA на Yell.ru" width="919" height="1156" loading="lazy">
+          </button>
+          <div class="platform-card__info">
+            <div class="platform-card__logo" style="background:#FFB800;color:#1d1d1f">Y</div>
+            <div class="platform-card__name">Yell.ru</div>
+            <div class="platform-card__stars">★★★★★</div>
+            <div class="platform-card__rating">4,9</div>
+            <div class="platform-card__count">230+ отзывов</div>
+          </div>
+        </div>
+        <div class="platform-card reveal reveal-delay-2">
+          <button class="platform-card__shot" onclick="openImg('rev-vk.jpg','Отзывы о FIN-RA во ВКонтакте')" aria-label="Открыть скриншот отзывов во ВКонтакте">
+            <img src="/isalary/rev-vk.jpg" alt="Скриншот отзывов о FIN-RA во ВКонтакте" width="796" height="1238" loading="lazy">
+          </button>
+          <div class="platform-card__info">
+            <div class="platform-card__logo" style="background:#0077FF">VK</div>
+            <div class="platform-card__name">ВКонтакте</div>
+            <div class="platform-card__rating">14&nbsp;000+</div>
+            <div class="platform-card__count">отзывов</div>
+          </div>
+        </div>
+        <div class="platform-card reveal reveal-delay-3">
+          <button class="platform-card__shot" onclick="openImg('rev-tg.jpg','Отзывы о FIN-RA в Telegram')" aria-label="Открыть скриншот отзывов в Telegram">
+            <img src="/isalary/rev-tg.jpg" alt="Скриншот отзывов о FIN-RA в Telegram" width="1488" height="1843" loading="lazy">
+          </button>
+          <div class="platform-card__info">
+            <div class="platform-card__logo" style="background:#2AABEE"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></div>
+            <div class="platform-card__name">Telegram</div>
+            <div class="platform-card__rating">7&nbsp;000+</div>
+            <div class="platform-card__count">отзывов</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 12. ФИНАЛЬНЫЙ CTA ===== -->
+  <section class="section final-cta">
+    <div class="container">
+      <div class="final-cta__card reveal">
+        <h2 class="section-title">Мы не даём <em>волшебных кнопок</em></h2>
+        <p class="final-cta__sub">Мы учим системному подходу к управлению финансовой жизнью.</p>
+        <p class="final-cta__ask">Готовы начать?</p>
+        <button class="cta-btn" onclick="openModal()">Начать обучение
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__col">
+        <p>Индивидуальный предприниматель Толстяков Дмитрий Павлович</p>
+        <p>Юр. адрес: Российская Федерация, 191186, Санкт-Петербург, пл. Дворцовая, д. 4, кв. 84</p>
+        <p>ОГРНИП 310784733300113 ИНН 784100319408</p>
+        <p>Расчетный счет 40802810700001086829, Банк АО «Т-Банк», БИК банка 044525974, Корр. счет 30101810145250000974</p>
+      </div>
+      <div class="footer__col">
+        <a href="https://fin-ra.ru/policy-dt">Политика обработки персональных данных</a>
+        <a href="https://fin-ra.ru/terms-of-use">Пользовательское соглашение</a>
+        <a href="https://fin-ra.ru/juristic-documents">Правовая информация</a>
+        <p>Почта для связи: <a href="/isalary/mailto:finracenter@fin-ra.ru">finracenter@fin-ra.ru</a></p>
+      </div>
+      <div class="footer__col">
+        <p>Лицензия от 20 января 2017 года № 2676, выданная Комитетом по образованию Правительства Санкт-Петербурга</p>
+      </div>
+    </div>
+    <div class="footer__bottom">&copy; 2016-2026 Все права защищены. Копирование материалов сайта без разрешения администрации запрещено.</div>
+  </footer>
+
+  <!-- Sticky CTA mobile -->
+  <div class="sticky-cta" id="stickyCta"><button class="cta-btn" onclick="openModal()">Принять участие</button></div>
+
+  <!-- ===== MODAL ===== -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+    <div class="modal">
+      <button class="modal__close" onclick="closeModal()">&times;</button>
+      <div class="modal__title">Регистрация на «Инвест-зарплату»</div>
+      <div class="modal__sub">Заполните форму&nbsp;— пришлём ссылку на эфиры и стратегию</div>
+      <script src='https://salebot.pro/js/form_scripts.js'></script>
+      <div class='form_integration_block'></div>
+      <script>FormIntegration.init({ project_id: 317313, guid: '9adb4552388bf0b240d3e7b2010e65b9' })</script>
+    </div>
+  </div>
+
+  <!-- Видео-лайтбокс -->
+  <div class="imglightbox" id="imgLightbox" onclick="closeImg(event)">
+    <div class="imglightbox__inner">
+      <button class="imglightbox__close" onclick="closeImg()" aria-label="Закрыть">&times;</button>
+      <img id="imgLightboxImg" src="" alt="">
+    </div>
+  </div>
+
+  <div class="vlightbox" id="vlightbox" onclick="closeVideo(event)">
+    <div class="vlightbox__inner">
+      <button class="vlightbox__close" onclick="closeVideo()" aria-label="Закрыть">&times;</button>
+      <div class="vlightbox__body" id="vlightboxBody"></div>
+    </div>
+  </div>
+
+  <script>
+    function openModal() { document.getElementById('modalOverlay').classList.add('active'); document.body.style.overflow = 'hidden'; precheckConsents(); }
+    function closeModal() { document.getElementById('modalOverlay').classList.remove('active'); document.body.style.overflow = ''; }
+    function closeModalOutside(e) { if (e.target === e.currentTarget) closeModal(); }
+
+    // Заранее проставляем галочки согласий (решение владельца). Реальный клик — чтобы Salebot засчитал согласие.
+    function precheckConsents(tries) {
+      tries = tries || 0;
+      var boxes = document.querySelectorAll('.modal .form_integration_block input[type="checkbox"]');
+      if (boxes.length) { boxes.forEach(function (cb) { if (!cb.checked) cb.click(); }); return; }
+      if (tries < 40) setTimeout(function () { precheckConsents(tries + 1); }, 250);
+    }
+    precheckConsents();
+
+    // Видеоотзывы: если у карточки задан data-video — открываем лайтбокс, иначе ведём на регистрацию
+    function openVideo(el) {
+      var src = el.getAttribute('data-video');
+      if (!src) { openModal(); return; }
+      var body = document.getElementById('vlightboxBody');
+      if (/\.(mp4|webm|ogg)(\?|$)/i.test(src)) {
+        body.innerHTML = '<video src="/isalary/' + src + '" controls autoplay playsinline></video>';
+      } else {
+        body.innerHTML = '<iframe src="/isalary/' + src + '" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>';
+      }
+      document.getElementById('vlightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeVideo(e) {
+      if (e && e.target !== e.currentTarget) return;
+      document.getElementById('vlightbox').classList.remove('active');
+      document.getElementById('vlightboxBody').innerHTML = '';
+      document.body.style.overflow = '';
+    }
+    function openImg(src, alt) {
+      var img = document.getElementById('imgLightboxImg');
+      img.src = src; img.alt = alt || '';
+      document.getElementById('imgLightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeImg(e) {
+      if (e && e.target !== e.currentTarget) return;
+      document.getElementById('imgLightbox').classList.remove('active');
+      document.getElementById('imgLightboxImg').src = '';
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { closeModal(); closeVideo(); closeImg(); } });
+
+    // Scroll reveal
+    (function() {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+    })();
+
+    // Generic carousel dots (инструменты / программа / отзывы)
+    (function() {
+      function bindDots(gridId, dotsId) {
+        var list = document.getElementById(gridId);
+        var dots = document.querySelectorAll('#' + dotsId + ' .carousel-dot');
+        if (!list || !dots.length) return;
+        list.addEventListener('scroll', function() {
+          var first = list.children[0]; if (!first) return;
+          var itemW = first.offsetWidth + 14;
+          var idx = Math.min(dots.length - 1, Math.round(list.scrollLeft / itemW));
+          dots.forEach(function(d, i) { d.classList.toggle('active', i === idx); });
+        }, { passive: true });
+      }
+      bindDots('toolGrid', 'toolDots');
+      bindDots('programGrid', 'programDots');
+      bindDots('reviewsGrid', 'reviewsDots');
+    })();
+
+    // Sticky CTA — прячем, когда секционная кнопка или футер в кадре (без дублей зелёных кнопок)
+    (function() {
+      var sticky = document.getElementById('stickyCta'); if (!sticky) return;
+      var heroH = document.querySelector('.hero').offsetHeight;
+      var blockers = [].slice.call(document.querySelectorAll('.cta-btn')).filter(function(b) { return !sticky.contains(b); });
+      var footer = document.querySelector('.footer');
+      if (footer) blockers.push(footer);
+      var visibleBlockers = new Set();
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) { if (e.isIntersecting) visibleBlockers.add(e.target); else visibleBlockers.delete(e.target); });
+        apply();
+      }, { rootMargin: '0px' });
+      blockers.forEach(function(b) { io.observe(b); });
+      function apply() {
+        sticky.classList.toggle('visible', window.scrollY > heroH * 0.6 && visibleBlockers.size === 0);
+      }
+      window.addEventListener('scroll', apply, { passive: true });
+    })();
+  </script>
+<script src="/tg-intercept.js" defer></script>
+<script src="/salebot-guard.js" defer></script>
+</body>
+</html>
