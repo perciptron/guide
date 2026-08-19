@@ -11,8 +11,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="Бесплатное предобучение «Инвест-зарплата»: как зарабатывать в нестабильные времена, создать пассивный доход и финансовую безопасность на любом рынке: облигации, недвижимость, цифровые активы. 3 эфира, регистрация бесплатна.">
-  <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#fbfbfd">
   <meta property="og:title" content="Инвест-зарплата: как зарабатывать в нестабильные времена | FIN-RA">
   <meta property="og:description" content="Три бесплатных эфира: как зарабатывать на том, что приносит деньги сейчас, создать пассивный доход и финансовую безопасность на всю жизнь.">
   <meta property="og:type" content="website">
@@ -23,6 +22,9 @@
   <link rel="canonical" href="https://guides.fin-ra.pro/isalary-apple">
   <title>Инвест-зарплата: бесплатное предобучение | FIN-RA</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://salebot.pro" crossorigin>
   <link rel="preconnect" href="https://chatter.salebot.pro" crossorigin>
   <link rel="preconnect" href="https://ajax.googleapis.com" crossorigin>
@@ -76,45 +78,26 @@
       --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
               "Segoe UI Variable", "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
 
+      /* Токены оригинала — на них построены возвращённые герой и модалка */
+      --green: #0f9d58;
+      --green-dark: #0b7a43;
+      --green-glow: rgba(15,157,88,0.15);
+      --green-subtle: rgba(15,157,88,0.06);
+      --bg-alt: #f5f5f7;
+      --text-secondary: #4d4d52;
+      --text-muted: #8a8a90;
+      --separator: rgba(0,0,0,0.06);
+      --radius: 14px;
+      --radius-sm: 10px;
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+
       --gutter: clamp(1.25rem, 5vw, 2.5rem);
       --nav-h: 56px;
     }
 
     :root:not([data-theme="light"]) {
       color-scheme: light;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) {
-        color-scheme: dark;
-
-        --brand: #32c877;
-        --brand-press: #28a862;
-        --brand-tint: rgba(50,200,119,0.14);
-        --brand-line: rgba(50,200,119,0.26);
-
-        --bg: #000000;
-        --bg-sunken: #0a0a0c;
-        --surface: #1c1c1e;
-        --surface-2: #2c2c2e;
-
-        --text: #f5f5f7;
-        --text-2: #a1a1a6;
-        --text-3: #8a8a8f;
-
-        --hairline: rgba(255,255,255,0.14);
-        --hairline-soft: rgba(255,255,255,0.08);
-
-        --mat-thin: rgba(28,28,30,0.68);
-        --mat-thick: rgba(20,20,22,0.84);
-        --mat-edge: rgba(255,255,255,0.10);
-
-        --scrim: rgba(0,0,0,0.55);
-
-        --sh-1: 0 1px 2px rgba(0,0,0,0.5), 0 4px 14px rgba(0,0,0,0.4);
-        --sh-2: 0 2px 6px rgba(0,0,0,0.5), 0 12px 34px rgba(0,0,0,0.5);
-        --sh-3: 0 8px 20px rgba(0,0,0,0.6), 0 30px 70px rgba(0,0,0,0.7);
-      }
     }
 
     /* ============================================================
@@ -275,81 +258,6 @@
       .nav__live { display: none; }
       .nav__sep { display: none; }
     }
-
-    /* ============================================================
-       HERO
-       ============================================================ */
-    .hero {
-      position: relative;
-      padding-top: clamp(4.5rem, 11vw, 7rem);
-      padding-bottom: clamp(2rem, 5vw, 3rem);
-      overflow: clip;
-    }
-    .hero__grid {
-      display: grid;
-      grid-template-columns: 1fr 0.8fr;
-      grid-template-areas:
-        "title title"
-        "copy  media";
-      column-gap: clamp(1.5rem, 4vw, 3.5rem);
-      row-gap: clamp(1.5rem, 3.5vw, 2.5rem);
-      align-items: start;
-    }
-    .hero__head  { grid-area: title; }
-    .hero__col   { grid-area: copy; align-self: center; }
-    .hero__media { grid-area: media; }
-    .hero__badge {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.4rem 0.85rem;
-      border-radius: 999px;
-      background: var(--brand-tint);
-      color: var(--brand);
-      font-size: 0.75rem; font-weight: 620; letter-spacing: 0.02em;
-      margin-bottom: 1.1rem;
-    }
-    .hero__title { margin-bottom: 1.1rem; }
-    .hero__sub { max-width: 46ch; margin-bottom: 1.9rem; }
-    .hero__trust {
-      display: flex; flex-wrap: wrap; align-items: center;
-      gap: 0.45rem 0.9rem;
-      margin-top: 1.15rem;
-      font-size: 0.8rem; letter-spacing: 0.004em; color: var(--text-3);
-    }
-    .hero__trust span { display: inline-flex; align-items: center; gap: 0.45rem; }
-    .hero__trust span + span::before {
-      content: ''; width: 3px; height: 3px; border-radius: 50%;
-      background: var(--text-3); opacity: 0.55;
-    }
-    .hero__trust strong { color: var(--text); font-weight: 620; }
-
-    .hero__media {
-      position: relative;
-      border-radius: var(--r-xl);
-      overflow: hidden;
-      background: linear-gradient(165deg, var(--surface-2), var(--bg-sunken));
-      box-shadow: var(--sh-2);
-      aspect-ratio: 5 / 4;
-    }
-    .hero__photo {
-      width: 100%; height: 100%; object-fit: cover; object-position: 50% 8%;
-    }
-    .hero__plate {
-      position: absolute; left: 0.75rem; right: 0.75rem; bottom: 0.75rem;
-      padding: 0.7rem 0.9rem;
-      border-radius: var(--r);
-      background: var(--mat-thick);
-      -webkit-backdrop-filter: blur(var(--mat-blur-thick)) saturate(180%);
-      backdrop-filter: blur(var(--mat-blur-thick)) saturate(180%);
-      box-shadow: var(--sh-1), inset 0 1px 0 var(--mat-edge);
-    }
-    /* Вибрантность: над стеклом текст контрастнее и чуть плотнее */
-    .hero__plate-name { font-size: 0.95rem; font-weight: 640; letter-spacing: -0.012em; }
-    .hero__plate-role {
-      display: flex; align-items: center; gap: 0.4rem;
-      margin-top: 0.15rem;
-      font-size: 0.75rem; font-weight: 480; letter-spacing: 0.006em; color: var(--text-2);
-    }
-    .hero__plate-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--brand); flex: none; }
 
     /* ============================================================
        КНОПКИ
@@ -669,178 +577,6 @@
     }
 
     /* ============================================================
-       ШТОРКА С ФОРМОЙ
-       Десктоп — диалог, растущий из нажатой кнопки.
-       Мобилка — bottom sheet, который тянется пальцем.
-       ============================================================ */
-    .scrim {
-      position: fixed; inset: 0; z-index: 200;
-      background: var(--scrim);
-      -webkit-backdrop-filter: blur(2px);
-      backdrop-filter: blur(2px);
-      opacity: 0;
-      visibility: hidden;
-      will-change: opacity;
-    }
-    .scrim.is-open { visibility: visible; }
-
-    .sheet-host {
-      position: fixed; inset: 0; z-index: 201;
-      display: grid; place-items: center;
-      padding: 1rem;
-      pointer-events: none;
-      visibility: hidden;
-    }
-    .sheet-host.is-open { visibility: visible; }
-
-    .sheet {
-      position: relative;
-      width: 100%; max-width: 440px;
-      max-height: min(88vh, 760px);
-      overflow-y: auto;
-      overscroll-behavior: contain;
-      background: var(--surface);
-      border-radius: var(--r-xl);
-      box-shadow: var(--sh-3);
-      padding: 2rem 1.75rem 1.75rem;
-      pointer-events: auto;
-      will-change: transform, opacity;
-      /* стартовое состояние; дальше всем управляет пружина */
-      opacity: 0;
-      transform: scale(0.92);
-    }
-    .sheet__grab { display: none; }
-    .sheet__close {
-      position: absolute; top: 0.85rem; right: 0.85rem;
-      width: 30px; height: 30px; border-radius: 50%;
-      display: grid; place-items: center;
-      background: var(--surface-2); color: var(--text-2);
-      font-size: 1.15rem; line-height: 1;
-      z-index: 3;
-    }
-    .sheet__close.is-pressed { background: var(--hairline); }
-    .sheet__title { text-align: center; letter-spacing: -0.02em; padding-inline: 2rem; }
-    .sheet__sub { margin: 0.35rem 0 1.35rem; text-align: center; font-size: 0.83rem; color: var(--text-2); }
-
-    @media (max-width: 640px) {
-      .sheet-host { place-items: end center; padding: 0; }
-      .sheet {
-        max-width: none;
-        max-height: 92vh;
-        border-radius: var(--r-xl) var(--r-xl) 0 0;
-        padding: 1.5rem 1.25rem calc(env(safe-area-inset-bottom, 0px) + 1.5rem);
-        transform: translateY(100%);
-      }
-      .sheet__grab {
-        display: block;
-        width: 36px; height: 5px; border-radius: 999px;
-        background: var(--hairline);
-        margin: -0.55rem auto 0.9rem;
-      }
-      /* Зона захвата шире, чем сама полоска */
-      .sheet__grabzone {
-        position: absolute; top: 0; left: 0; right: 0; height: 46px;
-        touch-action: none;
-        z-index: 2;
-      }
-      .sheet__close { top: 0.6rem; }
-    }
-
-    /* ============================================================
-       ФОРМА SALEBOT
-       ============================================================ */
-    .sheet .form_integration_block { width: 100%; margin: 0 auto; }
-    .sheet .form_integration_block input[type="text"],
-    .sheet .form_integration_block input[type="email"],
-    .sheet .form_integration_block input[type="tel"],
-    .sheet .form_integration_block input[type="number"],
-    .sheet .form_integration_block textarea,
-    .sheet .form_integration_block select {
-      width: 100% !important;
-      padding: 0.9rem 1rem !important;
-      background: var(--surface-2) !important;
-      border: 1px solid transparent !important;
-      border-radius: var(--r-sm) !important;
-      color: var(--text) !important;
-      font-family: var(--font) !important;
-      font-size: 1rem !important;
-      margin-bottom: 0.6rem !important;
-      transition: border-color 140ms ease, background 140ms ease !important;
-    }
-    .sheet .form_integration_block input:focus,
-    .sheet .form_integration_block textarea:focus {
-      outline: none !important;
-      border-color: var(--brand) !important;
-      background: var(--surface) !important;
-    }
-    .sheet .form_integration_block input::placeholder,
-    .sheet .form_integration_block textarea::placeholder { color: var(--text-3) !important; }
-    .sheet .form_integration_block label {
-      font-size: 0.78rem !important; color: var(--text-2) !important;
-      display: flex !important; align-items: flex-start !important;
-      /* line-height: normal у Salebot — подчёркнутые ссылки задевают строку ниже */
-      line-height: 1.42 !important;
-    }
-    .sheet .form_integration_block .salebot-checkbox-field { margin-bottom: 0.5rem !important; }
-    .sheet .form_integration_block label a {
-      color: var(--text-2) !important;
-      text-decoration-color: var(--hairline) !important;
-      text-underline-offset: 2px;
-    }
-    .sheet .form_integration_block input[type="checkbox"] {
-      -webkit-appearance: none; appearance: none;
-      width: 42px !important; height: 24px !important;
-      flex: none !important;
-      border-radius: 999px !important;
-      background: var(--hairline) !important;
-      position: relative !important;
-      margin: 0 0.6rem 0 0 !important;
-      cursor: pointer;
-      transition: background 200ms ease !important;
-    }
-    .sheet .form_integration_block input[type="checkbox"]::after {
-      content: ''; position: absolute; top: 2px; left: 2px;
-      width: 20px; height: 20px; border-radius: 50%;
-      background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.25);
-      transition: transform 220ms cubic-bezier(0.32, 0.72, 0, 1);
-    }
-    .sheet .form_integration_block input[type="checkbox"]:checked { background: var(--brand) !important; }
-    .sheet .form_integration_block input[type="checkbox"]:checked::after { transform: translateX(18px); }
-
-    .sheet .form_integration_block button[type="submit"],
-    .sheet .form_integration_block input[type="submit"],
-    .sheet .form_integration_block .btn,
-    .sheet .form_integration_block .submit-btn {
-      width: 100% !important;
-      padding: 1rem !important;
-      background: var(--brand) !important;
-      color: #fff !important;
-      border: none !important; border-radius: 999px !important;
-      font-family: var(--font) !important; font-size: 1rem !important; font-weight: 620 !important;
-      cursor: pointer !important;
-    }
-
-    .sheet .salebot_button svg, .sheet .salebot_button img,
-    .sheet .salebot_button .mes_ident { display: none !important; }
-    .sheet .custom_social_btn_container { height: auto !important; min-height: 0 !important; }
-    .sheet .salebot_button {
-      display: flex !important; align-items: center !important; justify-content: center !important;
-      width: 100% !important;
-      padding: 1rem 1.5rem !important;
-      border-radius: 999px !important;
-      font-family: var(--font) !important; font-size: 0.98rem !important; font-weight: 620 !important;
-      margin-bottom: 0.5rem !important;
-      text-decoration: none !important;
-    }
-    .sheet .vk_link  { background: #0077FF !important; color: #fff !important; }
-    .sheet .tg_link  { background: #2AABEE !important; color: #fff !important; }
-    .sheet .max_link { background: linear-gradient(90deg, #527CF2, #9040C8) !important; color: #fff !important; }
-    .sheet .form_integration_block .link_group { display: flex !important; flex-direction: column !important; }
-    .sheet .form_integration_block .max_link { order: 1 !important; }
-    .sheet .form_integration_block .tg_link  { order: 2 !important; }
-    .sheet .form_integration_block .vk_link  { order: 3 !important; }
-
-    /* ============================================================
        ЛАЙТБОКСЫ
        ============================================================ */
     .lb {
@@ -885,18 +621,6 @@
        АДАПТИВ
        ============================================================ */
     @media (max-width: 860px) {
-      .hero__grid {
-        grid-template-columns: 1fr;
-        grid-template-areas: "title" "media" "copy";
-        row-gap: 1.1rem;
-      }
-      .hero__media { aspect-ratio: 4 / 3; }
-      /* Главная кнопка обязана быть видна без прокрутки */
-      .hero { padding-top: clamp(3.6rem, 9vw, 5rem); padding-bottom: 1.25rem; }
-      .hero__badge { margin-bottom: 0.8rem; }
-      .hero__title { margin-bottom: 0; }
-      .hero__sub { margin-bottom: 1.35rem; }
-      .hero__photo { object-position: 50% 3%; }
       .exp-featured { grid-template-columns: 1fr; }
       .exp-featured .exp__photo { width: 110px; height: 110px; border-radius: 24px; }
       body { padding-bottom: 76px; }
@@ -913,12 +637,11 @@
       .rv { opacity: 1 !important; transform: none !important; }
       .nav { transform: translate(-50%, 0) scale(1) !important; }
       .nav__dot { animation: none; }
-      .sheet { transform: none !important; }
       .lb__inner { transform: none !important; }
       * { scroll-behavior: auto !important; }
     }
     @media (prefers-reduced-transparency: reduce) {
-      .nav, .sticky, .hero__plate {
+      .nav, .sticky {
         background: var(--surface);
         -webkit-backdrop-filter: none;
         backdrop-filter: none;
@@ -931,6 +654,427 @@
       .card, .row, .reg, .note { border: 1px solid var(--hairline); }
       .nav, .sticky { background: var(--surface); }
     }
+
+    /* Герой и модалка построены на DM Sans / Outfit — без этого
+       текст внутри них наследует системный шрифт и метрики уезжают */
+    .hero, .modal-overlay { font-family: var(--font-body); }
+
+    /* ============================================================
+       ВОЗВРАЩЕНО ИЗ ОРИГИНАЛА: первый экран и модалка с формой
+       Перенесено из isalary-avito без изменений, вместе со всеми
+       медиазапросами.
+       ============================================================ */
+
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes ctaGlow {
+      0%, 100% { box-shadow: 0 4px 16px var(--green-glow); }
+      50% { box-shadow: 0 8px 32px rgba(15,157,88,0.3); }
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%) rotate(15deg); }
+      30%, 100% { transform: translateX(100%) rotate(15deg); }
+    }
+/* ================================
+       1. HERO
+       ================================ */
+    .hero {
+      display: flex; flex-direction: column;
+      position: relative; overflow: clip;
+    }
+.hero__nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 2.5rem; z-index: 10;
+      animation: fadeUp 0.5s ease both;
+    }
+.hero__logo-text {
+      font-family: var(--font-display); font-size: 1.4rem;
+      font-weight: 800; color: var(--text); letter-spacing: -0.03em;
+    }
+.hero__logo { height: clamp(38px, 6vw, 46px); width: auto; display: block; }
+.hero__nav-right {
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+.live-dot {
+      width: 7px; height: 7px; background: var(--green);
+      border-radius: 50%; box-shadow: 0 0 0 3px var(--green-glow);
+    }
+.hero__nav-label {
+      font-family: var(--font-display); font-size: 0.7rem;
+      font-weight: 600; color: var(--text-secondary);
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+.hero__body {
+      display: grid; grid-template-columns: 1.15fr 0.85fr;
+      align-items: center; max-width: 1400px; width: 100%;
+      margin: 0 auto; padding: 2rem 3rem 3rem; z-index: 2;
+    }
+.hero__left { display: flex; flex-direction: column; gap: 1rem; padding-right: 2rem; }
+.hero__badge {
+      display: inline-flex; width: fit-content;
+      color: var(--green); font-family: var(--font-display);
+      font-size: 0.65rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      animation: fadeUp 0.5s ease 0.15s both;
+    }
+.hero__badge::before {
+      content: ''; display: inline-block;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--green); margin-right: 0.5rem;
+      align-self: center;
+    }
+.hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3.15vw, 2.9rem);
+      font-weight: 800; line-height: 1.08;
+      letter-spacing: -0.04em; text-wrap: balance;
+      animation: fadeUp 0.6s ease 0.2s both;
+    }
+.hero__title em {
+      font-style: normal; color: var(--green);
+    }
+.hero__sub {
+      font-size: 1.2rem; line-height: 1.55;
+      color: #38383b; font-weight: 500; max-width: 520px;
+      animation: fadeUp 0.6s ease 0.28s both;
+    }
+.hero__sub strong { color: var(--text); font-weight: 600; }
+/* CTA */
+    .cta-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      padding: 1.35rem 4.5rem; background: var(--green); color: #fff;
+      font-family: var(--font-display); font-size: 1.3rem; font-weight: 600;
+      border: none; border-radius: var(--radius); cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: 0 4px 16px var(--green-glow); width: fit-content;
+      animation: fadeUp 0.6s ease 0.38s both, ctaGlow 4s ease-in-out 2s infinite;
+      position: relative; overflow: hidden;
+    }
+.cta-btn::after {
+      content: ''; position: absolute; top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
+      animation: shimmer 5s ease-in-out infinite;
+    }
+.cta-btn:hover {
+      transform: translateY(-2px); background: var(--green-dark);
+      box-shadow: 0 8px 32px rgba(15,157,88,0.25);
+      animation-play-state: paused;
+    }
+.cta-btn:active { transform: translateY(0); }
+.cta-btn:focus-visible, .bonus-cta:focus-visible, .modal-close:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+.cta-btn svg { width: 18px; height: 18px; }
+.cta-note { font-size: 0.7rem; color: var(--text-muted); animation: fadeUp 0.6s ease 0.42s both; }
+.cta-btn--static { animation: none; }
+.hero__trust {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem;
+      font-family: var(--font-display); font-size: 0.78rem; font-weight: 600;
+      color: var(--text-secondary); margin-top: 0.1rem;
+      animation: fadeUp 0.6s ease 0.44s both;
+    }
+.hero__trust span:not(:last-child)::after { content: '·'; margin-left: 0.5rem; color: var(--text-muted); }
+.hero__trust strong { color: var(--green); font-weight: 700; }
+/* Speaker area */
+    .hero__right {
+      position: relative; display: flex;
+      justify-content: center; align-items: flex-end;
+      align-self: end; animation: fadeUp 0.8s ease 0.3s both;
+    }
+.final-cta .cta-btn { animation: none; margin: 0 auto; }
+.final-cta .cta-note { animation: none; margin-top: 0.6rem; }
+/* ================================
+       MODAL
+       ================================ */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(0,0,0,0.4); display: flex;
+      align-items: center; justify-content: center; padding: 1rem;
+      opacity: 0; visibility: hidden; transition: all 0.35s;
+    }
+.modal-overlay.active { opacity: 1; visibility: visible; }
+.modal {
+      background: #fff; border-radius: 20px; padding: 2.5rem;
+      max-width: 460px; width: 100%; position: relative;
+      transform: translateY(24px) scale(0.96); transition: transform 0.35s;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.12);
+    }
+.modal-overlay.active .modal { transform: translateY(0) scale(1); }
+.modal__close {
+      position: absolute; top: 1rem; right: 1rem;
+      width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.04); border: 1px solid var(--separator);
+      border-radius: 50%; color: #999; cursor: pointer; font-size: 1.1rem; transition: all 0.2s;
+    }
+.modal__close:hover { background: rgba(0,0,0,0.08); color: #333; }
+.modal__title {
+      font-family: var(--font-display); font-size: 1.3rem;
+      font-weight: 800; margin-bottom: 0.3rem; text-align: center;
+    }
+.modal__sub {
+      font-size: 0.8rem; color: var(--text-secondary);
+      text-align: center; margin-bottom: 1.25rem; line-height: 1.4;
+    }
+/* Salebot form */
+    .modal .form_integration_block { width: 90%; margin: 0 auto; }
+.modal .form_integration_block input[type="text"],
+    .modal .form_integration_block input[type="email"],
+    .modal .form_integration_block input[type="tel"],
+    .modal .form_integration_block input[type="number"],
+    .modal .form_integration_block textarea,
+    .modal .form_integration_block select {
+      width: 100% !important; background: var(--bg-alt) !important;
+      border: 1.5px solid rgba(0,0,0,0.07) !important; border-radius: var(--radius-sm) !important;
+      padding: 0.75rem 1rem !important; color: var(--text) !important;
+      font-family: var(--font-body) !important; font-size: 16px !important;
+      outline: none !important; transition: all 0.2s !important;
+    }
+.modal .form_integration_block input:focus,
+    .modal .form_integration_block textarea:focus {
+      border-color: var(--green) !important; background: #fff !important;
+      box-shadow: 0 0 0 3px var(--green-glow) !important;
+    }
+.modal .form_integration_block input::placeholder,
+    .modal .form_integration_block textarea::placeholder { color: rgba(0,0,0,0.25) !important; }
+.modal .form_integration_block label {
+      color: var(--text) !important; font-family: var(--font-display) !important;
+      font-size: 0.78rem !important; font-weight: 700 !important;
+      margin-bottom: 0.3rem !important; display: block !important;
+    }
+.modal .form_integration_block button[type="submit"],
+    .modal .form_integration_block input[type="submit"],
+    .modal .form_integration_block .btn,
+    .modal .form_integration_block .submit-btn {
+      width: 100% !important; padding: 0.875rem 1.5rem !important;
+      background: var(--green) !important; color: #fff !important;
+      font-family: var(--font-display) !important; font-size: 1rem !important;
+      font-weight: 700 !important; border: none !important;
+      border-radius: var(--radius) !important; cursor: pointer !important;
+      transition: all 0.25s !important; box-shadow: 0 4px 16px var(--green-glow) !important;
+    }
+.modal .form_integration_block button[type="submit"]:hover { background: var(--green-dark) !important; }
+/* Salebot messenger buttons */
+    .modal .salebot_button svg, .modal .salebot_button img,
+    .modal .salebot_button .mes_ident { display: none !important; }
+.modal .custom_social_btn_container { height: auto !important; min-height: 0 !important; }
+.modal .salebot_button {
+      width: 100% !important;
+      font-family: var(--font-display) !important; font-weight: 600 !important;
+      font-size: 0.95rem !important; border-radius: var(--radius) !important;
+      padding: 0.7rem 1.5rem !important; margin-bottom: 0.5rem !important;
+    }
+.modal .vk_link { background: #0077FF !important; color: #fff !important; }
+.modal .vk_link:hover { background: #0066DD !important; }
+.modal .tg_link { background: #2AABEE !important; color: #fff !important; }
+.modal .tg_link:hover { background: #229ED9 !important; }
+.modal .max_link { background: linear-gradient(90deg, #527CF2, #9040C8) !important; color: #fff !important; }
+.modal .max_link:hover { background: linear-gradient(90deg, #4870E0, #8038B8) !important; }
+/* Порядок кнопок мессенджеров: MAX → TG → VK */
+    .modal .form_integration_block .link_group { display: flex !important; flex-direction: column !important; }
+.modal .form_integration_block .max_link { order: 1 !important; }
+.modal .form_integration_block .tg_link { order: 2 !important; }
+.modal .form_integration_block .vk_link { order: 3 !important; }
+/* Checkbox toggle */
+    .modal .form_integration_block input[type="checkbox"] {
+      -webkit-appearance: none; appearance: none;
+      width: 44px !important; height: 24px !important; min-width: 44px;
+      background: #d4d4d0 !important; border-radius: 12px !important;
+      border: none !important; position: relative; cursor: pointer;
+      transition: background 0.2s !important; padding: 0 !important; margin: 0 !important;
+    }
+.modal .form_integration_block input[type="checkbox"]::after {
+      content: ''; position: absolute; top: 2px; left: 2px;
+      width: 20px; height: 20px; background: #fff; border-radius: 50%;
+      transition: transform 0.25s; box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+    }
+.modal .form_integration_block input[type="checkbox"]:checked { background: var(--green) !important; }
+.modal .form_integration_block input[type="checkbox"]::before { display: none !important; }
+.modal .form_integration_block input[type="checkbox"]:checked::after { transform: translateX(20px); }
+.modal .form_integration_block div:has(> input[type="checkbox"]),
+    .modal .form_integration_block label:has(> input[type="checkbox"]),
+    .modal .form_integration_block p:has(> input[type="checkbox"]) {
+      display: flex !important; align-items: center !important; gap: 0.625rem !important;
+    }
+.modal .form_integration_block div:has(> input[type="checkbox"]) a,
+    .modal .form_integration_block div:has(> input[type="checkbox"]) label,
+    .modal .form_integration_block div:has(> input[type="checkbox"]) span,
+    .modal .form_integration_block label:has(> input[type="checkbox"]) span,
+    .modal .form_integration_block label:has(> input[type="checkbox"]) a {
+      flex: 1 !important; font-size: 0.68rem !important; line-height: 1.3 !important; color: #999 !important;
+    }
+/* Новая разметка согласий Salebot — иначе блок «раздувает» форму (референс: quiz-money-gate) */
+    .modal .form_integration_block label:has(> input[type="checkbox"]) p,
+    .modal .form_integration_block .salebot-privacy__label-text p { margin: 0 !important; padding: 0 !important; }
+.modal .form_integration_block .ml_quiz.quiz_checkbox,
+    .modal .form_integration_block .salebot-checkbox-field,
+    .modal .form_integration_block .ml_answers { padding: 0 !important; margin: 0 0 0.6rem 0 !important; }
+.modal .form_integration_block .salebot-checkbox-field { margin-top: 0.6rem !important; font-size: 0 !important; }
+.modal .form_integration_block .salebot-checkbox-field .salebot-checkbox { font-size: initial !important; }
+.modal .form_integration_block .salebot-checkbox {
+      margin: 0 !important; padding: 0 !important;
+      display: flex !important; align-items: center !important; gap: 0 !important;
+    }
+.modal .form_integration_block .salebot-checkbox > input[type="checkbox"] { margin-right: 0.625rem !important; }
+.modal .form_integration_block .salebot-checkbox > span,
+    .modal .form_integration_block .salebot-checkbox > .salebot-privacy__label-text { margin-left: 0 !important; padding-left: 0 !important; }
+.modal .form_integration_block .salebot-privacy__label-text {
+      padding: 0 !important; margin: 0 !important; flex: 1 !important; text-indent: 0 !important;
+    }
+.modal .form_integration_block .salebot-privacy__label-text a,
+    .modal .form_integration_block .salebot-privacy__link {
+      padding: 0 !important; margin: 0 !important; text-indent: 0 !important;
+      font-size: 0.68rem !important; line-height: 1.3 !important;
+      color: #999 !important; font-family: var(--font-body) !important;
+      font-style: normal !important; font-weight: 400 !important; text-decoration: none !important;
+    }
+.modal .form_integration_block .salebot-privacy__label { white-space: normal; }
+.sticky-cta .cta-btn { width: 100%; padding: 0.85rem; font-size: 0.9rem; animation: none; }
+/* ==================== Новый герой (варианты 1-4) ==================== */
+    .hero--v .hero__body { align-items: center; }
+/* Герой — на общей сетке сайта (как .container), иначе заголовок уезжает левее секций */
+    .hero--v .hero__nav,
+    .hero--v .hero__body {
+      width: 100%; max-width: 1200px; margin-left: auto; margin-right: auto;
+      padding-left: 32px; padding-right: 32px;
+    }
+.vmedia { position: relative; overflow: hidden; }
+.vmedia--grey  { background: linear-gradient(157deg, #e4e5e8 0%, #c7c9cd 100%); }
+.vmedia--green { background: linear-gradient(157deg, #315245 0%, #1e3a2f 100%); }
+.vmedia__photo {
+      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      height: 100%; width: auto; max-width: none;
+    }
+/* режим КАРТОЧКА — фото компактно рядом с текстом, без растекания к краю окна */
+    .hero--card .hero__right { display: flex; justify-content: flex-end; }
+.vmedia--card {
+      width: 100%; max-width: 520px; aspect-ratio: 5 / 6;
+      border-radius: 30px; box-shadow: 0 34px 74px rgba(0,0,0,.14), 0 0 0 1px rgba(0,0,0,.03);
+    }
+/* зелёная карточка — фото со сложенными руками почти квадратное, рамка под него (иначе много зелёного сверху) */
+    .vmedia--card.vmedia--green { max-width: 580px; aspect-ratio: 88 / 79; }
+/* Плашка с именем */
+    .vplate {
+      position: absolute; bottom: 22px; z-index: 4;
+      border-radius: 16px; padding: 0.7rem 1.05rem;
+      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+      box-shadow: 0 12px 34px rgba(0,0,0,.14);
+    }
+.hero--card .vplate { left: 20px; right: 20px; }
+.vplate--light { background: rgba(255,255,255,.86); }
+.vplate--dark  { background: rgba(17,32,26,.58); border: 1px solid rgba(255,255,255,.14); }
+.vplate__name  { font-family: var(--font-display); font-weight: 800; font-size: 1.05rem; line-height: 1.15; }
+.vplate--light .vplate__name { color: #14171a; }
+.vplate--dark  .vplate__name { color: #fff; }
+.vplate__role  { font-size: 0.75rem; margin-top: 3px; display: flex; align-items: center; gap: 6px; line-height: 1.25; }
+.vplate--light .vplate__role { color: #5a5f66; }
+.vplate--dark  .vplate__role { color: rgba(255,255,255,.82); }
+.vplate__dot   { width: 7px; height: 7px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+.vplate--dark .vplate__dot { background: #4bd089; }
+/* карточные варианты — чуть шире колонка под фото */
+    .hero--card .hero__body { grid-template-columns: 1fr 1fr; }
+@media (max-width: 768px) {
+  .hero__trust { justify-content: center; font-size: 0.72rem; }
+}
+@media (max-width: 768px) {
+  .modal__title { font-size: 1.1rem; margin-bottom: 0.15rem; }
+  .modal__sub { font-size: 0.72rem; margin-bottom: 0.75rem; }
+}
+@media (max-width: 768px) {
+  .cta-btn::after { display: none; }
+  .cta-btn { animation: fadeUp 0.6s ease 0.38s both; }
+}
+@media (min-width: 1600px) {
+  .hero__body { max-width: 1600px; padding: 0 4rem 2rem; }
+  .hero__title { font-size: 3.5rem; }
+  .hero__sub { font-size: 1.3rem; }
+}
+@media (max-width: 768px) {
+  .hero__nav { padding: 1rem 1.25rem; justify-content: center; }
+  .hero__nav-right { display: none; }
+  .hero__body { grid-template-columns: 1fr; padding: 0 1.25rem 0; }
+  .hero__left { order: 1; gap: 0.85rem; padding-right: 0; text-align: left; align-items: stretch; }
+  .hero__title { text-align: center; }
+  /* Show speaker on mobile - full width below CTA */
+      .hero__right {
+        display: flex; order: 2;
+        position: relative; width: calc(100% + 2.5rem);
+        margin: 0.5rem -1.25rem 0; justify-content: center;
+        align-items: flex-end; min-height: 280px;
+        overflow: hidden;
+      }
+  .hero__badge { display: none; }
+  /* 6vw держит заголовок в 4 строки на всех мобильных ширинах (320-600px) */
+      .hero__title { font-size: clamp(1.15rem, 6vw, 2.1rem); line-height: 1.14; }
+  .hero__sub {
+        font-size: 0.92rem; max-width: 100%; text-align: center;
+        color: var(--text); font-weight: 500; line-height: 1.45;
+      }
+  .cta-btn { width: 100%; justify-content: center; font-size: 0.95rem; padding: 0.85rem 1.5rem; }
+  .modal-overlay { align-items: flex-end; padding: 0; }
+  .modal {
+        padding: 1.5rem 1.25rem calc(env(safe-area-inset-bottom, 0px) + 1rem);
+        border-radius: 20px 20px 0 0; max-height: 92dvh; overflow-y: auto;
+        margin: 0 6px; width: calc(100% - 12px);
+      }
+  .modal__close { width: 30px; height: 30px; top: 0.75rem; right: 0.75rem; }
+  .modal .form_integration_block { width: 100% !important; }
+}
+@media (min-width: 1600px) {
+  .hero--v .hero__nav,
+      .hero--v .hero__body { max-width: 1400px; padding-left: 32px; padding-right: 32px; }
+}
+@media (min-width: 1600px) {
+  .vmedia--card { max-width: 560px; }
+}
+@media (min-width: 1600px) {
+  .vmedia--card.vmedia--green { max-width: 640px; }
+}
+@media (min-width: 769px) {
+  .hero--bleed { position: relative; overflow: hidden; }
+  /* студийный фон — радиальный «свет» за фигурой, тянется к правому краю, мягко тает влево к тексту */
+      .hero--bleed::before {
+        content: ''; position: absolute; top: 0; right: 0; bottom: 0; z-index: 0; pointer-events: none;
+        width: 84vw;
+        background:
+          radial-gradient(44% 48% at 60% 30%, rgba(240,242,244,.45) 0%, rgba(240,242,244,0) 72%),
+          linear-gradient(108deg, #e7eaed 0%, #d8dce1 32%, #c4c8ce 64%, #b4b9c0 100%);
+        -webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent 16%, #000 46%);
+                mask-image: linear-gradient(90deg, transparent 0%, transparent 16%, #000 46%);
+      }
+  .hero--bleed .hero__nav, .hero--bleed .hero__body { position: relative; z-index: 1; }
+  .hero--bleed .hero__body { align-items: center; grid-template-columns: 1fr 1fr; padding-bottom: 0; }
+  .hero--bleed .hero__left { align-self: center; }
+  .hero--bleed .hero__right {
+        position: relative; align-self: stretch; left: 0;
+        display: flex; align-items: flex-end; justify-content: center;
+      }
+  .vmedia--bleed { display: contents; background: none; }
+  .vmedia--bleed .vmedia__photo {
+        position: relative; bottom: 0; left: auto; right: auto; transform: none;
+        height: clamp(540px, 80vh, 720px); width: auto; max-width: none; align-self: flex-end;
+        filter: drop-shadow(-14px 20px 34px rgba(55,60,68,.17));
+      }
+  .hero--bleed .vplate { position: absolute; left: auto; right: 4%; bottom: 10%; transform: none; max-width: 370px; }
+  .hero--bleed .vplate__role { white-space: nowrap; }
+}
+@media (max-width: 768px) {
+  .hero--v .hero__body { grid-template-columns: 1fr; }
+  .hero--v .hero__right { order: 2; display: block; position: static; width: 100%; margin: 1.1rem 0 0; }
+  .hero--bleed { min-height: 0; }
+  .vmedia--card, .vmedia--bleed {
+        position: relative; inset: auto; width: 100%; max-width: 330px; margin: 0 auto;
+        aspect-ratio: 4 / 5; border-radius: 24px; min-height: 0;
+      }
+  .vmedia--bleed { background: linear-gradient(157deg, #e6e7ea 0%, #cfd1d5 100%); }
+  .vmedia--card.vmedia--green { max-width: 340px; }
+  .vmedia__photo { left: 50%; transform: translateX(-50%); height: 100%; }
+  .hero--card .vplate, .hero--bleed .vplate { left: 14px; right: 14px; max-width: none; bottom: 14px; }
+  .hero--bleed .vplate__role { white-space: normal; }
+}
   </style>
 </head>
 <body>
@@ -944,44 +1088,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <img class="nav__logo" src="/isalary/logo.png" alt="FIN-RA" width="87" height="44">
   <span class="nav__sep"></span>
   <span class="nav__live"><span class="nav__dot"></span>Набор открыт</span>
-  <button class="nav__cta" data-press data-open-sheet>Участвовать</button>
+  <button class="nav__cta" data-press data-open-modal>Участвовать</button>
 </nav>
 
-<!-- ===== HERO ===== -->
-<header class="hero">
-  <div class="wrap">
-    <div class="hero__grid">
-      <div class="hero__head">
-        <div class="hero__badge rv">Бесплатное предобучение · Онлайн</div>
-        <h1 class="t-display hero__title rv">Сохраните и приумножьте деньги, когда другие теряют. Создайте <em>финансовую&nbsp;защиту</em> на всю жизнь.</h1>
+<!-- ===== HERO (как в оригинале) ===== -->
+<section class="hero hero--v hero--bleed">
+    <nav class="hero__nav">
+      <img src="/isalary/logo.png" alt="FIN-RA — школа безопасных инвестиций" class="hero__logo" width="87" height="44">
+      <div class="hero__nav-right">
+        <div class="live-dot"></div>
+        <span class="hero__nav-label">Набор открыт</span>
+      </div>
+    </nav>
+
+    <div class="hero__body">
+      <div class="hero__left">
+        <div class="hero__badge">Бесплатное предобучение · Онлайн</div>
+
+        <h1 class="hero__title">Сохраните и приумножьте деньги, когда другие теряют. Создайте <em>финансовую&nbsp;защиту</em> на всю жизнь.</h1>
+
+        <p class="hero__sub">Три эфира о том, как зарабатывать в нестабильные времена, создать пассивный доход и быть в финансовой безопасности&nbsp;— что бы ни случилось с экономикой, работой или бизнесом.</p>
+
+        <button class="cta-btn" onclick="openModal()">Принять участие
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <div class="hero__trust">
+          <span>Вводные занятия</span>
+          <span>3 эфира</span>
+          <span><strong>40 000+</strong>&nbsp;участников с 2019 года</span>
+        </div>
       </div>
 
-      <div class="hero__col">
-        <p class="t-body hero__sub rv">Три эфира о том, как зарабатывать в нестабильные времена, создать пассивный доход и быть в финансовой безопасности&nbsp;— что бы ни случилось с экономикой, работой или бизнесом.</p>
-        <div class="rv">
-          <button class="btn" data-press data-open-sheet>Принять участие
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </button>
-          <div class="hero__trust">
-            <span>Вводные занятия</span>
-            <span>3 эфира</span>
-            <span><strong>40&nbsp;000+</strong>&nbsp;участников с 2019 года</span>
+      <div class="hero__right">
+        <div class="vmedia vmedia--bleed vmedia--grey">
+          <img class="vmedia__photo" src="/isalary/h4.png" alt="Дмитрий Толстяков, основатель FIN-RA" width="675" height="1150">
+          <div class="vplate vplate--light">
+            <div class="vplate__name">Дмитрий Толстяков</div>
+            <div class="vplate__role"><span class="vplate__dot"></span>Основатель FIN-RA · Школа обучила 200&nbsp;000+&nbsp;человек</div>
           </div>
         </div>
       </div>
-
-      <div class="hero__media rv">
-        <img class="hero__photo" src="/isalary/h4.png" alt="Дмитрий Толстяков, основатель FIN-RA" width="675" height="1150" fetchpriority="high">
-        <div class="hero__plate">
-          <div class="hero__plate-name">Дмитрий Толстяков</div>
-          <div class="hero__plate-role"><span class="hero__plate-dot"></span>Основатель FIN-RA · Школа обучила 200&nbsp;000+&nbsp;человек</div>
-        </div>
-      </div>
     </div>
-  </div>
-</header>
+  </section>
 
-<!-- ===== ДЛЯ КОГО ===== -->
+  <!-- ===== ДЛЯ КОГО ===== -->
 <section class="sec sec--sunken">
   <div class="wrap">
     <div class="sec__head">
@@ -1092,7 +1242,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="t-body rv" style="margin-top: 1.75rem; max-width: 62ch;">На обучении мы разбираем устройство этих рынков&nbsp;— чтобы вы сами могли видеть возможности в любой фазе рынка, а не просто следовать советам.</p>
 
     <div class="rv" style="margin-top: 1.75rem;">
-      <button class="btn" data-press data-open-sheet>Получить рабочие стратегии
+      <button class="btn" data-press data-open-modal>Получить рабочие стратегии
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </button>
     </div>
@@ -1170,7 +1320,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="reg rv">
       <div class="t-eyebrow">Регистрация</div>
       <h2 class="t-h2">Зарегистрируйтесь на предобучение «Инвест-зарплата» и&nbsp;получите стратегию создания капитала</h2>
-      <button class="btn" data-press data-open-sheet>Зарегистрироваться бесплатно
+      <button class="btn" data-press data-open-modal>Зарегистрироваться бесплатно
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </button>
       <div class="why">
@@ -1372,7 +1522,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2 class="t-h2">Мы не даём <em>волшебных кнопок</em></h2>
       <p class="t-body" style="margin-bottom: 0.4rem;">Мы учим системному подходу к управлению финансовой жизнью.</p>
       <p class="t-h3" style="margin-bottom: 1.6rem;">Готовы начать?</p>
-      <button class="btn" data-press data-open-sheet>Начать обучение
+      <button class="btn" data-press data-open-modal>Начать обучение
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </button>
     </div>
@@ -1403,23 +1553,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <div class="sticky" id="sticky">
-  <button class="btn btn--wide" data-press data-open-sheet>Принять участие</button>
+  <button class="btn btn--wide" data-press data-open-modal>Принять участие</button>
 </div>
 
-<!-- ===== ШТОРКА С ФОРМОЙ ===== -->
-<div class="scrim" id="scrim"></div>
-<div class="sheet-host" id="sheetHost" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
-  <div class="sheet" id="sheet">
-    <div class="sheet__grabzone" id="sheetGrab"></div>
-    <div class="sheet__grab"></div>
-    <button class="sheet__close" data-press data-close-sheet aria-label="Закрыть">&times;</button>
-    <h2 class="t-h3 sheet__title" id="sheetTitle">Регистрация на «Инвест-зарплату»</h2>
-    <p class="sheet__sub">Заполните форму&nbsp;— пришлём ссылку на эфиры и стратегию</p>
-    <script src='https://salebot.pro/js/form_scripts.js'></script>
-    <div class='form_integration_block'></div>
-    <script>FormIntegration.init({ project_id: 317313, guid: '9adb4552388bf0b240d3e7b2010e65b9' })</script>
+<!-- ===== МОДАЛКА С ФОРМОЙ (как в оригинале) ===== -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+    <div class="modal">
+      <button class="modal__close" onclick="closeModal()">&times;</button>
+      <div class="modal__title">Регистрация на «Инвест-зарплату»</div>
+      <div class="modal__sub">Заполните форму&nbsp;— пришлём ссылку на эфиры и стратегию</div>
+      <script src='https://salebot.pro/js/form_scripts.js'></script>
+      <div class='form_integration_block'></div>
+      <script>FormIntegration.init({ project_id: 317313, guid: '9adb4552388bf0b240d3e7b2010e65b9' })</script>
+    </div>
   </div>
-</div>
 
 <!-- ===== ЛАЙТБОКСЫ ===== -->
 <div class="lb" id="vlb">
@@ -1602,166 +1749,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   })();
 
   /* ==========================================================
-     ШТОРКА С ФОРМОЙ
-     Десктоп — диалог, вырастающий из нажатой кнопки.
-     Мобилка — bottom sheet: тянется пальцем, летит по инерции,
-     сопротивляется вверху, ловится на полпути.
+     МОДАЛКА С ФОРМОЙ — как в оригинале
+     Открытие/закрытие на CSS-переходе. Пружина здесь не нужна:
+     тянуть пальцем нечего, а отсутствие зависимости от rAF
+     убирает риск залипшей модалки с заблокированной прокруткой.
      ========================================================== */
-  var sheet = document.getElementById('sheet');
-  var host = document.getElementById('sheetHost');
-  var scrim = document.getElementById('scrim');
-  var grab = document.getElementById('sheetGrab');
-  var isOpen = false, lastTrigger = null, savedScroll = 0, watchdog = 0;
+  var modalOverlay = document.getElementById('modalOverlay');
+  var lastTrigger = null;
 
-  function mobile() { return window.matchMedia('(max-width: 640px)').matches; }
-  function sheetH() { return sheet.offsetHeight || window.innerHeight * 0.6; }
-
-  // p: 1 — открыта, 0 — закрыта. Одна величина на оба режима.
-  var sp = createSpring(function (p) {
-    if (mobile()) {
-      // Проценты, а не пиксели: высота шторки растёт, когда подгружается форма,
-      // и любое запомненное пиксельное смещение сразу становится враньём
-      sheet.style.transform = 'translate3d(0,' + ((1 - p) * 100).toFixed(2) + '%,0)';
-      sheet.style.opacity = '1';
-    } else {
-      sheet.style.transform = 'scale(' + (0.92 + 0.08 * Math.min(p, 1)).toFixed(4) + ')';
-      sheet.style.opacity = Math.max(0, Math.min(1, p)).toFixed(3);
-    }
-    scrim.style.opacity = Math.max(0, Math.min(1, p)).toFixed(3);
-  }, { damping: 1, response: 0.4, epsilon: 0.002, from: 0 });
-
-  function lockScroll(on) {
-    if (on) {
-      savedScroll = window.scrollY;
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-  }
-
-  function openSheet(trigger) {
-    if (isOpen) return;
-    isOpen = true;
-    lastTrigger = trigger || null;
-    host.classList.add('is-open');
-    scrim.classList.add('is-open');
-    lockScroll(true);
-
-    // §7: диалог растёт оттуда, откуда его позвали
-    if (!mobile() && lastTrigger) {
-      var tr = lastTrigger.getBoundingClientRect();
-      var sr = sheet.getBoundingClientRect();
-      var ox = ((tr.left + tr.width / 2) - sr.left) / (sr.width || 1) * 100;
-      var oy = ((tr.top + tr.height / 2) - sr.top) / (sr.height || 1) * 100;
-      sheet.style.transformOrigin =
-        Math.max(-40, Math.min(140, ox)).toFixed(1) + '% ' +
-        Math.max(-40, Math.min(140, oy)).toFixed(1) + '%';
-    } else {
-      sheet.style.transformOrigin = '50% 50%';
-    }
-
+  function openModal(trigger) {
+    if (!modalOverlay) return;
+    lastTrigger = (trigger && trigger.focus) ? trigger : null;
+    modalOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
     haptic(8);
-    sp.to(1, { damping: mobile() ? 0.86 : 1, response: mobile() ? 0.34 : 0.36 });
-
-    // Страховка. Пружина живёт на requestAnimationFrame, а он может не идти
-    // (фоновая вкладка, энергосбережение, встроенный браузер). Тогда человек
-    // увидит пустой экран с заблокированной прокруткой вместо формы.
-    clearTimeout(watchdog);
-    watchdog = setTimeout(function () {
-      if (!isOpen || sp.value > 0.9) return;
-      sp.jump(1);
-    }, 450);
-
     precheckConsents();
-    setTimeout(function () {
-      var f = sheet.querySelector('input:not([type=checkbox]):not([type=hidden])');
-      if (f && !mobile()) { try { f.focus({ preventScroll: true }); } catch (e) {} }
-    }, 220);
   }
-
-  function finishClose() {
-    host.classList.remove('is-open');
-    scrim.classList.remove('is-open');
-    sp.jump(0);
-    lockScroll(false);
+  function closeModal() {
+    if (!modalOverlay) return;
+    modalOverlay.classList.remove('active');
+    document.body.style.overflow = '';
     if (lastTrigger) { try { lastTrigger.focus({ preventScroll: true }); } catch (e) {} }
   }
-
-  function closeSheet(vel) {
-    if (!isOpen) return;
-    isOpen = false;
-    var done = false;
-    clearTimeout(watchdog);
-    sp.to(0, {
-      damping: 1,
-      response: 0.32,
-      velocity: vel,
-      onRest: function () { if (!done) { done = true; clearTimeout(watchdog); finishClose(); } }
-    });
-    // Без этого при замороженном rAF прокрутка страницы осталась бы заблокированной
-    watchdog = setTimeout(function () { if (!done) { done = true; finishClose(); } }, 600);
-  }
+  function closeModalOutside(e) { if (e.target === e.currentTarget) closeModal(); }
+  window.openModal = openModal;
+  window.closeModal = closeModal;
+  window.closeModalOutside = closeModalOutside;
 
   document.addEventListener('click', function (e) {
-    var o = e.target.closest ? e.target.closest('[data-open-sheet]') : null;
-    if (o) { e.preventDefault(); openSheet(o); return; }
-    if (e.target.closest && e.target.closest('[data-close-sheet]')) { closeSheet(); return; }
+    var o = e.target.closest ? e.target.closest('[data-open-modal]') : null;
+    if (o) { e.preventDefault(); openModal(o); }
   });
-  scrim.addEventListener('click', function () { closeSheet(); });
-
-  /* Перетаскивание шторки. Ручка сверху — чтобы не спорить с прокруткой формы. */
-  (function () {
-    if (!grab) return;
-    var dragging = false, startY = 0, startP = 1, pid = null, dragH = 0, tr = tracker();
-
-    grab.addEventListener('pointerdown', function (e) {
-      if (!isOpen || !mobile()) return;
-      dragging = true; pid = e.pointerId;
-      startY = e.clientY;
-      dragH = sheetH();                       // одна высота на весь жест
-      // §3: перехватываем летящую пружину с её текущего значения
-      sp.freeze();
-      startP = sp.value;
-      tr.reset(); tr.add(e.clientY);
-      grab.setPointerCapture(e.pointerId);
-    });
-
-    grab.addEventListener('pointermove', function (e) {
-      if (!dragging || e.pointerId !== pid) return;
-      var H = dragH;
-      var dy = e.clientY - startY;
-      var p = startP - dy / H;
-      // §9: вверх за границу — прогрессивное сопротивление, а не стоп
-      if (p > 1) p = 1 + rubberband(p - 1, 1);
-      sp.set(p);
-      tr.add(e.clientY);
-    });
-
-    function release(e) {
-      if (!dragging || (e && e.pointerId !== pid)) return;
-      dragging = false;
-      var H = dragH;
-      var vy = tr.velocity();                 // px/с вниз
-      var dyNow = (1 - sp.value) * H;
-      // §6: решаем по спроецированной точке остановки, а не по текущей
-      var projected = dyNow + project(vy);
-      var vp = -vy / H;                       // px/с → единицы p/с
-      if (projected > H * 0.4 || vy > 750) {
-        haptic(6);
-        closeSheet(vp);
-      } else {
-        sp.to(1, { damping: 0.86, response: 0.34, velocity: vp });
-      }
-    }
-    grab.addEventListener('pointerup', release);
-    grab.addEventListener('pointercancel', release);
-  })();
 
   /* Галочки согласий проставляем заранее (решение владельца).
      Настоящий клик — чтобы Salebot засчитал согласие. */
   function precheckConsents(tries) {
     tries = tries || 0;
-    var boxes = sheet.querySelectorAll('.form_integration_block input[type="checkbox"]');
+    var boxes = document.querySelectorAll('.modal .form_integration_block input[type="checkbox"]');
     if (boxes.length) { boxes.forEach(function (cb) { if (!cb.checked) cb.click(); }); return; }
     if (tries < 40) setTimeout(function () { precheckConsents(tries + 1); }, 250);
   }
@@ -1829,7 +1853,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var v = e.target.closest ? e.target.closest('[data-video]') : null;
     if (v) {
       var src = v.getAttribute('data-video');
-      if (!src) { openSheet(v); return; }
+      if (!src) { openModal(v); return; }
       vlbBody.innerHTML = /\.(mp4|webm|ogg)(\?|$)/i.test(src)
         ? '<video src="/isalary/' + src + '" controls autoplay playsinline></video>'
         : '<iframe src="' + src + '" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>';
@@ -1859,7 +1883,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if (e.key !== 'Escape') return;
     if (vlb.isOpen) closeLb('vlb');
     else if (ilb.isOpen) closeLb('ilb');
-    else if (isOpen) closeSheet();
+    else if (modalOverlay && modalOverlay.classList.contains('active')) closeModal();
   });
 
   /* ==========================================================
@@ -1900,7 +1924,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }, { damping: 1, response: 0.36, epsilon: 0.002, from: 0 });
 
     var hero = document.querySelector('.hero');
-    var blockers = [].slice.call(document.querySelectorAll('.btn')).filter(function (b) { return !el.contains(b); });
+    var blockers = [].slice.call(document.querySelectorAll('.btn, .cta-btn')).filter(function (b) { return !el.contains(b); });
     var footer = document.querySelector('.footer');
     if (footer) blockers.push(footer);
     var visible = new Set(), shown = false;
