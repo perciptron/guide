@@ -1122,7 +1122,7 @@
       .regalia-list { grid-template-columns: 1fr; }
       .expert-card { flex-direction: column; text-align: center; align-items: center; gap: 1rem; padding: 1.5rem 1.25rem; }
       .reviews-grid {
-        display: flex; gap: 0.85rem; overflow-x: auto;
+        display: flex; gap: 0.85rem; overflow-x: auto; overflow-y: hidden;
         scroll-snap-type: x mandatory; scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch; scrollbar-width: none;
         margin: 2rem -1.25rem 0; padding: 0 1.25rem 0.5rem;
@@ -1467,10 +1467,13 @@
       .reg-card__title { font-size: 1.35rem; }
       .reg .why-free { text-align: center; }
       .vreviews {
-        display: flex; gap: 0.85rem; overflow-x: auto;
+        display: flex; gap: 0.85rem; overflow-x: auto; overflow-y: hidden;
         scroll-snap-type: x mandatory; scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch; scrollbar-width: none;
-        margin: 2rem -1.25rem 0; padding: 0 1.25rem 0.5rem;
+        margin: 1.15rem -1.25rem -1.1rem;
+        /* запас под тень .vcard (0 6px 18px): overflow-y её иначе обрежет.
+           Отрицательный margin возвращает прежние отступы секции */
+        padding: 0.85rem 1.25rem 1.6rem;
       }
       .vreviews::-webkit-scrollbar { display: none; }
       .vcard { flex: 0 0 62%; scroll-snap-align: start; }
