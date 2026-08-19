@@ -209,7 +209,12 @@
     .nav {
       position: fixed;
       top: max(0.6rem, env(safe-area-inset-top));
-      left: 50%;
+      /* left:0/right:0 + margin auto, а НЕ left:50%: при left:50% ширина блока
+         ограничена половиной экрана, и содержимое вылезает за правый паддинг */
+      left: 0; right: 0;
+      margin-inline: auto;
+      width: fit-content;
+      max-width: calc(100% - 1.5rem);
       z-index: 90;
       display: flex;
       align-items: center;
@@ -221,7 +226,7 @@
       backdrop-filter: blur(var(--mat-blur-thin)) saturate(180%);
       box-shadow: var(--sh-1), inset 0 1px 0 var(--mat-edge);
       /* transform целиком задаётся из JS-пружины (nav.js) */
-      transform: translate(-50%, -140%) scale(0.94);
+      transform: translateY(-140%) scale(0.94);
       will-change: transform, opacity;
       opacity: 0;
     }
@@ -635,7 +640,7 @@
        ============================================================ */
     @media (prefers-reduced-motion: reduce) {
       .rv { opacity: 1 !important; transform: none !important; }
-      .nav { transform: translate(-50%, 0) scale(1) !important; }
+      .nav { transform: none !important; }
       .nav__dot { animation: none; }
       .lb__inner { transform: none !important; }
       * { scroll-behavior: auto !important; }
@@ -1896,7 +1901,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var shown = false;
     var s = createSpring(function (p) {
       var q = Math.max(0, Math.min(1, p));
-      nav.style.transform = 'translate(-50%,' + ((1 - q) * -140).toFixed(1) + '%) scale(' + (0.94 + 0.06 * q).toFixed(3) + ')';
+      nav.style.transform = 'translateY(' + ((1 - q) * -140).toFixed(1) + '%) scale(' + (0.94 + 0.06 * q).toFixed(3) + ')';
       nav.style.opacity = q.toFixed(3);
       nav.style.backdropFilter = nav.style.webkitBackdropFilter =
         'blur(' + (q * 18).toFixed(1) + 'px) saturate(180%)';
