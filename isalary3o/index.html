@@ -1589,6 +1589,17 @@
       .hero--card .vplate, .hero--bleed .vplate { left: 14px; right: 14px; max-width: none; bottom: 14px; }
       .hero--bleed .vplate__role { white-space: normal; }
     }
+    /* Бонус за регистрацию — обложка гайда (правки Полины 13.10) */
+    .bonus { display: flex; align-items: center; gap: 0.9rem; padding: 0.75rem 0.9rem; background: #fff; border: 1px solid var(--separator); border-radius: var(--radius); box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.05); text-align: left; }
+    .bonus__cover { width: 64px; height: auto; flex-shrink: 0; border-radius: 6px; box-shadow: 0 6px 16px rgba(0,0,0,0.18); transform: rotate(-3deg); }
+    .bonus__text { min-width: 0; display: flex; flex-direction: column; gap: 0.2rem; }
+    .bonus__label { font-family: var(--font-display); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--green); }
+    .bonus__title { font-family: var(--font-display); font-size: 1rem; font-weight: 600; line-height: 1.25; color: var(--text); }
+    .bonus__sub { font-size: 0.85rem; color: var(--text-secondary); }
+    .bonus--hero { margin-top: 0.25rem; max-width: 460px; }
+    .bonus--reg { max-width: 520px; margin: 0 auto 1.5rem; padding: 1rem 1.1rem; }
+    .bonus--reg .bonus__cover { width: 92px; }
+    .bonus--reg .bonus__title { font-size: 1.1rem; }
   </style>
   <!-- Форма Salebot грузится цепочкой с 4 доменов, прогреваем соединения заранее -->
   <link rel="preconnect" href="https://salebot.pro" crossorigin>
@@ -1629,6 +1640,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span>3 урока</span>
           <span>3 живых эфира 21–23 октября</span>
           <span><strong>40 000+</strong>&nbsp;участников с 2019 года</span>
+        </div>
+        <div class="bonus bonus--hero">
+          <img class="bonus__cover" src="/isalary3o/bonus-cover.jpg" alt="Обложка гайда «Куда инвестировать в конце 2026 года?»" width="400" height="566">
+          <div class="bonus__text">
+            <div class="bonus__label">Бонус за регистрацию</div>
+            <div class="bonus__title">Гайд «Куда инвестировать в&nbsp;конце 2026&nbsp;года?»</div>
+          </div>
         </div>
       </div>
 
@@ -1829,9 +1847,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="reg-card reveal">
         <div class="reg-card__label">Регистрация</div>
         <h2 class="reg-card__title">Зарегистрируйтесь на предобучение «Инвест-зарплата» и&nbsp;получите стратегию создания капитала</h2>
-        <div class="why-free" style="margin-bottom:1.25rem">
-          <div class="why-free__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v9H5v-9M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg></div>
-          <div class="why-free__text"><strong>Подарок за регистрацию:</strong> гайд «Как инвестировать в&nbsp;2026&nbsp;году» и&nbsp;3&nbsp;вводных урока на&nbsp;нашей платформе FIN-RA+&nbsp;— откроются 19&nbsp;октября.</div>
+        <div class="bonus bonus--reg">
+          <img class="bonus__cover" src="/isalary3o/bonus-cover.jpg" alt="Обложка гайда «Куда инвестировать в конце 2026 года?»" width="400" height="566" loading="lazy">
+          <div class="bonus__text">
+            <div class="bonus__label">Бонус за регистрацию</div>
+            <div class="bonus__title">Гайд «Куда инвестировать в&nbsp;конце 2026&nbsp;года?»</div>
+            <div class="bonus__sub">Пришлём сразу после регистрации</div>
+          </div>
         </div>
         <button class="cta-btn cta-btn--static" onclick="openModal()">Зарегистрироваться бесплатно
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
