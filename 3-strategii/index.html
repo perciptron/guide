@@ -747,7 +747,7 @@
   <section class="cta-section fade-in">
     <h2>Хотите применить эти стратегии?</h2>
     <p>Бесплатное предобучение «Инвест-зарплата» — 3 эфира с конкретными инструментами и разборами портфелей</p>
-    <a href="/invest-salary-2026/" class="btn-gold">Записаться бесплатно</a>
+    <a href="https://finra-plus.ru/zarplata" class="btn-gold" id="zarplataLink">Записаться бесплатно</a>
   </section>
 
   <!-- FOOTER -->
@@ -762,5 +762,12 @@
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
 
+  <script>
+    // Переносим метки визита (utm_* и др.) в ссылку на регистрацию
+    (function () {
+      var a = document.getElementById('zarplataLink');
+      if (a && location.search) a.href = 'https://finra-plus.ru/zarplata' + location.search;
+    })();
+  </script>
 </body>
 </html>

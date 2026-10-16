@@ -1236,6 +1236,9 @@
     }
     function openResultModal() {
       track('quiz_cta_click', { quiz: 'investor', result: computeResult() });
+      // Регистрация на «Инвест-зарплату» переехала — уводим туда с метками визита
+      window.location.href = 'https://finra-plus.ru/zarplata' + window.location.search;
+      return;
       initSalebotForm();
       document.getElementById('modalOverlay').classList.add('active');
       document.body.style.overflow = 'hidden';

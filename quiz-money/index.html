@@ -1187,6 +1187,9 @@
         window.location.href = r.link;
         return;
       }
+      // Регистрация на «Инвест-зарплату» переехала — уводим туда с метками визита
+      window.location.href = 'https://finra-plus.ru/zarplata' + window.location.search;
+      return;
       initSalebotForm();
       document.getElementById('modalOverlay').classList.add('active');
       document.body.style.overflow = 'hidden';
